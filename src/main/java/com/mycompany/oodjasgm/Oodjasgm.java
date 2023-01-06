@@ -12,6 +12,6 @@ package com.mycompany.oodjasgm;
 public class Oodjasgm {
 
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+        System.out.println("I love Mary Ting!");
     }
 }
