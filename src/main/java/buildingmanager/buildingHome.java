@@ -26,21 +26,64 @@ public class buildingHome extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        jLabel1 = new javax.swing.JLabel();
+        variousReport = new javax.swing.JButton();
+        userManagement = new javax.swing.JButton();
+        budgetPlanning = new javax.swing.JButton();
+        structureManagement = new javax.swing.JButton();
+        exit = new javax.swing.JButton();
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        jLabel1.setText("WELCOME BACK, BUILDING MANAGER");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(86, 13, 674, 68));
+
+        variousReport.setText("View Various Reports");
+        variousReport.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                variousReportActionPerformed(evt);
+            }
+        });
+        getContentPane().add(variousReport, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 330, 163, 70));
+
+        userManagement.setText("User Management");
+        userManagement.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                userManagementActionPerformed(evt);
+            }
+        });
+        getContentPane().add(userManagement, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 170, 163, 70));
+
+        budgetPlanning.setText("Operations & Budget Planning");
+        budgetPlanning.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                budgetPlanningActionPerformed(evt);
+            }
+        });
+        getContentPane().add(budgetPlanning, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 170, 219, 67));
+
+        structureManagement.setText("Team Structure Management");
+        getContentPane().add(structureManagement, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 330, 213, 72));
+
+        exit.setText("Exit");
+        getContentPane().add(exit, new org.netbeans.lib.awtextra.AbsoluteConstraints(693, 486, 81, 42));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void variousReportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_variousReportActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_variousReportActionPerformed
+
+    private void userManagementActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userManagementActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_userManagementActionPerformed
+
+    private void budgetPlanningActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_budgetPlanningActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_budgetPlanningActionPerformed
 
     /**
      * @param args the command line arguments
@@ -78,5 +121,11 @@ public class buildingHome extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton budgetPlanning;
+    private javax.swing.JButton exit;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton structureManagement;
+    private javax.swing.JButton userManagement;
+    private javax.swing.JButton variousReport;
     // End of variables declaration//GEN-END:variables
 }
