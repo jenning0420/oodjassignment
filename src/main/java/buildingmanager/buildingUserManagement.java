@@ -99,6 +99,11 @@ public class buildingUserManagement extends javax.swing.JFrame {
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Account Executive"));
 
         addAccAccount.setText("Add Account");
+        addAccAccount.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addAccAccountActionPerformed(evt);
+            }
+        });
 
         modifyAccAccount.setText("Search & Modify Account");
         modifyAccAccount.addActionListener(new java.awt.event.ActionListener() {
@@ -133,6 +138,11 @@ public class buildingUserManagement extends javax.swing.JFrame {
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("Admin Executive"));
 
         addAdminAccount.setText("Add Account");
+        addAdminAccount.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addAdminAccountActionPerformed(evt);
+            }
+        });
 
         modifyAdminAccount.setText("Search & Modify Account");
         modifyAdminAccount.addActionListener(new java.awt.event.ActionListener() {
@@ -219,6 +229,14 @@ public class buildingUserManagement extends javax.swing.JFrame {
     private void modifyBuildingAccountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modifyBuildingAccountActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_modifyBuildingAccountActionPerformed
+
+    private void addAccAccountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addAccAccountActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_addAccAccountActionPerformed
+
+    private void addAdminAccountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addAdminAccountActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_addAdminAccountActionPerformed
 
     /**
      * @param args the command line arguments
