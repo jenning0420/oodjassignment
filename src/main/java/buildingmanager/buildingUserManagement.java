@@ -231,7 +231,7 @@ public class buildingUserManagement extends javax.swing.JFrame {
     }//GEN-LAST:event_modifyBuildingAccountActionPerformed
 
     private void addAccAccountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addAccAccountActionPerformed
-        // TODO add your handling code here:
+        new buildingAddUser().setVisible(true);
     }//GEN-LAST:event_addAccAccountActionPerformed
 
     private void addAdminAccountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addAdminAccountActionPerformed
