@@ -48,6 +48,11 @@ public class residentHome extends javax.swing.JFrame {
         getContentPane().add(residentUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(56, 100, 155, 37));
 
         jButton1.setText("Make Payment");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 100, 130, 40));
 
         jButton2.setText("BACK");
@@ -59,6 +64,10 @@ public class residentHome extends javax.swing.JFrame {
     private void residentUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_residentUpdateActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_residentUpdateActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
