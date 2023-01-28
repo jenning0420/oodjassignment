@@ -205,7 +205,7 @@ public class buildingAddUser extends javax.swing.JFrame {
     }//GEN-LAST:event_addUserActionPerformed
 
     public void setData() throws IOException {
-        File f = new File("accUser.txt");
+        File f = new File("src/textFiles/adminLogin.txt");
         if (!f.exists()) {
             f.createNewFile();
         }

@@ -78,7 +78,7 @@ public class buildingHome extends javax.swing.JFrame {
     }//GEN-LAST:event_variousReportActionPerformed
 
     private void userManagementActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userManagementActionPerformed
-        // TODO add your handling code here:
+        new buildingUserManagement().setVisible(true);
     }//GEN-LAST:event_userManagementActionPerformed
 
     private void budgetPlanningActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_budgetPlanningActionPerformed

@@ -39,9 +39,14 @@ public class buildingExecHome extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         jLabel1.setText("WELCOME BACK, BUILDING EXECUTIVE");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 674, 68));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 674, 68));
 
         assignJob.setText("Assign Job to Employees");
+        assignJob.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                assignJobActionPerformed(evt);
+            }
+        });
         getContentPane().add(assignJob, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, 177, 60));
 
         assignedJob.setText("View Assigned Job");
@@ -61,6 +66,10 @@ public class buildingExecHome extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void assignJobActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_assignJobActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_assignJobActionPerformed
 
     /**
      * @param args the command line arguments

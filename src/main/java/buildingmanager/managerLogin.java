@@ -86,20 +86,23 @@ public class managerLogin extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_managerUsernameActionPerformed
 
+    buildingHome bh = new buildingHome();
+    
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         String username = managerUsername.getText();
         String password = managerPassword.getText();
         
         if(username.equals("manager") & password.equals("123456")){
-            buildingHome hframe;
-            hframe = new buildingHome();
-            hframe.setVisible(true);
-            JOptionPane.showMessageDialog(hframe, "Login Successful. Welcome Back BUILDING MANAGER!");
+            JOptionPane.showMessageDialog(this, "Log In SUCCESSFULLY! Welcome back Building Manager.");
+
+            bh.setVisible(true);
+            this.setVisible(false);
             
             
         }else {
-            managerLogin lframe = new managerLogin();
-            JOptionPane.showMessageDialog(lframe, "Login Unsuccessful! Please Try Again.");
+            JOptionPane.showMessageDialog(this, "INCORRECT Username OR Password. Please try again.");
+            managerUsername.setText(null);
+            managerPassword.setText(null);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
