@@ -4,6 +4,9 @@
  */
 package buildingExecutive;
 
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author User
@@ -33,6 +36,7 @@ public class buildingExecHome extends javax.swing.JFrame {
         patrolling = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        exit = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -64,12 +68,30 @@ public class buildingExecHome extends javax.swing.JFrame {
         jButton2.setText("Exit");
         getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 430, 70, 40));
 
+        exit.setText("Log Out");
+        exit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                exitActionPerformed(evt);
+            }
+        });
+        getContentPane().add(exit, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 350, 81, 42));
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void assignJobActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_assignJobActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_assignJobActionPerformed
+
+    private JFrame frame;
+    private void exitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitActionPerformed
+        frame = new JFrame("Log Out");
+        if (JOptionPane.showConfirmDialog(frame, "Are you sure to LOG OUT from Building Executive page?", "Parkhill Residence Management System",
+            JOptionPane.YES_NO_OPTION) == JOptionPane.YES_NO_OPTION) {
+        new Visitor.visitorHome().setVisible(true);
+        this.setVisible(false);
+        }
+    }//GEN-LAST:event_exitActionPerformed
 
     /**
      * @param args the command line arguments
@@ -110,6 +132,7 @@ public class buildingExecHome extends javax.swing.JFrame {
     private javax.swing.JButton assignJob;
     private javax.swing.JButton assignedJob;
     private javax.swing.JButton complaints;
+    private javax.swing.JButton exit;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;

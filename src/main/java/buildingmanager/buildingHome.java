@@ -4,6 +4,9 @@
  */
 package buildingmanager;
 
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author User
@@ -67,7 +70,12 @@ public class buildingHome extends javax.swing.JFrame {
         structureManagement.setText("Team Structure Management");
         getContentPane().add(structureManagement, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 330, 213, 72));
 
-        exit.setText("Exit");
+        exit.setText("Log Out");
+        exit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                exitActionPerformed(evt);
+            }
+        });
         getContentPane().add(exit, new org.netbeans.lib.awtextra.AbsoluteConstraints(693, 486, 81, 42));
 
         pack();
@@ -79,11 +87,22 @@ public class buildingHome extends javax.swing.JFrame {
 
     private void userManagementActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userManagementActionPerformed
         new buildingUserManagement().setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_userManagementActionPerformed
 
     private void budgetPlanningActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_budgetPlanningActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_budgetPlanningActionPerformed
+
+    private JFrame frame;
+    private void exitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitActionPerformed
+        frame = new JFrame("Log Out");
+        if (JOptionPane.showConfirmDialog(frame, "Are you sure to LOG OUT from Building Manager page?", "Parkhill Residence Management System",
+                JOptionPane.YES_NO_OPTION) == JOptionPane.YES_NO_OPTION) {
+            new Visitor.visitorHome().setVisible(true);
+            this.setVisible(false);
+        }
+    }//GEN-LAST:event_exitActionPerformed
 
     /**
      * @param args the command line arguments

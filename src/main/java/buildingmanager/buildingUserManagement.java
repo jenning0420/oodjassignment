@@ -177,6 +177,11 @@ public class buildingUserManagement extends javax.swing.JFrame {
         jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder("Building Executive"));
 
         addBuildingAccount.setText("Add Account");
+        addBuildingAccount.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addBuildingAccountActionPerformed(evt);
+            }
+        });
 
         modifyBuildingAccount.setText("Search & Modify Account");
         modifyBuildingAccount.addActionListener(new java.awt.event.ActionListener() {
@@ -209,6 +214,11 @@ public class buildingUserManagement extends javax.swing.JFrame {
         getContentPane().add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 130, 220, 190));
 
         back.setText("Back");
+        back.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backActionPerformed(evt);
+            }
+        });
         getContentPane().add(back, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 370, 100, 40));
 
         pack();
@@ -231,12 +241,24 @@ public class buildingUserManagement extends javax.swing.JFrame {
     }//GEN-LAST:event_modifyBuildingAccountActionPerformed
 
     private void addAccAccountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addAccAccountActionPerformed
-        new buildingAddUser().setVisible(true);
+        new buildingAddAcc().setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_addAccAccountActionPerformed
 
     private void addAdminAccountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addAdminAccountActionPerformed
         new buildingAddAdmin().setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_addAdminAccountActionPerformed
+
+    private void addBuildingAccountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBuildingAccountActionPerformed
+        new buildingAddBuilding().setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_addBuildingAccountActionPerformed
+
+    private void backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backActionPerformed
+        new buildingHome().setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_backActionPerformed
 
     /**
      * @param args the command line arguments
