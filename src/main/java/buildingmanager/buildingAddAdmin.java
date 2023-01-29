@@ -4,6 +4,11 @@
  */
 package buildingmanager;
 
+import dao.AddUserDao;
+import dao.AddUserDaoImpl;
+import javax.swing.JOptionPane;
+import sng.AddUserSng;
+
 /**
  *
  * @author User
@@ -80,6 +85,11 @@ public class buildingAddAdmin extends javax.swing.JFrame {
         jLabel6.setText("Contact Number:");
 
         addUser.setText("ADD USER");
+        addUser.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addUserActionPerformed(evt);
+            }
+        });
 
         reset.setText("RESET");
 
@@ -167,6 +177,38 @@ public class buildingAddAdmin extends javax.swing.JFrame {
     private void NameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NameActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_NameActionPerformed
+
+    String Usernamefinal;
+    String Namefinal;
+    String ContactNumberfinal;
+    String Genderfinal;
+    String Passwordfinal;
+    AddUserSng aus = new AddUserSng();
+    AddUserDao aud = new AddUserDaoImpl();
+    buildingUserManagement bum = new buildingUserManagement();
+    
+    private void addUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addUserActionPerformed
+        Usernamefinal = Username.getText();
+        Namefinal = Name.getText();
+        ContactNumberfinal = ContactNumber.getText();
+        Genderfinal = (String) Gender.getSelectedItem();
+        Passwordfinal = Password.getText();
+        aus.setUsername(Usernamefinal);
+        aus.setName(Namefinal);
+        aus.setContactNumber(ContactNumberfinal);
+        aus.setGender(Genderfinal);
+        aus.setPassword(Passwordfinal);
+        aus.setTextFile("src/textFiles/adminLogin.txt");
+        
+        if (aud.addUser(aus) == true) {
+            JOptionPane.showMessageDialog(this, "Admin Executive account added SUCCESSFULLY.");
+
+            bum.setVisible(true);
+            this.setVisible(false);
+        } else {
+            JOptionPane.showMessageDialog(this, "Please fill up ALL the information.");
+        }
+    }//GEN-LAST:event_addUserActionPerformed
 
     /**
      * @param args the command line arguments
