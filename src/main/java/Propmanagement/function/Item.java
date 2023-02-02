@@ -9,19 +9,28 @@ package Propmanagement.function;
  * @author Admin
  */
 public class Item {
+    private String POwnerName;
     private int PID;
     private String PType;
-    private int POwnerID;
     private int PPrice;
     private String PRentBuy;;
 
-    public Item(int PID, String PType, int POwnerID, int PPrice, String PRentBuy) {
+    public Item(String POwnerName, int PID, String PType, int PPrice, String PRentBuy) {
+        this.POwnerName = POwnerName;
         this.PID = PID;
         this.PType = PType;
-        this.POwnerID = POwnerID;
         this.PPrice = PPrice;
         this.PRentBuy = PRentBuy;
     }
+    
+    public String getPOwnerName() {
+        return POwnerName;
+    }
+
+    public void setPOwnerName(String POwnerName) {
+        this.POwnerName = POwnerName;
+    }
+    
     
     public int getPID() {
         return PID;
@@ -37,14 +46,6 @@ public class Item {
 
     public void setPType(String PType) {
         this.PType = PType;
-    }
-
-    public int getPOwnerID() {
-        return POwnerID;
-    }
-
-    public void setPOwnerID(int POwnerID) {
-        this.POwnerID = POwnerID;
     }
     
     public int getPPrice() {
