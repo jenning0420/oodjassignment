@@ -9,3 +9,9 @@
 8,wedwe,ewfwef,fewfwef,Male,ewfwef
 9,ewff,ewf,fwef,Female,ewf
 10,resident,idk,1234567890,Female,idk
+11,resident,Emma Res,0198872625,Male,123,
+12,hello,hei,hui,Male,hiu,12,
+13,try,now,123,Male,123,13,
+14,another,hui,hui,Male,hui,1013,
+15,justin,Justin Tan,0198876253,Male,justin,1014,
+16,jenning,jenning,12321321,Male,123,1015,

@@ -35,7 +35,6 @@ public class buildingExecHome extends javax.swing.JFrame {
         complaints = new javax.swing.JButton();
         patrolling = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
         exit = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -64,9 +63,6 @@ public class buildingExecHome extends javax.swing.JFrame {
 
         jButton1.setText("View Reports");
         getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 280, 177, 59));
-
-        jButton2.setText("Exit");
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 430, 70, 40));
 
         exit.setText("Log Out");
         exit.addActionListener(new java.awt.event.ActionListener() {
@@ -134,7 +130,6 @@ public class buildingExecHome extends javax.swing.JFrame {
     private javax.swing.JButton complaints;
     private javax.swing.JButton exit;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JButton patrolling;
     // End of variables declaration//GEN-END:variables

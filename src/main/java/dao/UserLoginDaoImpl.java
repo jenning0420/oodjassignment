@@ -33,7 +33,7 @@ public class UserLoginDaoImpl implements UserLoginDao{
                 
                 while((line=br.readLine())!=null){
                     splt=line.split(",");
-                    uls.setUserId(Integer.parseInt(splt[0]));
+                    uls.setUserId(splt[0]);
                     
                     if(splt[1].equals(uls.getUsername()) && splt[5].equals(uls.getPassword())) {
                         System.out.println(uls.getUserId());

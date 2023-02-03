@@ -61,6 +61,11 @@ public class vendorLogin extends javax.swing.JFrame {
 
         jButton2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jButton2.setText("REGISTER");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jButton1.setText("LOGIN");
@@ -143,7 +148,7 @@ public class vendorLogin extends javax.swing.JFrame {
     UserLoginSng uls = new UserLoginSng();
     UserLoginDao uld = new UserLoginDaoImpl();
     vendorHome vh = new vendorHome();
-    
+
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         Usernamefinal = txtUsername.getText();
         passwordfinal = txtPassword.getText();
@@ -166,6 +171,11 @@ public class vendorLogin extends javax.swing.JFrame {
         new Visitor.userLogin().setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_backActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        new vendorRegister().setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments

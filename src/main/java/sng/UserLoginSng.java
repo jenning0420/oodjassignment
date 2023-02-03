@@ -9,12 +9,12 @@ package sng;
  * @author User
  */
 public class UserLoginSng {
-    private int userId;
+    private String userId;
 
-    public int getUserId() {
+    public String getUserId() {
         return userId;
     }
-    public void setUserId(int userId) {
+    public void setUserId(String userId) {
         this.userId = userId;
     }
 
