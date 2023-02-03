@@ -4,8 +4,8 @@
  */
 package adminexecutive;
 
-import Propmanagement.function.Item;
-import Propmanagement.system.ItemSystem;
+import Propmanagement.function.Unit;
+import Propmanagement.system.ManageUnitSystem;
 import java.awt.BorderLayout;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -18,7 +18,7 @@ import javax.swing.SwingConstants;
  */
 public class adminexecunitmanageedit extends javax.swing.JFrame {
 
-    private final ItemSystem Itemsystem;
+    private final ManageUnitSystem Itemsystem;
     
     public adminexecunitmanageedit() {
         initComponents();
@@ -27,7 +27,7 @@ public class adminexecunitmanageedit extends javax.swing.JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null); // this method display the JFrame to center position of a screen
         setVisible(true);
-        this.Itemsystem = new ItemSystem();
+        this.Itemsystem = new ManageUnitSystem();
         performFileRelatedTask();
     }
 
@@ -42,15 +42,13 @@ public class adminexecunitmanageedit extends javax.swing.JFrame {
 
         Itemsystem.getAll().forEach((item) -> {
             fullnames
-                    .append(item.getPOwnerName())
-                    .append("\t")
                     .append(item.getPID())
+                    .append("\t")
+                    .append(item.getPUnitNo())
                     .append("\t")
                     .append(item.getPType())
                     .append("\n")
                     .append(item.getPPrice())
-                    .append("\n")
-                    .append(item.getPRentBuy())
                     .append("\n");
         });
         
@@ -66,21 +64,18 @@ public class adminexecunitmanageedit extends javax.swing.JFrame {
         propdetails = new javax.swing.JTextArea();
         jLabel8 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
-        oldownername = new javax.swing.JTextField();
+        oldpropid = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        newproptype = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
-        newpropid = new javax.swing.JTextField();
+        newunitno = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
-        newrentbuy = new javax.swing.JComboBox<>();
         jLabel7 = new javax.swing.JLabel();
-        newownername = new javax.swing.JTextField();
+        newpropid = new javax.swing.JTextField();
+        newtype = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -93,7 +88,7 @@ public class adminexecunitmanageedit extends javax.swing.JFrame {
         });
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
-        jLabel6.setText("Enter New Property Type:");
+        jLabel6.setText("Select New Property Type:");
 
         propdetails.setEditable(false);
         propdetails.setColumns(20);
@@ -112,7 +107,7 @@ public class adminexecunitmanageedit extends javax.swing.JFrame {
         });
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
-        jLabel5.setText("Enter Owner Name To Edit Details:");
+        jLabel5.setText("Enter Property ID To Edit Details:");
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel1.setText("Edit Unit");
@@ -129,19 +124,13 @@ public class adminexecunitmanageedit extends javax.swing.JFrame {
         jLabel9.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
         jLabel9.setText("Property Price");
 
-        jLabel10.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
-        jLabel10.setText("Rent/Buy");
-
-        jLabel11.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
-        jLabel11.setText("Select Rent or Buy:");
-
         jLabel12.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
-        jLabel12.setText("Enter New Property ID:");
-
-        newrentbuy.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Rent", "Buy" }));
+        jLabel12.setText("Enter New Unit Number:");
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
-        jLabel7.setText("Enter New Owner Name:");
+        jLabel7.setText("Enter New Property ID:");
+
+        newtype.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Penthouse", "Studio" }));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -151,59 +140,52 @@ public class adminexecunitmanageedit extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1)
+                        .addComponent(jScrollPane1)
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(17, 17, 17)
                                 .addComponent(jLabel2)
                                 .addGap(44, 44, 44)
                                 .addComponent(jLabel3)
-                                .addGap(35, 35, 35)
-                                .addComponent(jLabel4)
-                                .addGap(31, 31, 31)
-                                .addComponent(jLabel9)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
-                                .addComponent(jLabel10)))
-                        .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jLabel1)
-                        .addGap(173, 173, 173))))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel4))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(jLabel1)))
+                        .addGap(59, 59, 59)
+                        .addComponent(jLabel9)
+                        .addGap(40, 40, 40))))
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(93, 93, 93)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(131, 131, 131)
-                        .addComponent(jButton1)
-                        .addGap(72, 72, 72)
-                        .addComponent(Update))
+                        .addComponent(jLabel5)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(oldpropid, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(93, 93, 93)
+                        .addComponent(jLabel6)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(newtype, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel5)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(oldownername, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel11)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(newrentbuy, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel8)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(newpropprice, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel6)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(newproptype, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel7)
-                                    .addComponent(jLabel12))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(newpropid, javax.swing.GroupLayout.DEFAULT_SIZE, 103, Short.MAX_VALUE)
-                                    .addComponent(newownername))))))
-                .addGap(0, 0, Short.MAX_VALUE))
+                            .addComponent(jLabel7)
+                            .addComponent(jLabel12))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(newunitno, javax.swing.GroupLayout.DEFAULT_SIZE, 103, Short.MAX_VALUE)
+                            .addComponent(newpropid)))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(jButton1)
+                            .addGap(72, 72, 72)
+                            .addComponent(Update))
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(jLabel8)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(newpropprice, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(0, 99, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -215,61 +197,59 @@ public class adminexecunitmanageedit extends javax.swing.JFrame {
                     .addComponent(jLabel2)
                     .addComponent(jLabel4)
                     .addComponent(jLabel3)
-                    .addComponent(jLabel9)
-                    .addComponent(jLabel10))
+                    .addComponent(jLabel9))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(oldownername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(oldpropid, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, 22, Short.MAX_VALUE))
                 .addGap(12, 12, 12)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
-                    .addComponent(newownername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(newpropid, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(newpropid, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(newunitno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, 22, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
-                    .addComponent(newproptype, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(newtype, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
                     .addComponent(newpropprice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(newrentbuy, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel11))
-                .addGap(20, 20, 20)
+                .addGap(36, 36, 36)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(Update))
-                .addGap(43, 43, 43))
+                .addGap(61, 61, 61))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void UpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpdateActionPerformed
-        String srcOwnerName = oldownername.getText();
-        String modOwnerName = newownername.getText();
+        String srcPID = oldpropid.getText();
         String modPID = newpropid.getText();
-        String modPType = newproptype.getText();
+        String modUnitNo = newunitno.getText();
+        String modPType = (String)newtype.getSelectedItem();
         String modPPrice = newpropprice.getText();
-        String modRentBuy = (String)newrentbuy.getSelectedItem();
         
 
-        if(srcOwnerName.isEmpty() || modOwnerName.isEmpty() || modPID.isEmpty() || modPType.isEmpty() || modPPrice.isEmpty() || modRentBuy.isEmpty()) {
+        if(srcPID.isEmpty() || modPID.isEmpty() || modUnitNo.isEmpty() || modPType.isEmpty() || modPPrice.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Please enter a valid Owner Name");
             return;
         }
         
-        if(!modPID.chars().allMatch(Character::isDigit) 
-                || Integer.parseInt(modPID) <=0) {
-            JOptionPane.showMessageDialog(this, "New property price cannot be empty");
+        if(modPID.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "New property id cannot be empty");
+            return;
+        }
+        
+        if(modUnitNo.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "New unit number cannot be empty");
             return;
         }
         
@@ -280,19 +260,15 @@ public class adminexecunitmanageedit extends javax.swing.JFrame {
         
         
         if(!modPPrice.chars().allMatch(Character::isDigit)
-                || Integer.parseInt(modPPrice) <=0) {
+                || Double.parseDouble(modPPrice) <=0) {
             JOptionPane.showMessageDialog(this, "Please enter a new valid property");
             return;
         }
         
-        if(modRentBuy.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Please enter Rent or Buy");
-            return;
-        }
 
-        Item updatedItem = new Item(modOwnerName, Integer.parseInt(modPID), modPType, Integer.parseInt(modPPrice), modRentBuy);
+        Unit updatedItem = new Unit(modPID, modUnitNo, modPType, Double.parseDouble(modPPrice));
 
-        boolean isUpdated = Itemsystem.update(srcOwnerName, updatedItem);
+        boolean isUpdated = Itemsystem.update(srcPID, updatedItem);
 
         if (!isUpdated) {
             JOptionPane.showMessageDialog(this, "Property Owner name not found");
@@ -300,12 +276,11 @@ public class adminexecunitmanageedit extends javax.swing.JFrame {
         }
 
         // Reset the modify fields
-        oldownername.setText("");
+        oldpropid.setText("");
         newpropid.setText("");
-        newproptype.setText("");
-        newownername.setText("");
+        newunitno.setText("");
+        newtype.setSelectedItem("");
         newpropprice.setText("");
-        newrentbuy.setSelectedItem("");
 
         // Show confirmation pop up
         JOptionPane.showMessageDialog(this, "Item has been Modified");
@@ -357,8 +332,6 @@ public class adminexecunitmanageedit extends javax.swing.JFrame {
     private javax.swing.JButton Update;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -369,12 +342,11 @@ public class adminexecunitmanageedit extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField newownername;
     private javax.swing.JTextField newpropid;
     private javax.swing.JTextField newpropprice;
-    private javax.swing.JTextField newproptype;
-    private javax.swing.JComboBox<String> newrentbuy;
-    private javax.swing.JTextField oldownername;
+    private javax.swing.JComboBox<String> newtype;
+    private javax.swing.JTextField newunitno;
+    private javax.swing.JTextField oldpropid;
     private javax.swing.JTextArea propdetails;
     // End of variables declaration//GEN-END:variables
 }

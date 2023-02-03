@@ -4,14 +4,14 @@
  */
 package adminexecutive;
 
-import Propmanagement.function.Item;
+import Propmanagement.function.Unit;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.PrintWriter;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-import Propmanagement.system.ItemSystem;
+import Propmanagement.system.ManageUnitSystem;
 import java.awt.BorderLayout;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -23,19 +23,19 @@ import javax.swing.SwingConstants;
  */
 public class adminexecunitmanageadd extends javax.swing.JFrame {
     
-    private final ItemSystem Itemsystem;
+    private final ManageUnitSystem manageunitsystem;
 
     /**
      * Creates new form adminexecunitmanageadd
      */
     public adminexecunitmanageadd() {
         initComponents();
-        setTitle("Add Item");
+        setTitle("Add Unit Details");
         add(new JLabel("JFrame set to center of the screen", SwingConstants.CENTER), BorderLayout.CENTER);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null); // this method display the JFrame to center position of a screen
         setVisible(true);
-        this.Itemsystem = new ItemSystem();
+        this.manageunitsystem = new ManageUnitSystem();
     }
 
     /**
@@ -51,15 +51,13 @@ public class adminexecunitmanageadd extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        RentBuy = new javax.swing.JComboBox<>();
         PropID = new javax.swing.JTextField();
-        Type = new javax.swing.JTextField();
         Price = new javax.swing.JTextField();
         Back = new javax.swing.JButton();
         Add = new javax.swing.JButton();
-        jLabel7 = new javax.swing.JLabel();
-        OwnerName = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        UnitNo = new javax.swing.JTextField();
+        Type = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -71,10 +69,6 @@ public class adminexecunitmanageadd extends javax.swing.JFrame {
         jLabel3.setText("Type :");
 
         jLabel5.setText("Price :");
-
-        jLabel6.setText("Rent/Buy :");
-
-        RentBuy.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Rent", "Buy" }));
 
         PropID.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -96,75 +90,73 @@ public class adminexecunitmanageadd extends javax.swing.JFrame {
             }
         });
 
-        jLabel7.setText("Owner Name :");
+        jLabel4.setText("Unit No :");
+
+        Type.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Penthouse", "Studio" }));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(141, 141, 141)
-                .addComponent(jLabel1)
+                .addGap(146, 146, 146)
+                .addComponent(Back)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(Add)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(134, 134, 134)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addGap(173, 173, 173)
+                    .addComponent(jLabel1)
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(148, 148, 148)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(Price)
-                            .addComponent(RentBuy, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(117, 117, 117)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel2)
-                                .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING))
-                            .addComponent(Back)
-                            .addComponent(jLabel7))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(OwnerName)
-                            .addComponent(PropID, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(Type, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addGap(0, 29, Short.MAX_VALUE)
-                                .addComponent(Add)))))
-                .addGap(88, 88, 88))
+                            .addComponent(UnitNo, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(PropID, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel3)
+                                    .addComponent(jLabel5))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(jLabel2)
+                                        .addComponent(jLabel4))
+                                    .addGap(1, 1, 1)))
+                            .addGap(22, 22, 22)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(Price, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(Type, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addContainerGap(137, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addGap(30, 30, 30)
+                .addGap(58, 58, 58)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(OwnerName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel7))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(PropID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2))
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(PropID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(UnitNo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(Type, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel5)
-                    .addComponent(Price, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel6)
-                    .addComponent(RentBuy, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Back)
-                    .addComponent(Add))
-                .addGap(27, 27, 27))
+                    .addComponent(Price, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 86, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Add)
+                    .addComponent(Back))
+                .addGap(40, 40, 40))
         );
 
         pack();
@@ -175,17 +167,12 @@ public class adminexecunitmanageadd extends javax.swing.JFrame {
     }//GEN-LAST:event_PropIDActionPerformed
 
     private void AddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddActionPerformed
-
-        String POwnerName = OwnerName.getText();        
+        
         String PID = PropID.getText();
-        String PType = Type.getText();
+        String PUnitNo = UnitNo.getText();
+        String PType = (String)Type.getSelectedItem();
         String PPrice = Price.getText();
-        String PRentBuy = (String)RentBuy.getSelectedItem();
                
-        if(POwnerName.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Property owner name cannot be empty");
-            return;
-        }
         
         if(PID.isEmpty() || !PID.chars().allMatch( Character::isDigit) ||
                 Integer.parseInt(PID) <= 0) {
@@ -193,36 +180,33 @@ public class adminexecunitmanageadd extends javax.swing.JFrame {
             return;
         }
         
+        if(PUnitNo.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Please enter a valid Unit Number");
+            return;
+        }
+        
         if(PType.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Property type cannot be empty");
             return;
         }
-
-        
+     
         if(PPrice.isEmpty() || !PPrice.chars().allMatch( Character::isDigit) 
-                || Integer.parseInt(PPrice) <=0) {
-            JOptionPane.showMessageDialog(this, "Please enter a valid property");
-            return;
-        }
-        
-        if(PRentBuy.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Please enter Rent or Buy");
+                || Double.parseDouble(PPrice) <=0) {
+            JOptionPane.showMessageDialog(this, "Property price cannot be empty");
             return;
         }
                 
-        Item item = new Item(POwnerName,
-                    Integer.parseInt(PropID.getText()),
+        Unit item = new Unit(PID,
+                    PUnitNo,
                     PType,
-                    Integer.parseInt(Price.getText()),
-                    PRentBuy);
+                    Integer.parseInt(Price.getText()));
         
-        Itemsystem.create(item);
+        manageunitsystem.create(item);
       
-        OwnerName.setText("");
         PropID.setText("");
-        Type.setText("");
+        UnitNo.setText("");
+        Type.setSelectedItem("");
         Price.setText("");
-        RentBuy.setSelectedItem("");
         JOptionPane.showMessageDialog(this, "Item has been added");    
     }//GEN-LAST:event_AddActionPerformed
 
@@ -268,16 +252,14 @@ public class adminexecunitmanageadd extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Add;
     private javax.swing.JButton Back;
-    private javax.swing.JTextField OwnerName;
     private javax.swing.JTextField Price;
     private javax.swing.JTextField PropID;
-    private javax.swing.JComboBox<String> RentBuy;
-    private javax.swing.JTextField Type;
+    private javax.swing.JComboBox<String> Type;
+    private javax.swing.JTextField UnitNo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     // End of variables declaration//GEN-END:variables
 }
