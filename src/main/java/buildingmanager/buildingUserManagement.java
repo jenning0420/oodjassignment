@@ -230,7 +230,8 @@ public class buildingUserManagement extends javax.swing.JFrame {
     }//GEN-LAST:event_modifyAccAccountActionPerformed
 
     private void modifyAdminAccountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modifyAdminAccountActionPerformed
-        // TODO add your handling code here:
+        new buildingModifyAdmin().setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_modifyAdminAccountActionPerformed
 
     private void modifyAdminAccount1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modifyAdminAccount1ActionPerformed
@@ -238,7 +239,8 @@ public class buildingUserManagement extends javax.swing.JFrame {
     }//GEN-LAST:event_modifyAdminAccount1ActionPerformed
 
     private void modifyBuildingAccountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modifyBuildingAccountActionPerformed
-        // TODO add your handling code here:
+        new buildingModifyBuilding().setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_modifyBuildingAccountActionPerformed
 
     private void addAccAccountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addAccAccountActionPerformed

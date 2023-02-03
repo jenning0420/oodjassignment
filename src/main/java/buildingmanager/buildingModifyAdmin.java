@@ -16,19 +16,19 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
-
 /**
  *
  * @author User
  */
-public class buildingModifyAccount extends javax.swing.JFrame {
+public class buildingModifyAdmin extends javax.swing.JFrame {
 
     /**
-     * Creates new form buildingModifyAccount
+     * Creates new form buildingModifyAdmin
      */
-    public buildingModifyAccount() {
+    public buildingModifyAdmin() {
         initComponents();
-        String filePath = "src/textFiles/accountLogin.txt";
+        
+        String filePath = "src/textFiles/adminLogin.txt";
         File file = new File(filePath);
         
 
@@ -47,12 +47,10 @@ public class buildingModifyAccount extends javax.swing.JFrame {
                 model.addRow(row);
             }
         } catch (FileNotFoundException ex) {
-            Logger.getLogger(buildingModifyAccount.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(buildingModifyAdmin.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
-            Logger.getLogger(buildingModifyAccount.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(buildingModifyAdmin.class.getName()).log(Level.SEVERE, null, ex);
         }
-            
-        
     }
 
     /**
@@ -64,8 +62,6 @@ public class buildingModifyAccount extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         userTable = new javax.swing.JTable();
@@ -85,25 +81,13 @@ public class buildingModifyAccount extends javax.swing.JFrame {
         Password = new javax.swing.JTextField();
         Gender = new javax.swing.JComboBox<>();
         back = new javax.swing.JButton();
-
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPane1.setViewportView(jTable1);
+        back1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("Search & Modify Account Executive");
+        jLabel2.setText("Search & Modify Admin Executive");
 
         userTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -120,7 +104,7 @@ public class buildingModifyAccount extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(userTable);
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Update Account Executive Information"));
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Update Admin Executive Information"));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
@@ -157,17 +141,6 @@ public class buildingModifyAccount extends javax.swing.JFrame {
         jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel8.setText("User ID:");
-
-        userID.addComponentListener(new java.awt.event.ComponentAdapter() {
-            public void componentShown(java.awt.event.ComponentEvent evt) {
-                userIDComponentShown(evt);
-            }
-        });
-        userID.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                userIDActionPerformed(evt);
-            }
-        });
 
         jButton1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jButton1.setForeground(new java.awt.Color(0, 51, 204));
@@ -234,7 +207,7 @@ public class buildingModifyAccount extends javax.swing.JFrame {
                                 .addGroup(jPanel1Layout.createSequentialGroup()
                                     .addGap(18, 18, 18)
                                     .addComponent(Password, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                .addContainerGap(31, Short.MAX_VALUE))
+                .addContainerGap(166, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -277,6 +250,13 @@ public class buildingModifyAccount extends javax.swing.JFrame {
             }
         });
 
+        back1.setText("Back");
+        back1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                back1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -288,41 +268,73 @@ public class buildingModifyAccount extends javax.swing.JFrame {
                         .addGap(10, 10, 10)
                         .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(18, 18, 18)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 648, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 648, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(8, 8, 8))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(back, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 873, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 943, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addContainerGap(651, Short.MAX_VALUE)
+                    .addComponent(back1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(481, 481, 481)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(back, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(11, 11, 11)
+                        .addComponent(back, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 414, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 414, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addContainerGap(262, Short.MAX_VALUE)
+                    .addComponent(back1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(231, 231, 231)))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void userTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_userTableMouseClicked
+        DefaultTableModel model = (DefaultTableModel) userTable.getModel();
+        int selectedInfo = userTable.getSelectedRow();
+
+        userID.setText(model.getValueAt(selectedInfo, 0).toString());
+        Username.setText(model.getValueAt(selectedInfo, 1).toString());
+        Name.setText(model.getValueAt(selectedInfo, 2).toString());
+        ContactNumber.setText(model.getValueAt(selectedInfo, 3).toString());
+        Gender.setSelectedItem(model.getValueAt(selectedInfo, 4).toString());
+        Password.setText(model.getValueAt(selectedInfo, 5).toString());
+
+    }//GEN-LAST:event_userTableMouseClicked
+
+    private void UsernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UsernameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_UsernameActionPerformed
+
     private void NameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NameActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_NameActionPerformed
 
-buildingUserManagement bum = new buildingUserManagement();
-
+    buildingUserManagement bum = new buildingUserManagement();
+    
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         int item = userTable.getSelectedRow();
         DefaultTableModel model = (DefaultTableModel) userTable.getModel();
-        
+
         if (item >= 0) {
             model.setValueAt(userID.getText(), item, 0);
             model.setValueAt(Username.getText(), item, 1);
@@ -330,13 +342,11 @@ buildingUserManagement bum = new buildingUserManagement();
             model.setValueAt(ContactNumber.getText(), item, 3);
             model.setValueAt(Gender.getSelectedItem(), item, 4);
             model.setValueAt(Password.getText(), item, 5);
-            
-            
 
-            String filePath = "src/textFiles/accountLogin.txt";
+            String filePath = "src/textFiles/adminLogin.txt";
             File file = new File(filePath);
             try {
-                
+
                 FileWriter fw = new FileWriter(file);
                 BufferedWriter bw = new BufferedWriter(fw);
                 String colHeadings = "";
@@ -344,7 +354,7 @@ buildingUserManagement bum = new buildingUserManagement();
                     colHeadings = colHeadings + model.getColumnName(i) + ",";
                 }
                 bw.write(colHeadings + "\n");
-                
+
                 for (int i = 0; i < userTable.getRowCount(); i++) {
                     for (int j = 0; j < userTable.getColumnCount(); j++) {
                         bw.write(userTable.getValueAt(i, j).toString() + ",");
@@ -366,37 +376,16 @@ buildingUserManagement bum = new buildingUserManagement();
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void UsernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UsernameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_UsernameActionPerformed
-
-    private void userTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_userTableMouseClicked
-        DefaultTableModel model = (DefaultTableModel) userTable.getModel();
-        int selectedInfo = userTable.getSelectedRow();
-
-        userID.setText(model.getValueAt(selectedInfo, 0).toString());
-        Username.setText(model.getValueAt(selectedInfo, 1).toString());
-        Name.setText(model.getValueAt(selectedInfo, 2).toString());
-        ContactNumber.setText(model.getValueAt(selectedInfo, 3).toString());
-        Gender.setSelectedItem(model.getValueAt(selectedInfo, 4).toString());
-        Password.setText(model.getValueAt(selectedInfo, 5).toString());
-        
-    }//GEN-LAST:event_userTableMouseClicked
-
-    private void GenderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GenderActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_GenderActionPerformed
-
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         int item = userTable.getSelectedRow();
         DefaultTableModel model = (DefaultTableModel) userTable.getModel();
-        
+
         if (item >= 0){
             model.removeRow(item);
-            String filePath = "src/textFiles/accountLogin.txt";
+            String filePath = "src/textFiles/adminLogin.txt";
             File file = new File(filePath);
             try {
-                
+
                 FileWriter fw = new FileWriter(file);
                 BufferedWriter bw = new BufferedWriter(fw);
                 String colHeadings = "";
@@ -404,7 +393,7 @@ buildingUserManagement bum = new buildingUserManagement();
                     colHeadings = colHeadings + model.getColumnName(i) + ",";
                 }
                 bw.write(colHeadings + "\n");
-                
+
                 for (int i = 0; i < userTable.getRowCount(); i++) {
                     for (int j = 0; j < userTable.getColumnCount(); j++) {
                         bw.write(userTable.getValueAt(i, j).toString() + ",");
@@ -426,18 +415,18 @@ buildingUserManagement bum = new buildingUserManagement();
         }
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void userIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userIDActionPerformed
+    private void GenderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GenderActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_userIDActionPerformed
-
-    private void userIDComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_userIDComponentShown
-
-    }//GEN-LAST:event_userIDComponentShown
+    }//GEN-LAST:event_GenderActionPerformed
 
     private void backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backActionPerformed
         new buildingUserManagement().setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_backActionPerformed
+
+    private void back1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_back1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_back1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -456,20 +445,20 @@ buildingUserManagement bum = new buildingUserManagement();
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(buildingModifyAccount.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(buildingModifyAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(buildingModifyAccount.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(buildingModifyAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(buildingModifyAccount.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(buildingModifyAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(buildingModifyAccount.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(buildingModifyAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new buildingModifyAccount().setVisible(true);
+                new buildingModifyAdmin().setVisible(true);
             }
         });
     }
@@ -481,6 +470,7 @@ buildingUserManagement bum = new buildingUserManagement();
     private javax.swing.JTextField Password;
     private javax.swing.JTextField Username;
     private javax.swing.JButton back;
+    private javax.swing.JButton back1;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel2;
@@ -491,9 +481,7 @@ buildingUserManagement bum = new buildingUserManagement();
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTextField userID;
     private javax.swing.JTable userTable;
     // End of variables declaration//GEN-END:variables
