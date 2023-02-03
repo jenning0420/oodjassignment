@@ -1,1 +1,2 @@
-2,B-LOL,Penthouse,50.0
+1,A-101,Penthouse,50000.0
+2,B-202,Studio,10000.0
