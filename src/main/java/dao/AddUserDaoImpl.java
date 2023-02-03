@@ -30,7 +30,7 @@ public class AddUserDaoImpl implements AddUserDao {
                 Object[] Lines = br.lines().toArray();
                 int i = 0;
                 int id = 0;
-                for (i = 0; i < Lines.length; i++) {
+                for (i = 1; i < Lines.length; i++) {
                     String line = Lines[i].toString().trim();
                     String[] row = line.split(",");
                     id = Integer.parseInt(row[0]);
@@ -40,7 +40,7 @@ public class AddUserDaoImpl implements AddUserDao {
                 FileWriter fw = new FileWriter(f, true);
                 BufferedWriter bw = new BufferedWriter(fw);
                 PrintWriter pw = new PrintWriter(bw);
-                pw.println(userID + "," + aus.getUsername() + "," + aus.getName() + "," + aus.getContactNumber() + "," + aus.getGender() + "," + aus.getPassword());
+                pw.println(userID + "," + aus.getUsername() + "," + aus.getName() + "," + aus.getContactNumber() + "," + aus.getGender() + "," + aus.getPassword() + ",");
                 pw.flush();
                 pw.close();
                 bw.close();

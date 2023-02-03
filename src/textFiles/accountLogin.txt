@@ -1,4 +1,8 @@
-0,helo,myname,12424234234,Item 2,qwewqe
-1,tret,rtwe,2442,Item 1,reter
-2,abc,sfdds,12312314,Item 2,1234
-3,jeremy,jeremy tan,0198765456,Male,jeremy
+User ID,Username,Name,Contact Number,Gender,Password,
+1,tret,rtwe,2442,Item 1,reter,
+2,abcdef,sfdds,12312314,Female,1234,
+3,jeremy,jeremy tan,0198765456,Male,jeremy,
+4,modifyuser,name,0192882,Female,12345,
+5,gergerg,Mimi,0189667254,Male,ergerg,
+7,jytj,jytj,jyt,Male,jyt,
+8,fwef,few,few,Male,fwe,

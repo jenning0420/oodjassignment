@@ -225,7 +225,8 @@ public class buildingUserManagement extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void modifyAccAccountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modifyAccAccountActionPerformed
-        // TODO add your handling code here:
+        new buildingModifyAccount().setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_modifyAccAccountActionPerformed
 
     private void modifyAdminAccountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modifyAdminAccountActionPerformed
