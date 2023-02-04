@@ -38,7 +38,7 @@ public class UserRegisterDaoImpl implements UserRegisterDao{
 
                 }
                 int userID = id + 1;
-                int propID = propid + 1000;
+                int propID = propid + 1001;
                 FileWriter fw = new FileWriter(f, true);
                 BufferedWriter bw = new BufferedWriter(fw);
                 PrintWriter pw = new PrintWriter(bw);

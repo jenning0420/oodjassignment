@@ -164,7 +164,7 @@ public class adminUserManagement extends javax.swing.JFrame {
     }//GEN-LAST:event_addAccAccountActionPerformed
 
     private void modifyAccAccountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modifyAccAccountActionPerformed
-//        new buildingModifyAccount().setVisible(true);
+        new adminModifyResident().setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_modifyAccAccountActionPerformed
 
@@ -174,7 +174,8 @@ public class adminUserManagement extends javax.swing.JFrame {
     }//GEN-LAST:event_addAccAccount1ActionPerformed
 
     private void modifyAccAccount1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modifyAccAccount1ActionPerformed
-        // TODO add your handling code here:
+        new adminModifyVendor().setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_modifyAccAccount1ActionPerformed
 
     private void backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backActionPerformed

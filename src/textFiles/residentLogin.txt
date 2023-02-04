@@ -1,18 +1,12 @@
-0,helo,myname,12424234234,Item 2,qwewqe
-1,tret,rtwe,2442,Item 1,reter
-2,abc,sfdds,12312314,Item 2,123
-3,abc,abc,2342,Item 2,1233
-4,abc,abc,2342,Item 1,123
-5,gw,grew,grew,Item 2,grew
-6,t342t,2t42,t243t,Item 2,t423t
-7,junkit,Jun Kit,0199875642,Item 2,qwert
-8,wedwe,ewfwef,fewfwef,Male,ewfwef
-9,ewff,ewf,fwef,Female,ewf
-10,resident,idk,1234567890,Female,idk
-11,resident,Emma Res,0198872625,Male,123,
-12,hello,hei,hui,Male,hiu,12,
-13,try,now,123,Male,123,13,
-14,another,hui,hui,Male,hui,1013,
-15,justin,Justin Tan,0198876253,Male,justin,1014,
-16,jenning,jenning,12321321,Male,123,1015,
-17,aaron,Aaron,123213123,Male,qwe,1016,
+User ID,Username,Name,Contact Number,Gender,Password,Property ID,
+1,justin,Justin Tan,0198876253,Male,justin,1001,
+2,jenning_jeremy,jenning,12321321,Male,123,1002,
+3,aaron_chang,Aaron,123213123,Female,qwe,1003,
+4,helen,Helen Tan,0198872635,Male,rthelen,1004,
+5,qwe,qwe,wqqwe,Male,wqe,1005,
+7,dsf,ds,dsfsdf,Male,sdfs,1007,
+8,gds,fgsfdgsdg,dfgsdg,Male,fd,1008,
+9,zebra,Zebra,0198882736,Female,zebra,1009,
+10,poi,poi,pio,Male,poi,1010,
+12,iuy,yui,yui,Male,yui,1012,
+13,sadsa,dsadsa,asdsa,Male,dsdad,1013,

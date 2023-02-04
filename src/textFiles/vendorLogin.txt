@@ -1,13 +1,3 @@
-0,helo,myname,12424234234,Item 2,qwewqe
-1,tret,rtwe,2442,Item 1,reter
-2,abc,sfdds,12312314,Item 2,123
-3,abc,abc,2342,Item 2,1233
-4,abc,abc,2342,Item 1,123
-5,gw,grew,grew,Item 2,grew
-6,t342t,2t42,t243t,Item 2,t423t
-7,junkit,Jun Kit,0199875642,Item 2,qwert
-8,wedwe,ewfwef,fewfwef,Male,ewfwef
-9,ewff,ewf,fwef,Female,ewf
-10,resident,idk,1234567890,Female,idk
-11,vendor,Miimi,1021323,Female,123,1010,
-12,nono,nono,nono,Male,nononoono,1011,
+User ID,Username,Name,Contact Name,Gender,Password,Property ID,
+1,yes,nono,nono,Male,nononoono,1001,
+2,tifanny,Tifanny,0129837664,Female,tifanny,1002,

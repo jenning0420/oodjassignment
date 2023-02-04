@@ -20,14 +20,14 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author User
  */
-public class adminModifyResident extends javax.swing.JFrame {
+public class adminModifyVendor extends javax.swing.JFrame {
 
     /**
-     * Creates new form adminModifyResident
+     * Creates new form adminModifyVendor
      */
-    public adminModifyResident() {
+    public adminModifyVendor() {
         initComponents();
-        String filePath = "src/textFiles/residentLogin.txt";
+        String filePath = "src/textFiles/vendorLogin.txt";
         File file = new File(filePath);
         
 
@@ -46,9 +46,9 @@ public class adminModifyResident extends javax.swing.JFrame {
                 model.addRow(row);
             }
         } catch (FileNotFoundException ex) {
-            Logger.getLogger(adminModifyResident.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(adminModifyVendor.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
-            Logger.getLogger(adminModifyResident.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(adminModifyVendor.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -61,6 +61,9 @@ public class adminModifyResident extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel2 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        userTable = new javax.swing.JTable();
         jPanel1 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -79,13 +82,29 @@ public class adminModifyResident extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         propID = new javax.swing.JTextField();
         back = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        userTable = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Update Resident Information"));
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setText("Search & Modify Vendor User");
+
+        userTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "User ID", "Username", "Name", "Contact Number", "Gender", "Password"
+            }
+        ));
+        userTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                userTableMouseClicked(evt);
+            }
+        });
+        jScrollPane2.setViewportView(userTable);
+
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Update Vendor Information"));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
@@ -255,25 +274,6 @@ public class adminModifyResident extends javax.swing.JFrame {
             }
         });
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("Search & Modify Resident User");
-
-        userTable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "User ID", "Username", "Name", "Contact Number", "Gender", "Password"
-            }
-        ));
-        userTable.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                userTableMouseClicked(evt);
-            }
-        });
-        jScrollPane2.setViewportView(userTable);
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -312,6 +312,19 @@ public class adminModifyResident extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void userTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_userTableMouseClicked
+        DefaultTableModel model = (DefaultTableModel) userTable.getModel();
+        int selectedInfo = userTable.getSelectedRow();
+
+        userID.setText(model.getValueAt(selectedInfo, 0).toString());
+        Username.setText(model.getValueAt(selectedInfo, 1).toString());
+        Name.setText(model.getValueAt(selectedInfo, 2).toString());
+        ContactNumber.setText(model.getValueAt(selectedInfo, 3).toString());
+        Gender.setSelectedItem(model.getValueAt(selectedInfo, 4).toString());
+        Password.setText(model.getValueAt(selectedInfo, 5).toString());
+        propID.setText(model.getValueAt(selectedInfo, 6).toString());
+    }//GEN-LAST:event_userTableMouseClicked
+
     private void UsernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UsernameActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_UsernameActionPerformed
@@ -343,7 +356,7 @@ public class adminModifyResident extends javax.swing.JFrame {
             model.setValueAt(Password.getText(), item, 5);
             model.setValueAt(propID.getText(), item, 6);
 
-            String filePath = "src/textFiles/residentLogin.txt";
+            String filePath = "src/textFiles/vendorLogin.txt";
             File file = new File(filePath);
             try {
 
@@ -365,10 +378,10 @@ public class adminModifyResident extends javax.swing.JFrame {
                 bw.close();
                 fw.close();
             } catch (IOException ex) {
-                Logger.getLogger(adminModifyResident.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(adminModifyVendor.class.getName()).log(Level.SEVERE, null, ex);
             }
 
-            JOptionPane.showMessageDialog(this, "Resident Account Updated SUCCESSFULLY!");
+            JOptionPane.showMessageDialog(this, "Vendor Account Updated SUCCESSFULLY!");
             aum.setVisible(true);
             this.setVisible(false);
         } else {
@@ -382,7 +395,7 @@ public class adminModifyResident extends javax.swing.JFrame {
 
         if (item >= 0){
             model.removeRow(item);
-            String filePath = "src/textFiles/residentLogin.txt";
+            String filePath = "src/textFiles/vendorLogin.txt";
             File file = new File(filePath);
             try {
 
@@ -404,10 +417,10 @@ public class adminModifyResident extends javax.swing.JFrame {
                 bw.close();
                 fw.close();
             } catch (IOException ex) {
-                Logger.getLogger(adminModifyResident.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(adminModifyVendor.class.getName()).log(Level.SEVERE, null, ex);
             }
 
-            JOptionPane.showMessageDialog(rootPane, "Resident Account Removed SUCCESSFULLY!");
+            JOptionPane.showMessageDialog(rootPane, "Vendor Account Removed SUCCESSFULLY!");
             aum.setVisible(true);
             this.setVisible(false);
         } else {
@@ -423,20 +436,6 @@ public class adminModifyResident extends javax.swing.JFrame {
         new adminUserManagement().setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_backActionPerformed
-
-    private void userTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_userTableMouseClicked
-        DefaultTableModel model = (DefaultTableModel) userTable.getModel();
-        int selectedInfo = userTable.getSelectedRow();
-
-        userID.setText(model.getValueAt(selectedInfo, 0).toString());
-        Username.setText(model.getValueAt(selectedInfo, 1).toString());
-        Name.setText(model.getValueAt(selectedInfo, 2).toString());
-        ContactNumber.setText(model.getValueAt(selectedInfo, 3).toString());
-        Gender.setSelectedItem(model.getValueAt(selectedInfo, 4).toString());
-        Password.setText(model.getValueAt(selectedInfo, 5).toString());
-        propID.setText(model.getValueAt(selectedInfo, 6).toString());
-
-    }//GEN-LAST:event_userTableMouseClicked
 
     /**
      * @param args the command line arguments
@@ -455,20 +454,20 @@ public class adminModifyResident extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(adminModifyResident.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(adminModifyVendor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(adminModifyResident.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(adminModifyVendor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(adminModifyResident.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(adminModifyVendor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(adminModifyResident.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(adminModifyVendor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new adminModifyResident().setVisible(true);
+                new adminModifyVendor().setVisible(true);
             }
         });
     }
