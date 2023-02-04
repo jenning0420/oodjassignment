@@ -49,6 +49,11 @@ public class adminexecmainpage extends javax.swing.JFrame {
         jButton1.setText("Unit Management");
 
         jButton2.setText("Resident / Tenant Management");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setText("Complaint Management");
 
@@ -125,6 +130,11 @@ public class adminexecmainpage extends javax.swing.JFrame {
         this.setVisible(false);
         }
     }//GEN-LAST:event_exitActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        new adminUserManagement().setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
