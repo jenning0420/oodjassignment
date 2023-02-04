@@ -172,7 +172,6 @@
           <Font name="Tahoma" size="10" style="1"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Search"/>
-        <Property name="actionCommand" type="java.lang.String" value="Search"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="SearchActionPerformed"/>

@@ -4,6 +4,12 @@
  */
 package adminexecutive;
 
+import Propmanagement.system.ManageUnitSystem;
+import java.awt.BorderLayout;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.SwingConstants;
+
 /**
  *
  * @author joowe
@@ -15,6 +21,11 @@ public class adminexecunitmanage extends javax.swing.JFrame {
      */
     public adminexecunitmanage() {
         initComponents();
+        setTitle("Manage Unit MainPage");
+        add(new JLabel("JFrame set to center of the screen", SwingConstants.CENTER), BorderLayout.CENTER);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setLocationRelativeTo(null); // this method display the JFrame to center position of a screen
+        setVisible(true);
     }
 
     /**
@@ -27,26 +38,51 @@ public class adminexecunitmanage extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
+        AddPage = new javax.swing.JButton();
+        ModifyPage = new javax.swing.JButton();
+        SearchPage = new javax.swing.JButton();
+        ViewPage = new javax.swing.JButton();
+        Back = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
         jLabel1.setText("Unit Management Page");
 
-        jButton1.setText("Add");
+        AddPage.setText("Add");
+        AddPage.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AddPageActionPerformed(evt);
+            }
+        });
 
-        jButton2.setText("Modify");
+        ModifyPage.setText("Modify");
+        ModifyPage.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ModifyPageActionPerformed(evt);
+            }
+        });
 
-        jButton3.setText("Search");
+        SearchPage.setText("Search");
+        SearchPage.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SearchPageActionPerformed(evt);
+            }
+        });
 
-        jButton4.setText("View");
+        ViewPage.setText("View");
+        ViewPage.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ViewPageActionPerformed(evt);
+            }
+        });
 
-        jButton5.setText("Back");
+        Back.setText("Back");
+        Back.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BackActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -60,11 +96,11 @@ public class adminexecunitmanage extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(161, 161, 161)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton2)
-                            .addComponent(jButton1)
-                            .addComponent(jButton3)
-                            .addComponent(jButton4)
-                            .addComponent(jButton5))))
+                            .addComponent(ModifyPage)
+                            .addComponent(AddPage)
+                            .addComponent(SearchPage)
+                            .addComponent(ViewPage)
+                            .addComponent(Back))))
                 .addContainerGap(91, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -72,20 +108,50 @@ public class adminexecunitmanage extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
-                .addComponent(jButton1)
+                .addComponent(AddPage)
                 .addGap(18, 18, 18)
-                .addComponent(jButton2)
+                .addComponent(ModifyPage)
                 .addGap(18, 18, 18)
-                .addComponent(jButton3)
+                .addComponent(SearchPage)
                 .addGap(18, 18, 18)
-                .addComponent(jButton4)
+                .addComponent(ViewPage)
                 .addGap(18, 18, 18)
-                .addComponent(jButton5)
+                .addComponent(Back)
                 .addGap(0, 69, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void AddPageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddPageActionPerformed
+        adminexecunitmanageadd adminexecunitmanageadd = new adminexecunitmanageadd();
+        adminexecunitmanageadd.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_AddPageActionPerformed
+
+    private void ModifyPageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ModifyPageActionPerformed
+        adminexecunitmanageedit adminexecunitmanageedit = new adminexecunitmanageedit();
+        adminexecunitmanageedit.setVisible(true);
+        this.dispose();        
+    }//GEN-LAST:event_ModifyPageActionPerformed
+
+    private void SearchPageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SearchPageActionPerformed
+        adminexecunitmanagesearch adminexecunitmanagesearch = new adminexecunitmanagesearch();
+        adminexecunitmanagesearch.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_SearchPageActionPerformed
+
+    private void ViewPageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ViewPageActionPerformed
+        adminexecunitmanageview adminexecunitmanageview = new adminexecunitmanageview();
+        adminexecunitmanageview.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_ViewPageActionPerformed
+
+    private void BackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackActionPerformed
+        adminexecmainpage adminexecmainpage = new adminexecmainpage();
+        adminexecmainpage.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_BackActionPerformed
 
     /**
      * @param args the command line arguments
@@ -123,11 +189,11 @@ public class adminexecunitmanage extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
+    private javax.swing.JButton AddPage;
+    private javax.swing.JButton Back;
+    private javax.swing.JButton ModifyPage;
+    private javax.swing.JButton SearchPage;
+    private javax.swing.JButton ViewPage;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }

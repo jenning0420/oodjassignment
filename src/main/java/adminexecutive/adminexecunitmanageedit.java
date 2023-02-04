@@ -242,7 +242,7 @@ public class adminexecunitmanageedit extends javax.swing.JFrame {
         
 
         if(srcPID.isEmpty() || modPID.isEmpty() || modUnitNo.isEmpty() || modPType.isEmpty() || modPPrice.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Please enter a valid Owner Name");
+            JOptionPane.showMessageDialog(this, "Please enter a valid Property ID");
             return;
         }
         
@@ -293,7 +293,9 @@ public class adminexecunitmanageedit extends javax.swing.JFrame {
     }//GEN-LAST:event_UpdateActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-
+        adminexecunitmanage adminexecunitmanage = new adminexecunitmanage();
+        adminexecunitmanage.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**

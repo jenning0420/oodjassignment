@@ -188,7 +188,9 @@ public class adminexecunitmanagedelete extends javax.swing.JFrame {
     }//GEN-LAST:event_DeleteActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-
+        adminexecunitmanage adminexecunitmanage = new adminexecunitmanage();
+        adminexecunitmanage.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
     private void performFileRelatedTask() {
         StringBuilder fullnames = new StringBuilder();
