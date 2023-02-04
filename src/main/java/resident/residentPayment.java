@@ -35,6 +35,7 @@ public class residentPayment extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         PropID = new javax.swing.JTextField();
         PropAmount = new javax.swing.JTextField();
+        CustPayBut1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -64,6 +65,13 @@ public class residentPayment extends javax.swing.JFrame {
             }
         });
 
+        CustPayBut1.setText("Back ");
+        CustPayBut1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CustPayBut1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -84,8 +92,13 @@ public class residentPayment extends javax.swing.JFrame {
                             .addComponent(PropAmount))))
                 .addGap(107, 107, 107))
             .addGroup(layout.createSequentialGroup()
-                .addGap(150, 150, 150)
-                .addComponent(CustPayBut)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(150, 150, 150)
+                        .addComponent(CustPayBut))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(168, 168, 168)
+                        .addComponent(CustPayBut1)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -103,7 +116,9 @@ public class residentPayment extends javax.swing.JFrame {
                     .addComponent(PropAmount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(56, 56, 56)
                 .addComponent(CustPayBut)
-                .addContainerGap(80, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(CustPayBut1)
+                .addContainerGap(45, Short.MAX_VALUE))
         );
 
         pack();
@@ -127,6 +142,11 @@ public class residentPayment extends javax.swing.JFrame {
     private void PropAmountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PropAmountActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_PropAmountActionPerformed
+
+    private void CustPayBut1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CustPayBut1ActionPerformed
+        new residentHome().setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_CustPayBut1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -165,6 +185,7 @@ public class residentPayment extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton CustPayBut;
+    private javax.swing.JButton CustPayBut1;
     private javax.swing.JTextField PropAmount;
     private javax.swing.JTextField PropID;
     private javax.swing.JLabel jLabel1;

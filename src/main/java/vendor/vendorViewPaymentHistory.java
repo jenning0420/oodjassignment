@@ -2,18 +2,18 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package resident;
+package vendor;
 
 /**
  *
  * @author User
  */
-public class residentVisitorPass extends javax.swing.JFrame {
+public class vendorViewPaymentHistory extends javax.swing.JFrame {
 
     /**
-     * Creates new form residentVisitorPass
+     * Creates new form vendorViewPaymentHistory
      */
-    public residentVisitorPass() {
+    public vendorViewPaymentHistory() {
         initComponents();
     }
 
@@ -26,41 +26,21 @@ public class residentVisitorPass extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        CustPayBut1 = new javax.swing.JButton();
-
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        CustPayBut1.setText("Back ");
-        CustPayBut1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CustPayBut1ActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(16, 16, 16)
-                .addComponent(CustPayBut1)
-                .addContainerGap(312, Short.MAX_VALUE))
+            .addGap(0, 400, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(262, Short.MAX_VALUE)
-                .addComponent(CustPayBut1)
-                .addGap(15, 15, 15))
+            .addGap(0, 300, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void CustPayBut1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CustPayBut1ActionPerformed
-        new residentHome().setVisible(true);
-        this.setVisible(false);
-    }//GEN-LAST:event_CustPayBut1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -79,25 +59,24 @@ public class residentVisitorPass extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(residentVisitorPass.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(vendorViewPaymentHistory.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(residentVisitorPass.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(vendorViewPaymentHistory.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(residentVisitorPass.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(vendorViewPaymentHistory.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(residentVisitorPass.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(vendorViewPaymentHistory.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new residentVisitorPass().setVisible(true);
+                new vendorViewPaymentHistory().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton CustPayBut1;
     // End of variables declaration//GEN-END:variables
 }

@@ -30,14 +30,15 @@ public class residentHome extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        residentUpdate = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        residentViewUpdateProfile = new javax.swing.JButton();
+        residentMakePayment = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         exit = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
+        residentFacilityBooking = new javax.swing.JButton();
+        residentVisitorPass = new javax.swing.JButton();
+        residentManageComplaints = new javax.swing.JButton();
+        residentViewPaymentHistory = new javax.swing.JButton();
+        back2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -45,17 +46,17 @@ public class residentHome extends javax.swing.JFrame {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("WELCOME TO PARKHILL RESIDENCE");
 
-        residentUpdate.setText("View & Update Profile");
-        residentUpdate.addActionListener(new java.awt.event.ActionListener() {
+        residentViewUpdateProfile.setText("View/Update Profile");
+        residentViewUpdateProfile.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                residentUpdateActionPerformed(evt);
+                residentViewUpdateProfileActionPerformed(evt);
             }
         });
 
-        jButton1.setText("Make Payment");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        residentMakePayment.setText("Make Payment");
+        residentMakePayment.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                residentMakePaymentActionPerformed(evt);
             }
         });
 
@@ -70,31 +71,38 @@ public class residentHome extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setText("Facility Booking");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        residentFacilityBooking.setText("Facility Booking");
+        residentFacilityBooking.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                residentFacilityBookingActionPerformed(evt);
             }
         });
 
-        jButton3.setText("Visitor Pass");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        residentVisitorPass.setText("Visitor Pass");
+        residentVisitorPass.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                residentVisitorPassActionPerformed(evt);
             }
         });
 
-        jButton4.setText("Complaints");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        residentManageComplaints.setText("Manage Complaints");
+        residentManageComplaints.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                residentManageComplaintsActionPerformed(evt);
             }
         });
 
-        jButton5.setText("View Payment History");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        residentViewPaymentHistory.setText("View Payment History");
+        residentViewPaymentHistory.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                residentViewPaymentHistoryActionPerformed(evt);
+            }
+        });
+
+        back2.setText("Back");
+        back2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                back2ActionPerformed(evt);
             }
         });
 
@@ -102,66 +110,73 @@ public class residentHome extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(exit, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(14, 14, 14))
             .addGroup(layout.createSequentialGroup()
+                .addGap(0, 103, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(95, 95, 95)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 438, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(277, 277, 277)
-                        .addComponent(jLabel4))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(72, 72, 72)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(residentUpdate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(37, 37, 37)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton1))
-                        .addGap(41, 41, 41)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(88, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(137, 137, 137)
+                                .addComponent(exit, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(28, 28, 28)
+                                .addComponent(back2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(residentViewUpdateProfile, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(residentFacilityBooking, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(37, 37, 37)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(residentVisitorPass, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(residentMakePayment))
+                                .addGap(41, 41, 41)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(residentViewPaymentHistory, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(residentManageComplaints, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(85, 85, 85))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 438, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(jLabel4)
+                                .addGap(182, 182, 182)))
+                        .addGap(100, 100, 100))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(26, 26, 26)
+                .addGap(32, 32, 32)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel4)
-                .addGap(49, 49, 49)
+                .addGap(43, 43, 43)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(residentUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(residentViewUpdateProfile, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(residentMakePayment, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(residentViewPaymentHistory, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(33, 33, 33)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 77, Short.MAX_VALUE)
-                .addComponent(exit, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                    .addComponent(residentFacilityBooking, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(residentVisitorPass, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(residentManageComplaints, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(back2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(exit, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(27, 27, 27))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void residentUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_residentUpdateActionPerformed
-        new residentUpdateProfile().setVisible(true);
+    private void residentViewUpdateProfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_residentViewUpdateProfileActionPerformed
+        new residentViewUpdateProfile().setVisible(true);
         this.setVisible(false);
-    }//GEN-LAST:event_residentUpdateActionPerformed
+    }//GEN-LAST:event_residentViewUpdateProfileActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void residentMakePaymentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_residentMakePaymentActionPerformed
+        new residentPayment().setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_residentMakePaymentActionPerformed
 
     private JFrame frame;
     private void exitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitActionPerformed
@@ -173,21 +188,30 @@ public class residentHome extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_exitActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    private void residentFacilityBookingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_residentFacilityBookingActionPerformed
+        new residentFacilityBooking().setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_residentFacilityBookingActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
+    private void residentVisitorPassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_residentVisitorPassActionPerformed
+        new residentVisitorPass().setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_residentVisitorPassActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton4ActionPerformed
+    private void residentManageComplaintsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_residentManageComplaintsActionPerformed
+        new residentComplaints().setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_residentManageComplaintsActionPerformed
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton5ActionPerformed
+    private void residentViewPaymentHistoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_residentViewPaymentHistoryActionPerformed
+        new residentViewPaymentHistory().setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_residentViewPaymentHistoryActionPerformed
+
+    private void back2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_back2ActionPerformed
+        new Visitor.visitorHome().setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_back2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -225,14 +249,15 @@ public class residentHome extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton back2;
     private javax.swing.JButton exit;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JButton residentUpdate;
+    private javax.swing.JButton residentFacilityBooking;
+    private javax.swing.JButton residentMakePayment;
+    private javax.swing.JButton residentManageComplaints;
+    private javax.swing.JButton residentViewPaymentHistory;
+    private javax.swing.JButton residentViewUpdateProfile;
+    private javax.swing.JButton residentVisitorPass;
     // End of variables declaration//GEN-END:variables
 }

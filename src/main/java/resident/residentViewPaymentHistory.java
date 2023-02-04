@@ -8,12 +8,12 @@ package resident;
  *
  * @author User
  */
-public class residentVisitorPass extends javax.swing.JFrame {
+public class residentViewPaymentHistory extends javax.swing.JFrame {
 
     /**
-     * Creates new form residentVisitorPass
+     * Creates new form residentViewPaymentHistory
      */
-    public residentVisitorPass() {
+    public residentViewPaymentHistory() {
         initComponents();
     }
 
@@ -79,20 +79,20 @@ public class residentVisitorPass extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(residentVisitorPass.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(residentViewPaymentHistory.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(residentVisitorPass.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(residentViewPaymentHistory.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(residentVisitorPass.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(residentViewPaymentHistory.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(residentVisitorPass.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(residentViewPaymentHistory.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new residentVisitorPass().setVisible(true);
+                new residentViewPaymentHistory().setVisible(true);
             }
         });
     }
