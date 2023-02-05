@@ -28,7 +28,7 @@ public class adminAddComplaint extends javax.swing.JFrame {
     String compDetailsFinal;
     String suggestionFinal;
     String complainant = "Admin";
-    String status = "Incomplete";
+    String status = "Pending";
     AddComplaintSng acs = new AddComplaintSng();
     AddComplaintDao acd = new AddComplaintDaoImpl();
     adminComplaintManagement acm = new adminComplaintManagement();
@@ -48,8 +48,8 @@ public class adminAddComplaint extends javax.swing.JFrame {
                 while ((line = br.readLine()) != null) {
                     splt = line.split(",");
                     acs.setUserID(splt[0]);
-                    String name = splt[1];
-                    System.out.println(name);
+//                    String name = splt[1];
+//                    System.out.println(name);
 
                 }
 

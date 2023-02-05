@@ -4,10 +4,10 @@
  */
 package resident;
 
-import dao.UserLoginDao;
-import dao.UserLoginDaoImpl;
+import dao.ResidentLoginDao;
+import dao.ResidentLoginDaoImpl;
 import javax.swing.JOptionPane;
-import sng.UserLoginSng;
+import sng.ResidentLoginSng;
 
 /**
  *
@@ -145,17 +145,17 @@ public class residentLogin extends javax.swing.JFrame {
 
     String Usernamefinal;
     String passwordfinal;
-    UserLoginSng uls = new UserLoginSng();
-    UserLoginDao uld = new UserLoginDaoImpl();
+    ResidentLoginSng rls = new ResidentLoginSng();
+    ResidentLoginDao rld = new ResidentLoginDaoImpl();
     residentHome rh = new residentHome();
     
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         Usernamefinal = txtUsername.getText();
         passwordfinal = txtPassword.getText();
-        uls.setUsername(Usernamefinal);
-        uls.setPassword(passwordfinal);
-        uls.setTextFile("src/textFiles/residentLogin.txt");
-        if (uld.userAccess(uls) == true) {
+        rls.setUsername(Usernamefinal);
+        rls.setPassword(passwordfinal);
+        rls.setTextFile("src/textFiles/residentLogin.txt");
+        if (rld.residentAccess(rls) == true) {
             JOptionPane.showMessageDialog(this, "Log In SUCCESSFULLY! Welcome back our dearest Resident!");
 
             rh.setVisible(true);
