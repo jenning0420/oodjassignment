@@ -2,8 +2,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package adminexecutive;
+package resident;
 
+import adminexecutive.adminUpdateComplaint;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -16,24 +17,49 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
+import sng.residentUpdateComplaintSng;
 
 /**
  *
  * @author User
  */
-public class adminUpdateComplaint extends javax.swing.JFrame {
+public class residentUpdateComplaint extends javax.swing.JFrame {
+
+    residentUpdateComplaintSng rucs = new residentUpdateComplaintSng();
 
     /**
-     * Creates new form adminUpdateComplaint
+     * Creates new form residentUpdateComplaint
      */
-    public adminUpdateComplaint() {
+    public residentUpdateComplaint() {
         initComponents();
         String filePath = "src/textFiles/complaint.txt";
         File file = new File(filePath);
-        
 
         try {
             FileReader fr = new FileReader(file);
+//            try ( BufferedReader br = new BufferedReader(fr)) {
+//                String line = null;
+//                String[] splt = null;
+//
+//                while ((line = br.readLine()) != null) {
+//                    splt = line.split(",");
+//                    rucs.setUserID(splt[1]);
+//                    String number = ("9");
+//
+//                    if (rucs.getUserID().equals(number)) {
+//                        String[] colHeadings = line.trim().split(",");
+//                        DefaultTableModel model = (DefaultTableModel) userTable.getModel();
+//                        model.setColumnIdentifiers(colHeadings);
+//                        Object[] lines = br.lines().toArray();
+//
+//                        for (int i = 0; i < lines.length; i++) {
+//                            String[] row = lines[i].toString().split(",");
+//                            model.addRow(row);
+//                        }
+//                    }
+//                }
+//
+//            }
             BufferedReader br = new BufferedReader(fr);
             String line = br.readLine();
             String[] colHeadings = line.trim().split(",");
@@ -44,12 +70,20 @@ public class adminUpdateComplaint extends javax.swing.JFrame {
 
             for (int i = 0; i < lines.length; i++) {
                 String[] row = lines[i].toString().split(",");
-                model.addRow(row);
+                rucs.setUserID(row[1]);
+                String number = ("17");
+                System.out.println(rucs.getUserID().getClass());
+                System.out.println(number.getClass());
+                if (rucs.getUserID().equals(number)){
+                    model.addRow(row);
+                }
+                
             }
+
         } catch (FileNotFoundException ex) {
-            Logger.getLogger(adminUpdateComplaint.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(residentUpdateComplaint.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
-            Logger.getLogger(adminUpdateComplaint.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(residentUpdateComplaint.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -62,6 +96,8 @@ public class adminUpdateComplaint extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        back = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         userTable = new javax.swing.JTable();
         jPanel1 = new javax.swing.JPanel();
@@ -84,10 +120,19 @@ public class adminUpdateComplaint extends javax.swing.JFrame {
         suggestion = new javax.swing.JTextArea();
         jLabel11 = new javax.swing.JLabel();
         compDate = new com.toedter.calendar.JDateChooser();
-        back = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        back.setText("Back");
+        back.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backActionPerformed(evt);
+            }
+        });
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setText("Update Complaints");
 
         userTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -255,7 +300,6 @@ public class adminUpdateComplaint extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(compTitle)
                         .addGap(2, 2, 2)))
-                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, 27, Short.MAX_VALUE)
                     .addComponent(compDate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -279,17 +323,6 @@ public class adminUpdateComplaint extends javax.swing.JFrame {
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-
-        back.setText("Back");
-        back.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                backActionPerformed(evt);
-            }
-        });
-
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("Update Complaints");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -327,7 +360,11 @@ public class adminUpdateComplaint extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    
+    private void backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backActionPerformed
+        new residentComplaintManagement().setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_backActionPerformed
+
     private void userTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_userTableMouseClicked
         DefaultTableModel model = (DefaultTableModel) userTable.getModel();
         int selectedInfo = userTable.getSelectedRow();
@@ -335,15 +372,31 @@ public class adminUpdateComplaint extends javax.swing.JFrame {
         compID.setText(model.getValueAt(selectedInfo, 0).toString());
         userID.setText(model.getValueAt(selectedInfo, 1).toString());
         compTitle.setText(model.getValueAt(selectedInfo, 2).toString());
-        ((JTextField)compDate.getDateEditor().getUiComponent()).setText(model.getValueAt(selectedInfo, 3).toString());
+        ((JTextField) compDate.getDateEditor().getUiComponent()).setText(model.getValueAt(selectedInfo, 3).toString());
         compDetails.setText(model.getValueAt(selectedInfo, 4).toString());
         suggestion.setText(model.getValueAt(selectedInfo, 5).toString());
         complainant.setText(model.getValueAt(selectedInfo, 6).toString());
         status.setSelectedItem(model.getValueAt(selectedInfo, 7).toString());
     }//GEN-LAST:event_userTableMouseClicked
 
-    adminComplaintManagement acm = new adminComplaintManagement();
-    
+    private void userIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userIDActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_userIDActionPerformed
+
+    private void compTitleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_compTitleActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_compTitleActionPerformed
+
+    private void compIDComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_compIDComponentShown
+
+    }//GEN-LAST:event_compIDComponentShown
+
+    private void compIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_compIDActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_compIDActionPerformed
+
+    residentComplaintManagement rcm = new residentComplaintManagement();
+
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         int item = userTable.getSelectedRow();
         DefaultTableModel model = (DefaultTableModel) userTable.getModel();
@@ -357,7 +410,6 @@ public class adminUpdateComplaint extends javax.swing.JFrame {
             model.setValueAt(suggestion.getText(), item, 5);
             model.setValueAt(complainant.getText(), item, 6);
             model.setValueAt(status.getSelectedItem(), item, 7);
-            
 
             String filePath = "src/textFiles/complaint.txt";
             File file = new File(filePath);
@@ -366,7 +418,7 @@ public class adminUpdateComplaint extends javax.swing.JFrame {
                 FileWriter fw = new FileWriter(file);
                 BufferedWriter bw = new BufferedWriter(fw);
                 String colHeadings = "";
-                for (int i = 0; i < model.getColumnCount();i++){
+                for (int i = 0; i < model.getColumnCount(); i++) {
                     colHeadings = colHeadings + model.getColumnName(i) + ",";
                 }
                 bw.write(colHeadings + "\n");
@@ -381,11 +433,11 @@ public class adminUpdateComplaint extends javax.swing.JFrame {
                 bw.close();
                 fw.close();
             } catch (IOException ex) {
-                Logger.getLogger(adminUpdateComplaint.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(residentUpdateComplaint.class.getName()).log(Level.SEVERE, null, ex);
             }
 
             JOptionPane.showMessageDialog(this, "Complaint Updated SUCCESSFULLY!");
-            acm.setVisible(true);
+            rcm.setVisible(true);
             this.setVisible(false);
         } else {
             JOptionPane.showMessageDialog(rootPane, "Please fill up ALL details!");
@@ -395,27 +447,6 @@ public class adminUpdateComplaint extends javax.swing.JFrame {
     private void statusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_statusActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_statusActionPerformed
-
-    private void backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backActionPerformed
-        new adminComplaintManagement().setVisible(true);
-        this.setVisible(false);
-    }//GEN-LAST:event_backActionPerformed
-
-    private void compTitleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_compTitleActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_compTitleActionPerformed
-
-    private void userIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userIDActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_userIDActionPerformed
-
-    private void compIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_compIDActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_compIDActionPerformed
-
-    private void compIDComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_compIDComponentShown
-
-    }//GEN-LAST:event_compIDComponentShown
 
     /**
      * @param args the command line arguments
@@ -434,20 +465,20 @@ public class adminUpdateComplaint extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(adminUpdateComplaint.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(residentUpdateComplaint.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(adminUpdateComplaint.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(residentUpdateComplaint.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(adminUpdateComplaint.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(residentUpdateComplaint.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(adminUpdateComplaint.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(residentUpdateComplaint.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new adminUpdateComplaint().setVisible(true);
+                new residentUpdateComplaint().setVisible(true);
             }
         });
     }

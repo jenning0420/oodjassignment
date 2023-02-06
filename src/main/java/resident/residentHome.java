@@ -200,7 +200,7 @@ public class residentHome extends javax.swing.JFrame {
     }//GEN-LAST:event_residentVisitorPassActionPerformed
 
     private void residentManageComplaintsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_residentManageComplaintsActionPerformed
-        new residentComplaints().setVisible(true);
+        new residentComplaintManagement().setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_residentManageComplaintsActionPerformed
 
