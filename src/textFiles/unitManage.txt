@@ -1,3 +1,3 @@
 1,A-101,Penthouse,50000.0
-2,B-202,Studio,10000.0
+3,C-303,Penthouse,20000.0
 1,1,Penthouse,10500.0

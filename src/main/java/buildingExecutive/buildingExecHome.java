@@ -81,7 +81,8 @@ public class buildingExecHome extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void assignJobActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_assignJobActionPerformed
-        // TODO add your handling code here:
+        new buildingAssignJob().setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_assignJobActionPerformed
 
     private JFrame frame;
