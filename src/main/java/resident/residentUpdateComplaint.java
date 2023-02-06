@@ -32,6 +32,25 @@ public class residentUpdateComplaint extends javax.swing.JFrame {
      */
     public residentUpdateComplaint() {
         initComponents();
+        
+        try {
+            FileReader fr1 = new FileReader("src/textFiles/activeUser.txt");
+            try ( BufferedReader br1 = new BufferedReader(fr1)) {
+                String line1 = null;
+                String[] splt1 = null;
+
+                while ((line1 = br1.readLine()) != null) {
+                    splt1 = line1.split(",");
+                    rucs.setUserID1(splt1[0]);
+
+                }
+
+            }
+        } catch (IOException e) {
+            System.out.println("FileNotFound");
+        }
+        
+        
         String filePath = "src/textFiles/complaint.txt";
         File file = new File(filePath);
 
@@ -71,10 +90,10 @@ public class residentUpdateComplaint extends javax.swing.JFrame {
             for (int i = 0; i < lines.length; i++) {
                 String[] row = lines[i].toString().split(",");
                 rucs.setUserID(row[1]);
-                String number = ("17");
-                System.out.println(rucs.getUserID().getClass());
-                System.out.println(number.getClass());
-                if (rucs.getUserID().equals(number)){
+//                String number = ("17");
+//                System.out.println(rucs.getUserID().getClass());
+//                System.out.println(number.getClass());
+                if (rucs.getUserID().equals(rucs.getUserID1())){
                     model.addRow(row);
                 }
                 
