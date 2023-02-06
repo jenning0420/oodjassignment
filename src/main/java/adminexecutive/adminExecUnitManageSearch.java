@@ -21,6 +21,7 @@ public class adminExecUnitManageSearch extends javax.swing.JFrame {
     /**
      * Creates new form adminexecunitmanagesearch
      */
+    
     public adminExecUnitManageSearch() {
         initComponents();
         setTitle("Delete Unit");
