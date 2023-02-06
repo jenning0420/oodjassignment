@@ -5,7 +5,7 @@
 package Propmanagement.system;
 
 import Propmanagement.function.Unit;
-import adminexecutive.adminexecunitmanageedit;
+import adminexecutive.adminExecUnitManageEdit;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -151,7 +151,7 @@ public class ManageUnitSystem {
                 itemList.add(item);
             }
         } catch (FileNotFoundException ex) {
-            Logger.getLogger(adminexecunitmanageedit.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(adminExecUnitManageEdit.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         int itemIndexToUpdate = -1;
@@ -175,7 +175,7 @@ public class ManageUnitSystem {
         try {
             Files.delete(Paths.get("src/textFiles/unitManage.txt"));
         } catch (IOException ex) {
-            Logger.getLogger(adminexecunitmanageedit.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(adminExecUnitManageEdit.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         try (PrintWriter pw = new PrintWriter(new FileOutputStream("src/textFiles/unitManage.txt"))) {
@@ -183,7 +183,7 @@ public class ManageUnitSystem {
                 pw.println(item.getPID() + "," + item.getPUnitNo() + "," + item.getPType() + "," + item.getPPrice());
             });
         } catch (FileNotFoundException ex) {
-            Logger.getLogger(adminexecunitmanageedit.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(adminExecUnitManageEdit.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         return true;
