@@ -1,3 +1,8 @@
+<<<<<<< Updated upstream
 1,A-101,Penthouse,50000.0
 3,C-303,Penthouse,20000.0
 1,1,Penthouse,10500.0
+=======
+5,5,Penthouse,5.0
+2,2,Studio,2.0
+>>>>>>> Stashed changes
