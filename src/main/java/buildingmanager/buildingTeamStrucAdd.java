@@ -4,17 +4,33 @@
  */
 package buildingmanager;
 
+import Propmanagement.function.TeamStruc;
+import Propmanagement.system.TeamStrucSystem;
+import java.awt.BorderLayout;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.SwingConstants;
+
 /**
  *
  * @author Admin
  */
 public class buildingTeamStrucAdd extends javax.swing.JFrame {
 
+    private final TeamStrucSystem teamstrucsystem;
+    
     /**
      * Creates new form buildingTeamStrucAdd
      */
     public buildingTeamStrucAdd() {
         initComponents();
+        setTitle("Add Team Structure");
+        add(new JLabel("JFrame set to center of the screen", SwingConstants.CENTER), BorderLayout.CENTER);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setLocationRelativeTo(null); // this method display the JFrame to center position of a screen
+        setVisible(true);
+        this.teamstrucsystem = new TeamStrucSystem();        
     }
 
     /**
@@ -26,21 +42,125 @@ public class buildingTeamStrucAdd extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        Role = new javax.swing.JTextField();
+        Back = new javax.swing.JButton();
+        Add = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
+        Amount = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        Role.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RoleActionPerformed(evt);
+            }
+        });
+
+        Back.setText("Back");
+        Back.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BackActionPerformed(evt);
+            }
+        });
+
+        Add.setText("Add");
+        Add.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AddActionPerformed(evt);
+            }
+        });
+
+        jLabel4.setText("Amount :");
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel1.setText("Add Team Structure Page");
+
+        jLabel2.setText("Role :");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(136, 136, 136)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel1)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(Amount, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(Role, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel2)
+                                    .addComponent(jLabel4))
+                                .addGap(132, 132, 132)))
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(Back)
+                            .addGap(64, 64, 64)
+                            .addComponent(Add))))
+                .addContainerGap(120, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 74, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Role, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Amount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4))
+                .addGap(70, 70, 70)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Add)
+                    .addComponent(Back))
+                .addGap(40, 40, 40))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void RoleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RoleActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_RoleActionPerformed
+
+    private void BackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackActionPerformed
+        buildingTeamStrucMain buildingTeamStrucMain = new buildingTeamStrucMain();
+        buildingTeamStrucMain.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_BackActionPerformed
+
+    private void AddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddActionPerformed
+
+        String TSRole = Role.getText();
+        String TSAmount = Amount.getText();
+
+        if(TSRole.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Please enter a valid Role");
+            return;
+        }
+
+        if(TSAmount.isEmpty() || !TSAmount.chars().allMatch( Character::isDigit) 
+                || Integer.parseInt(TSAmount) <=0) {                
+            JOptionPane.showMessageDialog(this, "Please enter a valid Amount");
+            return;
+        }
+
+        TeamStruc item = new TeamStruc(TSRole,
+            Integer.parseInt(Amount.getText()));
+
+        teamstrucsystem.create(item);
+
+        Role.setText("");
+        Amount.setText("");
+        JOptionPane.showMessageDialog(this, "Item has been added");
+    }//GEN-LAST:event_AddActionPerformed
 
     /**
      * @param args the command line arguments
@@ -78,5 +198,12 @@ public class buildingTeamStrucAdd extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Add;
+    private javax.swing.JTextField Amount;
+    private javax.swing.JButton Back;
+    private javax.swing.JTextField Role;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel4;
     // End of variables declaration//GEN-END:variables
 }

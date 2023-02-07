@@ -4,6 +4,11 @@
  */
 package buildingmanager;
 
+import java.awt.BorderLayout;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.SwingConstants;
+
 /**
  *
  * @author Admin
@@ -15,6 +20,11 @@ public class buildingTeamStrucMain extends javax.swing.JFrame {
      */
     public buildingTeamStrucMain() {
         initComponents();
+        setTitle("Team Structure Main Page");
+        add(new JLabel("JFrame set to center of the screen", SwingConstants.CENTER), BorderLayout.CENTER);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setLocationRelativeTo(null); // this method display the JFrame to center position of a screen
+        setVisible(true);        
     }
 
     /**
@@ -38,10 +48,25 @@ public class buildingTeamStrucMain extends javax.swing.JFrame {
         jLabel1.setText("Team Structure Management Page");
 
         jButton1.setText("Add");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Edit");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setText("View");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jButton4.setText("Back");
 
@@ -81,6 +106,24 @@ public class buildingTeamStrucMain extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        buildingTeamStrucAdd buildingTeamStrucAdd = new buildingTeamStrucAdd();
+        buildingTeamStrucAdd.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        buildingTeamStrucEdit buildingTeamStrucEdit = new buildingTeamStrucEdit();
+        buildingTeamStrucEdit.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        buildingTeamStrucView buildingTeamStrucView = new buildingTeamStrucView();
+        buildingTeamStrucView.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments
