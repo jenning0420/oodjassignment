@@ -20,7 +20,7 @@ import sng.AssignJobSng;
 public class AssignJobDaoImpl implements AssignJobDao{
     public boolean assignJob(AssignJobSng ajs) {
         try {
-            if (!"".equals(ajs.getEmployee()) && !"".equals(ajs.getJobTitle()) && !"".equals(ajs.getJobDetails()) && !"".equals(ajs.getJobDate()) && !"".equals(ajs.getJobTime())) {
+            if (!"".equals(ajs.getEmployee()) && !"".equals(ajs.getJobTitle()) && !"".equals(ajs.getJobDetails()) && !"".equals(ajs.getJobDate()) && !"".equals(ajs.getJobTime()) && !"".equals(ajs.getJobDuration())) {
                 File f = new File("src/textFiles/jobAssigned.txt");
                 if (!f.exists()) {
                     f.createNewFile();
@@ -39,7 +39,7 @@ public class AssignJobDaoImpl implements AssignJobDao{
                 FileWriter fw = new FileWriter(f, true);
                 BufferedWriter bw = new BufferedWriter(fw);
                 PrintWriter pw = new PrintWriter(bw);
-                pw.println(jobID + "," + ajs.getEmployee() + "," + ajs.getJobTitle() + "," + ajs.getJobDetails() + "," + ajs.getJobDate() + "," + ajs.getJobTime() + "," + ajs.getStatus() + ",");
+                pw.println(jobID + "," + ajs.getEmployee() + "," + ajs.getJobTitle() + "," + ajs.getJobDetails() + "," + ajs.getJobDate() + "," + ajs.getJobTime() + "," + ajs.getJobDuration() + "," + ajs.getStatus() + ",");
                 pw.flush();
                 pw.close();
                 bw.close();
