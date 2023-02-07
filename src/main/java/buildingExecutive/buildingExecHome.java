@@ -53,6 +53,11 @@ public class buildingExecHome extends javax.swing.JFrame {
         getContentPane().add(assignJob, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, 177, 60));
 
         assignedJob.setText("View Assigned Job");
+        assignedJob.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                assignedJobActionPerformed(evt);
+            }
+        });
         getContentPane().add(assignedJob, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 180, 167, 60));
 
         complaints.setText("Update Complaint Status");
@@ -99,6 +104,11 @@ public class buildingExecHome extends javax.swing.JFrame {
         new buildingUpdateComplaint().setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_complaintsActionPerformed
+
+    private void assignedJobActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_assignedJobActionPerformed
+        new buildingModifyJob().setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_assignedJobActionPerformed
 
     /**
      * @param args the command line arguments

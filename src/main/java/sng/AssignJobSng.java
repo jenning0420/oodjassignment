@@ -15,6 +15,7 @@ public class AssignJobSng {
     private String jobDetails;
     private String jobDate;
     private String jobTime;
+    private String jobDuration;
     private String status;
 
     public int getJobID() {
@@ -64,6 +65,14 @@ public class AssignJobSng {
     public void setJobTime(String jobTime) {
         this.jobTime = jobTime;
     }
+
+    public String getJobDuration() {
+        return jobDuration;
+    }
+
+    public void setJobDuration(String jobDuration) {
+        this.jobDuration = jobDuration;
+    }    
 
     public String getStatus() {
         return status;
