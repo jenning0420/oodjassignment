@@ -44,7 +44,6 @@ public class adminExecUnitManage extends javax.swing.JFrame {
         SearchPage = new javax.swing.JButton();
         ViewPage = new javax.swing.JButton();
         Back = new javax.swing.JButton();
-        Delete = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -86,13 +85,6 @@ public class adminExecUnitManage extends javax.swing.JFrame {
             }
         });
 
-        Delete.setText("Delete");
-        Delete.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                DeleteActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -103,15 +95,13 @@ public class adminExecUnitManage extends javax.swing.JFrame {
                         .addGap(91, 91, 91)
                         .addComponent(jLabel1))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(158, 158, 158)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(Delete)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(ModifyPage)
-                                .addComponent(AddPage)
-                                .addComponent(SearchPage)
-                                .addComponent(ViewPage)
-                                .addComponent(Back)))))
+                        .addGap(161, 161, 161)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(ModifyPage)
+                            .addComponent(AddPage)
+                            .addComponent(SearchPage)
+                            .addComponent(ViewPage)
+                            .addComponent(Back))))
                 .addContainerGap(91, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -126,11 +116,9 @@ public class adminExecUnitManage extends javax.swing.JFrame {
                 .addComponent(SearchPage)
                 .addGap(18, 18, 18)
                 .addComponent(ViewPage)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(Delete)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addComponent(Back)
-                .addGap(33, 33, 33))
+                .addGap(0, 69, Short.MAX_VALUE))
         );
 
         pack();
@@ -165,12 +153,6 @@ public class adminExecUnitManage extends javax.swing.JFrame {
         adminexecmainpage.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_BackActionPerformed
-
-    private void DeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteActionPerformed
-        adminExecUnitManageDelete adminExecUnitManageDelete = new adminExecUnitManageDelete();
-        adminExecUnitManageDelete.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_DeleteActionPerformed
 
     /**
      * @param args the command line arguments
@@ -211,7 +193,6 @@ public class adminExecUnitManage extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AddPage;
     private javax.swing.JButton Back;
-    private javax.swing.JButton Delete;
     private javax.swing.JButton ModifyPage;
     private javax.swing.JButton SearchPage;
     private javax.swing.JButton ViewPage;
