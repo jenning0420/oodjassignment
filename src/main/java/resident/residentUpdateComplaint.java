@@ -12,12 +12,15 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 import sng.residentUpdateComplaintSng;
+import file.FileService;
+import java.util.Arrays;
 
 /**
  *
@@ -32,7 +35,7 @@ public class residentUpdateComplaint extends javax.swing.JFrame {
      */
     public residentUpdateComplaint() {
         initComponents();
-        
+
         try {
             FileReader fr1 = new FileReader("src/textFiles/activeUser.txt");
             try ( BufferedReader br1 = new BufferedReader(fr1)) {
@@ -49,8 +52,7 @@ public class residentUpdateComplaint extends javax.swing.JFrame {
         } catch (IOException e) {
             System.out.println("FileNotFound");
         }
-        
-        
+
         String filePath = "src/textFiles/complaint.txt";
         File file = new File(filePath);
 
@@ -93,10 +95,10 @@ public class residentUpdateComplaint extends javax.swing.JFrame {
 //                String number = ("17");
 //                System.out.println(rucs.getUserID().getClass());
 //                System.out.println(number.getClass());
-                if (rucs.getUserID().equals(rucs.getUserID1())){
+                if (rucs.getUserID().equals(rucs.getUserID1())) {
                     model.addRow(row);
                 }
-                
+
             }
 
         } catch (FileNotFoundException ex) {
@@ -139,6 +141,7 @@ public class residentUpdateComplaint extends javax.swing.JFrame {
         suggestion = new javax.swing.JTextArea();
         jLabel11 = new javax.swing.JLabel();
         compDate = new com.toedter.calendar.JDateChooser();
+        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -251,6 +254,15 @@ public class residentUpdateComplaint extends javax.swing.JFrame {
 
         compDate.setDateFormatString("dd-MM-yyyy");
 
+        jButton2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jButton2.setForeground(new java.awt.Color(153, 0, 0));
+        jButton2.setText("REMOVE");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -281,26 +293,31 @@ public class residentUpdateComplaint extends javax.swing.JFrame {
                         .addGap(4, 4, 4)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(status, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(complainant)
-                                    .addComponent(jScrollPane4)))))
+                                    .addComponent(jScrollPane4)))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGap(8, 8, 8)
+                                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(status, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(58, 58, 58))))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(compID)))
                 .addContainerGap())
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(70, 70, 70)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -339,7 +356,9 @@ public class residentUpdateComplaint extends javax.swing.JFrame {
                     .addComponent(status, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -430,7 +449,17 @@ public class residentUpdateComplaint extends javax.swing.JFrame {
             model.setValueAt(complainant.getText(), item, 6);
             model.setValueAt(status.getSelectedItem(), item, 7);
 
+            ArrayList<String[]> tableArray = new ArrayList<>();
+            for (int i = 0; i < userTable.getRowCount(); i++) {
+                String[] tempArray = new String[8];
+                for (int j = 0; j < userTable.getColumnCount(); j++) {
+                    tempArray[j] = userTable.getValueAt(i, j).toString();
+                }
+                tableArray.add(tempArray);
+            }
+
             String filePath = "src/textFiles/complaint.txt";
+            ArrayList<String[]> array = FileService.readFile(filePath);
             File file = new File(filePath);
             try {
 
@@ -441,16 +470,25 @@ public class residentUpdateComplaint extends javax.swing.JFrame {
                     colHeadings = colHeadings + model.getColumnName(i) + ",";
                 }
                 bw.write(colHeadings + "\n");
-
-                for (int i = 0; i < userTable.getRowCount(); i++) {
-                    for (int j = 0; j < userTable.getColumnCount(); j++) {
-                        bw.write(userTable.getValueAt(i, j).toString() + ",");
+                String content = "";
+                boolean change = false;
+                for (String[] tempArray : array) {
+                    for (String[] tempTableArray : tableArray) {
+                        if (tempTableArray[0].equals(tempArray[0]) && tempTableArray[1].equals(tempArray[1])) {
+                            content += String.join(",", tempTableArray) + ",\n";
+                            change = true;
+                            break;
+                        }
                     }
-                    bw.newLine();
+                    if (change) {
+                        change = false;
+                        continue;
+                    }
+                    content += String.join(",", tempArray) + ",\n";
                 }
-
+                bw.write(content);
                 bw.close();
-                fw.close();
+
             } catch (IOException ex) {
                 Logger.getLogger(residentUpdateComplaint.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -466,6 +504,50 @@ public class residentUpdateComplaint extends javax.swing.JFrame {
     private void statusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_statusActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_statusActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        int item = userTable.getSelectedRow();
+        DefaultTableModel model = (DefaultTableModel) userTable.getModel();
+
+        if (item >= 0) {
+            String filePath = "src/textFiles/complaint.txt";
+            ArrayList<String[]> array = FileService.readFile(filePath);
+            File file = new File(filePath);
+            try {
+
+                FileWriter fw = new FileWriter(file);
+                BufferedWriter bw = new BufferedWriter(fw);
+                String colHeadings = "";
+                for (int i = 0; i < model.getColumnCount(); i++) {
+                    colHeadings = colHeadings + model.getColumnName(i) + ",";
+                }
+                bw.write(colHeadings + "\n");
+
+                String compId = userTable.getValueAt(item, 0).toString();
+                String userId = userTable.getValueAt(item, 1).toString();
+
+                String content = "";
+                for (String[] tempArray : array) {
+                    if (compId.equals(tempArray[0]) && userId.equals(tempArray[1])) {
+                        continue;
+                    }
+                    content += String.join(",", tempArray) + ",\n";
+                }
+                bw.write(content);
+                bw.close();
+                model.removeRow(item);
+
+            } catch (IOException ex) {
+                Logger.getLogger(residentUpdateComplaint.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+            JOptionPane.showMessageDialog(rootPane, "Complaint Removed SUCCESSFULLY!");
+            rcm.setVisible(true);
+            this.setVisible(false);
+        } else {
+            JOptionPane.showMessageDialog(rootPane, "Please select the fill to Delete!");
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -510,6 +592,7 @@ public class residentUpdateComplaint extends javax.swing.JFrame {
     private javax.swing.JTextField compTitle;
     private javax.swing.JTextField complainant;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
