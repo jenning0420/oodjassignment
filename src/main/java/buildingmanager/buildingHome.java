@@ -68,6 +68,11 @@ public class buildingHome extends javax.swing.JFrame {
         getContentPane().add(budgetPlanning, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 170, 219, 67));
 
         structureManagement.setText("Team Structure Management");
+        structureManagement.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                structureManagementActionPerformed(evt);
+            }
+        });
         getContentPane().add(structureManagement, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 330, 213, 72));
 
         exit.setText("Log Out");
@@ -103,6 +108,11 @@ public class buildingHome extends javax.swing.JFrame {
             this.setVisible(false);
         }
     }//GEN-LAST:event_exitActionPerformed
+
+    private void structureManagementActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_structureManagementActionPerformed
+        new buildingTeamStrucMain().setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_structureManagementActionPerformed
 
     /**
      * @param args the command line arguments

@@ -1,4 +1,7 @@
-Username,Name,Contact Name,Gender,Password
-yes,nono,nono,Male,nononoono
-tifanny,Tifanny,0129837664,Female,tifanny
-JOE,Joes,12345,Female,12345
+UserID,Username,Name,Contact Name,Gender,Password,Property ID,
+1,christine,Christine,013746572,Female,christine,2001,
+2,jenning_jeremy,jenning,0123213212,Male,123,2002,
+3,aaron_chang,Aaron,123213123,Female,qwe,2003,
+4,jeremy,Jeremy,0192836221,Male,jeremy,2004,
+5,fanny,Fanny,0192873762,Female,fanny,2005,
+6,daniel,Daniel,019828737,Male,daniel,2006,

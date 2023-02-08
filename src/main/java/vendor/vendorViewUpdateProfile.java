@@ -7,13 +7,16 @@ package vendor;
 import Propmanagement.function.TeamStruc;
 import Propmanagement.function.Unit;
 import Propmanagement.function.Vendor;
+import Propmanagement.function.getUserID;
 import Propmanagement.system.ManageUnitSystem;
 import Propmanagement.system.VendorEditSystem;
 import buildingmanager.buildingTeamStrucEdit;
 import java.awt.BorderLayout;
+import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.nio.file.Files;
@@ -35,6 +38,7 @@ import javax.swing.SwingConstants;
 public class vendorViewUpdateProfile extends javax.swing.JFrame {
 
     private final VendorEditSystem VendorEditSystem;
+    getUserID get = new getUserID();
     
     /**
      * Creates new form vendorViewUpdateProfile
@@ -46,7 +50,30 @@ public class vendorViewUpdateProfile extends javax.swing.JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null); // this method display the JFrame to center position of a screen
         this.VendorEditSystem = new VendorEditSystem();
-        setVisible(true);        
+        setVisible(true);    
+        
+        
+        
+        try {
+            FileReader fr1 = new FileReader("src/textFiles/activeUser.txt");
+            try ( BufferedReader br1 = new BufferedReader(fr1)) {
+                String line1 = null;
+                String[] splt1 = null;
+
+                while ((line1 = br1.readLine()) != null) {
+                    splt1 = line1.split(",");
+                    get.setUserID(splt1[0]);
+                    get.setPropID(splt1[2]);
+
+                }
+
+            }
+        } catch (IOException e) {
+            System.out.println("FileNotFound");
+        }
+        
+        
+        
     }
 
     /**
@@ -230,12 +257,16 @@ public class vendorViewUpdateProfile extends javax.swing.JFrame {
     }//GEN-LAST:event_newnameActionPerformed
 
     private void UpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpdateActionPerformed
+        String srcUserID = get.getUserID();
+        String modUserID = srcUserID;
         String srcUsername = oldusername.getText();
         String modUsername = newusername.getText();
         String modName = newname.getText();
         String modContact = newcontactnumber.getText();      
         String modGender = (String)newgender.getSelectedItem();
         String modPassword = newpassword.getText(); 
+        String srcPropID = get.getPropID();
+        String modPropID = srcPropID;
         
         if(srcUsername.isEmpty() || modUsername.isEmpty() || modName.isEmpty() || modContact.isEmpty() || modGender.isEmpty() || modPassword.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Please enter a valid Property ID");
@@ -268,7 +299,7 @@ public class vendorViewUpdateProfile extends javax.swing.JFrame {
             return;
         }     
         
-        Vendor updatedItem = new Vendor(modUsername, modName, modContact, modGender, modPassword);
+        Vendor updatedItem = new Vendor(modUserID, modUsername, modName, modContact, modGender, modPassword, modPropID);
 
         boolean isUpdated = VendorEditSystem.update(srcUsername, updatedItem);        
         

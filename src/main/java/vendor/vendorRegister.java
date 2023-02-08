@@ -4,11 +4,11 @@
  */
 package vendor;
 
-import dao.UserRegisterDao;
-import dao.UserRegisterDaoImpl;
+import dao.VendorRegisterDao;
+import dao.VendorRegisterDaoImpl;
 import javax.swing.JOptionPane;
 import resident.residentLogin;
-import sng.UserRegisterSng;
+import sng.VendorRegisterSng;
 
 /**
  *
@@ -206,8 +206,8 @@ public class vendorRegister extends javax.swing.JFrame {
     String ContactNumberfinal;
     String Genderfinal;
     String Passwordfinal;
-    UserRegisterSng urs = new UserRegisterSng();
-    UserRegisterDao urd = new UserRegisterDaoImpl();
+    VendorRegisterSng vrs = new VendorRegisterSng();
+    VendorRegisterDao vrd = new VendorRegisterDaoImpl();
     vendorLogin vl = new vendorLogin();
 
     private void addUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addUserActionPerformed
@@ -216,14 +216,14 @@ public class vendorRegister extends javax.swing.JFrame {
         ContactNumberfinal = ContactNumber.getText();
         Genderfinal = (String) Gender.getSelectedItem();
         Passwordfinal = Password.getText();
-        urs.setUsername(Usernamefinal);
-        urs.setName(Namefinal);
-        urs.setContactNumber(ContactNumberfinal);
-        urs.setGender(Genderfinal);
-        urs.setPassword(Passwordfinal);
-        urs.setTextFile("src/textFiles/vendorLogin.txt");
+        vrs.setUsername(Usernamefinal);
+        vrs.setName(Namefinal);
+        vrs.setContactNumber(ContactNumberfinal);
+        vrs.setGender(Genderfinal);
+        vrs.setPassword(Passwordfinal);
+        vrs.setTextFile("src/textFiles/vendorLogin.txt");
 
-        if (urd.userRegister(urs) == true) {
+        if (vrd.vendorRegister(vrs) == true) {
             JOptionPane.showMessageDialog(this, "Vendor registered SUCCESSFULLY.");
 
             vl.setVisible(true);

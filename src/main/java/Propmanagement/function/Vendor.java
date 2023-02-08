@@ -13,14 +13,19 @@ public class Vendor {
     private String Name;
     private String Contact;
     private String Gender;
-    private String Password;    
-
-    public Vendor(String Username, String Name, String Contact, String Gender, String Password) {
+    private String Password;
+    
+    private String userID;
+    private String propID;
+    
+    public Vendor(String userID, String Username, String Name, String Contact, String Gender, String Password, String propID) {
+        this.userID = userID;
         this.Username = Username;
         this.Name = Name;
         this.Contact = Contact;
         this.Gender = Gender;
-        this.Password = Password;        
+        this.Password = Password;  
+        this.propID = propID;
     }
     
     public String getUsername() {
@@ -63,4 +68,25 @@ public class Vendor {
     public void setPassword(String Password) {
         this.Password = Password;
     }    
+
+    public String getUserID() {
+        return userID;
+    }
+
+    public void setUserID(String userID) {
+        this.userID = userID;
+    }
+
+    public String getPropID() {
+        return propID;
+    }
+
+    public void setPropID(String propID) {
+        this.propID = propID;
+    }
+
+    
+    
+    
+    
 }

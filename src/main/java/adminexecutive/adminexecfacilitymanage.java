@@ -4,6 +4,8 @@
  */
 package adminexecutive;
 
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author joowe

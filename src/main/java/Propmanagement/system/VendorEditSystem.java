@@ -5,9 +5,11 @@
 package Propmanagement.system;
 
 import Propmanagement.function.Vendor;
+import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.nio.file.Files;
@@ -24,21 +26,21 @@ import vendor.vendorViewUpdateProfile;
  * @author Admin
  */
 public class VendorEditSystem {
-    
-            public VendorEditSystem() {
-    }    
-    
-        public synchronized boolean update(String srcUsername, Vendor updatedItem) {
+
+    public VendorEditSystem() {
+    }
+
+    public synchronized boolean update(String srcUsername, Vendor updatedItem) {
         List<Vendor> itemList = new ArrayList<>();
 
         // Read all the items
-        try (Scanner scanner = new Scanner(new FileInputStream("src/textFiles/vendorLogin.txt"))) {
+        try ( Scanner scanner = new Scanner(new FileInputStream("src/textFiles/vendorLogin.txt"))) {
             while (scanner.hasNextLine()) {
                 String itemLine = scanner.nextLine();
 
                 String itemInfo[] = itemLine.split(",");
 
-                Vendor item = new Vendor(itemInfo[1], itemInfo[2], itemInfo[3], itemInfo[4], itemInfo[5]);
+                Vendor item = new Vendor(itemInfo[0], itemInfo[1], itemInfo[2], itemInfo[3], itemInfo[4], itemInfo[5], itemInfo[6]);
                 itemList.add(item);
             }
         } catch (FileNotFoundException ex) {
@@ -49,14 +51,13 @@ public class VendorEditSystem {
 
         for (int i = 0; i < itemList.size(); i++) {
             Vendor item = itemList.get(i);
-            
+
             if (item.getUsername().equalsIgnoreCase(srcUsername)) {
                 itemIndexToUpdate = i;
             }
-                    
+
         }
-        
-           
+
         if (itemIndexToUpdate == -1) {
             return false;
         }
@@ -69,9 +70,9 @@ public class VendorEditSystem {
             Logger.getLogger(vendorViewUpdateProfile.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        try (PrintWriter pw = new PrintWriter(new FileOutputStream("src/textFiles/vendorLogin.txt"))) {
+        try ( PrintWriter pw = new PrintWriter(new FileOutputStream("src/textFiles/vendorLogin.txt"))) {
             itemList.forEach(item -> {
-                pw.println(item.getUsername() + "," + item.getName() + "," + item.getContact() + "," + item.getGender()+ "," + item.getPassword());
+                pw.println(item.getUserID() + "," + item.getUsername() + "," + item.getName() + "," + item.getContact() + "," + item.getGender() + "," + item.getPassword() + "," + item.getPropID() + ",");
             });
         } catch (FileNotFoundException ex) {
             Logger.getLogger(vendorViewUpdateProfile.class.getName()).log(Level.SEVERE, null, ex);
@@ -79,5 +80,5 @@ public class VendorEditSystem {
 
         return true;
     }
-    
+
 }

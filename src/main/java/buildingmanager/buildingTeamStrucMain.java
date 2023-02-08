@@ -40,7 +40,7 @@ public class buildingTeamStrucMain extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -68,7 +68,12 @@ public class buildingTeamStrucMain extends javax.swing.JFrame {
             }
         });
 
-        jButton4.setText("Back");
+        jButton5.setText("Back");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -85,8 +90,8 @@ public class buildingTeamStrucMain extends javax.swing.JFrame {
                             .addComponent(jButton3)
                             .addComponent(jButton1)
                             .addComponent(jButton2)
-                            .addComponent(jButton4))))
-                .addContainerGap(62, Short.MAX_VALUE))
+                            .addComponent(jButton5))))
+                .addContainerGap(64, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -100,7 +105,7 @@ public class buildingTeamStrucMain extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jButton3)
                 .addGap(18, 18, 18)
-                .addComponent(jButton4)
+                .addComponent(jButton5)
                 .addContainerGap(72, Short.MAX_VALUE))
         );
 
@@ -124,6 +129,12 @@ public class buildingTeamStrucMain extends javax.swing.JFrame {
         buildingTeamStrucView.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        buildingHome bh = new buildingHome();
+        bh.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButton5ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -164,7 +175,7 @@ public class buildingTeamStrucMain extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }
