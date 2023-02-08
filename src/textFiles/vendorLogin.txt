@@ -1,3 +1,4 @@
-User ID,Username,Name,Contact Name,Gender,Password,Property ID,
-1,yes,nono,nono,Male,nononoono,1001,
-2,tifanny,Tifanny,0129837664,Female,tifanny,1002,
+Username,Name,Contact Name,Gender,Password
+yes,nono,nono,Male,nononoono
+tifanny,Tifanny,0129837664,Female,tifanny
+JOE,Joes,12345,Female,12345

@@ -85,7 +85,7 @@ public class ManageUnitSystem {
         // Create a new file and write new data into the file
         try (PrintWriter pw = new PrintWriter(new FileOutputStream("src/textFiles/unitManage.txt"))) {
             itemList.forEach(item -> {
-                pw.println(item.getPID() + "," + item.getPUnitNo() + "," + item.getPType() + item.getPPrice() + ",");
+                pw.println(item.getPID() + "," + item.getPUnitNo() + "," + item.getPType() + "," + item.getPPrice());
             });
         } catch (FileNotFoundException ex) {
             Logger.getLogger(ManageUnitSystem.class.getName()).log(Level.SEVERE, null, ex);
@@ -147,7 +147,7 @@ public class ManageUnitSystem {
 
                 String itemInfo[] = itemLine.split(",");
 
-                Unit item = new Unit(itemInfo[0], itemInfo[1], itemInfo[2], Double.parseDouble(itemInfo[3]));
+                Unit item = new Unit(itemInfo[0], itemInfo[1], itemInfo[2], Double.parseDouble(itemInfo[4]));
                 itemList.add(item);
             }
         } catch (FileNotFoundException ex) {
