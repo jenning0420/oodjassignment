@@ -269,33 +269,32 @@ public class vendorViewUpdateProfile extends javax.swing.JFrame {
         String modPropID = srcPropID;
         
         if(srcUsername.isEmpty() || modUsername.isEmpty() || modName.isEmpty() || modContact.isEmpty() || modGender.isEmpty() || modPassword.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Please enter a valid Property ID");
+            JOptionPane.showMessageDialog(this, "Please enter a valid username");
             return;
         }
-        
+
         if(modUsername.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "New property id cannot be empty");
+            JOptionPane.showMessageDialog(this, "New username cannot be empty");
             return;
         }
-        
+
         if(modName.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "New unit number cannot be empty");
+            JOptionPane.showMessageDialog(this, "New name cannot be empty");
             return;
         }
-        
+
         if(modContact.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "New property type cannot be empty");
+            JOptionPane.showMessageDialog(this, "New contact number cannot be empty");
             return;
         }
-        
-        
+
         if(modGender.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Please enter a new valid property");
+            JOptionPane.showMessageDialog(this, "New gender cannot be empty");
             return;
         }
-        
+
         if(modPassword.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Please enter a new valid property");
+            JOptionPane.showMessageDialog(this, "New password cannot be empty");
             return;
         }     
         
