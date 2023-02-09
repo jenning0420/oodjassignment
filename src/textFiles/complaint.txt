@@ -8,3 +8,5 @@ Complaint ID,User ID,Complaint Title,Date,Complaint Details,Suggestions,Complain
 7,9,another,07-02-2023,function,function,Admin,Pending,
 8,9,Testing,02-02-2023,Testing,Testing,Admin,Urgent,
 9,9,qwe,03-02-2023,qwe,qwe,Admin,Pending,
+10,6,Window Broken,05-02-2023,Window in guardhouse broken,change immediately,Vendor,Pending,
+11,207,Floor too dirty,07-02-2023,Floor in lobby too dirty.,Clean floor immediately.,Vendor,Urgent,

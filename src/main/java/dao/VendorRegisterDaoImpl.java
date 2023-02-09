@@ -37,7 +37,7 @@ public class VendorRegisterDaoImpl implements VendorRegisterDao{
                     propid = Integer.parseInt(row[0]);
 
                 }
-                int userID = id + 1;
+                int userID = id + 201;
                 int propID = propid + 2001;
                 FileWriter fw = new FileWriter(f, true);
                 BufferedWriter bw = new BufferedWriter(fw);
