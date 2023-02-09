@@ -10,3 +10,4 @@ Complaint ID,User ID,Complaint Title,Date,Complaint Details,Suggestions,Complain
 9,9,qwe,03-02-2023,qwe,qwe,Admin,Pending,
 10,6,Window Broken,05-02-2023,Window in guardhouse broken,change immediately,Vendor,Pending,
 11,207,Floor too dirty,07-02-2023,Floor in lobby too dirty.,Clean floor immediately.,Vendor,Urgent,
+12,15,Rat occurred in guardhouse,02-02-2023,Huge amount of rats runnning around the guardhouse,Please clean all these immediately,Resident,Pending,
