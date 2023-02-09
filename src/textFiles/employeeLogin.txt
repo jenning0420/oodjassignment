@@ -1,3 +1,5 @@
-User ID,Username,Name,Contact Number,Gender,Password,
-1,tret,rtwe,2442,Item 1,reter,
-2,abc,sfdds,12312314,Item 2,123,
+User ID,Username,Name,Contact Number,Gender,Password,empType,
+201,ryan,Ryan Tan,0192837463,Male,ryan,Cleaner,
+202,chelsey,Chelsey Yaw,0192883746,Female,chelsey,Technician,
+203,dscd,scsdcsdc,sdcdscds,Male,cdscdcsd,Technician,
+404,bdfbf,gdbdfbfdg,bgfdbfg,Female,bgfdbdf,Cleaner,
