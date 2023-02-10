@@ -5,9 +5,13 @@
 package adminexecutive;
 
 import Propmanagement.function.Unit;
+import Propmanagement.function.getPropID;
 import javax.swing.JOptionPane;
 import Propmanagement.system.ManageUnitSystem;
 import java.awt.BorderLayout;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
@@ -20,6 +24,7 @@ import javax.swing.SwingConstants;
 public class adminExecUnitManageAdd extends javax.swing.JFrame {
     
     private final ManageUnitSystem manageunitsystem;
+    getPropID get = new getPropID();
 
     /**
      * Creates new form adminexecunitmanageadd
@@ -32,6 +37,23 @@ public class adminExecUnitManageAdd extends javax.swing.JFrame {
         setLocationRelativeTo(null); // this method display the JFrame to center position of a screen
         setVisible(true);
         this.manageunitsystem = new ManageUnitSystem();
+        
+        try {
+            FileReader fr1 = new FileReader("src/textFiles/activeUser.txt");
+            try ( BufferedReader br1 = new BufferedReader(fr1)) {
+                String line1 = null;
+                String[] splt1 = null;
+
+                while ((line1 = br1.readLine()) != null) {
+                    splt1 = line1.split(",");
+                    get.setPropID(splt1[2]);
+
+                }
+
+            }
+        } catch (IOException e) {
+            System.out.println("FileNotFound");
+        }
     }
 
     /**
@@ -47,7 +69,7 @@ public class adminExecUnitManageAdd extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        PropID = new javax.swing.JTextField();
+        oldpropid = new javax.swing.JTextField();
         Price = new javax.swing.JTextField();
         Back = new javax.swing.JButton();
         Add = new javax.swing.JButton();
@@ -60,15 +82,15 @@ public class adminExecUnitManageAdd extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setText("Add Unit Page");
 
-        jLabel2.setText("Property ID :");
+        jLabel2.setText("Enter Old Property ID :");
 
         jLabel3.setText("Type :");
 
         jLabel5.setText("Price :");
 
-        PropID.addActionListener(new java.awt.event.ActionListener() {
+        oldpropid.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                PropIDActionPerformed(evt);
+                oldpropidActionPerformed(evt);
             }
         });
 
@@ -95,22 +117,16 @@ public class adminExecUnitManageAdd extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(146, 146, 146)
-                .addComponent(Back)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(Add)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(173, 173, 173)
                         .addComponent(jLabel1))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(148, 148, 148)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGap(95, 95, 95)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(UnitNo, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(PropID, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(oldpropid, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -124,17 +140,22 @@ public class adminExecUnitManageAdd extends javax.swing.JFrame {
                                 .addGap(22, 22, 22)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                     .addComponent(Price, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(Type, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                .addContainerGap(131, Short.MAX_VALUE))
+                                    .addComponent(Type, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addGap(51, 51, 51)
+                                .addComponent(Back)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(Add)))))
+                .addContainerGap(132, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addGap(58, 58, 58)
+                .addGap(61, 61, 61)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(PropID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(oldpropid, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -148,7 +169,7 @@ public class adminExecUnitManageAdd extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Price, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 86, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 83, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Add)
                     .addComponent(Back))
@@ -158,20 +179,20 @@ public class adminExecUnitManageAdd extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void PropIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PropIDActionPerformed
+    private void oldpropidActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_oldpropidActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_PropIDActionPerformed
+    }//GEN-LAST:event_oldpropidActionPerformed
 
     private void AddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddActionPerformed
-        
-        String PID = PropID.getText();
+        String srcPropID = get.getPropID();
+        String modPropID = srcPropID;        
+        String srcPID = oldpropid.getText();        
         String PUnitNo = UnitNo.getText();
         String PType = (String)Type.getSelectedItem();
         String PPrice = Price.getText();
                
         
-        if(PID.isEmpty() || !PID.chars().allMatch( Character::isDigit) ||
-                Integer.parseInt(PID) <= 0) {
+        if(srcPID.isEmpty() || PUnitNo.isEmpty() || PType.isEmpty() || PPrice.isEmpty() ) {
             JOptionPane.showMessageDialog(this, "Please enter a valid Property ID");
             return;
         }
@@ -192,14 +213,11 @@ public class adminExecUnitManageAdd extends javax.swing.JFrame {
             return;
         }
                 
-        Unit item = new Unit(PID,
-                    PUnitNo,
-                    PType,
-                    Integer.parseInt(Price.getText()));
+        Unit item = new Unit(srcPID, PUnitNo,PType,Double.parseDouble(Price.getText()));
         
         manageunitsystem.create(item);
       
-        PropID.setText("");
+        oldpropid.setText("");
         UnitNo.setText("");
         Type.setSelectedItem("");
         Price.setText("");
@@ -252,7 +270,6 @@ public class adminExecUnitManageAdd extends javax.swing.JFrame {
     private javax.swing.JButton Add;
     private javax.swing.JButton Back;
     private javax.swing.JTextField Price;
-    private javax.swing.JTextField PropID;
     private javax.swing.JComboBox<String> Type;
     private javax.swing.JTextField UnitNo;
     private javax.swing.JLabel jLabel1;
@@ -260,5 +277,6 @@ public class adminExecUnitManageAdd extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JTextField oldpropid;
     // End of variables declaration//GEN-END:variables
 }

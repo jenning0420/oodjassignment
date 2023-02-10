@@ -1,1 +1,1 @@
-1,A-101,Penthouse,10000.0
+2006,A-LOL,Penthouse,10.0

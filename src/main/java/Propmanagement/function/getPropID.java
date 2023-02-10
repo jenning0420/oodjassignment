@@ -8,19 +8,16 @@ package Propmanagement.function;
  *
  * @author Admin
  */
-public class PropID {
-    private String PID;
+public class getPropID {
+    private String propID;
     
-    public PropID(String PID) {
-        this.PID = PID;
+
+    public String getPropID() {
+        return propID;
     }
 
-    public String getPID() {
-        return PID;
+    public void setPropID(String propID) {
+        this.propID = propID;
     }
-
-    public void setPID(String PID) {
-        this.PID = PID;
-    }    
     
 }

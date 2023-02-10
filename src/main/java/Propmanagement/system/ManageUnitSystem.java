@@ -147,7 +147,7 @@ public class ManageUnitSystem {
 
                 String itemInfo[] = itemLine.split(",");
 
-                Unit item = new Unit(itemInfo[0], itemInfo[1], itemInfo[2], Double.parseDouble(itemInfo[4]));
+                Unit item = new Unit(itemInfo[0], itemInfo[1], itemInfo[2], Double.parseDouble(itemInfo[3]));
                 itemList.add(item);
             }
         } catch (FileNotFoundException ex) {
