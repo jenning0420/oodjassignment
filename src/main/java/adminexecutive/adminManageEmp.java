@@ -159,27 +159,28 @@ public class adminManageEmp extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void addAccAccountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addAccAccountActionPerformed
-//        new buildingAddAcc().setVisible(true);
-//        this.setVisible(false);
+        new adminAddSecurity().setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_addAccAccountActionPerformed
 
     private void modifyAccAccountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modifyAccAccountActionPerformed
-//        new buildingModifyAccount().setVisible(true);
-//        this.setVisible(false);
+        new adminModifySecurity().setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_modifyAccAccountActionPerformed
 
     private void backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backActionPerformed
-//        new buildingHome().setVisible(true);
-//        this.setVisible(false);
+        new adminexecmainpage().setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_backActionPerformed
 
     private void addAccAccount1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addAccAccount1ActionPerformed
-        new adminAddEmp().setVisible(true);
+        new adminAddEmployee().setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_addAccAccount1ActionPerformed
 
     private void modifyAccAccount1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modifyAccAccount1ActionPerformed
-        // TODO add your handling code here:
+        new adminModifyEmployee().setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_modifyAccAccount1ActionPerformed
 
     /**

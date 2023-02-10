@@ -12,4 +12,5 @@ import sng.EmployeeRegisterSng;
  */
 public interface EmployeeRegisterDao {
     public boolean employeeRegister(EmployeeRegisterSng ers);
+    
 }

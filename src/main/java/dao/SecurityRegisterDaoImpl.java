@@ -11,44 +11,40 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
-import sng.VendorRegisterSng;
+import sng.EmployeeRegisterSng;
 
 /**
  *
  * @author User
  */
-public class VendorRegisterDaoImpl implements VendorRegisterDao {
-
-    public boolean vendorRegister(VendorRegisterSng vrs) {
+public class SecurityRegisterDaoImpl implements EmployeeRegisterDao{
+    public boolean employeeRegister(EmployeeRegisterSng ers){
         try {
-            if (!"".equals(vrs.getUsername()) && !"".equals(vrs.getName()) && !"".equals(vrs.getContactNumber()) && !"".equals(vrs.getGender()) && !"".equals(vrs.getPassword())) {
-                File f = new File(vrs.getTextFile());
+            if (!"".equals(ers.getUsername()) && !"".equals(ers.getName()) && !"".equals(ers.getContactNumber()) && !"".equals(ers.getGender()) && !"".equals(ers.getPassword())) {
+                File f = new File(ers.getTextFile());
                 if (!f.exists()) {
                     f.createNewFile();
                 }
                 BufferedReader br = new BufferedReader(new FileReader(f));
                 Object[] Lines = br.lines().toArray();
                 int i = 0;
-                int id = 200;
-                int propertyid = 2000;
+                int userid = 0;
                 for (i = 1; i < Lines.length; i++) {
                     String line = Lines[i].toString().trim();
                     String[] row = line.split(",");
-                    id = Integer.parseInt(row[0]);
-                    propertyid = Integer.parseInt(row[6]);
+                    userid = Integer.parseInt(row[0]);
 
                 }
-                int userID = id + 1;
-                int propID = propertyid + 1;
+                int userID = userid + 1;
                 FileWriter fw = new FileWriter(f, true);
                 BufferedWriter bw = new BufferedWriter(fw);
                 PrintWriter pw = new PrintWriter(bw);
-                pw.println(userID + "," + vrs.getUsername() + "," + vrs.getName() + "," + vrs.getContactNumber() + "," + vrs.getGender() + "," + vrs.getPassword() + "," + propID + ",");
+                pw.println(userID + "," + ers.getUsername() + "," + ers.getName() + "," + ers.getContactNumber() + "," + ers.getGender() + "," + ers.getPassword() + "," + ers.getEmpType() + ",");
                 pw.flush();
                 pw.close();
                 bw.close();
                 return true;
-            } else {
+            } else{
                 return false;
             }
 

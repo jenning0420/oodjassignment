@@ -133,20 +133,24 @@ public class securityLogin extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    String Usernamefinal;
+    String passwordfinal;
+    UserLoginSng uls = new UserLoginSng();
+    UserLoginDao uld = new UserLoginDaoImpl();
     securityHome sh = new securityHome();
     
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        String username = securityUsername.getText();
-        String password = securityPassword.getText();
-        
-        if(username.equals("security") & password.equals("123456")){
+        Usernamefinal = securityUsername.getText();
+        passwordfinal = securityPassword.getText();
+        uls.setUsername(Usernamefinal);
+        uls.setPassword(passwordfinal);
+        uls.setTextFile("src/textFiles/securityLogin.txt");
+        if (uld.userAccess(uls) == true) {
             JOptionPane.showMessageDialog(this, "Log In SUCCESSFULLY! Welcome back Security Guard.");
 
             sh.setVisible(true);
             this.setVisible(false);
-            
-            
-        }else {
+        } else {
             JOptionPane.showMessageDialog(this, "INCORRECT Username OR Password. Please try again.");
             securityUsername.setText(null);
             securityPassword.setText(null);

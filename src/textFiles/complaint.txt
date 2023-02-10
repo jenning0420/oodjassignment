@@ -12,3 +12,4 @@ Complaint ID,User ID,Complaint Title,Date,Complaint Details,Suggestions,Complain
 11,207,Floor too dirty,07-02-2023,Floor in lobby too dirty.,Clean floor immediately.,Vendor,Urgent,
 12,15,Rat occurred in guardhouse,02-02-2023,Huge amount of rats runnning around the guardhouse,Please clean all these immediately,Resident,Pending,
 13,9,fsdfsd,04-02-2023,dsfds,dsfsdf,Resident,Pending,
+14,206,Floor dirty,08-02-2023,Floor too dirty	,Advise to clean immediately,Vendor,Pending,
