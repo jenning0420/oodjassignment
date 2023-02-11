@@ -39,21 +39,35 @@ public class buildingAssignJob extends javax.swing.JFrame {
         String filePath = "src/textFiles/securityLogin.txt";
         File file = new File(filePath);
         
+        String filePath2 = "src/textFiles/employeeLogin.txt";
+        File file2 = new File(filePath2);
+        
 
         try {
             FileReader fr = new FileReader(file);
             BufferedReader br = new BufferedReader(fr);
             String line = br.readLine();
-            String[] colHeadings = line.trim().split(",");
+//            String[] colHeadings = line.trim().split(",");
 
             DefaultTableModel model = (DefaultTableModel) userTable.getModel();
-            model.setColumnIdentifiers(colHeadings);
+//            model.setColumnIdentifiers(colHeadings);
             Object[] lines = br.lines().toArray();
 
             for (int i = 0; i < lines.length; i++) {
                 String[] row = lines[i].toString().split(",");
-                model.addRow(row);
+                model.addRow(new Object[]{row[0],row[2],row[3],row[4],row[6]});
             }
+            
+            FileReader fr2 = new FileReader(file2);
+            BufferedReader br2 = new BufferedReader(fr2);
+            String line2 = br2.readLine();
+            Object[] lines2 = br2.lines().toArray();
+            for (int i = 0; i < lines2.length; i++) {
+                String[] row2 = lines2[i].toString().split(",");
+                model.addRow(new Object[]{row2[0],row2[2],row2[3],row2[4],row2[6]});
+            }
+            
+            
         } catch (FileNotFoundException ex) {
             Logger.getLogger(buildingAssignJob.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
@@ -112,7 +126,7 @@ public class buildingAssignJob extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel2.setText("Employee ID:");
+        jLabel2.setText("User ID:");
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
@@ -170,7 +184,7 @@ public class buildingAssignJob extends javax.swing.JFrame {
 
             },
             new String [] {
-                "User ID", "Name", "Contact Number", "Gender"
+                "User ID", "Name", "Contact Number", "Gender", "Employee Type"
             }
         ));
         userTable.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -296,11 +310,13 @@ public class buildingAssignJob extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void resetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resetActionPerformed
+        empID.setText(null);
         jobTitle.setText(null);
         jobDetails.setText(null);
         jobDate.setDate(null);
     }//GEN-LAST:event_resetActionPerformed
 
+    String empIDFinal;
     String employeeFinal;
     String jobTitleFinal;
     String jobDetailsFinal;
@@ -314,22 +330,20 @@ public class buildingAssignJob extends javax.swing.JFrame {
     SimpleDateFormat formatter = new SimpleDateFormat("HH:mm");
 
     private void submitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitActionPerformed
-        employeeFinal = (String) employee.getSelectedItem();
+        empIDFinal = empID.getText();
         jobTitleFinal = jobTitle.getText();
         jobDetailsFinal = jobDetails.getText();
         jobDateFinal = ((JTextField) jobDate.getDateEditor().getUiComponent()).getText();
-//        String time = jobTime.getValue().toString();
         Date time = (Date) jobTime.getValue();
         jobTimeFinal = formatter.format(time);
         jobDurationFinal = jobDuration.getValue().toString();
-        ajs.setEmployee(employeeFinal);
+        ajs.setUserID(empIDFinal);
         ajs.setJobTitle(jobTitleFinal);
         ajs.setJobDetails(jobDetailsFinal);
         ajs.setJobDate(jobDateFinal);
         ajs.setJobTime(jobTimeFinal);
         ajs.setJobDuration(jobDurationFinal);
         ajs.setStatus(status);
-//        System.out.println(jobDurationFinal);
 
         if (ajd.assignJob(ajs) == true) {
             JOptionPane.showMessageDialog(this, "Job Assigned SUCCESSFULLY.");
@@ -345,13 +359,7 @@ public class buildingAssignJob extends javax.swing.JFrame {
         DefaultTableModel model = (DefaultTableModel) userTable.getModel();
         int selectedInfo = userTable.getSelectedRow();
 
-        userID.setText(model.getValueAt(selectedInfo, 0).toString());
-        Username.setText(model.getValueAt(selectedInfo, 1).toString());
-        Name.setText(model.getValueAt(selectedInfo, 2).toString());
-        ContactNumber.setText(model.getValueAt(selectedInfo, 3).toString());
-        Gender.setSelectedItem(model.getValueAt(selectedInfo, 4).toString());
-        Password.setText(model.getValueAt(selectedInfo, 5).toString());
-        empType.setSelectedItem(model.getValueAt(selectedInfo, 6).toString());
+        empID.setText(model.getValueAt(selectedInfo, 0).toString());
     }//GEN-LAST:event_userTableMouseClicked
 
     private void empIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_empIDActionPerformed

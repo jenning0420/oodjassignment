@@ -105,8 +105,8 @@ public class employeeHome extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-//        new vendorViewUpdateProfile().setVisible(true);
-//        this.setVisible(false);
+        new employeeViewJob().setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**

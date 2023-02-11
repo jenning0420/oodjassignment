@@ -10,7 +10,7 @@ package sng;
  */
 public class AssignJobSng {
     private int jobID;
-    private String employee;
+    private String userID;
     private String jobTitle;
     private String jobDetails;
     private String jobDate;
@@ -26,12 +26,12 @@ public class AssignJobSng {
         this.jobID = jobID;
     }
 
-    public String getEmployee() {
-        return employee;
+    public String getUserID() {
+        return userID;
     }
 
-    public void setEmployee(String employee) {
-        this.employee = employee;
+    public void setUserID(String employee) {
+        this.userID = employee;
     }
 
     public String getJobTitle() {

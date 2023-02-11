@@ -2,8 +2,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package buildingExecutive;
+package employee;
 
+import buildingExecutive.buildingModifyJob;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -21,21 +22,40 @@ import javax.swing.JOptionPane;
 import javax.swing.JSpinner;
 import javax.swing.JTextField;
 import javax.swing.SpinnerDateModel;
-import javax.swing.SpinnerNumberModel;
 import javax.swing.table.DefaultTableModel;
+import sng.EmployeeViewJobSng;
 
 /**
  *
  * @author User
  */
-public class buildingModifyJob extends javax.swing.JFrame {
+public class employeeViewJob extends javax.swing.JFrame {
+    
+    EmployeeViewJobSng evj = new EmployeeViewJobSng();
 
     /**
-     * Creates new form buildingModifyJob
+     * Creates new form employeeViewJob
      */
-    public buildingModifyJob() {
+    public employeeViewJob() {
         initComponents();
+        
+        try {
+            FileReader fr1 = new FileReader("src/textFiles/activeUser.txt");
+            try ( BufferedReader br1 = new BufferedReader(fr1)) {
+                String line1 = null;
+                String[] splt1 = null;
 
+                while ((line1 = br1.readLine()) != null) {
+                    splt1 = line1.split(",");
+                    evj.setUserID1(splt1[0]);
+
+                }
+
+            }
+        } catch (IOException e) {
+            System.out.println("FileNotFound");
+        }
+        
         String filePath = "src/textFiles/jobAssigned.txt";
         File file = new File(filePath);
 
@@ -51,12 +71,16 @@ public class buildingModifyJob extends javax.swing.JFrame {
 
             for (int i = 0; i < lines.length; i++) {
                 String[] row = lines[i].toString().split(",");
-                model.addRow(row);
+                evj.setUserID(row[1]);
+                if(evj.getUserID().equals(evj.getUserID1())){
+                    model.addRow(row);
+                }
+                
             }
         } catch (FileNotFoundException ex) {
-            Logger.getLogger(buildingModifyJob.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(employeeViewJob.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
-            Logger.getLogger(buildingModifyJob.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(employeeViewJob.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -69,7 +93,6 @@ public class buildingModifyJob extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        back = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         userTable = new javax.swing.JTable();
@@ -97,19 +120,13 @@ public class buildingModifyJob extends javax.swing.JFrame {
         jobDetails = new javax.swing.JTextArea();
         jobTitle = new javax.swing.JTextField();
         userID = new javax.swing.JTextField();
+        back = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        back.setText("Back");
-        back.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                backActionPerformed(evt);
-            }
-        });
-
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("Modify Assigned Jobs");
+        jLabel2.setText("View Assigned Jobs");
 
         userTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -328,6 +345,13 @@ public class buildingModifyJob extends javax.swing.JFrame {
                 .addContainerGap(25, Short.MAX_VALUE))
         );
 
+        back.setText("Back");
+        back.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -364,13 +388,8 @@ public class buildingModifyJob extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backActionPerformed
-        new buildingExecHome().setVisible(true);
-        this.setVisible(false);
-    }//GEN-LAST:event_backActionPerformed
-
     SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm");
-
+    
     private void userTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_userTableMouseClicked
         DefaultTableModel model = (DefaultTableModel) userTable.getModel();
         int selectedInfo = userTable.getSelectedRow();
@@ -385,8 +404,8 @@ public class buildingModifyJob extends javax.swing.JFrame {
         Date dateValue;
         try {
             dateValue = dateFormat.parse(timeValue);
-//            SpinnerDateModel spinnerModel = new SpinnerDateModel(dateValue, null, null, Calendar.DAY_OF_MONTH);
-//            JSpinner spinner = new JSpinner(spinnerModel);
+            //            SpinnerDateModel spinnerModel = new SpinnerDateModel(dateValue, null, null, Calendar.DAY_OF_MONTH);
+            //            JSpinner spinner = new JSpinner(spinnerModel);
             jobTime.setValue(dateValue);
         } catch (ParseException ex) {
             Logger.getLogger(buildingModifyJob.class.getName()).log(Level.SEVERE, null, ex);
@@ -403,16 +422,16 @@ public class buildingModifyJob extends javax.swing.JFrame {
     }//GEN-LAST:event_jobIDComponentShown
 
     private void jobIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jobIDActionPerformed
-        
+
     }//GEN-LAST:event_jobIDActionPerformed
 
-    buildingExecHome beh = new buildingExecHome();
+    employeeHome eh = new employeeHome();
     String jobTimeFinal;
     SimpleDateFormat formatter = new SimpleDateFormat("HH:mm");
 //    SpinnerNumberModel spinnerModel = new SpinnerNumberModel(0, 0, 100, 1);
 //    JSpinner spinner = new JSpinner(spinnerModel);
     String jobDurationFinal;
-
+    
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         int item = userTable.getSelectedRow();
         DefaultTableModel model = (DefaultTableModel) userTable.getModel();
@@ -427,7 +446,7 @@ public class buildingModifyJob extends javax.swing.JFrame {
             jobTimeFinal = formatter.format(time);
             model.setValueAt(jobTimeFinal, item, 5);
 
-//            spinnerModel.setValue(Integer.parseInt(jobDuration));
+            //            spinnerModel.setValue(Integer.parseInt(jobDuration));
             model.setValueAt(jobDuration.getValue().toString(), item, 6);
             model.setValueAt(status.getSelectedItem(), item, 7);
 
@@ -453,11 +472,11 @@ public class buildingModifyJob extends javax.swing.JFrame {
                 bw.close();
                 fw.close();
             } catch (IOException ex) {
-                Logger.getLogger(buildingModifyJob.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(employeeViewJob.class.getName()).log(Level.SEVERE, null, ex);
             }
 
             JOptionPane.showMessageDialog(this, "Job Information Updated SUCCESSFULLY!");
-            beh.setVisible(true);
+            eh.setVisible(true);
             this.setVisible(false);
         } else {
             JOptionPane.showMessageDialog(rootPane, "Please fill up ALL details!");
@@ -492,11 +511,11 @@ public class buildingModifyJob extends javax.swing.JFrame {
                 bw.close();
                 fw.close();
             } catch (IOException ex) {
-                Logger.getLogger(buildingModifyJob.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(employeeViewJob.class.getName()).log(Level.SEVERE, null, ex);
             }
 
             JOptionPane.showMessageDialog(rootPane, "Job Removed SUCCESSFULLY!");
-            beh.setVisible(true);
+            eh.setVisible(true);
             this.setVisible(false);
         } else {
             JOptionPane.showMessageDialog(rootPane, "Please select the fill to Delete!");
@@ -519,6 +538,11 @@ public class buildingModifyJob extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_userIDActionPerformed
 
+    private void backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backActionPerformed
+        new employeeHome().setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_backActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -536,20 +560,20 @@ public class buildingModifyJob extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(buildingModifyJob.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(employeeViewJob.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(buildingModifyJob.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(employeeViewJob.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(buildingModifyJob.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(employeeViewJob.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(buildingModifyJob.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(employeeViewJob.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new buildingModifyJob().setVisible(true);
+                new employeeViewJob().setVisible(true);
             }
         });
     }
