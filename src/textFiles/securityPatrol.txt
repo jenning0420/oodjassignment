@@ -1,0 +1,3 @@
+Patrol ID,User ID,Patrol Venue,Patrol Details,Patrol Date,Patrol Time,Patrol Status,
+1,6,Residential Area (Level 10 - 20),Check illegal car parked in condo,15-02-2023,10:00,Upcoming,
+2,8,Residential Area (Level 10 - 20),Check if there's any unusual things happened,14-02-2023,14:00,Upcoming,

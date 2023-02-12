@@ -11,6 +11,7 @@ package sng;
 public class EmployeeViewJobSng {
     private String userID;
     private String userID1;
+    private String status;
 
     public String getUserID() {
         return userID;
@@ -26,6 +27,14 @@ public class EmployeeViewJobSng {
 
     public void setUserID1(String userID1) {
         this.userID1 = userID1;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
     
     

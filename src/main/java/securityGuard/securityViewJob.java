@@ -68,7 +68,8 @@ public class securityViewJob extends javax.swing.JFrame {
             for (int i = 0; i < lines.length; i++) {
                 String[] row = lines[i].toString().split(",");
                 evj.setUserID(row[1]);
-                if (evj.getUserID().equals(evj.getUserID1())) {
+                evj.setStatus(row[7]);
+                if (evj.getUserID().equals(evj.getUserID1()) && evj.getStatus().equals("On-Going") || evj.getStatus().equals("Upcoming")) {
                     model.addRow(row);
                 }
 
@@ -180,7 +181,7 @@ public class securityViewJob extends javax.swing.JFrame {
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel9.setText("Duration:");
 
-        status.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Upcoming", "On-Going", "Completed", "Cancelled" }));
+        status.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Upcoming", "On-Going", "Completed" }));
         status.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 statusActionPerformed(evt);

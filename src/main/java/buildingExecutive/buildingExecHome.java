@@ -36,13 +36,12 @@ public class buildingExecHome extends javax.swing.JFrame {
         patrolling = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         exit = new javax.swing.JButton();
+        patrolling1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         jLabel1.setText("WELCOME BACK, BUILDING EXECUTIVE");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 674, 68));
 
         assignJob.setText("Assign Job to Employees");
         assignJob.addActionListener(new java.awt.event.ActionListener() {
@@ -50,7 +49,6 @@ public class buildingExecHome extends javax.swing.JFrame {
                 assignJobActionPerformed(evt);
             }
         });
-        getContentPane().add(assignJob, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, 177, 60));
 
         assignedJob.setText("View Assigned Job");
         assignedJob.addActionListener(new java.awt.event.ActionListener() {
@@ -58,7 +56,6 @@ public class buildingExecHome extends javax.swing.JFrame {
                 assignedJobActionPerformed(evt);
             }
         });
-        getContentPane().add(assignedJob, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 180, 167, 60));
 
         complaints.setText("Update Complaint Status");
         complaints.addActionListener(new java.awt.event.ActionListener() {
@@ -66,13 +63,15 @@ public class buildingExecHome extends javax.swing.JFrame {
                 complaintsActionPerformed(evt);
             }
         });
-        getContentPane().add(complaints, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 180, 177, 60));
 
-        patrolling.setText("View Patrolling Schedule");
-        getContentPane().add(patrolling, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 280, 167, 61));
+        patrolling.setText("Setup Patrolling Schedule");
+        patrolling.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                patrollingActionPerformed(evt);
+            }
+        });
 
         jButton1.setText("View Reports");
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 280, 177, 59));
 
         exit.setText("Log Out");
         exit.addActionListener(new java.awt.event.ActionListener() {
@@ -80,7 +79,60 @@ public class buildingExecHome extends javax.swing.JFrame {
                 exitActionPerformed(evt);
             }
         });
-        getContentPane().add(exit, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 350, 81, 42));
+
+        patrolling1.setText("Manage Patrolling Schedule");
+        patrolling1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                patrolling1ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(exit, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(52, 52, 52)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 674, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(80, 80, 80)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(assignJob, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(patrolling, javax.swing.GroupLayout.DEFAULT_SIZE, 177, Short.MAX_VALUE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(assignedJob, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(patrolling1))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(complaints, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(28, Short.MAX_VALUE))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(112, 112, 112)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(assignJob, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(assignedJob, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(complaints, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(47, 47, 47)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(patrolling, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(patrolling1, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
+                .addComponent(exit, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -106,9 +158,17 @@ public class buildingExecHome extends javax.swing.JFrame {
     }//GEN-LAST:event_complaintsActionPerformed
 
     private void assignedJobActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_assignedJobActionPerformed
-        new buildingModifyJob().setVisible(true);
-        this.setVisible(false);
+        
     }//GEN-LAST:event_assignedJobActionPerformed
+
+    private void patrolling1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_patrolling1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_patrolling1ActionPerformed
+
+    private void patrollingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_patrollingActionPerformed
+        new buildingSetupPatrol().setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_patrollingActionPerformed
 
     /**
      * @param args the command line arguments
@@ -153,5 +213,6 @@ public class buildingExecHome extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JButton patrolling;
+    private javax.swing.JButton patrolling1;
     // End of variables declaration//GEN-END:variables
 }
