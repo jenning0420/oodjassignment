@@ -50,7 +50,7 @@ public class buildingExecHome extends javax.swing.JFrame {
             }
         });
 
-        assignedJob.setText("View Assigned Job");
+        assignedJob.setText("Manage Assigned Job");
         assignedJob.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 assignedJobActionPerformed(evt);
@@ -72,6 +72,11 @@ public class buildingExecHome extends javax.swing.JFrame {
         });
 
         jButton1.setText("View Reports");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         exit.setText("Log Out");
         exit.addActionListener(new java.awt.event.ActionListener() {
@@ -158,7 +163,8 @@ public class buildingExecHome extends javax.swing.JFrame {
     }//GEN-LAST:event_complaintsActionPerformed
 
     private void assignedJobActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_assignedJobActionPerformed
-        
+        new buildingModifyJob().setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_assignedJobActionPerformed
 
     private void patrolling1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_patrolling1ActionPerformed
@@ -170,6 +176,10 @@ public class buildingExecHome extends javax.swing.JFrame {
         new buildingSetupPatrol().setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_patrollingActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
