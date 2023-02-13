@@ -177,7 +177,7 @@ public class buildingSearchAccount extends javax.swing.JFrame {
 
             for (int i = 0; i < lines.length; i++) {
                 String[] row = lines[i].toString().split(",");
-                if(row[0].contains(searchInfo)){
+                if(row[0].contains(searchInfo) || row[1].contains(searchInfo) || row[2].contains(searchInfo) || row[3].contains(searchInfo) || row[4].contains(searchInfo) || row[5].contains(searchInfo)){
                    model.addRow(row); 
                 }
                 

@@ -61,7 +61,7 @@ public class residentUpdatePass extends javax.swing.JFrame {
             String line = br.readLine();
             String[] colHeadings = line.trim().split(",");
 
-            DefaultTableModel model = (DefaultTableModel) userTable.getModel();
+            DefaultTableModel model = (DefaultTableModel) passTable.getModel();
             model.setColumnIdentifiers(colHeadings);
             Object[] lines = br.lines().toArray();
 
@@ -96,7 +96,7 @@ public class residentUpdatePass extends javax.swing.JFrame {
         back = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        userTable = new javax.swing.JTable();
+        passTable = new javax.swing.JTable();
         jPanel1 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -105,7 +105,7 @@ public class residentUpdatePass extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         passID = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        update = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         carPlate = new javax.swing.JTextArea();
@@ -114,7 +114,7 @@ public class residentUpdatePass extends javax.swing.JFrame {
         unitNo = new javax.swing.JTextArea();
         jLabel11 = new javax.swing.JLabel();
         dateIn = new com.toedter.calendar.JDateChooser();
-        jButton2 = new javax.swing.JButton();
+        remove = new javax.swing.JButton();
         duration = new javax.swing.JSpinner();
         jLabel12 = new javax.swing.JLabel();
 
@@ -131,7 +131,7 @@ public class residentUpdatePass extends javax.swing.JFrame {
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Visitor Pass (Update)");
 
-        userTable.setModel(new javax.swing.table.DefaultTableModel(
+        passTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -139,12 +139,12 @@ public class residentUpdatePass extends javax.swing.JFrame {
                 "Pass ID", "User ID", "Name", "Car Plate", "Unit No", "Date In", "Duration"
             }
         ));
-        userTable.addMouseListener(new java.awt.event.MouseAdapter() {
+        passTable.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                userTableMouseClicked(evt);
+                passTableMouseClicked(evt);
             }
         });
-        jScrollPane2.setViewportView(userTable);
+        jScrollPane2.setViewportView(passTable);
 
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
 
@@ -187,12 +187,12 @@ public class residentUpdatePass extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jButton1.setForeground(java.awt.Color.black);
-        jButton1.setText("UPDATE");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        update.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        update.setForeground(java.awt.Color.black);
+        update.setText("UPDATE");
+        update.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                updateActionPerformed(evt);
             }
         });
 
@@ -218,12 +218,12 @@ public class residentUpdatePass extends javax.swing.JFrame {
 
         dateIn.setDateFormatString("dd-MM-yyyy");
 
-        jButton2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jButton2.setForeground(java.awt.Color.black);
-        jButton2.setText("REMOVE");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        remove.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        remove.setForeground(java.awt.Color.black);
+        remove.setText("REMOVE");
+        remove.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                removeActionPerformed(evt);
             }
         });
 
@@ -281,9 +281,9 @@ public class residentUpdatePass extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 5, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(61, 61, 61)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(remove, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(38, 38, 38)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(update, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(80, 80, 80))
         );
         jPanel1Layout.setVerticalGroup(
@@ -326,8 +326,8 @@ public class residentUpdatePass extends javax.swing.JFrame {
                     .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(28, 28, 28)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(remove, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(update, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(25, Short.MAX_VALUE))
         );
 
@@ -373,9 +373,9 @@ public class residentUpdatePass extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_backActionPerformed
 
-    private void userTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_userTableMouseClicked
-        DefaultTableModel model = (DefaultTableModel) userTable.getModel();
-        int selectedInfo = userTable.getSelectedRow();
+    private void passTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_passTableMouseClicked
+        DefaultTableModel model = (DefaultTableModel) passTable.getModel();
+        int selectedInfo = passTable.getSelectedRow();
 
         passID.setText(model.getValueAt(selectedInfo, 0).toString());
         userID.setText(model.getValueAt(selectedInfo, 1).toString());
@@ -385,7 +385,7 @@ public class residentUpdatePass extends javax.swing.JFrame {
         ((JTextField) dateIn.getDateEditor().getUiComponent()).setText(model.getValueAt(selectedInfo, 5).toString());
         String durationValue = (String) model.getValueAt(selectedInfo, 6);
         duration.setValue(Integer.parseInt(durationValue));
-    }//GEN-LAST:event_userTableMouseClicked
+    }//GEN-LAST:event_passTableMouseClicked
 
     private void userIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userIDActionPerformed
         // TODO add your handling code here:
@@ -405,9 +405,9 @@ public class residentUpdatePass extends javax.swing.JFrame {
 
     residentPassManagement rpm = new residentPassManagement();
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        int item = userTable.getSelectedRow();
-        DefaultTableModel model = (DefaultTableModel) userTable.getModel();
+    private void updateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateActionPerformed
+        int item = passTable.getSelectedRow();
+        DefaultTableModel model = (DefaultTableModel) passTable.getModel();
 
         if (item >= 0) {
             model.setValueAt(passID.getText(), item, 0);
@@ -419,10 +419,10 @@ public class residentUpdatePass extends javax.swing.JFrame {
             model.setValueAt(duration.getValue(), item, 6);
 
             ArrayList<String[]> tableArray = new ArrayList<>();
-            for (int i = 0; i < userTable.getRowCount(); i++) {
+            for (int i = 0; i < passTable.getRowCount(); i++) {
                 String[] tempArray = new String[7];
-                for (int j = 0; j < userTable.getColumnCount(); j++) {
-                    tempArray[j] = userTable.getValueAt(i, j).toString();
+                for (int j = 0; j < passTable.getColumnCount(); j++) {
+                    tempArray[j] = passTable.getValueAt(i, j).toString();
                 }
                 tableArray.add(tempArray);
             }
@@ -459,7 +459,7 @@ public class residentUpdatePass extends javax.swing.JFrame {
                 bw.close();
 
             } catch (IOException ex) {
-                Logger.getLogger(residentUpdateComplaint.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(residentUpdatePass.class.getName()).log(Level.SEVERE, null, ex);
             }
 
             JOptionPane.showMessageDialog(this, "Visitor Pass UPDATED!");
@@ -468,11 +468,11 @@ public class residentUpdatePass extends javax.swing.JFrame {
         } else {
             JOptionPane.showMessageDialog(rootPane, "Please fill up ALL details!");
         }
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_updateActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        int item = userTable.getSelectedRow();
-        DefaultTableModel model = (DefaultTableModel) userTable.getModel();
+    private void removeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeActionPerformed
+        int item = passTable.getSelectedRow();
+        DefaultTableModel model = (DefaultTableModel) passTable.getModel();
 
         if (item >= 0) {
             String filePath = "src/textFiles/visitorPass.txt";
@@ -488,8 +488,8 @@ public class residentUpdatePass extends javax.swing.JFrame {
                 }
                 bw.write(colHeadings + "\n");
 
-                String compId = userTable.getValueAt(item, 0).toString();
-                String userId = userTable.getValueAt(item, 1).toString();
+                String compId = passTable.getValueAt(item, 0).toString();
+                String userId = passTable.getValueAt(item, 1).toString();
 
                 String content = "";
                 for (String[] tempArray : array) {
@@ -503,16 +503,16 @@ public class residentUpdatePass extends javax.swing.JFrame {
                 model.removeRow(item);
 
             } catch (IOException ex) {
-                Logger.getLogger(residentUpdateComplaint.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(residentUpdatePass.class.getName()).log(Level.SEVERE, null, ex);
             }
 
             JOptionPane.showMessageDialog(rootPane, "Visitor Pass REMOVED!");
             rpm.setVisible(true);
             this.setVisible(false);
         } else {
-            JOptionPane.showMessageDialog(rootPane, "Please select the fill to Delete!");
+            JOptionPane.showMessageDialog(rootPane, "Please select from table to DELETE!");
         }
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_removeActionPerformed
 
     /**
      * @param args the command line arguments
@@ -554,8 +554,6 @@ public class residentUpdatePass extends javax.swing.JFrame {
     private javax.swing.JTextArea carPlate;
     private com.toedter.calendar.JDateChooser dateIn;
     private javax.swing.JSpinner duration;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -570,9 +568,11 @@ public class residentUpdatePass extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTextField passID;
+    private javax.swing.JTable passTable;
+    private javax.swing.JButton remove;
     private javax.swing.JTextArea unitNo;
+    private javax.swing.JButton update;
     private javax.swing.JTextField userID;
-    private javax.swing.JTable userTable;
     private javax.swing.JTextField visitorName;
     // End of variables declaration//GEN-END:variables
 }
