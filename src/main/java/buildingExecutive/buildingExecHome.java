@@ -162,7 +162,8 @@ public class buildingExecHome extends javax.swing.JFrame {
     }//GEN-LAST:event_assignedJobActionPerformed
 
     private void patrolling1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_patrolling1ActionPerformed
-        // TODO add your handling code here:
+        new buildingModifyPatrol().setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_patrolling1ActionPerformed
 
     private void patrollingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_patrollingActionPerformed

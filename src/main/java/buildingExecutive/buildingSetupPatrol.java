@@ -43,15 +43,15 @@ public class buildingSetupPatrol extends javax.swing.JFrame {
             FileReader fr = new FileReader(file);
             BufferedReader br = new BufferedReader(fr);
             String line = br.readLine();
-            String[] colHeadings = line.trim().split(",");
+//            String[] colHeadings = line.trim().split(",");
 
             DefaultTableModel model = (DefaultTableModel) userTable.getModel();
-            model.setColumnIdentifiers(colHeadings);
+//            model.setColumnIdentifiers(colHeadings);
             Object[] lines = br.lines().toArray();
 
             for (int i = 0; i < lines.length; i++) {
                 String[] row = lines[i].toString().split(",");
-                model.addRow(row);
+                model.addRow(new Object[]{row[0],row[2],row[3],row[4],row[6]});
             }
         } catch (FileNotFoundException ex) {
             Logger.getLogger(buildingSetupPatrol.class.getName()).log(Level.SEVERE, null, ex);
