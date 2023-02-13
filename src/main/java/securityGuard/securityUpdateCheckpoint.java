@@ -181,7 +181,7 @@ public class securityUpdateCheckpoint extends javax.swing.JFrame {
 
         jLabel10.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel10.setText("Status:");
+        jLabel10.setText("Checkpoint Status:");
 
         patrolID.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         patrolID.setForeground(new java.awt.Color(51, 0, 204));
@@ -236,15 +236,15 @@ public class securityUpdateCheckpoint extends javax.swing.JFrame {
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(patrolDetails, javax.swing.GroupLayout.PREFERRED_SIZE, 405, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(patrolDate, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                        .addComponent(patrolDate, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGroup(jPanel1Layout.createSequentialGroup()
+                                            .addGap(19, 19, 19)
+                                            .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                            .addComponent(status, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(203, 203, 203)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(status, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(246, 246, 246)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(103, 103, 103))
         );
         jPanel1Layout.setVerticalGroup(
@@ -406,7 +406,7 @@ public class securityUpdateCheckpoint extends javax.swing.JFrame {
             sh.setVisible(true);
             this.setVisible(false);
         } else {
-            JOptionPane.showMessageDialog(rootPane, "Please select assigned job from table list!");
+            JOptionPane.showMessageDialog(rootPane, "Please select scheduled patrol task from table list!");
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
