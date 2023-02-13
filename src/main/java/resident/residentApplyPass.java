@@ -32,7 +32,7 @@ public class residentApplyPass extends javax.swing.JFrame {
     String durationFinal;
     ApplyPassSng aps = new ApplyPassSng();
     ApplyPassDao apd = new ApplyPassDaoImpl();
-    adminComplaintManagement acm = new adminComplaintManagement();
+    residentPassManagement rpm = new residentPassManagement();
 
     /**
      * Creates new form residentApplyPass
@@ -234,7 +234,7 @@ public class residentApplyPass extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(34, 34, 34)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(43, 43, 43)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 388, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -254,11 +254,13 @@ public class residentApplyPass extends javax.swing.JFrame {
                 .addGap(26, 26, 26))
         );
 
+        jPanel1.getAccessibleContext().setAccessibleName("Apply Form");
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        beh.setVisible(true);
+        rpm.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -290,10 +292,10 @@ public class residentApplyPass extends javax.swing.JFrame {
         aps.setDuration(durationFinal);
         //        System.out.println(jobDurationFinal);
 
-        if (ajd.assignJob(ajs) == true) {
+        if (apd.applyPass(aps) == true) {
             JOptionPane.showMessageDialog(this, "Visitor pass applied successfully!");
 
-            beh.setVisible(true);
+            rpm.setVisible(true);
             this.setVisible(false);
         } else {
             JOptionPane.showMessageDialog(this, "Please fill up ALL the information.");

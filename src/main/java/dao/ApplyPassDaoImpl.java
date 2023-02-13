@@ -40,7 +40,7 @@ public class ApplyPassDaoImpl implements ApplyPassDao{
                 FileWriter fw = new FileWriter(f, true);
                 BufferedWriter bw = new BufferedWriter(fw);
                 PrintWriter pw = new PrintWriter(bw);
-                pw.println(passID + "," + aps.getVisitorName() + "," + aps.getCarPlate() + "," + aps.getUnitNo() + "," + aps.getDateIn() + "," + aps.getDuration() + ",");
+                pw.println(passID + "," + aps.getUserID() + "," + aps.getVisitorName() + "," + aps.getCarPlate() + "," + aps.getUnitNo() + "," + aps.getDateIn() + "," + aps.getDuration() + ",");
                 pw.flush();
                 pw.close();
                 bw.close();

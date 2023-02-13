@@ -1,4 +1,6 @@
-UserID,Username,Name,Contact Name,Gender,Password,Property ID,
+passID,userID,Name,Car Plate,Unit No,Date In,Duration,
 1,christine,Christine,013746572,Female,christine,2001,
 2,jenning_jeremy,jenning,0123213212,Male,123,2002,
-
+3,fghh,fghfg,fghfgh,04-02-2023,2,
+4,6,da,fwefff,ewfefaa,03-02-2023,2,
+5,6,Jun Kit,AKS1202,A-2-2,23-02-2023,6,
