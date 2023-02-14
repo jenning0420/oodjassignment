@@ -22,6 +22,29 @@ public class buildingAddAdmin extends javax.swing.JFrame {
         initComponents();
     }
 
+    private void addUser() {
+        Usernamefinal = Username.getText();
+        Namefinal = Name.getText();
+        ContactNumberfinal = ContactNumber.getText();
+        Genderfinal = (String) Gender.getSelectedItem();
+        Passwordfinal = Password.getText();
+        aus.setUsername(Usernamefinal);
+        aus.setName(Namefinal);
+        aus.setContactNumber(ContactNumberfinal);
+        aus.setGender(Genderfinal);
+        aus.setPassword(Passwordfinal);
+        aus.setTextFile("src/textFiles/adminLogin.txt");
+
+        if (aud.addUser(aus) == true) {
+            JOptionPane.showMessageDialog(this, "Admin Executive account added SUCCESSFULLY.");
+
+            bum.setVisible(true);
+            this.setVisible(false);
+        } else {
+            JOptionPane.showMessageDialog(this, "Please fill up ALL the information.");
+        }
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -203,26 +226,7 @@ public class buildingAddAdmin extends javax.swing.JFrame {
     buildingUserManagement bum = new buildingUserManagement();
 
     private void addUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addUserActionPerformed
-        Usernamefinal = Username.getText();
-        Namefinal = Name.getText();
-        ContactNumberfinal = ContactNumber.getText();
-        Genderfinal = (String) Gender.getSelectedItem();
-        Passwordfinal = Password.getText();
-        aus.setUsername(Usernamefinal);
-        aus.setName(Namefinal);
-        aus.setContactNumber(ContactNumberfinal);
-        aus.setGender(Genderfinal);
-        aus.setPassword(Passwordfinal);
-        aus.setTextFile("src/textFiles/adminLogin.txt");
-
-        if (aud.addUser(aus) == true) {
-            JOptionPane.showMessageDialog(this, "Admin Executive account added SUCCESSFULLY.");
-
-            bum.setVisible(true);
-            this.setVisible(false);
-        } else {
-            JOptionPane.showMessageDialog(this, "Please fill up ALL the information.");
-        }
+        addUser();
     }//GEN-LAST:event_addUserActionPerformed
 
     private void resetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resetActionPerformed

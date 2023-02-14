@@ -96,7 +96,8 @@ public class buildingHome extends javax.swing.JFrame {
     }//GEN-LAST:event_userManagementActionPerformed
 
     private void budgetPlanningActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_budgetPlanningActionPerformed
-        // TODO add your handling code here:
+        new buildingOperationManagement().setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_budgetPlanningActionPerformed
 
     private JFrame frame;

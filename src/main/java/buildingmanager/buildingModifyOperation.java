@@ -20,15 +20,15 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author User
  */
-public class buildingModifyBuilding extends javax.swing.JFrame {
+public class buildingModifyOperation extends javax.swing.JFrame {
 
     /**
-     * Creates new form buildingModifyBuilding
+     * Creates new form buildingModifyOperation
      */
-    public buildingModifyBuilding() {
+    public buildingModifyOperation() {
         initComponents();
         
-        String filePath = "src/textFiles/buildingLogin.txt";
+        String filePath = "src/textFiles/fundAllocation.txt";
         File file = new File(filePath);
         
 
@@ -47,9 +47,9 @@ public class buildingModifyBuilding extends javax.swing.JFrame {
                 model.addRow(row);
             }
         } catch (FileNotFoundException ex) {
-            Logger.getLogger(buildingModifyBuilding.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(buildingModifyOperation.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
-            Logger.getLogger(buildingModifyBuilding.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(buildingModifyOperation.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -70,30 +70,30 @@ public class buildingModifyBuilding extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        Username = new javax.swing.JTextField();
-        Name = new javax.swing.JTextField();
-        ContactNumber = new javax.swing.JTextField();
+        operationTitle = new javax.swing.JTextField();
+        operationDetails = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        userID = new javax.swing.JTextField();
+        operationID = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        Password = new javax.swing.JTextField();
-        Gender = new javax.swing.JComboBox<>();
+        fundAllocated = new javax.swing.JTextField();
+        operationType = new javax.swing.JComboBox<>();
+        urgencyLevel = new javax.swing.JComboBox<>();
         back = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("Modify Building Executive");
+        jLabel2.setText("Modify Planned Operations");
 
         userTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "User ID", "Username", "Name", "Contact Number", "Gender", "Password"
+                "Operation ID", "Operation Type", "Operation Title", "Operation Details", "Allocated Fund", "Urgency Level"
             }
         ));
         userTable.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -103,52 +103,46 @@ public class buildingModifyBuilding extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(userTable);
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Update Building Executive Information"));
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Update Allocated Funds"));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel3.setText("Password:");
+        jLabel3.setText("Urgency Level:");
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel4.setText("Name:");
+        jLabel4.setText("OperationTitle:");
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel5.setText("Gender:");
+        jLabel5.setText("Fund Allocated:");
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel6.setText("Contact Number:");
+        jLabel6.setText("Operation Details:");
 
-        Username.addActionListener(new java.awt.event.ActionListener() {
+        operationTitle.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                UsernameActionPerformed(evt);
-            }
-        });
-
-        Name.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                NameActionPerformed(evt);
+                operationTitleActionPerformed(evt);
             }
         });
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel7.setText("Username:");
+        jLabel7.setText("Operation Type:");
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel8.setText("User ID:");
+        jLabel8.setText("Operation ID:");
 
-        userID.addComponentListener(new java.awt.event.ComponentAdapter() {
+        operationID.addComponentListener(new java.awt.event.ComponentAdapter() {
             public void componentShown(java.awt.event.ComponentEvent evt) {
-                userIDComponentShown(evt);
+                operationIDComponentShown(evt);
             }
         });
-        userID.addActionListener(new java.awt.event.ActionListener() {
+        operationID.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                userIDActionPerformed(evt);
+                operationIDActionPerformed(evt);
             }
         });
 
@@ -170,10 +164,17 @@ public class buildingModifyBuilding extends javax.swing.JFrame {
             }
         });
 
-        Gender.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Male", "Female" }));
-        Gender.addActionListener(new java.awt.event.ActionListener() {
+        operationType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Fund Allocation", "Maintenance" }));
+        operationType.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                GenderActionPerformed(evt);
+                operationTypeActionPerformed(evt);
+            }
+        });
+
+        urgencyLevel.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Non Urgent", "Less Urgent", "Urgent", "Emergent" }));
+        urgencyLevel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                urgencyLevelActionPerformed(evt);
             }
         });
 
@@ -183,70 +184,72 @@ public class buildingModifyBuilding extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(23, 23, 23)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(userID, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(18, 18, 18)
-                            .addComponent(Gender, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(18, 18, 18)
-                            .addComponent(Username, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(18, 18, 18)
-                            .addComponent(ContactNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(18, 18, 18)
-                            .addComponent(Name, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(operationID, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(40, 40, 40))
-                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGap(18, 18, 18)
-                                    .addComponent(Password, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addComponent(fundAllocated, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(operationType, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(operationDetails, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(operationTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addComponent(urgencyLevel, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(22, 22, 22)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(userID)
+                    .addComponent(operationID)
                     .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(Username)
-                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(operationType, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Name))
+                    .addComponent(operationTitle))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(ContactNumber, javax.swing.GroupLayout.DEFAULT_SIZE, 27, Short.MAX_VALUE))
+                    .addComponent(operationDetails, javax.swing.GroupLayout.DEFAULT_SIZE, 27, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Gender, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(19, 19, 19)
+                    .addComponent(fundAllocated, javax.swing.GroupLayout.DEFAULT_SIZE, 27, Short.MAX_VALUE))
+                .addGap(20, 20, 20)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Password, javax.swing.GroupLayout.DEFAULT_SIZE, 27, Short.MAX_VALUE))
-                .addGap(30, 30, 30)
+                    .addComponent(urgencyLevel, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(28, 28, 28)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -300,46 +303,41 @@ public class buildingModifyBuilding extends javax.swing.JFrame {
         DefaultTableModel model = (DefaultTableModel) userTable.getModel();
         int selectedInfo = userTable.getSelectedRow();
 
-        userID.setText(model.getValueAt(selectedInfo, 0).toString());
-        Username.setText(model.getValueAt(selectedInfo, 1).toString());
-        Name.setText(model.getValueAt(selectedInfo, 2).toString());
-        ContactNumber.setText(model.getValueAt(selectedInfo, 3).toString());
-        Gender.setSelectedItem(model.getValueAt(selectedInfo, 4).toString());
-        Password.setText(model.getValueAt(selectedInfo, 5).toString());
-
+        operationID.setText(model.getValueAt(selectedInfo, 0).toString());
+        operationType.setSelectedItem(model.getValueAt(selectedInfo, 1).toString());
+        operationTitle.setText(model.getValueAt(selectedInfo, 2).toString());
+        operationDetails.setText(model.getValueAt(selectedInfo, 3).toString());
+        fundAllocated.setText(model.getValueAt(selectedInfo, 4).toString());
+        urgencyLevel.setSelectedItem(model.getValueAt(selectedInfo, 5).toString());
     }//GEN-LAST:event_userTableMouseClicked
 
-    private void UsernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UsernameActionPerformed
+    private void operationTitleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_operationTitleActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_UsernameActionPerformed
+    }//GEN-LAST:event_operationTitleActionPerformed
 
-    private void NameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NameActionPerformed
+    private void operationIDComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_operationIDComponentShown
+
+    }//GEN-LAST:event_operationIDComponentShown
+
+    private void operationIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_operationIDActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_NameActionPerformed
+    }//GEN-LAST:event_operationIDActionPerformed
 
-    private void userIDComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_userIDComponentShown
-
-    }//GEN-LAST:event_userIDComponentShown
-
-    private void userIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userIDActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_userIDActionPerformed
-
-    buildingUserManagement bum = new buildingUserManagement();
+    buildingOperationManagement bom = new buildingOperationManagement();
     
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         int item = userTable.getSelectedRow();
         DefaultTableModel model = (DefaultTableModel) userTable.getModel();
 
         if (item >= 0) {
-            model.setValueAt(userID.getText(), item, 0);
-            model.setValueAt(Username.getText(), item, 1);
-            model.setValueAt(Name.getText(), item, 2);
-            model.setValueAt(ContactNumber.getText(), item, 3);
-            model.setValueAt(Gender.getSelectedItem(), item, 4);
-            model.setValueAt(Password.getText(), item, 5);
+            model.setValueAt(operationID.getText(), item, 0);
+            model.setValueAt(operationType.getSelectedItem(), item, 1);
+            model.setValueAt(operationTitle.getText(), item, 2);
+            model.setValueAt(operationDetails.getText(), item, 3);
+            model.setValueAt(fundAllocated.getText(), item, 4);
+            model.setValueAt(urgencyLevel.getSelectedItem(), item, 5);
 
-            String filePath = "src/textFiles/buildingLogin.txt";
+            String filePath = "src/textFiles/fundAllocation.txt";
             File file = new File(filePath);
             try {
 
@@ -361,14 +359,14 @@ public class buildingModifyBuilding extends javax.swing.JFrame {
                 bw.close();
                 fw.close();
             } catch (IOException ex) {
-                Logger.getLogger(buildingModifyAccount.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(buildingModifyOperation.class.getName()).log(Level.SEVERE, null, ex);
             }
 
-            JOptionPane.showMessageDialog(this, "Account Updated SUCCESSFULLY!");
-            bum.setVisible(true);
+            JOptionPane.showMessageDialog(this, "Operation Planning Updated SUCCESSFULLY!");
+            bom.setVisible(true);
             this.setVisible(false);
         } else {
-            JOptionPane.showMessageDialog(rootPane, "Please fill up ALL details!");
+            JOptionPane.showMessageDialog(rootPane, "Please choose operations from the table to be modified!");
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -378,7 +376,7 @@ public class buildingModifyBuilding extends javax.swing.JFrame {
 
         if (item >= 0){
             model.removeRow(item);
-            String filePath = "src/textFiles/buildingLogin.txt";
+            String filePath = "src/textFiles/fundAllocation.txt";
             File file = new File(filePath);
             try {
 
@@ -403,22 +401,26 @@ public class buildingModifyBuilding extends javax.swing.JFrame {
                 Logger.getLogger(buildingModifyBuilding.class.getName()).log(Level.SEVERE, null, ex);
             }
 
-            JOptionPane.showMessageDialog(rootPane, "Account Removed SUCCESSFULLY!");
-            bum.setVisible(true);
+            JOptionPane.showMessageDialog(rootPane, "Operation Removed SUCCESSFULLY!");
+            bom.setVisible(true);
             this.setVisible(false);
         } else {
             JOptionPane.showMessageDialog(rootPane, "Please select the fill to Delete!");
         }
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void GenderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GenderActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_GenderActionPerformed
-
     private void backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backActionPerformed
-        new buildingUserManagement().setVisible(true);
+        new buildingOperationManagement().setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_backActionPerformed
+
+    private void operationTypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_operationTypeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_operationTypeActionPerformed
+
+    private void urgencyLevelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_urgencyLevelActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_urgencyLevelActionPerformed
 
     /**
      * @param args the command line arguments
@@ -437,31 +439,27 @@ public class buildingModifyBuilding extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(buildingModifyBuilding.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(buildingModifyOperation.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(buildingModifyBuilding.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(buildingModifyOperation.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(buildingModifyBuilding.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(buildingModifyOperation.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(buildingModifyBuilding.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(buildingModifyOperation.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new buildingModifyBuilding().setVisible(true);
+                new buildingModifyOperation().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField ContactNumber;
-    private javax.swing.JComboBox<String> Gender;
-    private javax.swing.JTextField Name;
-    private javax.swing.JTextField Password;
-    private javax.swing.JTextField Username;
     private javax.swing.JButton back;
+    private javax.swing.JTextField fundAllocated;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel2;
@@ -473,7 +471,11 @@ public class buildingModifyBuilding extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextField userID;
+    private javax.swing.JTextField operationDetails;
+    private javax.swing.JTextField operationID;
+    private javax.swing.JTextField operationTitle;
+    private javax.swing.JComboBox<String> operationType;
+    private javax.swing.JComboBox<String> urgencyLevel;
     private javax.swing.JTable userTable;
     // End of variables declaration//GEN-END:variables
 }

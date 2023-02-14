@@ -81,7 +81,6 @@ public class buildingModifyAdmin extends javax.swing.JFrame {
         Password = new javax.swing.JTextField();
         Gender = new javax.swing.JComboBox<>();
         back = new javax.swing.JButton();
-        back1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -256,13 +255,6 @@ public class buildingModifyAdmin extends javax.swing.JFrame {
             }
         });
 
-        back1.setText("Back");
-        back1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                back1ActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -282,11 +274,6 @@ public class buildingModifyAdmin extends javax.swing.JFrame {
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 943, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 171, Short.MAX_VALUE)))
                 .addContainerGap())
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                    .addContainerGap(651, Short.MAX_VALUE)
-                    .addComponent(back1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(481, 481, 481)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -304,11 +291,6 @@ public class buildingModifyAdmin extends javax.swing.JFrame {
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 414, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                    .addContainerGap(262, Short.MAX_VALUE)
-                    .addComponent(back1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(231, 231, 231)))
         );
 
         pack();
@@ -430,10 +412,6 @@ public class buildingModifyAdmin extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_backActionPerformed
 
-    private void back1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_back1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_back1ActionPerformed
-
     private void PasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PasswordActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_PasswordActionPerformed
@@ -480,7 +458,6 @@ public class buildingModifyAdmin extends javax.swing.JFrame {
     private javax.swing.JTextField Password;
     private javax.swing.JTextField Username;
     private javax.swing.JButton back;
-    private javax.swing.JButton back1;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel2;
