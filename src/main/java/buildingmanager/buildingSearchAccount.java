@@ -136,9 +136,9 @@ public class buildingSearchAccount extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void userTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_userTableMouseClicked
-//        DefaultTableModel model = (DefaultTableModel) userTable.getModel();
-//        int selectedInfo = userTable.getSelectedRow();
-//
+        DefaultTableModel model = (DefaultTableModel) userTable.getModel();
+        int selectedInfo = userTable.getSelectedRow();
+
 //        userID.setText(model.getValueAt(selectedInfo, 0).toString());
 //        Username.setText(model.getValueAt(selectedInfo, 1).toString());
 //        Name.setText(model.getValueAt(selectedInfo, 2).toString());
