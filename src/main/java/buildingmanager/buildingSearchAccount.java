@@ -11,6 +11,8 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JTable;
+import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -24,7 +26,9 @@ public class buildingSearchAccount extends javax.swing.JFrame {
      */
     public buildingSearchAccount() {
         initComponents();
-        
+        search();
+//        search((DefaultTableModel) userTable.getModel(), userTable, searchText);
+
 //        String filePath = "src/textFiles/accountLogin.txt";
 //        File file = new File(filePath);
 //        
@@ -48,6 +52,45 @@ public class buildingSearchAccount extends javax.swing.JFrame {
 //        } catch (IOException ex) {
 //            Logger.getLogger(buildingModifyAccount.class.getName()).log(Level.SEVERE, null, ex);
 //        }
+    }
+
+//    private void search(DefaultTableModel par, JTable userTable1, JTextField searchText1) {
+        private void search(){
+        String filePath = "src/textFiles/accountLogin.txt";
+        File file = new File(filePath);
+
+        try {
+            FileReader fr = new FileReader(file);
+            BufferedReader br = new BufferedReader(fr);
+            String line = br.readLine();
+            String[] colHeadings = line.trim().split(",");
+
+            DefaultTableModel model = (DefaultTableModel) userTable.getModel();
+            model.setColumnIdentifiers(colHeadings);
+            Object[] lines = br.lines().toArray();
+
+            if (model != null) {
+                int row123 = userTable.getRowCount();
+                for (int n = row123 - 1; n >= 0; n--) {
+                    model.removeRow(n);
+                }
+
+            }
+
+            String searchInfo = searchText.getText().toLowerCase();
+
+            for (int i = 0; i < lines.length; i++) {
+                String[] row = lines[i].toString().split(",");
+                if (row[0].contains(searchInfo) || row[1].contains(searchInfo) || row[2].contains(searchInfo) || row[3].contains(searchInfo) || row[4].contains(searchInfo) || row[5].contains(searchInfo)) {
+                    model.addRow(row);
+                }
+
+            }
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(buildingModifyAccount.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(buildingModifyAccount.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -148,45 +191,15 @@ public class buildingSearchAccount extends javax.swing.JFrame {
 
     }//GEN-LAST:event_userTableMouseClicked
 
+//    dao.searchDao search = new dao.searchDao();
     private void searchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchActionPerformed
-        String filePath = "src/textFiles/accountLogin.txt";
-        File file = new File(filePath);
-        
-        
-        
-
-        try {
-            FileReader fr = new FileReader(file);
-            BufferedReader br = new BufferedReader(fr);
-            String line = br.readLine();
-            String[] colHeadings = line.trim().split(",");
-
-            DefaultTableModel model = (DefaultTableModel) userTable.getModel();
-            model.setColumnIdentifiers(colHeadings);
-            Object[] lines = br.lines().toArray();
-            
-            if(model != null){
-                int row123 = userTable.getRowCount();
-                for (int n = row123 - 1; n >= 0; n--){
-                    model.removeRow(n);
-                }
-            
-        }
-            
-            String searchInfo = searchText.getText().toLowerCase();
-
-            for (int i = 0; i < lines.length; i++) {
-                String[] row = lines[i].toString().split(",");
-                if(row[0].contains(searchInfo) || row[1].contains(searchInfo) || row[2].contains(searchInfo) || row[3].contains(searchInfo) || row[4].contains(searchInfo) || row[5].contains(searchInfo)){
-                   model.addRow(row); 
-                }
-                
-            }
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(buildingModifyAccount.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(buildingModifyAccount.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        search();
+//        JTable userTable = new JTable();
+//        JTextField searchText = new JTextField();
+//        DefaultTableModel model = new DefaultTableModel();
+//        String file = "src/textFiles/accountLogin.txt";
+//        search((DefaultTableModel) userTable.getModel(), userTable, searchText);
+//
     }//GEN-LAST:event_searchActionPerformed
 
     /**

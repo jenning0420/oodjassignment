@@ -1,4 +1,4 @@
-passID,userID,Name,Car Plate,Unit No,Date In,Duration,
+Complaint ID, User ID, Competition Title,Date,Competition Details,Issue Suggestions,Complainant,Status,
 1,17,Rooftop broken,08-02-2024,without reason,fix asap,Admin,Pending,
 2,17,another roof,06-02-2023,Water drainage,Call technician to fix.,Admin,Urgent,
 3,17,Water hole broken,08-02-2023,The water hole in 12th floor has broken,Change a new hole.,Admin,Pending,
