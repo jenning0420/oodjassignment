@@ -128,7 +128,6 @@ public class buildingTeamStrucAdd extends javax.swing.JFrame {
     }//GEN-LAST:event_BackActionPerformed
 
     private void AddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddActionPerformed
-
         String TSRole = (String)Role.getSelectedItem();
         String TSAmount = Amount.getText();
 
