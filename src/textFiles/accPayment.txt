@@ -1,1 +1,1 @@
-C-LOL,50000.0,Pending
+B-LOL,10000.0,Paid

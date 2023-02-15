@@ -5,7 +5,6 @@
 package buildingmanager;
 
 import Propmanagement.function.TeamStruc;
-import Propmanagement.system.ManageUnitSystem;
 import Propmanagement.system.TeamStrucSystem;
 import java.awt.BorderLayout;
 import javax.swing.JFrame;
