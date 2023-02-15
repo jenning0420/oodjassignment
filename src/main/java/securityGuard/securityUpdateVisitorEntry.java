@@ -4,6 +4,25 @@
  */
 package securityGuard;
 
+import buildingExecutive.buildingModifyJob;
+import file.FileService;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.text.ParseException;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
+import javax.swing.table.DefaultTableModel;
+import resident.residentUpdateComplaint;
+
 /**
  *
  * @author User
@@ -15,6 +34,33 @@ public class securityUpdateVisitorEntry extends javax.swing.JFrame {
      */
     public securityUpdateVisitorEntry() {
         initComponents();
+        
+        String filePath = "src/textFiles/visitorEntry.txt";
+        File file = new File(filePath);
+
+        try {
+            FileReader fr = new FileReader(file);
+            BufferedReader br = new BufferedReader(fr);
+            String line = br.readLine();
+            String[] colHeadings = line.trim().split(",");
+
+            DefaultTableModel model = (DefaultTableModel) entryTable.getModel();
+            model.setColumnIdentifiers(colHeadings);
+            Object[] lines = br.lines().toArray();
+
+            for (int i = 0; i < lines.length; i++) {
+                String[] row = lines[i].toString().split(",");
+                //                String number = ("17");
+                //                System.out.println(rucs.getUserID().getClass());
+                //                System.out.println(number.getClass());
+                model.addRow(row);              
+            }
+
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(securityUpdateVisitorEntry.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(securityUpdateVisitorEntry.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -28,27 +74,24 @@ public class securityUpdateVisitorEntry extends javax.swing.JFrame {
 
         jLabel2 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        passTable = new javax.swing.JTable();
+        entryTable = new javax.swing.JTable();
         jPanel1 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        userID = new javax.swing.JTextField();
         visitorName = new javax.swing.JTextField();
-        jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        passID = new javax.swing.JTextField();
+        entryID = new javax.swing.JTextField();
         update = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        carPlate = new javax.swing.JTextArea();
         jLabel10 = new javax.swing.JLabel();
         jScrollPane4 = new javax.swing.JScrollPane();
         unitNo = new javax.swing.JTextArea();
         jLabel11 = new javax.swing.JLabel();
         dateIn = new com.toedter.calendar.JDateChooser();
-        remove = new javax.swing.JButton();
-        duration = new javax.swing.JSpinner();
-        jLabel12 = new javax.swing.JLabel();
+        clear = new javax.swing.JButton();
+        Date date = new Date();
+        SpinnerDateModel sm =
+        new SpinnerDateModel(date, null, null, Calendar.HOUR_OF_DAY);
+        timeIn = new javax.swing.JSpinner(sm);
         back = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -57,20 +100,20 @@ public class securityUpdateVisitorEntry extends javax.swing.JFrame {
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Visitor Entry");
 
-        passTable.setModel(new javax.swing.table.DefaultTableModel(
+        entryTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Pass ID", "User ID", "Name", "Car Plate", "Unit No", "Date In", "Duration"
+                "Entry ID", "Name", "Unit No", "Date In", "Time In"
             }
         ));
-        passTable.addMouseListener(new java.awt.event.MouseAdapter() {
+        entryTable.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                passTableMouseClicked(evt);
+                entryTableMouseClicked(evt);
             }
         });
-        jScrollPane2.setViewportView(passTable);
+        jScrollPane2.setViewportView(entryTable);
 
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
 
@@ -78,38 +121,24 @@ public class securityUpdateVisitorEntry extends javax.swing.JFrame {
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel4.setText("Name :");
 
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel5.setText("Car Plate :");
-
-        userID.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                userIDActionPerformed(evt);
-            }
-        });
-
         visitorName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 visitorNameActionPerformed(evt);
             }
         });
 
-        jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel7.setText("User ID :");
-
         jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel8.setText("Pass ID :");
+        jLabel8.setText("Entry ID :");
 
-        passID.addComponentListener(new java.awt.event.ComponentAdapter() {
+        entryID.addComponentListener(new java.awt.event.ComponentAdapter() {
             public void componentShown(java.awt.event.ComponentEvent evt) {
-                passIDComponentShown(evt);
+                entryIDComponentShown(evt);
             }
         });
-        passID.addActionListener(new java.awt.event.ActionListener() {
+        entryID.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                passIDActionPerformed(evt);
+                entryIDActionPerformed(evt);
             }
         });
 
@@ -126,10 +155,6 @@ public class securityUpdateVisitorEntry extends javax.swing.JFrame {
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel9.setText("Date In :");
 
-        carPlate.setColumns(20);
-        carPlate.setRows(5);
-        jScrollPane1.setViewportView(carPlate);
-
         jLabel10.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel10.setText("Unit No :");
@@ -140,121 +165,90 @@ public class securityUpdateVisitorEntry extends javax.swing.JFrame {
 
         jLabel11.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel11.setText("Duration :");
+        jLabel11.setText("Time In :");
 
         dateIn.setDateFormatString("dd-MM-yyyy");
 
-        remove.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        remove.setForeground(java.awt.Color.black);
-        remove.setText("REMOVE");
-        remove.addActionListener(new java.awt.event.ActionListener() {
+        clear.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        clear.setForeground(java.awt.Color.black);
+        clear.setText("CLEAR");
+        clear.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                removeActionPerformed(evt);
+                clearActionPerformed(evt);
             }
         });
 
-        jLabel12.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel12.setText("Hour(s)");
+        JSpinner.DateEditor de = new JSpinner.DateEditor(timeIn, "HH:mm");
+        timeIn.setEditor(de);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(12, 12, 12)
-                                        .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(dateIn, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addGap(38, 38, 38)
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addGroup(jPanel1Layout.createSequentialGroup()
-                                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addGap(18, 18, 18)
-                                            .addComponent(visitorName))
-                                        .addGroup(jPanel1Layout.createSequentialGroup()
-                                            .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addGap(18, 18, 18)
-                                            .addComponent(userID, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addGap(33, 33, 33)
-                                    .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(duration, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(jLabel12))
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addGap(20, 20, 20)
-                                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(passID, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(25, 25, 25)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(61, 61, 61)
-                        .addComponent(remove, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(38, 38, 38)
-                        .addComponent(update, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(80, 80, 80))
+                        .addGap(29, 29, 29)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(timeIn, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(dateIn, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(clear, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(update, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(14, 14, 14)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(entryID, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(visitorName, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(39, 39, 39)
+                .addGap(56, 56, 56)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(passID, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(entryID, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(userID)
-                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGap(23, 23, 23)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(visitorName, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, Short.MAX_VALUE))
+                        .addGap(24, 24, 24)
+                        .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(visitorName)
-                        .addGap(14, 14, 14)))
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)))
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(31, 31, 31)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(dateIn, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(duration, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(28, 28, 28)
+                    .addComponent(timeIn, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(45, 45, 45)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(remove, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(update, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(update, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(clear, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(73, Short.MAX_VALUE))
         );
 
         back.setText("Back");
@@ -278,7 +272,7 @@ public class securityUpdateVisitorEntry extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(163, 163, 163)
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 806, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
                         .addComponent(back, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18))
         );
@@ -292,64 +286,67 @@ public class securityUpdateVisitorEntry extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(22, 22, 22)
                         .addComponent(back, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jScrollPane2))
-                .addGap(18, 18, 18))
+                .addContainerGap(21, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void passTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_passTableMouseClicked
-        DefaultTableModel model = (DefaultTableModel) passTable.getModel();
-        int selectedInfo = passTable.getSelectedRow();
+    private void entryTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_entryTableMouseClicked
+        DefaultTableModel model = (DefaultTableModel) entryTable.getModel();
+        int selectedInfo = entryTable.getSelectedRow();
 
-        passID.setText(model.getValueAt(selectedInfo, 0).toString());
-        userID.setText(model.getValueAt(selectedInfo, 1).toString());
-        visitorName.setText(model.getValueAt(selectedInfo, 2).toString());
-        carPlate.setText(model.getValueAt(selectedInfo, 3).toString());
-        unitNo.setText(model.getValueAt(selectedInfo, 4).toString());
-        ((JTextField) dateIn.getDateEditor().getUiComponent()).setText(model.getValueAt(selectedInfo, 5).toString());
-        String durationValue = (String) model.getValueAt(selectedInfo, 6);
-        duration.setValue(Integer.parseInt(durationValue));
-    }//GEN-LAST:event_passTableMouseClicked
+        entryID.setText(model.getValueAt(selectedInfo, 0).toString());
+        visitorName.setText(model.getValueAt(selectedInfo, 1).toString());
+        unitNo.setText(model.getValueAt(selectedInfo, 2).toString());
+        ((JTextField) dateIn.getDateEditor().getUiComponent()).setText(model.getValueAt(selectedInfo, 3).toString());
+        String timeValue = (String) model.getValueAt(selectedInfo, 5);
+        Date dateValue;
+        try {
+            dateValue = dateFormat.parse(timeValue);
+//            SpinnerDateModel spinnerModel = new SpinnerDateModel(dateValue, null, null, Calendar.DAY_OF_MONTH);
+//            JSpinner spinner = new JSpinner(spinnerModel);
+            timeIn.setValue(dateValue);
+        } catch (ParseException ex) {
+            Logger.getLogger(securityUpdateVisitorEntry.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
-    private void userIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userIDActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_userIDActionPerformed
+    }//GEN-LAST:event_entryTableMouseClicked
 
     private void visitorNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_visitorNameActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_visitorNameActionPerformed
 
-    private void passIDComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_passIDComponentShown
+    private void entryIDComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_entryIDComponentShown
         // TODO add your handling code here:
-    }//GEN-LAST:event_passIDComponentShown
+    }//GEN-LAST:event_entryIDComponentShown
 
-    private void passIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passIDActionPerformed
+    private void entryIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_entryIDActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_passIDActionPerformed
+    }//GEN-LAST:event_entryIDActionPerformed
 
     private void updateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateActionPerformed
-        int item = passTable.getSelectedRow();
-        DefaultTableModel model = (DefaultTableModel) passTable.getModel();
+        int item = entryTable.getSelectedRow();
+        DefaultTableModel model = (DefaultTableModel) entryTable.getModel();
 
         if (item >= 0) {
-            model.setValueAt(passID.getText(), item, 0);
-            model.setValueAt(userID.getText(), item, 1);
-            model.setValueAt(visitorName.getText(), item, 2);
-            model.setValueAt(carPlate.getText(), item, 3);
-            model.setValueAt(unitNo.getText(), item, 4);
-            model.setValueAt(((JTextField) dateIn.getDateEditor().getUiComponent()).getText(), item, 5);
-            model.setValueAt(duration.getValue(), item, 6);
+            model.setValueAt(entryID.getText(), item, 0);
+            model.setValueAt(visitorName.getText(), item, 1);
+            model.setValueAt(unitNo.getText(), item, 2);
+            model.setValueAt(((JTextField) dateIn.getDateEditor().getUiComponent()).getText(), item, 3);
+            Date time = (Date) timeIn.getValue();
+            timeInFinal = formatter.format(time);
+            model.setValueAt(timeInFinal, item, 4);
 
             ArrayList<String[]> tableArray = new ArrayList<>();
-            for (int i = 0; i < passTable.getRowCount(); i++) {
+            for (int i = 0; i < entryTable.getRowCount(); i++) {
                 String[] tempArray = new String[7];
-                for (int j = 0; j < passTable.getColumnCount(); j++) {
-                    tempArray[j] = passTable.getValueAt(i, j).toString();
+                for (int j = 0; j < entryTable.getColumnCount(); j++) {
+                    tempArray[j] = entryTable.getValueAt(i, j).toString();
                 }
                 tableArray.add(tempArray);
             }
@@ -397,9 +394,9 @@ public class securityUpdateVisitorEntry extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_updateActionPerformed
 
-    private void removeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeActionPerformed
-        int item = passTable.getSelectedRow();
-        DefaultTableModel model = (DefaultTableModel) passTable.getModel();
+    private void clearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearActionPerformed
+        int item = entryTable.getSelectedRow();
+        DefaultTableModel model = (DefaultTableModel) entryTable.getModel();
 
         if (item >= 0) {
             String filePath = "src/textFiles/visitorPass.txt";
@@ -415,10 +412,10 @@ public class securityUpdateVisitorEntry extends javax.swing.JFrame {
                 }
                 bw.write(colHeadings + "\n");
 
-                String compId = passTable.getValueAt(item, 0).toString();
-                String userId = passTable.getValueAt(item, 1).toString();
+                String compId = entryTable.getValueAt(item, 0).toString();
+                String userId = entryTable.getValueAt(item, 1).toString();
 
-                String content = "";
+                  String content = "";
                 for (String[] tempArray : array) {
                     if (compId.equals(tempArray[0]) && userId.equals(tempArray[1])) {
                         continue;
@@ -439,7 +436,7 @@ public class securityUpdateVisitorEntry extends javax.swing.JFrame {
         } else {
             JOptionPane.showMessageDialog(rootPane, "Please select from table to DELETE!");
         }
-    }//GEN-LAST:event_removeActionPerformed
+    }//GEN-LAST:event_clearActionPerformed
 
     private void backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backActionPerformed
         new residentPassManagement().setVisible(true);
@@ -483,28 +480,22 @@ public class securityUpdateVisitorEntry extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton back;
-    private javax.swing.JTextArea carPlate;
+    private javax.swing.JButton clear;
     private com.toedter.calendar.JDateChooser dateIn;
-    private javax.swing.JSpinner duration;
+    private javax.swing.JTextField entryID;
+    private javax.swing.JTable entryTable;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JTextField passID;
-    private javax.swing.JTable passTable;
-    private javax.swing.JButton remove;
+    private javax.swing.JSpinner timeIn;
     private javax.swing.JTextArea unitNo;
     private javax.swing.JButton update;
-    private javax.swing.JTextField userID;
     private javax.swing.JTextField visitorName;
     // End of variables declaration//GEN-END:variables
 }

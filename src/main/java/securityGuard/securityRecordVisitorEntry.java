@@ -254,6 +254,7 @@ public class securityRecordVisitorEntry extends javax.swing.JFrame {
         timeInFinal = formatter.format(time);
         rves.setVisitorName(visitorNameFinal);
         rves.setDateIn(dateInFinal);
+        rves.setUnitNo(unitNoFinal);
         rves.setTimeIn(timeInFinal);
 
         if (rved.recordVisitorEntry(rves) == true) {
