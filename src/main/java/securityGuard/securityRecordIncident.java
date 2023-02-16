@@ -4,42 +4,39 @@
  */
 package securityGuard;
 
-import dao.RecordVisitorEntryDao;
-import dao.RecordVisitorEntryDaoImpl;
+import dao.SecurityRecordIncidentDao;
+import dao.SecurityRecordIncidentDaoImpl;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import javax.swing.JOptionPane;
+import javax.swing.JSpinner;
 import javax.swing.JTextField;
 import javax.swing.SpinnerDateModel;
-import javax.swing.JSpinner;
-import sng.RecordVisitorEntrySng;
-import java.util.Calendar;
-import java.text.SimpleDateFormat;
+import sng.SecurityRecordIncidentSng;
 
 /**
  *
  * @author User
  */
-public class securityRecordVisitorEntry extends javax.swing.JFrame {
-
-    String visitorNameFinal;
+public class securityRecordIncident extends javax.swing.JFrame {   
+    String descriptionFinal;
     String dateInFinal;
     String timeInFinal;
-    String unitNoFinal;
-    RecordVisitorEntrySng rves = new RecordVisitorEntrySng();
-    RecordVisitorEntryDao rved = new RecordVisitorEntryDaoImpl();
-    securityVisitorEntryManagement svem = new securityVisitorEntryManagement();
+    SecurityRecordIncidentSng sris = new SecurityRecordIncidentSng();
+    SecurityRecordIncidentDao srid = new SecurityRecordIncidentDaoImpl();
+    securityIncidentManagement sim = new securityIncidentManagement();
     SimpleDateFormat formatter = new SimpleDateFormat("HH:mm");
-
     /**
-     * Creates new form securityRecordVisitorEntry
+     * Creates new form securityRecordIncident
      */
-    public securityRecordVisitorEntry() {
+    public securityRecordIncident() {
         initComponents();
-          
-        try {
+        
+            try {
             FileReader fr = new FileReader("src/textFiles/activeUser.txt");
             try ( BufferedReader br = new BufferedReader(fr)) {
                 String line = null;
@@ -47,7 +44,7 @@ public class securityRecordVisitorEntry extends javax.swing.JFrame {
 
                 while ((line = br.readLine()) != null) {
                     splt = line.split(",");
-                    rves.setUserID(splt[0]);
+                    sris.setUserID(splt[0]);
 
                 }
 
@@ -69,7 +66,6 @@ public class securityRecordVisitorEntry extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         back = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
-        visitorName = new javax.swing.JTextField();
         addRecord = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         dateIn = new com.toedter.calendar.JDateChooser();
@@ -81,16 +77,16 @@ public class securityRecordVisitorEntry extends javax.swing.JFrame {
         timeIn = new javax.swing.JSpinner(sm);
         jLabel3 = new javax.swing.JLabel();
         jScrollPane4 = new javax.swing.JScrollPane();
-        unitNo = new javax.swing.JTextArea();
-        jLabel10 = new javax.swing.JLabel();
+        description = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Visitor Entry");
+        jLabel1.setText("Incident");
 
         back.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        back.setForeground(java.awt.Color.black);
         back.setText("BACK");
         back.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -100,12 +96,7 @@ public class securityRecordVisitorEntry extends javax.swing.JFrame {
 
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
 
-        visitorName.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                visitorNameActionPerformed(evt);
-            }
-        });
-
+        addRecord.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         addRecord.setForeground(java.awt.Color.black);
         addRecord.setText(" RECORD");
         addRecord.addActionListener(new java.awt.event.ActionListener() {
@@ -120,6 +111,7 @@ public class securityRecordVisitorEntry extends javax.swing.JFrame {
 
         dateIn.setDateFormatString("dd-MM-yyyy");
 
+        clear.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         clear.setForeground(java.awt.Color.black);
         clear.setText("CLEAR");
         clear.addActionListener(new java.awt.event.ActionListener() {
@@ -130,7 +122,7 @@ public class securityRecordVisitorEntry extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel2.setText("Name :");
+        jLabel2.setText("Description :");
 
         JSpinner.DateEditor de = new JSpinner.DateEditor(timeIn, "HH:mm");
         timeIn.setEditor(de);
@@ -139,13 +131,9 @@ public class securityRecordVisitorEntry extends javax.swing.JFrame {
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel3.setText("Time In :");
 
-        unitNo.setColumns(20);
-        unitNo.setRows(5);
-        jScrollPane4.setViewportView(unitNo);
-
-        jLabel10.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel10.setText("Unit No :");
+        description.setColumns(20);
+        description.setRows(5);
+        jScrollPane4.setViewportView(description);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -154,44 +142,35 @@ public class securityRecordVisitorEntry extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(123, 123, 123)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addGap(26, 26, 26)
-                            .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(18, 18, 18)
-                            .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(timeIn, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(dateIn, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(visitorName, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(timeIn, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(dateIn, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(69, 69, 69))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(clear, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(74, 74, 74)
-                        .addComponent(addRecord, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(addRecord, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(190, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(41, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(visitorName, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addContainerGap(43, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(8, 8, 8)
-                        .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(19, 19, 19)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(34, 34, 34)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(dateIn, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -211,56 +190,48 @@ public class securityRecordVisitorEntry extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap(47, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 388, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(60, 60, 60)
+                        .addGap(41, 41, 41)
                         .addComponent(back, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addGap(44, 44, 44)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(44, Short.MAX_VALUE))
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(44, 44, 44))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(21, 21, 21)
+                .addGap(16, 16, 16)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(back, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(40, Short.MAX_VALUE))
+                .addContainerGap(41, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backActionPerformed
-        svem.setVisible(true);
+        sim.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_backActionPerformed
 
-    private void visitorNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_visitorNameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_visitorNameActionPerformed
-
     private void addRecordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addRecordActionPerformed
-        visitorNameFinal = visitorName.getText();
-        unitNoFinal = unitNo.getText();
+        descriptionFinal = description.getText();
         dateInFinal = ((JTextField) dateIn.getDateEditor().getUiComponent()).getText();
         Date time = (Date) timeIn.getValue();
         timeInFinal = formatter.format(time);
-        rves.setVisitorName(visitorNameFinal);
-        rves.setDateIn(dateInFinal);
-        rves.setUnitNo(unitNoFinal);
-        rves.setTimeIn(timeInFinal);
+        sris.setDescription(descriptionFinal);
+        sris.setDateIn(dateInFinal);
+        sris.setTimeIn(timeInFinal);
 
-        if (rved.recordVisitorEntry(rves) == true) {
-            JOptionPane.showMessageDialog(this, "Visitor entry ADDED!");
+        if (srid.securityRecordIncident(sris) == true) {
+            JOptionPane.showMessageDialog(this, "Incident ADDED!");
 
-            svem.setVisible(true);
+            sim.setVisible(true);
             this.setVisible(false);
         } else {
             JOptionPane.showMessageDialog(this, "Please fill up ALL the information.");
@@ -268,8 +239,7 @@ public class securityRecordVisitorEntry extends javax.swing.JFrame {
     }//GEN-LAST:event_addRecordActionPerformed
 
     private void clearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearActionPerformed
-        visitorName.setText(null);
-        unitNo.setText(null);
+        description.setText(null);
         dateIn.setDate(null);
     }//GEN-LAST:event_clearActionPerformed
 
@@ -290,20 +260,20 @@ public class securityRecordVisitorEntry extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(securityRecordVisitorEntry.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(securityRecordIncident.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(securityRecordVisitorEntry.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(securityRecordIncident.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(securityRecordVisitorEntry.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(securityRecordIncident.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(securityRecordVisitorEntry.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(securityRecordIncident.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new securityRecordVisitorEntry().setVisible(true);
+                new securityRecordIncident().setVisible(true);
             }
         });
     }
@@ -313,15 +283,13 @@ public class securityRecordVisitorEntry extends javax.swing.JFrame {
     private javax.swing.JButton back;
     private javax.swing.JButton clear;
     private com.toedter.calendar.JDateChooser dateIn;
+    private javax.swing.JTextArea description;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JSpinner timeIn;
-    private javax.swing.JTextArea unitNo;
-    private javax.swing.JTextField visitorName;
     // End of variables declaration//GEN-END:variables
 }

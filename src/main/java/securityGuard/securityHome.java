@@ -70,6 +70,11 @@ public class securityHome extends javax.swing.JFrame {
         });
 
         jButton6.setText("Record / Update Incident");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
 
         exit.setText("Log Out");
         exit.addActionListener(new java.awt.event.ActionListener() {
@@ -164,7 +169,7 @@ public class securityHome extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        new securityVisitorPass().setVisible(true);
+        new securityVisitorEntryManagement().setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jButton4ActionPerformed
 
@@ -172,6 +177,11 @@ public class securityHome extends javax.swing.JFrame {
         new securityVisitorPass().setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        new securityIncidentManagement().setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_jButton6ActionPerformed
 
     /**
      * @param args the command line arguments

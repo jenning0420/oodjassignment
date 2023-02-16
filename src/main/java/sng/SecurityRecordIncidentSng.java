@@ -8,44 +8,35 @@ package sng;
  *
  * @author User
  */
-public class RecordVisitorEntrySng {
-    private int entryID;
+public class SecurityRecordIncidentSng {
+    private int incidentID;
     private String userID;
-    private String visitorName;
-    private String unitNo;
+    private String description;
     private String dateIn;
     private String timeIn;
 
-    public int getEntryID() {
-        return entryID;
+    public int getIncidentID() {
+        return incidentID;
     }
 
-    public void setEntryID(int entryID) {
-        this.entryID = entryID;
+    public void setIncidentID(int incidentID) {
+        this.incidentID = incidentID;
     }
-    
+
     public String getUserID() {
         return userID;
     }
 
-    public void setUserID(String userID) {
+    public void setUserID (String userID) {
         this.userID = userID;
     }
-
-    public String getVisitorName() {
-        return visitorName;
-    }
-
-    public void setVisitorName(String visitorName) {
-        this.visitorName = visitorName;
-    }
     
-    public String getUnitNo() {
-        return unitNo;
+    public String getDescription() {
+        return description;
     }
 
-    public void setUnitNo(String unitNo) {
-        this.unitNo = unitNo;
+    public void setDescription (String description) {
+        this.description = description;
     }
 
     public String getDateIn() {
@@ -63,5 +54,4 @@ public class RecordVisitorEntrySng {
     public void setTimeIn(String timeIn) {
         this.timeIn = timeIn;
     }
-    
 }

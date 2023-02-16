@@ -8,7 +8,7 @@ package sng;
  *
  * @author User
  */
-public class UpdateVisitorEntrySng {
+public class UpdateIncidentSng {
     private String userID;
     private String userID1;
 
@@ -27,5 +27,4 @@ public class UpdateVisitorEntrySng {
     public void setUserID1(String userID1) {
         this.userID1 = userID1;
     }
-
 }

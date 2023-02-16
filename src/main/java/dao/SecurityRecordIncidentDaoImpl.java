@@ -11,35 +11,35 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
-import sng.RecordVisitorEntrySng;
+import sng.SecurityRecordIncidentSng;
 
 /**
  *
  * @author User
  */
-public class RecordVisitorEntryDaoImpl implements RecordVisitorEntryDao{
-    public boolean recordVisitorEntry(RecordVisitorEntrySng rves) {
+public class SecurityRecordIncidentDaoImpl implements SecurityRecordIncidentDao{
+    public boolean securityRecordIncident(SecurityRecordIncidentSng sris) {
     try {
-        if (!"".equals(rves.getVisitorName()) && !"".equals(rves.getUnitNo()) && !"".equals(rves.getDateIn()) && !"".equals(rves.getTimeIn())){
-            File f = new File("src/textFiles/visitorEntry.txt");
+        if (!"".equals(sris.getDescription()) && !"".equals(sris.getDateIn()) && !"".equals(sris.getTimeIn())){
+            File f = new File("src/textFiles/incident.txt");
             if (!f.exists()) {
                 f.createNewFile();
             }
             BufferedReader br = new BufferedReader(new FileReader(f));
             Object[] Lines = br.lines().toArray();
             int i = 0;
-            int entryid = 0;
+            int incidentid = 0;
             for (i = 1; i < Lines.length; i++) {
                 String line = Lines[i].toString().trim();
                 String[] row = line.split(",");
-                entryid = Integer.parseInt(row[0]);
+                incidentid = Integer.parseInt(row[0]);
 
             }
-            int entryID = entryid + 1;
+            int incidentID = incidentid + 1;
             FileWriter fw = new FileWriter(f, true);
             BufferedWriter bw = new BufferedWriter(fw);
             PrintWriter pw = new PrintWriter(bw);
-            pw.println(entryID + "," + rves.getUserID() + "," + rves.getVisitorName() + "," + rves.getUnitNo() + "," + rves.getDateIn() + "," + rves.getTimeIn() + ",");
+            pw.println(incidentID + "," + sris.getUserID() + "," + sris.getDescription() + "," + sris.getDateIn() + "," + sris.getTimeIn() + ",");
             pw.flush();
             pw.close();
             bw.close();
