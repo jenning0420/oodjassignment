@@ -5,33 +5,79 @@
 package adminexecutive;
 
 import Propmanagement.system.ManageUnitSystem;
+import buildingmanager.buildingModifyAccount;
 import java.awt.BorderLayout;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author Admin
  */
 public class adminExecUnitManageSearch extends javax.swing.JFrame {
-
-    private final ManageUnitSystem Itemsystem;    
+    
     /**
      * Creates new form adminexecunitmanagesearch
      */
     
     public adminExecUnitManageSearch() {
         initComponents();
-        setTitle("Delete Unit");
+        setTitle("Search Unit");
         add(new JLabel("JFrame set to center of the screen", SwingConstants.CENTER), BorderLayout.CENTER);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null); // this method display the JFrame to center position of a screen
         setVisible(true);
-        this.Itemsystem = new ManageUnitSystem();
-        performFileRelatedTask();        
+        search();        
     }
+    
+    private void search(){
+        String filePath = "src/textFiles/unitManage.txt";
+        File file = new File(filePath);
+
+        try {
+            FileReader fr = new FileReader(file);
+            BufferedReader br = new BufferedReader(fr);
+            String line = br.readLine();
+            String[] colHeadings = line.trim().split(",");
+
+            DefaultTableModel model = (DefaultTableModel) propDetails.getModel();
+            model.setColumnIdentifiers(colHeadings);
+            Object[] lines = br.lines().toArray();
+
+            if (model != null) {
+                int row123 = propDetails.getRowCount();
+                for (int n = row123 - 1; n >= 0; n--) {
+                    model.removeRow(n);
+                }
+
+            }
+
+            String searchInfo = searchText.getText().toLowerCase();
+
+            for (int i = 0; i < lines.length; i++) {
+                String[] row = lines[i].toString().split(",");
+                if (row[0].contains(searchInfo) || row[1].contains(searchInfo) || row[2].contains(searchInfo) || row[3].contains(searchInfo)) {
+                    model.addRow(row);
+                }
+
+            }
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(buildingModifyAccount.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(buildingModifyAccount.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -42,174 +88,112 @@ public class adminExecUnitManageSearch extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel4 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        propdetails = new javax.swing.JTextArea();
-        jButton1 = new javax.swing.JButton();
-        oldpropid = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        Search = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        propDetails = new javax.swing.JTable();
+        jLabel1 = new javax.swing.JLabel();
+        searchText = new javax.swing.JTextField();
+        search = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
-        jLabel4.setText("Owner ID");
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setText("Search All Property Units");
 
-        jLabel9.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
-        jLabel9.setText("Property Price");
+        propDetails.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
 
-        propdetails.setEditable(false);
-        propdetails.setColumns(20);
-        propdetails.setRows(5);
-        jScrollPane1.setViewportView(propdetails);
+            },
+            new String [] {
+                "Property ID", "Property Type", "Owner ID", "Property Type"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
 
-        jButton1.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
-        jButton1.setText("Back");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
             }
         });
-
-        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
-        jLabel5.setText("Enter Property ID To Display Details:");
-
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel1.setText("Search Unit");
-
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
-        jLabel2.setText("Property ID");
-
-        Search.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
-        Search.setText("Search");
-        Search.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SearchActionPerformed(evt);
+        propDetails.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                propDetailsMouseClicked(evt);
             }
         });
+        jScrollPane2.setViewportView(propDetails);
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
-        jLabel3.setText("Property Type");
+        jLabel1.setText("Search by Property ID:");
+
+        search.setText("Search");
+        search.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(23, 23, 23)
-                        .addComponent(jLabel2)
-                        .addGap(38, 38, 38)
-                        .addComponent(jLabel3)
-                        .addGap(30, 30, 30)
-                        .addComponent(jLabel4)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel1)))
-                .addGap(19, 19, 19)
-                .addComponent(jLabel9)
-                .addGap(80, 80, 80))
-            .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(93, 93, 93)
-                        .addComponent(jLabel5)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(oldpropid, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 446, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addGap(72, 72, 72)
-                .addComponent(Search)
-                .addGap(104, 104, 104))
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 873, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(118, 118, 118)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 648, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(227, 227, 227)
+                        .addComponent(jLabel1)
+                        .addGap(18, 18, 18)
+                        .addComponent(searchText, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(31, 31, 31)
+                        .addComponent(search)))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
-                .addGap(18, 18, 18)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(32, 32, 32)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel9))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(oldpropid, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, 22, Short.MAX_VALUE))
-                .addGap(50, 50, 50)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(Search))
-                .addGap(57, 57, 57))
+                    .addComponent(jLabel1)
+                    .addComponent(searchText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(search))
+                .addGap(42, 42, 42)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 414, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(40, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        adminExecUnitManage adminexecunitmanage = new adminExecUnitManage();
-        adminexecunitmanage.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void propDetailsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_propDetailsMouseClicked
+        DefaultTableModel model = (DefaultTableModel) propDetails.getModel();
+        int selectedInfo = propDetails.getSelectedRow();
 
-    private void SearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SearchActionPerformed
-        String srcPID = oldpropid.getText();
+        //        userID.setText(model.getValueAt(selectedInfo, 0).toString());
+        //        Username.setText(model.getValueAt(selectedInfo, 1).toString());
+        //        Name.setText(model.getValueAt(selectedInfo, 2).toString());
+        //        ContactNumber.setText(model.getValueAt(selectedInfo, 3).toString());
+        //        Gender.setSelectedItem(model.getValueAt(selectedInfo, 4).toString());
+        //        Password.setText(model.getValueAt(selectedInfo, 5).toString());
+    }//GEN-LAST:event_propDetailsMouseClicked
 
-        if (srcPID.isEmpty()) {
-            oldpropid.setText("");
-            JOptionPane.showMessageDialog(this, "Please enter a valid name to delete");
-            return;
-        }
+    private void searchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchActionPerformed
+        search();
+        //        JTable userTable = new JTable();
+        //        JTextField searchText = new JTextField();
+        //        DefaultTableModel model = new DefaultTableModel();
+        //        String file = "src/textFiles/accountLogin.txt";
+        //        search((DefaultTableModel) userTable.getModel(), userTable, searchText);
+        //
+    }//GEN-LAST:event_searchActionPerformed
 
-        boolean isSearched = Itemsystem.search(srcPID);
-
-        if (!isSearched) {
-            oldpropid.setText("");
-            JOptionPane.showMessageDialog(this, "No Item has been found");
-            return;
-        }
-
-
-        // Reset the deleted text field
-        oldpropid.setText("");
-
-        // Reinitilize the form with updated data
-        performFileRelatedTask();
-    }//GEN-LAST:event_SearchActionPerformed
-    private void performFileRelatedTask() {
-        StringBuilder fullnames = new StringBuilder();
-
-        Itemsystem.getAll().forEach((item) -> {
-            fullnames
-                    .append("          ")
-                    .append(item.getPID())
-                    .append("\t")
-                    .append("          ")
-                    .append(item.getPUnitNo())
-                    .append("\t")
-                    .append("          ")
-                    .append(item.getPType())
-                    .append("               ")
-                    .append(item.getPPrice())
-                    .append("\n");
-        });
-
-        propdetails.setText(fullnames.toString());
-    }
     
     /**
      * @param args the command line arguments
@@ -248,16 +232,11 @@ public class adminExecUnitManageSearch extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton Search;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel9;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField oldpropid;
-    private javax.swing.JTextArea propdetails;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTable propDetails;
+    private javax.swing.JButton search;
+    private javax.swing.JTextField searchText;
     // End of variables declaration//GEN-END:variables
 }
