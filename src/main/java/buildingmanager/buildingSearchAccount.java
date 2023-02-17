@@ -26,37 +26,14 @@ public class buildingSearchAccount extends javax.swing.JFrame {
      */
     public buildingSearchAccount() {
         initComponents();
-        search();
-//        search((DefaultTableModel) userTable.getModel(), userTable, searchText);
 
-//        String filePath = "src/textFiles/accountLogin.txt";
-//        File file = new File(filePath);
-//        
-//
-//        try {
-//            FileReader fr = new FileReader(file);
-//            BufferedReader br = new BufferedReader(fr);
-//            String line = br.readLine();
-//            String[] colHeadings = line.trim().split(",");
-//
-//            DefaultTableModel model = (DefaultTableModel) userTable.getModel();
-//            model.setColumnIdentifiers(colHeadings);
-//            Object[] lines = br.lines().toArray();
-//
-//            for (int i = 0; i < lines.length; i++) {
-//                String[] row = lines[i].toString().split(",");
-//                model.addRow(row);
-//            }
-//        } catch (FileNotFoundException ex) {
-//            Logger.getLogger(buildingModifyAccount.class.getName()).log(Level.SEVERE, null, ex);
-//        } catch (IOException ex) {
-//            Logger.getLogger(buildingModifyAccount.class.getName()).log(Level.SEVERE, null, ex);
-//        }
+        search();
+
+
     }
 
-//    private void search(DefaultTableModel par, JTable userTable1, JTextField searchText1) {
-        private void search(){
-        String filePath = "src/textFiles/accountLogin.txt";
+    public void search() {
+        String filePath = "src/textFiles/adminLogin.txt";
         File file = new File(filePath);
 
         try {
@@ -64,7 +41,7 @@ public class buildingSearchAccount extends javax.swing.JFrame {
             BufferedReader br = new BufferedReader(fr);
             String line = br.readLine();
             String[] colHeadings = line.trim().split(",");
-
+            
             DefaultTableModel model = (DefaultTableModel) userTable.getModel();
             model.setColumnIdentifiers(colHeadings);
             Object[] lines = br.lines().toArray();
@@ -193,7 +170,10 @@ public class buildingSearchAccount extends javax.swing.JFrame {
 
 //    dao.searchDao search = new dao.searchDao();
     private void searchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchActionPerformed
+//        String filePath = searchUser.getFile();
+//        String filePath = "src/textFiles/adminLogin.txt";
         search();
+
 //        JTable userTable = new JTable();
 //        JTextField searchText = new JTextField();
 //        DefaultTableModel model = new DefaultTableModel();

@@ -183,31 +183,34 @@
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="280" y="130" width="230" height="190"/>
+          <AbsoluteConstraints x="280" y="130" width="-1" height="210"/>
         </Constraint>
       </Constraints>
 
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace max="-2" attributes="0"/>
+              <Group type="102" attributes="0">
+                  <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="modifyAdminAccount" min="-2" pref="183" max="-2" attributes="0"/>
                       <Component id="addAdminAccount" alignment="0" min="-2" pref="183" max="-2" attributes="0"/>
-                      <Component id="modifyAdminAccount" alignment="0" min="-2" pref="183" max="-2" attributes="0"/>
+                      <Component id="addAdminAccount2" alignment="0" min="-2" pref="183" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="23" max="32767" attributes="0"/>
+                  <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
+                  <Component id="addAdminAccount2" min="-2" pref="40" max="-2" attributes="0"/>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="addAdminAccount" min="-2" pref="40" max="-2" attributes="0"/>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="modifyAdminAccount" min="-2" pref="43" max="-2" attributes="0"/>
-                  <EmptySpace pref="33" max="32767" attributes="0"/>
+                  <EmptySpace pref="22" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -223,10 +226,18 @@
         </Component>
         <Component class="javax.swing.JButton" name="modifyAdminAccount">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Search &amp; Modify Account"/>
+            <Property name="text" type="java.lang.String" value="Modify Account"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="modifyAdminAccountActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="addAdminAccount2">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Search &amp; View Account"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="addAdminAccount2ActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>

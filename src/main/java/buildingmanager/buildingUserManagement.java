@@ -4,6 +4,7 @@
  */
 package buildingmanager;
 
+
 /**
  *
  * @author User
@@ -38,6 +39,7 @@ public class buildingUserManagement extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         addAdminAccount = new javax.swing.JButton();
         modifyAdminAccount = new javax.swing.JButton();
+        addAdminAccount2 = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
         addBuildingAccount = new javax.swing.JButton();
         modifyBuildingAccount = new javax.swing.JButton();
@@ -144,10 +146,17 @@ public class buildingUserManagement extends javax.swing.JFrame {
             }
         });
 
-        modifyAdminAccount.setText("Search & Modify Account");
+        modifyAdminAccount.setText("Modify Account");
         modifyAdminAccount.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 modifyAdminAccountActionPerformed(evt);
+            }
+        });
+
+        addAdminAccount2.setText("Search & View Account");
+        addAdminAccount2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addAdminAccount2ActionPerformed(evt);
             }
         });
 
@@ -156,23 +165,26 @@ public class buildingUserManagement extends javax.swing.JFrame {
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(15, 15, 15)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(modifyAdminAccount, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(addAdminAccount, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(modifyAdminAccount, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(23, Short.MAX_VALUE))
+                    .addComponent(addAdminAccount2, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(15, 15, 15))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(32, 32, 32)
+                .addGap(15, 15, 15)
+                .addComponent(addAdminAccount2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(addAdminAccount, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(modifyAdminAccount, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(33, Short.MAX_VALUE))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
 
-        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 130, 230, 190));
+        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 130, -1, 210));
 
         jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder("Building Executive"));
 
@@ -229,6 +241,7 @@ public class buildingUserManagement extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_modifyAccAccountActionPerformed
 
+
     private void modifyAdminAccountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modifyAdminAccountActionPerformed
         new buildingModifyAdmin().setVisible(true);
         this.setVisible(false);
@@ -239,8 +252,9 @@ public class buildingUserManagement extends javax.swing.JFrame {
     }//GEN-LAST:event_modifyAdminAccount1ActionPerformed
 
     private void modifyBuildingAccountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modifyBuildingAccountActionPerformed
-        new buildingModifyBuilding().setVisible(true);
-        this.setVisible(false);
+//        new buildingModifyBuilding().setVisible(true);
+//        this.setVisible(false);
+
     }//GEN-LAST:event_modifyBuildingAccountActionPerformed
 
     private void addAccAccountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addAccAccountActionPerformed
@@ -262,6 +276,11 @@ public class buildingUserManagement extends javax.swing.JFrame {
         new buildingHome().setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_backActionPerformed
+
+    private void addAdminAccount2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addAdminAccount2ActionPerformed
+        new buildingSearchAccount().setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_addAdminAccount2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -302,6 +321,7 @@ public class buildingUserManagement extends javax.swing.JFrame {
     private javax.swing.JButton addAccAccount;
     private javax.swing.JButton addAdminAccount;
     private javax.swing.JButton addAdminAccount1;
+    private javax.swing.JButton addAdminAccount2;
     private javax.swing.JButton addBuildingAccount;
     private javax.swing.JButton back;
     private javax.swing.JFrame jFrame1;
