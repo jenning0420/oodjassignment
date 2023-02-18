@@ -40,7 +40,7 @@ public class accexecmainpage extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
         jLabel1.setText("Account Executive Page");
 
-        jButton1.setText("Issue Statements");
+        jButton1.setText("Issue invoice");
 
         jButton2.setText("Access Payments");
 
