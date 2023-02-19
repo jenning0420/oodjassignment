@@ -15,6 +15,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 import sng.GenerateInvoiceSng;
@@ -26,7 +27,9 @@ import sng.GenerateInvoiceSng;
 public class accInvoiceResident extends javax.swing.JFrame {
 
     GenerateInvoiceSng gis = new GenerateInvoiceSng();
-    GenerateInvoiceDao gid = new GenerateInvoiceDaoImpl() {};
+    GenerateInvoiceDao gid = new GenerateInvoiceDaoImpl();
+    accInvoiceManagement aim = new accInvoiceManagement();
+    
 
     /**
      * Creates new form accInvoiceResident
@@ -373,17 +376,17 @@ public class accInvoiceResident extends javax.swing.JFrame {
         unitNoFinal = unitNo.getText();
         paymentTypeFinal = (String) paymentType.getSelectedItem();
         amountFinal = amount.getText();
-        Date time = (Date) paymentDue.getValue();
+        paymentDueFinal = ((JTextField) paymentDue.getDateEditor().getUiComponent()).getText();
 
         gis.setUnitNo(unitNoFinal);
         gis.setPaymentType(paymentTypeFinal);
         gis.setAmount(amountFinal);
         gis.setPaymentDue(paymentDueFinal);
 
-        if (srid.securityRecordIncident(sris) == true) {
-            JOptionPane.showMessageDialog(this, "Incident ADDED!");
+        if (gid.generateInvoice(gis) == true) {
+            JOptionPane.showMessageDialog(this, "Invoice GENERATED!");
 
-            sim.setVisible(true);
+            aim.setVisible(true);
             this.setVisible(false);
         } else {
             JOptionPane.showMessageDialog(this, "Please fill up ALL the information.");
