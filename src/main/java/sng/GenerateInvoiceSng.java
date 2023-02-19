@@ -10,18 +10,27 @@ package sng;
  */
 public class GenerateInvoiceSng {
 
-    private int userId;
+    private int invoiceID;
+    private String userID;
     private String unitNo;
     private String paymentType;
     private String amount;
     private String paymentDue;
-
-    public int getUserId() {
-        return userId;
+    
+    public int getInvoiceID() {
+        return invoiceID;
     }
 
-    public void setUserId(int userId) {
-        this.userId = userId;
+    public void setInvoiceID(int invoiceID) {
+        this.invoiceID = invoiceID;
+    }
+
+    public String getUserID() {
+        return userID;
+    }
+
+    public void setUserID(String userID) {
+        this.userID = userID;
     }
 
     public String getUnitNo() {

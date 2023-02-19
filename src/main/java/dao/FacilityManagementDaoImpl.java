@@ -11,40 +11,40 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
-import sng.GenerateInvoiceSng;
+import sng.FacilityManagementSng;
 
 /**
  *
  * @author User
  */
-public class GenerateInvoiceDaoImpl implements GenerateInvoiceDao {
-    public boolean generateInvoice(GenerateInvoiceSng gis) {
+public class FacilityManagementDaoImpl implements FacilityManagementDao{
+        public boolean facilityManagement(FacilityManagementSng fms) {
         try {
-            if (!"".equals(gis.getUserID()) && !"".equals(gis.getUnitNo()) && !"".equals(gis.getPaymentType()) && !"".equals(gis.getAmount())  && !"".equals(gis.getPaymentDue())) {
-                File f = new File("src/textFiles/invoice.txt");
+            if (!"".equals(fms.getFacility()) && !"".equals(fms.getEquipment()) && !"".equals(fms.getQuantity()) && !"".equals(fms.getCondition())){
+                File f = new File("src/textFiles/facility.txt");
                 if (!f.exists()) {
                     f.createNewFile();
                 }
                 BufferedReader br = new BufferedReader(new FileReader(f));
                 Object[] Lines = br.lines().toArray();
                 int i = 0;
-                int invoiceid = 0;
+                //int facilityid = 0;
                 for (i = 1; i < Lines.length; i++) {
                     String line = Lines[i].toString().trim();
                     String[] row = line.split(",");
-                    invoiceid = Integer.parseInt(row[0]);
+                    //facilityid = Integer.parseInt(row[0]);
 
                 }
-                int invoiceID = invoiceid + 1;
+                //int facilityID = facilityid + 1;
                 FileWriter fw = new FileWriter(f, true);
                 BufferedWriter bw = new BufferedWriter(fw);
                 PrintWriter pw = new PrintWriter(bw);
-                pw.println(invoiceID + "," + gis.getUserID() + "," + gis.getUnitNo() + "," + gis.getPaymentType() + "," + gis.getAmount() + "," + gis.getPaymentDue());
+                pw.println(fms.getFacility() + "," + fms.getEquipment() + "," + fms.getQuantity() + "," + fms.getCondition() + ",");
                 pw.flush();
                 pw.close();
                 bw.close();
                 return true;
-            } else {
+            } else{
                 return false;
             }
 

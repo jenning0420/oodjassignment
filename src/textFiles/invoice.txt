@@ -1,1 +1,4 @@
-invoiceID,userID,Unit No,Payment Type,Amount,Payment Due,
+invoiceID,userID,Unit No,Payment Type,Amount(RM),Payment Due,
+1,4,A0101,Services,540,17-02-2023
+2,2,wd,Services,348,24-02-2023
+3,202,B0201,Utility,212,28-02-2023
