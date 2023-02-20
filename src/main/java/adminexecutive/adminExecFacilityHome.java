@@ -87,8 +87,18 @@ public class adminExecFacilityHome extends javax.swing.JFrame {
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("Facility Booking Management"));
 
         bookingAddView.setText("Add / View");
+        bookingAddView.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bookingAddViewActionPerformed(evt);
+            }
+        });
 
         bookingUpdDel.setText("Update / Delete");
+        bookingUpdDel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bookingUpdDelActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -154,9 +164,19 @@ public class adminExecFacilityHome extends javax.swing.JFrame {
     }//GEN-LAST:event_facilityUpdDelActionPerformed
 
     private void backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backActionPerformed
-        new adminExecFacilityHome().setVisible(true);
+        new adminexecmainpage().setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_backActionPerformed
+
+    private void bookingAddViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bookingAddViewActionPerformed
+        new adminAddViewFaciBookMngm().setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_bookingAddViewActionPerformed
+
+    private void bookingUpdDelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bookingUpdDelActionPerformed
+        new adminUptDelFaciBookMngm().setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_bookingUpdDelActionPerformed
 
     /**
      * @param args the command line arguments

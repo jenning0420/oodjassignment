@@ -164,11 +164,17 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Add / View"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bookingAddViewActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="bookingUpdDel">
           <Properties>
             <Property name="text" type="java.lang.String" value="Update / Delete"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bookingUpdDelActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>

@@ -205,7 +205,7 @@ public class residentHome extends javax.swing.JFrame {
     }//GEN-LAST:event_residentVisitorPassActionPerformed
 
     private void residentFacilityBookingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_residentFacilityBookingActionPerformed
-        new residentFacilityBooking().setVisible(true);
+        new residentFaciBookHome().setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_residentFacilityBookingActionPerformed
 
