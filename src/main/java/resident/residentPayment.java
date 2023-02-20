@@ -2,10 +2,27 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package resident;
 
+package resident;
+//import Propmanagement.function.ResidentPayment;
+//import Propmanagement.function.Unit;
+//import Propmanagement.function.getInvoiceID;
+//import Propmanagement.system.ManageUnitSystem;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.PrintWriter;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -18,6 +35,7 @@ public class residentPayment extends javax.swing.JFrame {
      */
     public residentPayment() {
         initComponents();
+
     }
 
     /**
@@ -30,123 +48,350 @@ public class residentPayment extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        CustPayBut = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
+        search = new javax.swing.JButton();
+        unitno = new javax.swing.JTextField();
+        jSeparator1 = new javax.swing.JSeparator();
         jLabel3 = new javax.swing.JLabel();
-        PropID = new javax.swing.JTextField();
-        PropAmount = new javax.swing.JTextField();
-        CustPayBut1 = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        Pay = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
+        finalamount = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        totalamount = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        disUnitNo = new javax.swing.JTextField();
+        disPaymentType = new javax.swing.JTextField();
+        disDueDate = new javax.swing.JTextField();
+        disInvoiceID = new javax.swing.JTextField();
+        disUserID = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setText("Resident Payment Page");
 
-        CustPayBut.setText("Make Payment");
-        CustPayBut.addActionListener(new java.awt.event.ActionListener() {
+        jLabel2.setText("Please enter your Unit Number:");
+
+        search.setText("Search");
+        search.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CustPayButActionPerformed(evt);
+                searchActionPerformed(evt);
             }
         });
 
-        jLabel2.setText("Enter Property ID :");
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel3.setText("Below shows all your pending payment that needed to be payed");
 
-        jLabel3.setText("Enter Amount to Pay :");
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
 
-        PropID.addActionListener(new java.awt.event.ActionListener() {
+            },
+            new String [] {
+                "Unit No", "Payment Type", "Amount (RM)", "Due Date"
+            }
+        ));
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
+            }
+        });
+        jScrollPane2.setViewportView(jTable1);
+
+        Pay.setText("Pay");
+        Pay.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                PropIDActionPerformed(evt);
+                PayActionPerformed(evt);
             }
         });
 
-        PropAmount.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                PropAmountActionPerformed(evt);
-            }
-        });
+        jLabel4.setText("Please enter the payable amount:");
 
-        CustPayBut1.setText("Back ");
-        CustPayBut1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CustPayBut1ActionPerformed(evt);
-            }
-        });
+        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel5.setText("Please select the row that you want to pay below");
+
+        jLabel6.setText("Total amount selected:");
+
+        jLabel8.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel8.setText("Please confirm your selected information below");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jSeparator1)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(search)
+                .addGap(248, 248, 248))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(102, 102, 102)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(76, 76, 76)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel3))
-                        .addGap(18, 18, 18)
+                        .addContainerGap()
+                        .addComponent(disInvoiceID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(42, 42, 42)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(PropID)
-                            .addComponent(PropAmount))))
-                .addGap(107, 107, 107))
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(137, 137, 137)
+                                .addComponent(Pay)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(disUserID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(jLabel4)
+                                    .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(31, 31, 31)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(finalamount, javax.swing.GroupLayout.DEFAULT_SIZE, 214, Short.MAX_VALUE)
+                                    .addComponent(totalamount)))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(150, 150, 150)
-                        .addComponent(CustPayBut))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(91, 91, 91)
+                                .addComponent(jLabel3))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(189, 189, 189)
+                                .addComponent(jLabel1))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(149, 149, 149)
+                                .addComponent(jLabel2)
+                                .addGap(18, 18, 18)
+                                .addComponent(unitno, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(133, 133, 133)
+                                .addComponent(jLabel5))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(22, 22, 22)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 541, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel7)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(155, 155, 155)
+                                .addComponent(jLabel8)))
+                        .addGap(0, 18, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(168, 168, 168)
-                        .addComponent(CustPayBut1)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(51, 51, 51)
+                        .addComponent(disUnitNo, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(55, 55, 55)
+                        .addComponent(disPaymentType, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(disDueDate, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(39, 39, 39)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addGap(60, 60, 60)
+                .addGap(35, 35, 35)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(PropID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(unitno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(27, 27, 27)
+                .addComponent(search)
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(PropAmount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(56, 56, 56)
-                .addComponent(CustPayBut)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(CustPayBut1)
-                .addContainerGap(45, Short.MAX_VALUE))
+                .addComponent(jLabel3)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel5)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel8)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel7)
+                .addGap(59, 59, 59)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(disUnitNo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(disPaymentType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(disDueDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 63, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel6)
+                            .addComponent(totalamount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel4)
+                            .addComponent(finalamount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(17, 17, 17)
+                        .addComponent(Pay)
+                        .addGap(18, 18, 18))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(disUserID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(disInvoiceID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap())))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void CustPayButActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CustPayButActionPerformed
-        double propid = Double.parseDouble(PropID.getText());
-        double propamount = Double.parseDouble(PropAmount.getText());
+    private void searchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchActionPerformed
+        File file = new File("src/textFiles/invoice.txt");
+        try {
+            BufferedReader br = new BufferedReader(new FileReader(file));
+            String line = br.readLine();
+            String[] colHeadings = line.trim().split(",");
 
-        if (propamount >= 1) {
-            JOptionPane.showMessageDialog(this, "Payment Successful !");
-        } else {
-            JOptionPane.showMessageDialog(this, "Payment Failed !");
+            DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+            model.setColumnIdentifiers(colHeadings);
+
+            Object[] dataRows = br.lines().toArray(); //it will read all the lines in the file in array
+            System.out.println("No of records : " + dataRows.length);
+            for (int i = 0; i < dataRows.length; i++) {
+                String rec = (dataRows[i].toString());
+                String[] dataRow = rec.split(",");
+                model.addRow(dataRow);
+            }
+            br.close();
+        } catch (Exception ex) {
+            Logger.getLogger(residentPayment.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }//GEN-LAST:event_CustPayButActionPerformed
 
-    private void PropIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PropIDActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_PropIDActionPerformed
+        JTable table;
+        ArrayList<String[]> rows;
+        rows = new ArrayList<>();
+//        File file = new File("src/textFiles/residentpayment.txt");
 
-    private void PropAmountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PropAmountActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_PropAmountActionPerformed
+        try {
+            BufferedReader br = new BufferedReader(new FileReader(file));
+            String line;
+            while ((line = br.readLine()) != null) {
+                String[] colHeadings = line.trim().split(",");
+                rows.add(colHeadings);
 
-    private void CustPayBut1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CustPayBut1ActionPerformed
-        new residentHome().setVisible(true);
-        this.setVisible(false);
-    }//GEN-LAST:event_CustPayBut1ActionPerformed
+                DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+
+                for (String[] rowData : rows) {
+                    model.addRow(rowData);
+                }
+                table = new JTable(model);
+            }
+
+            String searchTerm = unitno.getText();
+            DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+            model.setRowCount(0);
+            for (String[] rowData : rows) {
+                if (rowData[0].contains(searchTerm) || rowData[1].contains(searchTerm) || rowData[2].contains(searchTerm) || rowData[3].contains(searchTerm)) {
+                    model.addRow(rowData);
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_searchActionPerformed
+
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        int selectedRowIndex = jTable1.getSelectedRow();
+
+        disInvoiceID.setText(model.getValueAt(selectedRowIndex, 0).toString());
+        disUserID.setText(model.getValueAt(selectedRowIndex, 1).toString());
+        disUnitNo.setText(model.getValueAt(selectedRowIndex, 2).toString());
+        disPaymentType.setText(model.getValueAt(selectedRowIndex, 3).toString());
+        totalamount.setText(model.getValueAt(selectedRowIndex, 4).toString());
+        disDueDate.setText(model.getValueAt(selectedRowIndex, 5).toString());
+    }//GEN-LAST:event_jTable1MouseClicked
+
+    private void PayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PayActionPerformed
+//        String srcUnitNo = unitno.getText();
+//        String TotalAmount = totalamount.getText();
+//        String FinalAmont = finalamount.getText();
+
+        double money = 0;
+        money = Double.parseDouble(finalamount.getText());
+
+        if (money < Double.parseDouble(totalamount.getText())) {
+            JOptionPane.showMessageDialog(null, "Sorry, You Didn't Have Enough Money To Pay !!!");
+        } else if (money == 0) {
+            JOptionPane.showMessageDialog(null, "You Have Already Pay !!!");
+        } else if (money > Double.parseDouble(totalamount.getText())) {
+            JOptionPane.showMessageDialog(null, "Please Pay The Correct Amount !!!");
+        } else {
+            money = money - Double.parseDouble(totalamount.getText());
+
+            String filepath = "src/textFiles/invoice.txt";
+            String invoiceid = disInvoiceID.getText();
+            String userid = disUserID.getText();
+            String unitno = disUnitNo.getText();
+            String paymenttype = disPaymentType.getText();
+            String amount = totalamount.getText();
+            String duedate = disDueDate.getText();
+
+            JOptionPane.showMessageDialog(null, "Thank you and have a nice day");
+
+            Date date = new Date();
+            SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+            String current_date = formatter.format(date);
+
+            try {
+                FileWriter writer = new FileWriter("src/textFiles/payment_receipt.txt", true);
+                writer.write("" + invoiceid + ":" + userid + ":" + unitno + ":" + paymenttype + ":" + amount + ":" + current_date + "\n");
+                writer.close();
+                JOptionPane.showMessageDialog(null, "Receipt has been generated & saved into payment_receipt.txt");
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "Error...");
+            }
+
+            String tempFile = "src/textFiles/invoicetemp.txt";
+            File oldFile = new File(filepath);
+            File newFile = new File(tempFile);
+            String field = "";
+            String InvoiceID = "";
+            String UserID = "";
+            String UnitNo = "";
+            String PaymentType = "";
+            String Amount = "";
+            String DueDate = "";
+
+            try {
+                FileWriter rd = new FileWriter(tempFile, false);
+                BufferedWriter bw = new BufferedWriter(rd);
+                PrintWriter pw = new PrintWriter(bw);
+                Scanner x = new Scanner(new File(filepath));
+                x.useDelimiter("[,\n]");
+
+                while (x.hasNext()) {
+                    InvoiceID = x.next();
+                    UserID = x.next();
+                    UnitNo = x.next();
+                    PaymentType = x.next();
+                    Amount = x.next();
+                    DueDate = x.next();
+
+                    if (invoiceid.equals(InvoiceID)) {
+                        pw.println(invoiceid + "," + UserID + "," + UnitNo + "," + PaymentType + "," + money + "," + DueDate);
+                    } else {
+                        pw.println(InvoiceID + "," + UserID + "," + UnitNo + "," + PaymentType + "," + Amount + "," + DueDate);
+                    }
+                }
+                x.close();
+                pw.flush();
+                pw.close();
+                Scanner y = new Scanner(new File(tempFile));
+                FileWriter fw = new FileWriter(filepath, false);
+                BufferedWriter bb = new BufferedWriter(fw);
+                PrintWriter pp = new PrintWriter(bb);
+
+                while (y.hasNext()) {
+                    pp.println(y.next());
+                }
+                y.close();
+                pp.flush();
+                pp.close();
+
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "Error...");
+            }
+        }
+    }//GEN-LAST:event_PayActionPerformed
 
     /**
      * @param args the command line arguments
@@ -184,12 +429,26 @@ public class residentPayment extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton CustPayBut;
-    private javax.swing.JButton CustPayBut1;
-    private javax.swing.JTextField PropAmount;
-    private javax.swing.JTextField PropID;
+    private javax.swing.JButton Pay;
+    private javax.swing.JTextField disDueDate;
+    private javax.swing.JTextField disInvoiceID;
+    private javax.swing.JTextField disPaymentType;
+    private javax.swing.JTextField disUnitNo;
+    private javax.swing.JTextField disUserID;
+    private javax.swing.JTextField finalamount;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JTable jTable1;
+    private javax.swing.JButton search;
+    private javax.swing.JTextField totalamount;
+    private javax.swing.JTextField unitno;
     // End of variables declaration//GEN-END:variables
 }
