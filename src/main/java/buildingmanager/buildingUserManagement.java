@@ -11,6 +11,7 @@ package buildingmanager;
  */
 public class buildingUserManagement extends javax.swing.JFrame {
 
+    
     /**
      * Creates new form buildingUserManagement
      */

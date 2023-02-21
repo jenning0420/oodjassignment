@@ -75,7 +75,7 @@ public class employeeViewJob extends javax.swing.JFrame {
                 String[] row = lines[i].toString().split(",");
                 evj.setUserID(row[1]);
                 evj.setStatus(row[7]);
-                if (evj.getUserID().equals(evj.getUserID1()) && evj.getStatus().equals("On-Going") || evj.getStatus().equals("Upcoming")) {
+                if (evj.getUserID().equals(evj.getUserID1()) && (evj.getStatus().equals("On-Going") || evj.getStatus().equals("Upcoming"))) {
                     model.addRow(row);
                 }
 

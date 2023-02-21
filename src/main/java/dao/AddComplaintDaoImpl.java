@@ -17,8 +17,9 @@ import sng.AddComplaintSng;
  *
  * @author User
  */
-public class AddComplaintDaoImpl implements AddComplaintDao{
-    public boolean addComplaint(AddComplaintSng acs) {
+public class AddComplaintDaoImpl implements ObjectDao<AddComplaintSng>{
+    @Override
+    public boolean add(AddComplaintSng acs) {
         try {
             if (!"".equals(acs.getCompTitle()) && !"".equals(acs.getCompDate()) && !"".equals(acs.getCompDetails()) && !"".equals(acs.getSuggestion())) {
                 File f = new File("src/textFiles/complaint.txt");

@@ -5,7 +5,6 @@
 package buildingmanager;
 
 import dao.AddUserDao;
-import dao.AddUserDaoImpl;
 import javax.swing.JOptionPane;
 import sng.AddUserSng;
 
@@ -35,7 +34,7 @@ public class buildingAddAdmin extends javax.swing.JFrame {
         aus.setPassword(Passwordfinal);
         aus.setTextFile("src/textFiles/adminLogin.txt");
 
-        if (aud.addUser(aus) == true) {
+        if (aud.add(aus) == true) {
             JOptionPane.showMessageDialog(this, "Admin Executive account added SUCCESSFULLY.");
 
             bum.setVisible(true);
@@ -222,7 +221,7 @@ public class buildingAddAdmin extends javax.swing.JFrame {
     String Genderfinal;
     String Passwordfinal;
     AddUserSng aus = new AddUserSng();
-    AddUserDao aud = new AddUserDaoImpl();
+    AddUserDao aud = new AddUserDao();
     buildingUserManagement bum = new buildingUserManagement();
 
     private void addUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addUserActionPerformed

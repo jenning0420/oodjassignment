@@ -26,7 +26,7 @@ public class vendorLogComplaint extends javax.swing.JFrame {
     String complainant = "Vendor";
     String status = "Pending";
     AddComplaintSng acs = new AddComplaintSng();
-    AddComplaintDao acd = new AddComplaintDaoImpl();
+    AddComplaintDao acd = new AddComplaintDao();
     vendorComplaintManagement vcm = new vendorComplaintManagement();
     /**
      * Creates new form vendorLogComplaint
@@ -234,7 +234,7 @@ public class vendorLogComplaint extends javax.swing.JFrame {
         acs.setStatus(status);
         acs.setComplainant(complainant);
 
-        if (acd.addComplaint(acs) == true) {
+        if (acd.add(acs) == true) {
             JOptionPane.showMessageDialog(this, "Complaint logged SUCCESSFULLY.");
 
             vcm.setVisible(true);

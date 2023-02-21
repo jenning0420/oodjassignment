@@ -26,7 +26,7 @@ public class residentLogComplaint extends javax.swing.JFrame {
     String complainant = "Resident";
     String status = "Pending";
     AddComplaintSng acs = new AddComplaintSng();
-    AddComplaintDao acd = new AddComplaintDaoImpl();
+    AddComplaintDao acd = new AddComplaintDao();
     residentComplaintManagement rcm = new residentComplaintManagement();
 
     /**
@@ -235,7 +235,7 @@ public class residentLogComplaint extends javax.swing.JFrame {
         acs.setStatus(status);
         acs.setComplainant(complainant);
 
-        if (acd.addComplaint(acs) == true) {
+        if (acd.add(acs) == true) {
             JOptionPane.showMessageDialog(this, "Complaint logged SUCCESSFULLY.");
 
             rcm.setVisible(true);

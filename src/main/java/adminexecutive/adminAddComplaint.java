@@ -30,7 +30,7 @@ public class adminAddComplaint extends javax.swing.JFrame {
     String complainant = "Admin";
     String status = "Pending";
     AddComplaintSng acs = new AddComplaintSng();
-    AddComplaintDao acd = new AddComplaintDaoImpl();
+    AddComplaintDao acd = new AddComplaintDao();
     adminComplaintManagement acm = new adminComplaintManagement();
 
     /**
@@ -240,7 +240,7 @@ public class adminAddComplaint extends javax.swing.JFrame {
         acs.setStatus(status);
         acs.setComplainant(complainant);
 
-        if (acd.addComplaint(acs) == true) {
+        if (acd.add(acs) == true) {
             JOptionPane.showMessageDialog(this, "Complaint added SUCCESSFULLY.");
 
             acm.setVisible(true);
