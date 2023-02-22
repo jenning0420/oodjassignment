@@ -1,5 +1,5 @@
 invoiceID,userID,Unit_No,Payment_Type,Amount(RM),Payment_Due
-1,4,A0101,Services,540,17-02-2023
-2,2,wd,Services,0.0,24-02-2023
-3,202,B0201,Utility,0.0,28-02-2023
-4,1,B-LOL,Rental,0.0,21-02-2023
+1,4,A0101,Services,1,17-02-2023
+2,2,wd,Services,2001,24-02-2023
+3,202,B0201,Utility,5000,28-02-2023
+4,4,A1,Rental,0.0,04-02-2023
