@@ -1,3 +1,4 @@
-Property ID,Unit No,Property Type,Price
-2006,A-LOL,Penthouse,10.0
-1009,D-LOL,Penthouse,50000.0
+PropertyID,PropertyType,OwnerID,PropertyPrice
+2001,B-LOL,Studio,10000.0
+2002,C-LOL,Penthouse,50000.0
+2003,D-LOL,Penthouse,10000.0

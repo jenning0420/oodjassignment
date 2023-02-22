@@ -72,9 +72,9 @@ public class adminExecUnitManageSearch extends javax.swing.JFrame {
 
             }
         } catch (FileNotFoundException ex) {
-            Logger.getLogger(buildingModifyAccount.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(adminExecUnitManageSearch.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
-            Logger.getLogger(buildingModifyAccount.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(adminExecUnitManageSearch .class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     
@@ -106,7 +106,7 @@ public class adminExecUnitManageSearch extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Property ID", "Property Type", "Owner ID", "Property Type"
+                "Property ID", "Property Type", "Owner ID", "Property Price"
             }
         ) {
             boolean[] canEdit = new boolean [] {

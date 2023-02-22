@@ -5,10 +5,19 @@
 package adminexecutive;
 
 import Propmanagement.system.ManageUnitSystem;
+import buildingmanager.buildingModifyAccount;
 import java.awt.BorderLayout;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -16,8 +25,6 @@ import javax.swing.SwingConstants;
  */
 public class adminExecUnitManageView extends javax.swing.JFrame {
 
-    
-    private final ManageUnitSystem Itemsystem;
     /**
      * Creates new form adminexecunitmanageview
      */
@@ -28,10 +35,29 @@ public class adminExecUnitManageView extends javax.swing.JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null); // this method display the JFrame to center position of a screen
         setVisible(true);
-        this.Itemsystem = new ManageUnitSystem();        
-        performFileRelatedTask();
+
+        File file = new File("src/textFiles/unitManage.txt");
+        try {
+            BufferedReader br = new BufferedReader(new FileReader(file));
+            String line = br.readLine();
+            String[] colHeadings = line.trim().split(",");
+
+            DefaultTableModel model = (DefaultTableModel) propDetails.getModel();
+            model.setColumnIdentifiers(colHeadings);
+
+            Object[] dataRows = br.lines().toArray(); //it will read all the lines in the file in array 
+            System.out.println("No of records : " + dataRows.length);
+            for (int i = 0; i < dataRows.length; i++) {
+                String rec = (dataRows[i].toString());
+                String[] dataRow = rec.split(",");
+                model.addRow(dataRow);
+            }
+            br.close();
+        } catch (Exception ex) {
+            Logger.getLogger(adminExecUnitManageView.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -39,66 +65,44 @@ public class adminExecUnitManageView extends javax.swing.JFrame {
      */
     @SuppressWarnings("unchecked")
 
-    private void performFileRelatedTask() {
-        StringBuilder fullnames = new StringBuilder();
-
-        Itemsystem.getAll().forEach((item) -> {
-            fullnames
-                    .append("          ")
-                    .append(item.getPID())
-                    .append("\t")
-                    .append("          ")
-                    .append(item.getPUnitNo())
-                    .append("\t")
-                    .append("          ")
-                    .append(item.getPType())
-                    .append("               ")
-                    .append(item.getPPrice())
-                    .append("\n");
-        });
-        
-        propdetails.setText(fullnames.toString());
-    }
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel4 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        propdetails = new javax.swing.JTextArea();
-        jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        propDetails = new javax.swing.JTable();
+        jButton3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
-        jLabel4.setText("Owner ID");
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setText("View All Property Units");
 
-        jLabel9.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
-        jLabel9.setText("Property Price");
+        propDetails.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
 
-        propdetails.setEditable(false);
-        propdetails.setColumns(20);
-        propdetails.setRows(5);
-        jScrollPane1.setViewportView(propdetails);
+            },
+            new String [] {
+                "Property ID", "Property Type", "Owner ID", "Property Price"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel1.setText("View All Units");
-
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
-        jLabel2.setText("Property ID");
-
-        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
-        jLabel3.setText("Property Type");
-
-        jButton1.setText("Back");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
             }
         });
+        propDetails.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                propDetailsMouseClicked(evt);
+            }
+        });
+        jScrollPane2.setViewportView(propDetails);
+
+        jButton3.setText("Back");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -108,52 +112,42 @@ public class adminExecUnitManageView extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(17, 17, 17)
-                                .addComponent(jLabel2)
-                                .addGap(38, 38, 38)
-                                .addComponent(jLabel3)
-                                .addGap(30, 30, 30)
-                                .addComponent(jLabel4)
-                                .addGap(26, 26, 26)
-                                .addComponent(jLabel9))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 446, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 873, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(145, 145, 145)
-                        .addComponent(jLabel1)))
+                        .addGap(113, 113, 113)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 648, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addGap(186, 186, 186))
+                .addComponent(jButton3)
+                .addGap(383, 383, 383))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel9))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(52, 52, 52)
-                .addComponent(jButton1)
-                .addContainerGap(54, Short.MAX_VALUE))
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(37, 37, 37)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 414, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
+                .addComponent(jButton3)
+                .addGap(44, 44, 44))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        adminExecUnitManage adminexecunitmanage = new adminExecUnitManage();
-        adminexecunitmanage.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void propDetailsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_propDetailsMouseClicked
+        DefaultTableModel model = (DefaultTableModel) propDetails.getModel();
+        int selectedInfo = propDetails.getSelectedRow();
+
+        //        userID.setText(model.getValueAt(selectedInfo, 0).toString());
+        //        Username.setText(model.getValueAt(selectedInfo, 1).toString());
+        //        Name.setText(model.getValueAt(selectedInfo, 2).toString());
+        //        ContactNumber.setText(model.getValueAt(selectedInfo, 3).toString());
+        //        Gender.setSelectedItem(model.getValueAt(selectedInfo, 4).toString());
+        //        Password.setText(model.getValueAt(selectedInfo, 5).toString());
+    }//GEN-LAST:event_propDetailsMouseClicked
 
     /**
      * @param args the command line arguments
@@ -192,13 +186,9 @@ public class adminExecUnitManageView extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel9;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea propdetails;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTable propDetails;
     // End of variables declaration//GEN-END:variables
 }
