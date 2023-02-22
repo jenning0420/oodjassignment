@@ -8,9 +8,8 @@ package Propmanagement.function;
  *
  * @author User
  */
-public class getUserID {
+public class getUserID extends getPropID {
     private String userID;
-    private String propID;
     
     public String getUserID() {
         return userID;
@@ -19,13 +18,4 @@ public class getUserID {
     public void setUserID(String userID) {
         this.userID = userID;
     }
-
-    public String getPropID() {
-        return propID;
-    }
-
-    public void setPropID(String propID) {
-        this.propID = propID;
-    }
-    
 }
