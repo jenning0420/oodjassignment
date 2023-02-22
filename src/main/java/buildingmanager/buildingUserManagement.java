@@ -37,6 +37,7 @@ public class buildingUserManagement extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         addAccAccount = new javax.swing.JButton();
         modifyAccAccount = new javax.swing.JButton();
+        addAdminAccount3 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         addAdminAccount = new javax.swing.JButton();
         modifyAdminAccount = new javax.swing.JButton();
@@ -44,6 +45,7 @@ public class buildingUserManagement extends javax.swing.JFrame {
         jPanel5 = new javax.swing.JPanel();
         addBuildingAccount = new javax.swing.JButton();
         modifyBuildingAccount = new javax.swing.JButton();
+        addAdminAccount4 = new javax.swing.JButton();
         back = new javax.swing.JButton();
 
         jMenu1.setText("jMenu1");
@@ -92,12 +94,10 @@ public class buildingUserManagement extends javax.swing.JFrame {
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("User Management");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, 780, 68));
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Account Executive"));
 
@@ -108,10 +108,17 @@ public class buildingUserManagement extends javax.swing.JFrame {
             }
         });
 
-        modifyAccAccount.setText("Search & Modify Account");
+        modifyAccAccount.setText("Modify Account");
         modifyAccAccount.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 modifyAccAccountActionPerformed(evt);
+            }
+        });
+
+        addAdminAccount3.setText("Search & View Account");
+        addAdminAccount3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addAdminAccount3ActionPerformed(evt);
             }
         });
 
@@ -123,20 +130,21 @@ public class buildingUserManagement extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(addAccAccount, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(modifyAccAccount, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(modifyAccAccount, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(addAdminAccount3, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(23, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(32, 32, 32)
+                .addContainerGap(14, Short.MAX_VALUE)
+                .addComponent(addAdminAccount3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(addAccAccount, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(modifyAccAccount, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(33, Short.MAX_VALUE))
+                .addContainerGap())
         );
-
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, 230, 190));
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("Admin Executive"));
 
@@ -166,26 +174,30 @@ public class buildingUserManagement extends javax.swing.JFrame {
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(15, 15, 15)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(modifyAdminAccount, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(addAdminAccount, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(addAdminAccount2, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(15, 15, 15))
+                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                            .addGap(6, 6, 6)
+                            .addComponent(addAdminAccount, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel3Layout.createSequentialGroup()
+                            .addContainerGap()
+                            .addComponent(modifyAdminAccount, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(addAdminAccount2, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(15, 15, 15)
                 .addComponent(addAdminAccount2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addComponent(addAdminAccount, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(modifyAdminAccount, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addContainerGap())
         );
-
-        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 130, -1, 210));
 
         jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder("Building Executive"));
 
@@ -196,10 +208,17 @@ public class buildingUserManagement extends javax.swing.JFrame {
             }
         });
 
-        modifyBuildingAccount.setText("Search & Modify Account");
+        modifyBuildingAccount.setText("Modify Account");
         modifyBuildingAccount.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 modifyBuildingAccountActionPerformed(evt);
+            }
+        });
+
+        addAdminAccount4.setText("Search & View Account");
+        addAdminAccount4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addAdminAccount4ActionPerformed(evt);
             }
         });
 
@@ -211,20 +230,21 @@ public class buildingUserManagement extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(addBuildingAccount, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(modifyBuildingAccount, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(modifyBuildingAccount, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(addAdminAccount4, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(13, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGap(32, 32, 32)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(addAdminAccount4, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(addBuildingAccount, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(modifyBuildingAccount, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(33, Short.MAX_VALUE))
+                .addContainerGap())
         );
-
-        getContentPane().add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 130, 220, 190));
 
         back.setText("Back");
         back.addActionListener(new java.awt.event.ActionListener() {
@@ -232,7 +252,42 @@ public class buildingUserManagement extends javax.swing.JFrame {
                 backActionPerformed(evt);
             }
         });
-        getContentPane().add(back, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 370, 100, 40));
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(39, 39, 39))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 780, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addComponent(back, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(32, 32, 32)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(30, 30, 30)
+                .addComponent(back, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -259,17 +314,17 @@ public class buildingUserManagement extends javax.swing.JFrame {
     }//GEN-LAST:event_modifyBuildingAccountActionPerformed
 
     private void addAccAccountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addAccAccountActionPerformed
-        new buildingAddAcc().setVisible(true);
+        new AddAccountExec().setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_addAccAccountActionPerformed
 
     private void addAdminAccountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addAdminAccountActionPerformed
-        new buildingAddAdmin().setVisible(true);
+        new AddAdmin().setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_addAdminAccountActionPerformed
 
     private void addBuildingAccountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBuildingAccountActionPerformed
-        new buildingAddBuilding().setVisible(true);
+        new AddBuilding().setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_addBuildingAccountActionPerformed
 
@@ -279,9 +334,19 @@ public class buildingUserManagement extends javax.swing.JFrame {
     }//GEN-LAST:event_backActionPerformed
 
     private void addAdminAccount2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addAdminAccount2ActionPerformed
-        new buildingSearchAccount().setVisible(true);
+        new buildingSearchAccount("src/textFiles/adminLogin.txt").setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_addAdminAccount2ActionPerformed
+
+    private void addAdminAccount3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addAdminAccount3ActionPerformed
+        new buildingSearchAccount("src/textFiles/accountLogin.txt").setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_addAdminAccount3ActionPerformed
+
+    private void addAdminAccount4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addAdminAccount4ActionPerformed
+        new buildingSearchAccount("src/textFiles/buildingLogin.txt").setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_addAdminAccount4ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -323,6 +388,8 @@ public class buildingUserManagement extends javax.swing.JFrame {
     private javax.swing.JButton addAdminAccount;
     private javax.swing.JButton addAdminAccount1;
     private javax.swing.JButton addAdminAccount2;
+    private javax.swing.JButton addAdminAccount3;
+    private javax.swing.JButton addAdminAccount4;
     private javax.swing.JButton addBuildingAccount;
     private javax.swing.JButton back;
     private javax.swing.JFrame jFrame1;

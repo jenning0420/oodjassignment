@@ -55,6 +55,12 @@ public class buildingAddBuilding extends javax.swing.JFrame {
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel6.setText("Contact Number:");
 
+        Username.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                UsernameActionPerformed(evt);
+            }
+        });
+
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Add Building Executive User");
@@ -160,7 +166,6 @@ public class buildingAddBuilding extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(7, 7, 7)))
-                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(Username)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -200,26 +205,7 @@ public class buildingAddBuilding extends javax.swing.JFrame {
     buildingUserManagement bum = new buildingUserManagement();
     
     private void addUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addUserActionPerformed
-        Usernamefinal = Username.getText();
-        Namefinal = Name.getText();
-        ContactNumberfinal = ContactNumber.getText();
-        Genderfinal = (String) Gender.getSelectedItem();
-        Passwordfinal = Password.getText();
-        aus.setUsername(Usernamefinal);
-        aus.setName(Namefinal);
-        aus.setContactNumber(ContactNumberfinal);
-        aus.setGender(Genderfinal);
-        aus.setPassword(Passwordfinal);
-        aus.setTextFile("src/textFiles/buildingLogin.txt");
-
-        if (aud.add(aus) == true) {
-            JOptionPane.showMessageDialog(this, "Building Executive account added SUCCESSFULLY.");
-
-            bum.setVisible(true);
-            this.setVisible(false);
-        } else {
-            JOptionPane.showMessageDialog(this, "Please fill up ALL the information.");
-        }
+        
     }//GEN-LAST:event_addUserActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -241,6 +227,10 @@ public class buildingAddBuilding extends javax.swing.JFrame {
     private void GenderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GenderActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_GenderActionPerformed
+
+    private void UsernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UsernameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_UsernameActionPerformed
 
     /**
      * @param args the command line arguments
@@ -282,7 +272,7 @@ public class buildingAddBuilding extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> Gender;
     private javax.swing.JTextField Name;
     private javax.swing.JPasswordField Password;
-    private javax.swing.JTextField Username;
+    protected javax.swing.JTextField Username;
     private javax.swing.JButton addUser;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;

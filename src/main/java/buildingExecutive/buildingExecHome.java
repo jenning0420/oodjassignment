@@ -151,9 +151,9 @@ public class buildingExecHome extends javax.swing.JFrame {
     private void exitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitActionPerformed
         frame = new JFrame("Log Out");
         if (JOptionPane.showConfirmDialog(frame, "Are you sure to LOG OUT from Building Executive page?", "Parkhill Residence Management System",
-            JOptionPane.YES_NO_OPTION) == JOptionPane.YES_NO_OPTION) {
-        new Visitor.visitorHome().setVisible(true);
-        this.setVisible(false);
+                JOptionPane.YES_NO_OPTION) == JOptionPane.YES_NO_OPTION) {
+            new Visitor.visitorHome().setVisible(true);
+            this.setVisible(false);
         }
     }//GEN-LAST:event_exitActionPerformed
 
@@ -178,7 +178,8 @@ public class buildingExecHome extends javax.swing.JFrame {
     }//GEN-LAST:event_patrollingActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        new buildingViewReport().setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
