@@ -1,0 +1,5 @@
+PaymentID,UserID,UnitNo,PaymentType,Amount
+201,202,B0201,Services,20
+202,202,B0201,Utility,40
+203,202,B0201,Services,20
+204,202,B0201,Rental,2.0

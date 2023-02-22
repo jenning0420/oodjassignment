@@ -295,18 +295,25 @@ public class vendorPayment extends javax.swing.JFrame {
 
             JOptionPane.showMessageDialog(null, "Thank you and have a nice day");
 
-            Date date = new Date();
-            SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
-            String current_date = formatter.format(date);
-
-            try {
-                FileWriter writer = new FileWriter("src/textFiles/payment_receipt.txt", true);
-                writer.write("" + invoiceid + ":" + userid + ":" + unitno + ":" + paymenttype + ":" + amount + ":" + current_date + "\n");
+            try {     
+                
+                BufferedReader br = new BufferedReader(new FileReader("src/textFiles/vendorPayment.txt"));
+                Object[] Lines = br.lines().toArray();
+                int i = 0;
+                int paymentid = 0;
+                for (i = 1; i < Lines.length; i++) {
+                    String line = Lines[i].toString().trim();
+                    String[] row = line.split(",");
+                    paymentid = Integer.parseInt(row[0]);
+                }
+                int paymentID = paymentid + 1;
+                FileWriter writer = new FileWriter("src/textFiles/vendorPayment.txt", true);
+                writer.write(paymentID + "," + userid + "," + unitno + "," + paymenttype + "," + amount + "\n");
                 writer.close();
-                JOptionPane.showMessageDialog(null, "Receipt has been generated & saved into payment_receipt.txt");
+                JOptionPane.showMessageDialog(null, "Your receipt will be generated soon!");
             } catch (Exception e) {
-                JOptionPane.showMessageDialog(null, "Error...");
-            }
+                JOptionPane.showMessageDialog(null, "Error generating receipt!");
+            }  
 
             String tempFile = "src/textFiles/invoicetemp.txt";
             File oldFile = new File(filepath);

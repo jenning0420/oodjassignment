@@ -1,4 +1,7 @@
-paymentID,userID,Unit_No,Payment_Type,Amount(RM)
-
-
-
+PaymentID,UserID,UnitNo,PaymentType,Amount
+1,2,A0101,Rental,233
+2,2,A0101,Rental,233
+3,2,A0101,Rental,233
+4,2,A0101,Services,200
+5,4,A1,Rental,10
+6,2,wd,Services,2001

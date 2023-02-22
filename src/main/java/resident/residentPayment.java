@@ -306,7 +306,8 @@ public class residentPayment extends javax.swing.JFrame {
 
             JOptionPane.showMessageDialog(null, "Thank you and have a nice day");
                   
-            try {               
+            try {     
+                
                 BufferedReader br = new BufferedReader(new FileReader("src/textFiles/residentPayment.txt"));
                 Object[] Lines = br.lines().toArray();
                 int i = 0;
@@ -315,13 +316,12 @@ public class residentPayment extends javax.swing.JFrame {
                     String line = Lines[i].toString().trim();
                     String[] row = line.split(",");
                     paymentid = Integer.parseInt(row[0]);
-
                 }
                 int paymentID = paymentid + 1;
                 FileWriter writer = new FileWriter("src/textFiles/residentPayment.txt", true);
-                writer.write(paymentID + "," + userid + "," + unitno + "," + paymenttype + "," + amount);
+                writer.write(paymentID + "," + userid + "," + unitno + "," + paymenttype + "," + amount + "\n");
                 writer.close();
-                JOptionPane.showMessageDialog(null, "Your receipt is generating, please wait for account executive to issue the receipt!");
+                JOptionPane.showMessageDialog(null, "Your receipt will be generated soon!");
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, "Error generating receipt!");
             }            
