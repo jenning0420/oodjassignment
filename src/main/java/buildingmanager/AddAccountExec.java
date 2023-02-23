@@ -13,7 +13,7 @@ import javax.swing.JOptionPane;
 public class AddAccountExec extends addAccount{
 
     public AddAccountExec(){
-        super("Add sohai Executive User");
+        super("Add Account Executive User");
     }
     
     @Override

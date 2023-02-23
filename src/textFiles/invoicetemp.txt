@@ -7,4 +7,4 @@ invoiceID,userID,Unit_No,Payment_Type,Amount(RM),Payment_Due
 6,202,B0201,Rental,0.0,28-02-2023
 7,202,B0201,Services,0.0,28-02-2023
 8,2,QA-110,Rental/Utility/Services,0.0,04-02-2023
-9,2,B-101,Rental,0.0,03-02-2023
+9,2,B-101,Rental,0.0,03-02-2023

@@ -75,7 +75,7 @@
           <Font name="Segoe UI" size="36" style="1"/>
         </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
-        <Property name="text" type="java.lang.String" value="Search &amp; Modify Admin Executive"/>
+        <Property name="text" type="java.lang.String" value="Modify Admin Executive"/>
       </Properties>
     </Component>
     <Container class="javax.swing.JScrollPane" name="jScrollPane2">

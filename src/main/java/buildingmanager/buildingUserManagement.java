@@ -308,8 +308,8 @@ public class buildingUserManagement extends javax.swing.JFrame {
     }//GEN-LAST:event_modifyAdminAccount1ActionPerformed
 
     private void modifyBuildingAccountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modifyBuildingAccountActionPerformed
-//        new buildingModifyBuilding().setVisible(true);
-//        this.setVisible(false);
+        new buildingModifyBuilding().setVisible(true);
+        this.setVisible(false);
 
     }//GEN-LAST:event_modifyBuildingAccountActionPerformed
 
@@ -334,17 +334,17 @@ public class buildingUserManagement extends javax.swing.JFrame {
     }//GEN-LAST:event_backActionPerformed
 
     private void addAdminAccount2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addAdminAccount2ActionPerformed
-        new buildingSearchAccount("src/textFiles/adminLogin.txt").setVisible(true);
+        new buildingSearchAccount("src/textFiles/adminLogin.txt", "View & Search Admin Executives").setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_addAdminAccount2ActionPerformed
 
     private void addAdminAccount3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addAdminAccount3ActionPerformed
-        new buildingSearchAccount("src/textFiles/accountLogin.txt").setVisible(true);
+        new buildingSearchAccount("src/textFiles/accountLogin.txt", "View & Search Account Executives").setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_addAdminAccount3ActionPerformed
 
     private void addAdminAccount4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addAdminAccount4ActionPerformed
-        new buildingSearchAccount("src/textFiles/buildingLogin.txt").setVisible(true);
+        new buildingSearchAccount("src/textFiles/buildingLogin.txt", "View & Search Building Executives").setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_addAdminAccount4ActionPerformed
 

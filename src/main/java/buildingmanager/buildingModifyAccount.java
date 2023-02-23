@@ -103,7 +103,7 @@ public class buildingModifyAccount extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("Search & Modify Account Executive");
+        jLabel2.setText("Modify Account Executive");
 
         userTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {

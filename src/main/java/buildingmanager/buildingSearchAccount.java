@@ -26,9 +26,10 @@ public class buildingSearchAccount extends javax.swing.JFrame {
     /**
      * Creates new form buildingSearchAccount
      */
-    public buildingSearchAccount(String filePath) {
+    public buildingSearchAccount(String filePath, String title) {
         initComponents();
         this.filePath = filePath;
+        userTitle.setText(title);
         search();
 
     }
@@ -80,7 +81,7 @@ public class buildingSearchAccount extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel2 = new javax.swing.JLabel();
+        userTitle = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         userTable = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
@@ -90,9 +91,9 @@ public class buildingSearchAccount extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("Search & Modify Account Executive");
+        userTitle.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        userTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        userTitle.setText("Search & Modify User");
 
         userTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -133,7 +134,7 @@ public class buildingSearchAccount extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 873, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(userTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 873, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(109, 109, 109)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 648, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -152,7 +153,7 @@ public class buildingSearchAccount extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(userTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(19, 19, 19)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
@@ -207,10 +208,10 @@ public class buildingSearchAccount extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton back;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JButton search;
     private javax.swing.JTextField searchText;
     private javax.swing.JTable userTable;
+    private javax.swing.JLabel userTitle;
     // End of variables declaration//GEN-END:variables
 }
