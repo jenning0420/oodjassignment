@@ -5,7 +5,6 @@
 package adminexecutive;
 
 import dao.FacilityBookingManagementDao;
-import dao.FacilityBookingManagementDaoImpl;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -36,7 +35,7 @@ public class adminAddViewFaciBookMngm extends javax.swing.JFrame {
     String durationFinal;
     String timeFinal;
     FacilityBookingManagementSng fbms = new FacilityBookingManagementSng();
-    FacilityBookingManagementDao fbmd = new FacilityBookingManagementDaoImpl();
+    FacilityBookingManagementDao fbmd = new FacilityBookingManagementDao();
 
     /**
      * Creates new form adminAddViewFaciBookMngm
@@ -372,7 +371,7 @@ public class adminAddViewFaciBookMngm extends javax.swing.JFrame {
         fbms.setDuration(durationFinal);
         fbms.setTime(timeFinal);
 
-        if (fbmd.facilityBookingManagement(fbms) == true) {
+        if (fbmd.add(fbms) == true) {
             JOptionPane.showMessageDialog(this, "Facility Booking Record ADDED!");
 
             String filePath = "src/textFiles/facilityBooking.txt";

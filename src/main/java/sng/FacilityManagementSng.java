@@ -9,6 +9,7 @@ package sng;
  * @author User
  */
 public class FacilityManagementSng {
+
     private int facilityID;
     private String facility;
     private String equipment;

@@ -5,7 +5,6 @@
 package accountexecutive;
 
 import dao.GenerateInvoiceDao;
-import dao.GenerateInvoiceDaoImpl;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -27,7 +26,7 @@ import sng.GenerateInvoiceSng;
 public class accGenerateInvoice extends javax.swing.JFrame {
 
     GenerateInvoiceSng gis = new GenerateInvoiceSng();
-    GenerateInvoiceDao gid = new GenerateInvoiceDaoImpl();
+    GenerateInvoiceDao gid = new GenerateInvoiceDao();
     accInvoiceManagement aim = new accInvoiceManagement();
 
     /**
@@ -389,7 +388,7 @@ public class accGenerateInvoice extends javax.swing.JFrame {
         gis.setAmount(amountFinal);
         gis.setPaymentDue(paymentDueFinal);
 
-        if (gid.generateInvoice(gis) == true) {
+        if (gid.add(gis) == true) {
             JOptionPane.showMessageDialog(this, "Invoice GENERATED!");
 
             aim.setVisible(true);

@@ -5,7 +5,6 @@
 package adminexecutive;
 
 import dao.FacilityManagementDao;
-import dao.FacilityManagementDaoImpl;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -24,7 +23,7 @@ import sng.FacilityManagementSng;
 public class adminAddViewFacilityMngm extends javax.swing.JFrame {
 
     FacilityManagementSng fms = new FacilityManagementSng();
-    FacilityManagementDao fmd = new FacilityManagementDaoImpl();
+    FacilityManagementDao fmd = new FacilityManagementDao();
 
     /**
      * Creates new form adminAddViewFacilityMngm
@@ -255,7 +254,7 @@ public class adminAddViewFacilityMngm extends javax.swing.JFrame {
         fms.setQuantity(quantityFinal);
         fms.setCondition(conditionFinal);
 
-        if (fmd.facilityManagement(fms) == true) {
+        if (fmd.add(fms) == true) {
             JOptionPane.showMessageDialog(this, "Facility Record ADDED!");
 
             String filePath = "src/textFiles/facility.txt";

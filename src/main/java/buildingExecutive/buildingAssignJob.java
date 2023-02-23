@@ -5,7 +5,6 @@
 package buildingExecutive;
 
 import dao.AssignJobDao;
-import dao.AssignJobDaoImpl;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -325,7 +324,7 @@ public class buildingAssignJob extends javax.swing.JFrame {
     String jobDurationFinal;
     String status = "Upcoming";
     AssignJobSng ajs = new AssignJobSng();
-    AssignJobDao ajd = new AssignJobDaoImpl();
+    AssignJobDao ajd = new AssignJobDao();
     buildingExecHome beh = new buildingExecHome();
     SimpleDateFormat formatter = new SimpleDateFormat("HH:mm");
 
@@ -345,7 +344,7 @@ public class buildingAssignJob extends javax.swing.JFrame {
         ajs.setJobDuration(jobDurationFinal);
         ajs.setStatus(status);
 
-        if (ajd.assignJob(ajs) == true) {
+        if (ajd.add(ajs) == true) {
             JOptionPane.showMessageDialog(this, "Job Assigned SUCCESSFULLY.");
 
             beh.setVisible(true);

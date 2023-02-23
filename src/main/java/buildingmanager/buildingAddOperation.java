@@ -5,7 +5,6 @@
 package buildingmanager;
 
 import dao.AddOperationDao;
-import dao.AddOperationDaoImpl;
 import javax.swing.JOptionPane;
 import sng.AddOperationSng;
 
@@ -213,7 +212,7 @@ public class buildingAddOperation extends javax.swing.JFrame {
     String fundAllocatedFinal;
     String urgencyLevelFinal;
     AddOperationSng aos = new AddOperationSng();
-    AddOperationDao aod = new AddOperationDaoImpl();
+    AddOperationDao aod = new AddOperationDao();
     buildingOperationManagement bom = new buildingOperationManagement();
     
     private void addUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addUserActionPerformed
@@ -228,7 +227,7 @@ public class buildingAddOperation extends javax.swing.JFrame {
         aos.setFundAllocated(fundAllocatedFinal);
         aos.setUrgencyLevel(urgencyLevelFinal);
 
-        if (aod.addOperation(aos) == true) {
+        if (aod.add(aos) == true) {
             JOptionPane.showMessageDialog(this, "Operation planning added SUCCESSFULLY.");
 
             bom.setVisible(true);

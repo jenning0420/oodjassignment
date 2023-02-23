@@ -5,7 +5,6 @@
 package adminexecutive;
 
 import dao.EmployeeRegisterDao;
-import dao.EmployeeRegisterDaoImpl;
 import javax.swing.JOptionPane;
 import sng.EmployeeRegisterSng;
 
@@ -226,7 +225,7 @@ public class adminAddEmployee extends javax.swing.JFrame {
     String Passwordfinal;
     String EmpTypefinal;
     EmployeeRegisterSng ers = new EmployeeRegisterSng();
-    EmployeeRegisterDao erd = new EmployeeRegisterDaoImpl();
+    EmployeeRegisterDao erd = new EmployeeRegisterDao();
     adminManageEmp ame = new adminManageEmp();
     
     private void addUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addUserActionPerformed
@@ -244,7 +243,7 @@ public class adminAddEmployee extends javax.swing.JFrame {
         ers.setEmpType(EmpTypefinal);
         ers.setTextFile("src/textFiles/employeeLogin.txt");
 
-        if (erd.employeeRegister(ers) == true) {
+        if (erd.add(ers) == true) {
             JOptionPane.showMessageDialog(this, "Employee registered SUCCESSFULLY.");
 
             ame.setVisible(true);

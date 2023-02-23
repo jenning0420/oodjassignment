@@ -5,7 +5,6 @@
 package resident;
 
 import dao.FacilityBookingManagementDao;
-import dao.FacilityBookingManagementDaoImpl;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -36,7 +35,7 @@ public class residentAddViewFaciBook extends javax.swing.JFrame {
     String durationFinal;
     String timeFinal;
     FacilityBookingManagementSng fbms = new FacilityBookingManagementSng();
-    FacilityBookingManagementDao fbmd = new FacilityBookingManagementDaoImpl();
+    FacilityBookingManagementDao fbmd = new FacilityBookingManagementDao();
 
     /**
      * Creates new form residentAddViewFaciBook
@@ -290,7 +289,7 @@ public class residentAddViewFaciBook extends javax.swing.JFrame {
     }//GEN-LAST:event_facilityBookingTableMouseClicked
 
     private void backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backActionPerformed
-        new residentHome().setVisible(true);
+        new residentFaciBookHome().setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_backActionPerformed
 
@@ -310,7 +309,7 @@ public class residentAddViewFaciBook extends javax.swing.JFrame {
         fbms.setDuration(durationFinal);
         fbms.setTime(timeFinal);
 
-        if (fbmd.facilityBookingManagement(fbms) == true) {
+        if (fbmd.add(fbms) == true) {
             JOptionPane.showMessageDialog(this, "Facility Booking Record ADDED!");
 
             String filePath = "src/textFiles/facilityBooking.txt";

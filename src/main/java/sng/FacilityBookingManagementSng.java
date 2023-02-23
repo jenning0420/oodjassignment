@@ -9,7 +9,7 @@ package sng;
  * @author User
  */
 public class FacilityBookingManagementSng {
-    
+
     private int faciBookingID;
     private String userID;
     private String facility;
@@ -24,16 +24,14 @@ public class FacilityBookingManagementSng {
     public void setFaciBookingID(int faciBookingID) {
         this.faciBookingID = faciBookingID;
     }
-    
+
     public String getUserID() {
         return userID;
     }
 
-   
     public void setUserID(String userID) {
         this.userID = userID;
     }
-   
 
     public String getFacility() {
         return facility;

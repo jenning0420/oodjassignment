@@ -5,7 +5,6 @@
 package securityGuard;
 
 import dao.RecordVisitorEntryDao;
-import dao.RecordVisitorEntryDaoImpl;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -29,7 +28,7 @@ public class securityRecordVisitorEntry extends javax.swing.JFrame {
     String timeInFinal;
     String unitNoFinal;
     RecordVisitorEntrySng rves = new RecordVisitorEntrySng();
-    RecordVisitorEntryDao rved = new RecordVisitorEntryDaoImpl();
+    RecordVisitorEntryDao rved = new RecordVisitorEntryDao();
     securityVisitorEntryManagement svem = new securityVisitorEntryManagement();
     SimpleDateFormat formatter = new SimpleDateFormat("HH:mm");
 
@@ -257,7 +256,7 @@ public class securityRecordVisitorEntry extends javax.swing.JFrame {
         rves.setUnitNo(unitNoFinal);
         rves.setTimeIn(timeInFinal);
 
-        if (rved.recordVisitorEntry(rves) == true) {
+        if (rved.add(rves) == true) {
             JOptionPane.showMessageDialog(this, "Visitor entry ADDED!");
 
             svem.setVisible(true);

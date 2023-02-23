@@ -4,11 +4,8 @@
  */
 package resident;
 
-import adminexecutive.adminComplaintManagement;
-import dao.AddComplaintDao;
-import dao.AddComplaintDaoImpl;
+
 import dao.ApplyPassDao;
-import dao.ApplyPassDaoImpl;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -31,7 +28,7 @@ public class residentApplyPass extends javax.swing.JFrame {
     String dateInFinal;
     String durationFinal;
     ApplyPassSng aps = new ApplyPassSng();
-    ApplyPassDao apd = new ApplyPassDaoImpl();
+    ApplyPassDao apd = new ApplyPassDao();
     residentPassManagement rpm = new residentPassManagement();
 
     /**
@@ -291,7 +288,7 @@ public class residentApplyPass extends javax.swing.JFrame {
         aps.setDuration(durationFinal);
 
 
-        if (apd.applyPass(aps) == true) {
+        if (apd.add(aps) == true) {
             JOptionPane.showMessageDialog(this, "Visitor pass applied successfully!");
 
             rpm.setVisible(true);

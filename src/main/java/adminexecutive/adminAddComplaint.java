@@ -5,7 +5,6 @@
 package adminexecutive;
 
 import dao.AddComplaintDao;
-import dao.AddComplaintDaoImpl;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
