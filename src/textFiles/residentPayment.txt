@@ -10,3 +10,6 @@ PaymentID,UserID,UnitNo,PaymentType,Amount
 9,2,A0001,Utility,50
 10,2,A0001,Utility,50
 11,2,A0001,Utility,50
+12,2,wd,Services,100
+13,2,QA-110,Rental/Utility/Services,1000
+14,2,B-101,Rental,10
