@@ -5,7 +5,6 @@
 package resident;
 
 import dao.UserRegisterDao;
-import dao.UserRegisterDaoImpl;
 import javax.swing.JOptionPane;
 import sng.UserRegisterSng;
 
@@ -202,7 +201,7 @@ public class residentRegister extends javax.swing.JFrame {
     String Genderfinal;
     String Passwordfinal;
     UserRegisterSng urs = new UserRegisterSng();
-    UserRegisterDao urd = new UserRegisterDaoImpl();
+    UserRegisterDao urd = new UserRegisterDao();
     residentLogin rl = new residentLogin();
     
     private void addUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addUserActionPerformed
@@ -218,7 +217,7 @@ public class residentRegister extends javax.swing.JFrame {
         urs.setPassword(Passwordfinal);
         urs.setTextFile("src/textFiles/residentLogin.txt");
 
-        if (urd.userRegister(urs) == true) {
+        if (urd.add(urs) == true) {
             JOptionPane.showMessageDialog(this, "Resident registered SUCCESSFULLY.");
 
             rl.setVisible(true);

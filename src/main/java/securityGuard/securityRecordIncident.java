@@ -5,7 +5,6 @@
 package securityGuard;
 
 import dao.SecurityRecordIncidentDao;
-import dao.SecurityRecordIncidentDaoImpl;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -27,7 +26,7 @@ public class securityRecordIncident extends javax.swing.JFrame {
     String dateInFinal;
     String timeInFinal;
     SecurityRecordIncidentSng sris = new SecurityRecordIncidentSng();
-    SecurityRecordIncidentDao srid = new SecurityRecordIncidentDaoImpl();
+    SecurityRecordIncidentDao srid = new SecurityRecordIncidentDao();
     securityIncidentManagement sim = new securityIncidentManagement();
     SimpleDateFormat formatter = new SimpleDateFormat("HH:mm");
     /**
@@ -228,7 +227,7 @@ public class securityRecordIncident extends javax.swing.JFrame {
         sris.setDateIn(dateInFinal);
         sris.setTimeIn(timeInFinal);
 
-        if (srid.securityRecordIncident(sris) == true) {
+        if (srid.add(sris) == true) {
             JOptionPane.showMessageDialog(this, "Incident ADDED!");
 
             sim.setVisible(true);

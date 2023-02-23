@@ -5,7 +5,6 @@
 package employee;
 
 import dao.UserLoginDao;
-import dao.UserLoginDaoImpl;
 import javax.swing.JOptionPane;
 import sng.UserLoginSng;
 
@@ -131,7 +130,7 @@ public class employeeLogin extends javax.swing.JFrame {
     String Usernamefinal;
     String passwordfinal;
     UserLoginSng uls = new UserLoginSng();
-    UserLoginDao uld = new UserLoginDaoImpl();
+    UserLoginDao uld = new UserLoginDao();
     employeeHome eh = new employeeHome();
     
     
@@ -141,7 +140,7 @@ public class employeeLogin extends javax.swing.JFrame {
         uls.setUsername(Usernamefinal);
         uls.setPassword(passwordfinal);
         uls.setTextFile("src/textFiles/employeeLogin.txt");
-        if (uld.userAccess(uls) == true) {
+        if (uld.add(uls) == true) {
             JOptionPane.showMessageDialog(this, "Log In SUCCESSFULLY! Welcome back Employee.");
 
             eh.setVisible(true);

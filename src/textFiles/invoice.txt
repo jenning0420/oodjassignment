@@ -8,3 +8,6 @@ invoiceID,userID,Unit_No,Payment_Type,Amount(RM),Payment_Due
 7,202,B0201,Services,0.0,28-02-2023
 8,205,B0201,Services,0.0,28-02-2023
 9,10,A0101,Rental, Utility, Services,1200,28-02-2023
+10,2,A0001,Utility,50,26-02-2023
+11,203,A0102,Rental, Utility,120,26-02-2023
+12,201,U,Rental / Utility,89,05-02-2023

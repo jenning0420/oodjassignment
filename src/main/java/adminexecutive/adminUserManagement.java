@@ -159,7 +159,7 @@ public class adminUserManagement extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void addAccAccountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addAccAccountActionPerformed
-        new adminAddResident().setVisible(true);
+        new addResident().setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_addAccAccountActionPerformed
 
@@ -169,7 +169,7 @@ public class adminUserManagement extends javax.swing.JFrame {
     }//GEN-LAST:event_modifyAccAccountActionPerformed
 
     private void addAccAccount1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addAccAccount1ActionPerformed
-        new adminAddVendor().setVisible(true);
+        new addVendor().setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_addAccAccount1ActionPerformed
 

@@ -2,12 +2,12 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-
 package resident;
 //import Propmanagement.function.ResidentPayment;
 //import Propmanagement.function.Unit;
 //import Propmanagement.function.getInvoiceID;
 //import Propmanagement.system.ManageUnitSystem;
+
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -34,13 +34,13 @@ import sng.residentUpdateComplaintSng;
 public class residentPayment extends javax.swing.JFrame {
 
     residentUpdateComplaintSng rucs = new residentUpdateComplaintSng();
-    
+
     /**
      * Creates new form residentPayment
      */
     public residentPayment() {
         initComponents();
-        
+
         try {
             FileReader fr1 = new FileReader("src/textFiles/activeUser.txt");
             try ( BufferedReader br1 = new BufferedReader(fr1)) {
@@ -99,7 +99,7 @@ public class residentPayment extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jScrollPane2 = new javax.swing.JScrollPane();
+        jTable = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         Pay = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
@@ -137,7 +137,7 @@ public class residentPayment extends javax.swing.JFrame {
                 jTable1MouseClicked(evt);
             }
         });
-        jScrollPane2.setViewportView(jTable1);
+        jTable.setViewportView(jTable1);
 
         Pay.setText("Pay");
         Pay.addActionListener(new java.awt.event.ActionListener() {
@@ -155,6 +155,18 @@ public class residentPayment extends javax.swing.JFrame {
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel8.setText("Please confirm your selected information below");
+
+        disPaymentType.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                disPaymentTypeActionPerformed(evt);
+            }
+        });
+
+        disDueDate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                disDueDateActionPerformed(evt);
+            }
+        });
 
         jButton1.setText("Back");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -216,7 +228,7 @@ public class residentPayment extends javax.swing.JFrame {
                 .addContainerGap(18, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane2)
+                .addComponent(jTable)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -229,14 +241,14 @@ public class residentPayment extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jLabel5)
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jTable, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(162, 162, 162)
                         .addComponent(jLabel7)
-                        .addContainerGap(123, Short.MAX_VALUE))
+                        .addContainerGap(111, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(12, 12, 12)
                         .addComponent(jLabel8)
                         .addGap(65, 65, 65)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -305,9 +317,12 @@ public class residentPayment extends javax.swing.JFrame {
             String duedate = disDueDate.getText();
 
             JOptionPane.showMessageDialog(null, "Thank you and have a nice day");
-                  
-            try {     
-                
+
+            new residentPaymentView().setVisible(true);
+            this.setVisible(false);
+
+            try {
+
                 BufferedReader br = new BufferedReader(new FileReader("src/textFiles/residentPayment.txt"));
                 Object[] Lines = br.lines().toArray();
                 int i = 0;
@@ -324,7 +339,7 @@ public class residentPayment extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "Your receipt will be generated soon!");
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, "Error generating receipt!");
-            }            
+            }
 
             String tempFile = "src/textFiles/invoicetemp.txt";
             File oldFile = new File(filepath);
@@ -384,6 +399,14 @@ public class residentPayment extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void disDueDateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_disDueDateActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_disDueDateActionPerformed
+
+    private void disPaymentTypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_disPaymentTypeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_disPaymentTypeActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -435,7 +458,7 @@ public class residentPayment extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jTable;
     private javax.swing.JTable jTable1;
     private javax.swing.JTextField totalamount;
     // End of variables declaration//GEN-END:variables

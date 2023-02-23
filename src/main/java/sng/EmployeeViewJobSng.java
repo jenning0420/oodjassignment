@@ -8,26 +8,9 @@ package sng;
  *
  * @author User
  */
-public class EmployeeViewJobSng {
-    private String userID;
-    private String userID1;
+public class EmployeeViewJobSng extends updateSng {
+
     private String status;
-
-    public String getUserID() {
-        return userID;
-    }
-
-    public void setUserID(String userID) {
-        this.userID = userID;
-    }
-
-    public String getUserID1() {
-        return userID1;
-    }
-
-    public void setUserID1(String userID1) {
-        this.userID1 = userID1;
-    }
 
     public String getStatus() {
         return status;
@@ -36,6 +19,5 @@ public class EmployeeViewJobSng {
     public void setStatus(String status) {
         this.status = status;
     }
-    
-    
+
 }

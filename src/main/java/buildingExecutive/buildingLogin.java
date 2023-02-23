@@ -5,7 +5,6 @@
 package buildingExecutive;
 
 import dao.UserLoginDao;
-import dao.UserLoginDaoImpl;
 import javax.swing.JOptionPane;
 import sng.UserLoginSng;
 
@@ -137,7 +136,7 @@ public class buildingLogin extends javax.swing.JFrame {
     String Usernamefinal;
     String passwordfinal;
     UserLoginSng uls = new UserLoginSng();
-    UserLoginDao uld = new UserLoginDaoImpl();
+    UserLoginDao uld = new UserLoginDao();
     buildingExecHome beh = new buildingExecHome();
     
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -146,7 +145,7 @@ public class buildingLogin extends javax.swing.JFrame {
         uls.setUsername(Usernamefinal);
         uls.setPassword(passwordfinal);
         uls.setTextFile("src/textFiles/buildingLogin.txt");
-        if (uld.userAccess(uls) == true) {
+        if (uld.add(uls) == true) {
             JOptionPane.showMessageDialog(this, "Log In SUCCESSFULLY! Welcome back Building Executive.");
 
             beh.setVisible(true);

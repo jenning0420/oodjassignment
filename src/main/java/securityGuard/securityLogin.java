@@ -5,7 +5,6 @@
 package securityGuard;
 
 import dao.UserLoginDao;
-import dao.UserLoginDaoImpl;
 import javax.swing.JOptionPane;
 import sng.UserLoginSng;
 import vendor.vendorHome;
@@ -136,7 +135,7 @@ public class securityLogin extends javax.swing.JFrame {
     String Usernamefinal;
     String passwordfinal;
     UserLoginSng uls = new UserLoginSng();
-    UserLoginDao uld = new UserLoginDaoImpl();
+    UserLoginDao uld = new UserLoginDao();
     securityHome sh = new securityHome();
     
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -145,7 +144,7 @@ public class securityLogin extends javax.swing.JFrame {
         uls.setUsername(Usernamefinal);
         uls.setPassword(passwordfinal);
         uls.setTextFile("src/textFiles/securityLogin.txt");
-        if (uld.userAccess(uls) == true) {
+        if (uld.add(uls) == true) {
             JOptionPane.showMessageDialog(this, "Log In SUCCESSFULLY! Welcome back Security Guard.");
 
             sh.setVisible(true);

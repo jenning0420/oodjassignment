@@ -5,7 +5,6 @@
 package adminexecutive;
 
 import dao.VendorRegisterDao;
-import dao.VendorRegisterDaoImpl;
 import javax.swing.JOptionPane;
 import sng.VendorRegisterSng;
 
@@ -202,30 +201,11 @@ public class adminAddVendor extends javax.swing.JFrame {
     String Genderfinal;
     String Passwordfinal;
     VendorRegisterSng vrs = new VendorRegisterSng();
-    VendorRegisterDao vrd = new VendorRegisterDaoImpl();
+    VendorRegisterDao vrd = new VendorRegisterDao();
     adminUserManagement aum = new adminUserManagement();
     
     private void addUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addUserActionPerformed
-        Usernamefinal = Username.getText();
-        Namefinal = Name.getText();
-        ContactNumberfinal = ContactNumber.getText();
-        Genderfinal = (String) Gender.getSelectedItem();
-        Passwordfinal = Password.getText();
-        vrs.setUsername(Usernamefinal);
-        vrs.setName(Namefinal);
-        vrs.setContactNumber(ContactNumberfinal);
-        vrs.setGender(Genderfinal);
-        vrs.setPassword(Passwordfinal);
-        vrs.setTextFile("src/textFiles/vendorLogin.txt");
-
-        if (vrd.vendorRegister(vrs) == true) {
-            JOptionPane.showMessageDialog(this, "Vendor registered SUCCESSFULLY.");
-
-            aum.setVisible(true);
-            this.setVisible(false);
-        } else {
-            JOptionPane.showMessageDialog(this, "Please fill up ALL the information.");
-        }
+        
     }//GEN-LAST:event_addUserActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed

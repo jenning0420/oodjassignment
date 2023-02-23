@@ -16,6 +16,7 @@ public class ApplyPassSng {
     private String unitNo;
     private String dateIn;
     private String duration;
+    private String hello;
 
     public int getPassID() {
         return passID;
@@ -25,6 +26,7 @@ public class ApplyPassSng {
         this.passID = passID;
     }
 
+    
     public String getUserID() {
         return userID;
     }

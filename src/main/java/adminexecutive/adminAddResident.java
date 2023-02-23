@@ -5,7 +5,6 @@
 package adminexecutive;
 
 import dao.UserRegisterDao;
-import dao.UserRegisterDaoImpl;
 import javax.swing.JOptionPane;
 import sng.UserRegisterSng;
 
@@ -202,7 +201,7 @@ public class adminAddResident extends javax.swing.JFrame {
     String Genderfinal;
     String Passwordfinal;
     UserRegisterSng urs = new UserRegisterSng();
-    UserRegisterDao urd = new UserRegisterDaoImpl();
+    UserRegisterDao urd = new UserRegisterDao();
     adminUserManagement aum = new adminUserManagement();
     
     private void addUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addUserActionPerformed
@@ -218,7 +217,7 @@ public class adminAddResident extends javax.swing.JFrame {
         urs.setPassword(Passwordfinal);
         urs.setTextFile("src/textFiles/residentLogin.txt");
 
-        if (urd.userRegister(urs) == true) {
+        if (urd.add(urs) == true) {
             JOptionPane.showMessageDialog(this, "Resident registered SUCCESSFULLY.");
 
             aum.setVisible(true);

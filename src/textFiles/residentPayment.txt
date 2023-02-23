@@ -6,3 +6,7 @@ PaymentID,UserID,UnitNo,PaymentType,Amount
 5,4,A1,Rental,10
 6,2,wd,Services,2001
 7,2,wd,Services,292
+8,2,A0001,Utility,50
+9,2,A0001,Utility,50
+10,2,A0001,Utility,50
+11,2,A0001,Utility,50

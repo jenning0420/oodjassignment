@@ -5,7 +5,6 @@
 package vendor;
 
 import dao.VendorRegisterDao;
-import dao.VendorRegisterDaoImpl;
 import javax.swing.JOptionPane;
 import resident.residentLogin;
 import sng.VendorRegisterSng;
@@ -207,7 +206,7 @@ public class vendorRegister extends javax.swing.JFrame {
     String Genderfinal;
     String Passwordfinal;
     VendorRegisterSng vrs = new VendorRegisterSng();
-    VendorRegisterDao vrd = new VendorRegisterDaoImpl();
+    VendorRegisterDao vrd = new VendorRegisterDao();
     vendorLogin vl = new vendorLogin();
 
     private void addUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addUserActionPerformed
@@ -223,7 +222,7 @@ public class vendorRegister extends javax.swing.JFrame {
         vrs.setPassword(Passwordfinal);
         vrs.setTextFile("src/textFiles/vendorLogin.txt");
 
-        if (vrd.vendorRegister(vrs) == true) {
+        if (vrd.add(vrs) == true) {
             JOptionPane.showMessageDialog(this, "Vendor registered SUCCESSFULLY.");
 
             vl.setVisible(true);

@@ -68,9 +68,6 @@ public class residentUpdatePass extends javax.swing.JFrame {
             for (int i = 0; i < lines.length; i++) {
                 String[] row = lines[i].toString().split(",");
                 rups.setUserID(row[1]);
-                //                String number = ("17");
-                //                System.out.println(rucs.getUserID().getClass());
-                //                System.out.println(number.getClass());
                 if (rups.getUserID().equals(rups.getUserID1())) {
                     model.addRow(row);
                 }

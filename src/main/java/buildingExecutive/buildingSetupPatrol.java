@@ -5,7 +5,6 @@
 package buildingExecutive;
 
 import dao.SetupPatrolDao;
-import dao.SetupPatrolDaoImpl;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -278,7 +277,7 @@ public class buildingSetupPatrol extends javax.swing.JFrame {
     String patrolTimeFinal;
     String status = "Upcoming";
     SetupPatrolSng sps = new SetupPatrolSng();
-    SetupPatrolDao spd = new SetupPatrolDaoImpl();
+    SetupPatrolDao spd = new SetupPatrolDao();
     buildingExecHome beh = new buildingExecHome();
     SimpleDateFormat formatter = new SimpleDateFormat("HH:mm");
     
@@ -296,7 +295,7 @@ public class buildingSetupPatrol extends javax.swing.JFrame {
         sps.setPatrolTime(patrolTimeFinal);
         sps.setPatrolStatus(status);
 
-        if (spd.setupPatrol(sps) == true) {
+        if (spd.add(sps) == true) {
             JOptionPane.showMessageDialog(this, "Patrol Schedule Set Up SUCCESSFULLY.");
 
             beh.setVisible(true);
