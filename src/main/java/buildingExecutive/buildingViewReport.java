@@ -4,6 +4,10 @@
  */
 package buildingExecutive;
 
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author User
@@ -169,16 +173,29 @@ public class buildingViewReport extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void viewPatrolActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewPatrolActionPerformed
-        new buildingViewPatrolReport().setVisible(true);
+        try {
+            new buildingViewPatrolReport().setVisible(true);
+        } catch (IOException ex) {
+            Logger.getLogger(buildingViewReport.class.getName()).log(Level.SEVERE, null, ex);
+        }
         this.setVisible(false);
     }//GEN-LAST:event_viewPatrolActionPerformed
 
     private void viewPatrol1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewPatrol1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_viewPatrol1ActionPerformed
+        try {
+            new buildingViewComplaintReport().setVisible(true);
+        } catch (IOException ex) {
+            Logger.getLogger(buildingViewReport.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        this.setVisible(false);    }//GEN-LAST:event_viewPatrol1ActionPerformed
 
     private void viewPatrol2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewPatrol2ActionPerformed
-        // TODO add your handling code here:
+        try {
+            new buildingViewJobReport().setVisible(true);
+        } catch (IOException ex) {
+            Logger.getLogger(buildingViewReport.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        this.setVisible(false);
     }//GEN-LAST:event_viewPatrol2ActionPerformed
 
     private void backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backActionPerformed

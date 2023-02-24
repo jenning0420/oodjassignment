@@ -24,17 +24,17 @@ import javax.swing.JPanel;
  *
  * @author User
  */
-public class buildingViewPatrolReport extends javax.swing.JFrame {
+public class buildingViewComplaintReport extends javax.swing.JFrame {
 
-    private javax.swing.JLabel[] patrol, user, venue, details, date, time, status;
+    private javax.swing.JLabel[] comp, user, title, details, date, suggestion, complainant, status;
 
     /**
      * Creates new form buildingViewJobReport
      */
-    public buildingViewPatrolReport() throws IOException {
+    public buildingViewComplaintReport() throws IOException {
         initComponents();
         
-        File f = new File("src/textFiles/jobAssigned.txt");
+        File f = new File("src/textFiles/complaint.txt");
         if (!f.exists()) {
             f.createNewFile();
         }
@@ -56,32 +56,34 @@ public class buildingViewPatrolReport extends javax.swing.JFrame {
 
     private void getData() {
         try {
-            File file = new File("src/textFiles/securityPatrol.txt");
+            File file = new File("src/textFiles/complaint.txt");
             Scanner scanner = new Scanner(file);
 
-            patrol = new JLabel[100];
+            comp = new JLabel[100];
             user = new JLabel[100];
-            venue = new JLabel[100];
+            title = new JLabel[100];
             details = new JLabel[100];
+            suggestion = new JLabel[100];
             date = new JLabel[100];
-            time = new JLabel[100];
+            complainant = new JLabel[100];
             status = new JLabel[100];
             int b = 1;
             scanner.nextLine();
             while (scanner.hasNextLine()) {
                 b++;
                 String[] line = scanner.nextLine().split(",");
-                getVals(patrolID, patrol, b, line[0]);
+                getVals(complaintID, comp, b, line[0]);
                 getVals(userID, user, b, line[1]);
-                getVals(patrolVenue, venue, b, line[2]);
-                getVals(patrolDetails, details, b, line[3]);
-                getVals(patrolDate, date, b, line[4]);
-                getVals(patrolTime, time, b, line[5]);
-                getVals(patrolStatus, status, b, line[6]);
+                getVals(complaintTitle, title, b, line[2]);
+                getVals(complaintDetails, details, b, line[4]);
+                getVals(complaintSuggestion, suggestion, b, line[5]);
+                getVals(complaintDate, date, b, line[3]);
+                getVals(Complainant, complainant, b, line[6]);
+                getVals(complaintStatus, status, b, line[7]);
             }
             scanner.close();
         } catch (FileNotFoundException e) {
-            JOptionPane.showMessageDialog(null, "File not found: securityPatrol");
+            JOptionPane.showMessageDialog(null, "File not found: complaint.txt");
         }
     }
 
@@ -118,7 +120,8 @@ public class buildingViewPatrolReport extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        patrolID = new javax.swing.JPanel();
+        jLabel10 = new javax.swing.JLabel();
+        complaintID = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
@@ -127,11 +130,12 @@ public class buildingViewPatrolReport extends javax.swing.JFrame {
         jPanel21 = new javax.swing.JPanel();
         jPanel22 = new javax.swing.JPanel();
         userID = new javax.swing.JPanel();
-        patrolVenue = new javax.swing.JPanel();
-        patrolDetails = new javax.swing.JPanel();
-        patrolDate = new javax.swing.JPanel();
-        patrolTime = new javax.swing.JPanel();
-        patrolStatus = new javax.swing.JPanel();
+        complaintTitle = new javax.swing.JPanel();
+        complaintDetails = new javax.swing.JPanel();
+        complaintSuggestion = new javax.swing.JPanel();
+        complaintDate = new javax.swing.JPanel();
+        Complainant = new javax.swing.JPanel();
+        complaintStatus = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         jLabel11 = new javax.swing.JLabel();
         num = new javax.swing.JLabel();
@@ -143,7 +147,7 @@ public class buildingViewPatrolReport extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("Scheduled Patrol Report");
+        jLabel2.setText("Complaint Report");
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
@@ -156,7 +160,7 @@ public class buildingViewPatrolReport extends javax.swing.JFrame {
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("Patrol ID");
+        jLabel3.setText("Complaint ID");
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -164,34 +168,38 @@ public class buildingViewPatrolReport extends javax.swing.JFrame {
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel5.setText("Patrol Venue");
+        jLabel5.setText("Complaint Title");
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel6.setText("Patrol Details");
+        jLabel6.setText("Complaint Details");
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel7.setText("Patrol Date");
+        jLabel7.setText("Complaint Suggestion");
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel8.setText("Patrol Time");
+        jLabel8.setText("Date");
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel9.setText("Patrol Status");
+        jLabel9.setText("Complainant");
 
-        patrolID.setFont(new java.awt.Font("Segoe UI Black", 1, 48)); // NOI18N
+        jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel10.setText("Status");
 
-        javax.swing.GroupLayout patrolIDLayout = new javax.swing.GroupLayout(patrolID);
-        patrolID.setLayout(patrolIDLayout);
-        patrolIDLayout.setHorizontalGroup(
-            patrolIDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        complaintID.setFont(new java.awt.Font("Segoe UI Black", 1, 48)); // NOI18N
+
+        javax.swing.GroupLayout complaintIDLayout = new javax.swing.GroupLayout(complaintID);
+        complaintID.setLayout(complaintIDLayout);
+        complaintIDLayout.setHorizontalGroup(
+            complaintIDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 0, Short.MAX_VALUE)
         );
-        patrolIDLayout.setVerticalGroup(
-            patrolIDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        complaintIDLayout.setVerticalGroup(
+            complaintIDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 40, Short.MAX_VALUE)
         );
 
@@ -313,69 +321,82 @@ public class buildingViewPatrolReport extends javax.swing.JFrame {
             .addGap(0, 68, Short.MAX_VALUE)
         );
 
-        patrolVenue.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        complaintTitle.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
-        javax.swing.GroupLayout patrolVenueLayout = new javax.swing.GroupLayout(patrolVenue);
-        patrolVenue.setLayout(patrolVenueLayout);
-        patrolVenueLayout.setHorizontalGroup(
-            patrolVenueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout complaintTitleLayout = new javax.swing.GroupLayout(complaintTitle);
+        complaintTitle.setLayout(complaintTitleLayout);
+        complaintTitleLayout.setHorizontalGroup(
+            complaintTitleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 165, Short.MAX_VALUE)
         );
-        patrolVenueLayout.setVerticalGroup(
-            patrolVenueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        complaintTitleLayout.setVerticalGroup(
+            complaintTitleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 68, Short.MAX_VALUE)
         );
 
-        patrolDetails.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        complaintDetails.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
-        javax.swing.GroupLayout patrolDetailsLayout = new javax.swing.GroupLayout(patrolDetails);
-        patrolDetails.setLayout(patrolDetailsLayout);
-        patrolDetailsLayout.setHorizontalGroup(
-            patrolDetailsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout complaintDetailsLayout = new javax.swing.GroupLayout(complaintDetails);
+        complaintDetails.setLayout(complaintDetailsLayout);
+        complaintDetailsLayout.setHorizontalGroup(
+            complaintDetailsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 98, Short.MAX_VALUE)
         );
-        patrolDetailsLayout.setVerticalGroup(
-            patrolDetailsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        complaintDetailsLayout.setVerticalGroup(
+            complaintDetailsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 68, Short.MAX_VALUE)
         );
 
-        patrolDate.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        complaintSuggestion.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
-        javax.swing.GroupLayout patrolDateLayout = new javax.swing.GroupLayout(patrolDate);
-        patrolDate.setLayout(patrolDateLayout);
-        patrolDateLayout.setHorizontalGroup(
-            patrolDateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout complaintSuggestionLayout = new javax.swing.GroupLayout(complaintSuggestion);
+        complaintSuggestion.setLayout(complaintSuggestionLayout);
+        complaintSuggestionLayout.setHorizontalGroup(
+            complaintSuggestionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 156, Short.MAX_VALUE)
         );
-        patrolDateLayout.setVerticalGroup(
-            patrolDateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        complaintSuggestionLayout.setVerticalGroup(
+            complaintSuggestionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 67, Short.MAX_VALUE)
         );
 
-        patrolTime.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        complaintDate.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
-        javax.swing.GroupLayout patrolTimeLayout = new javax.swing.GroupLayout(patrolTime);
-        patrolTime.setLayout(patrolTimeLayout);
-        patrolTimeLayout.setHorizontalGroup(
-            patrolTimeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout complaintDateLayout = new javax.swing.GroupLayout(complaintDate);
+        complaintDate.setLayout(complaintDateLayout);
+        complaintDateLayout.setHorizontalGroup(
+            complaintDateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 0, Short.MAX_VALUE)
         );
-        patrolTimeLayout.setVerticalGroup(
-            patrolTimeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        complaintDateLayout.setVerticalGroup(
+            complaintDateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 67, Short.MAX_VALUE)
         );
 
-        patrolStatus.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        Complainant.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
-        javax.swing.GroupLayout patrolStatusLayout = new javax.swing.GroupLayout(patrolStatus);
-        patrolStatus.setLayout(patrolStatusLayout);
-        patrolStatusLayout.setHorizontalGroup(
-            patrolStatusLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout ComplainantLayout = new javax.swing.GroupLayout(Complainant);
+        Complainant.setLayout(ComplainantLayout);
+        ComplainantLayout.setHorizontalGroup(
+            ComplainantLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 127, Short.MAX_VALUE)
         );
-        patrolStatusLayout.setVerticalGroup(
-            patrolStatusLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        ComplainantLayout.setVerticalGroup(
+            ComplainantLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 67, Short.MAX_VALUE)
+        );
+
+        complaintStatus.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+
+        javax.swing.GroupLayout complaintStatusLayout = new javax.swing.GroupLayout(complaintStatus);
+        complaintStatus.setLayout(complaintStatusLayout);
+        complaintStatusLayout.setHorizontalGroup(
+            complaintStatusLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        complaintStatusLayout.setVerticalGroup(
+            complaintStatusLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 41, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -386,7 +407,7 @@ public class buildingViewPatrolReport extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(patrolID, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(complaintID, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -398,33 +419,37 @@ public class buildingViewPatrolReport extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(patrolVenue, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(complaintTitle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(patrolDetails, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(complaintDetails, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(patrolDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                    .addComponent(complaintSuggestion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel20, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(patrolTime, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(complaintDate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel21, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(patrolStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(Complainant, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel22, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, 92, Short.MAX_VALUE)
+                    .addComponent(complaintStatus, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(1, 1, 1))
         );
         jPanel1Layout.setVerticalGroup(
@@ -434,7 +459,11 @@ public class buildingViewPatrolReport extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(patrolID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(complaintID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel10)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(complaintStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -446,11 +475,11 @@ public class buildingViewPatrolReport extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(userID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(patrolVenue, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(patrolDetails, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(patrolDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(patrolTime, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(patrolStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(complaintTitle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(complaintDetails, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(complaintSuggestion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(complaintDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Complainant, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanel20, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -476,7 +505,7 @@ public class buildingViewPatrolReport extends javax.swing.JFrame {
         jLabel11.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(0, 0, 153));
         jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel11.setText("Total Number of Scheduled Patrols:");
+        jLabel11.setText("Total Number of Complaints:");
 
         num.setFont(new java.awt.Font("Hobo Medium", 1, 18)); // NOI18N
         num.setForeground(new java.awt.Color(204, 0, 0));
@@ -501,32 +530,33 @@ public class buildingViewPatrolReport extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(40, 40, 40)
-                        .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(num, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(123, 123, 123)
-                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 201, Short.MAX_VALUE)
-                                .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(412, 412, 412)
+                        .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(30, 30, 30)
-                        .addComponent(currentDate, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1124, Short.MAX_VALUE)
+                        .addComponent(currentDate, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(442, 442, 442))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 1194, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1203, javax.swing.GroupLayout.PREFERRED_SIZE)))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(num, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(219, 219, 219)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -540,22 +570,23 @@ public class buildingViewPatrolReport extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(18, 38, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(num, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(88, Short.MAX_VALUE))
+                        .addGap(73, 73, 73))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(13, 13, 13)
-                        .addComponent(jLabel12)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel14)
+                        .addGap(33, 33, 33)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel12)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel14))
                             .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(27, Short.MAX_VALUE))))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
 
         pack();
@@ -583,13 +614,13 @@ public class buildingViewPatrolReport extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(buildingViewPatrolReport.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(buildingViewComplaintReport.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(buildingViewPatrolReport.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(buildingViewComplaintReport.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(buildingViewPatrolReport.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(buildingViewComplaintReport.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(buildingViewPatrolReport.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(buildingViewComplaintReport.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
         //</editor-fold>
@@ -598,18 +629,26 @@ public class buildingViewPatrolReport extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 try {
-                    new buildingViewPatrolReport().setVisible(true);
+                    new buildingViewComplaintReport().setVisible(true);
                 } catch (IOException ex) {
-                    Logger.getLogger(buildingViewPatrolReport.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(buildingViewComplaintReport.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel Complainant;
+    private javax.swing.JPanel complaintDate;
+    private javax.swing.JPanel complaintDetails;
+    private javax.swing.JPanel complaintID;
+    private javax.swing.JPanel complaintStatus;
+    private javax.swing.JPanel complaintSuggestion;
+    private javax.swing.JPanel complaintTitle;
     private javax.swing.JLabel currentDate;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
@@ -632,12 +671,6 @@ public class buildingViewPatrolReport extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel num;
-    private javax.swing.JPanel patrolDate;
-    private javax.swing.JPanel patrolDetails;
-    private javax.swing.JPanel patrolID;
-    private javax.swing.JPanel patrolStatus;
-    private javax.swing.JPanel patrolTime;
-    private javax.swing.JPanel patrolVenue;
     private javax.swing.JPanel userID;
     // End of variables declaration//GEN-END:variables
 }
