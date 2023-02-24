@@ -1,0 +1,3 @@
+PaymentID,UserID,PaymentType,AmountPaid,DateOfPaymentPaid,
+1,203,B0201,Services,20,05-02-2023
+2,6,wd,Services,2001,18-02-2023

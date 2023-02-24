@@ -11,11 +11,17 @@ package sng;
 public class GenerateInvoiceSng {
 
     private int invoiceID;
+    private int receiptID;
+    private int statementID;
+    private String PaymentID;
     private String userID;
     private String unitNo;
     private String paymentType;
     private String amount;
+    private String amountPaid;
     private String paymentDue;
+    private String paidDate;
+    private String totAmtPaid;
     
     public int getInvoiceID() {
         return invoiceID;
@@ -25,6 +31,32 @@ public class GenerateInvoiceSng {
         this.invoiceID = invoiceID;
     }
 
+    public int getReceiptID() {
+        return receiptID;
+    }
+
+    public void setReceiptID(int receiptID) {
+        this.receiptID = receiptID;
+    }
+
+    public int getStatementID() {
+        return statementID;
+    }
+
+    public void setStatementID(int statementID) {
+        this.statementID = statementID;
+    }
+
+    
+    public String getPaymentID() {
+        return PaymentID;
+    }
+
+    public void setPaymentID(String PaymentID) {
+        this.PaymentID = PaymentID;
+    }
+
+    
     public String getUserID() {
         return userID;
     }
@@ -57,6 +89,14 @@ public class GenerateInvoiceSng {
         this.amount = amount;
     }
 
+    public String getAmountPaid() {
+        return amountPaid;
+    }
+
+    public void setAmountPaid(String amountPaid) {
+        this.amountPaid = amountPaid;
+    }
+
     public String getPaymentDue() {
         return paymentDue;
     }
@@ -64,4 +104,24 @@ public class GenerateInvoiceSng {
     public void setPaymentDue(String paymentDue) {
         this.paymentDue = paymentDue;
     }
+
+    public String getPaidDate() {
+        return paidDate;
+    }
+
+    public void setPaidDate(String paidDate) {
+        this.paidDate = paidDate;
+    }
+
+    public String getTotAmtPaid() {
+        return totAmtPaid;
+    }
+
+    public void setTotAmtPaid(String totAmtPaid) {
+        this.totAmtPaid = totAmtPaid;
+    }
+    
+    
+    
 }
+

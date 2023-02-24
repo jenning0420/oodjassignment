@@ -13,3 +13,4 @@ PaymentID,UserID,UnitNo,PaymentType,Amount
 12,2,wd,Services,100
 13,2,QA-110,Rental/Utility/Services,1000
 14,2,B-101,Rental,10
+15,2,A0202,Utility/Services,200

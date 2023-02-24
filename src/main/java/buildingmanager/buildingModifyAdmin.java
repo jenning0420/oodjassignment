@@ -76,8 +76,8 @@ public class buildingModifyAdmin extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         userID = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        update = new javax.swing.JButton();
+        remove = new javax.swing.JButton();
         Password = new javax.swing.JTextField();
         Gender = new javax.swing.JComboBox<>();
         back = new javax.swing.JButton();
@@ -141,21 +141,21 @@ public class buildingModifyAdmin extends javax.swing.JFrame {
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel8.setText("User ID:");
 
-        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(0, 51, 204));
-        jButton1.setText("UPDATE");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        update.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        update.setForeground(new java.awt.Color(0, 51, 204));
+        update.setText("UPDATE");
+        update.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                updateActionPerformed(evt);
             }
         });
 
-        jButton2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(153, 0, 0));
-        jButton2.setText("REMOVE");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        remove.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        remove.setForeground(new java.awt.Color(153, 0, 0));
+        remove.setText("REMOVE");
+        remove.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                removeActionPerformed(evt);
             }
         });
 
@@ -202,12 +202,12 @@ public class buildingModifyAdmin extends javax.swing.JFrame {
                             .addComponent(Name, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(jPanel1Layout.createSequentialGroup()
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(remove, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(jPanel1Layout.createSequentialGroup()
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(update, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGap(40, 40, 40))
                                 .addGroup(jPanel1Layout.createSequentialGroup()
                                     .addGap(18, 18, 18)
@@ -243,8 +243,8 @@ public class buildingModifyAdmin extends javax.swing.JFrame {
                     .addComponent(Password, javax.swing.GroupLayout.DEFAULT_SIZE, 27, Short.MAX_VALUE))
                 .addGap(30, 30, 30)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(update, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(remove, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(24, 24, 24))
         );
 
@@ -319,7 +319,7 @@ public class buildingModifyAdmin extends javax.swing.JFrame {
 
     buildingUserManagement bum = new buildingUserManagement();
     
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void updateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateActionPerformed
         int item = userTable.getSelectedRow();
         DefaultTableModel model = (DefaultTableModel) userTable.getModel();
 
@@ -362,9 +362,9 @@ public class buildingModifyAdmin extends javax.swing.JFrame {
         } else {
             JOptionPane.showMessageDialog(rootPane, "Please fill up ALL details!");
         }
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_updateActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void removeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeActionPerformed
         int item = userTable.getSelectedRow();
         DefaultTableModel model = (DefaultTableModel) userTable.getModel();
 
@@ -401,7 +401,7 @@ public class buildingModifyAdmin extends javax.swing.JFrame {
         } else {
             JOptionPane.showMessageDialog(rootPane, "Please select the fill to Delete!");
         }
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_removeActionPerformed
 
     private void GenderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GenderActionPerformed
         // TODO add your handling code here:
@@ -458,8 +458,6 @@ public class buildingModifyAdmin extends javax.swing.JFrame {
     private javax.swing.JTextField Password;
     private javax.swing.JTextField Username;
     private javax.swing.JButton back;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -469,6 +467,8 @@ public class buildingModifyAdmin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JButton remove;
+    private javax.swing.JButton update;
     private javax.swing.JTextField userID;
     private javax.swing.JTable userTable;
     // End of variables declaration//GEN-END:variables

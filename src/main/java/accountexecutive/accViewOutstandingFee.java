@@ -43,11 +43,11 @@ public class accViewOutstandingFee extends javax.swing.JFrame {
 
             for (int i = 0; i < lines1.length; i++) {
                 String[] row1 = lines1[i].toString().split(",");
-                gis.setAmount(amountFinal);
-                if (row1[5].equals(gis.getAmount().equals("0.0"))) {
-                    model1.addRow(new Object[]{row1[0], row1[1], row1[3]});
+                gis.setAmount(row1[4]);
+                if (!row1[4].equals("0.0")) {
+                    model1.addRow(row1 /*new Object[]{row1[0], row1[1], row1[3]}*/);
                 }
-            }
+            } //if (row[1].equals(evj.getUserID1()) && (evj.getStatus().equals("On-Going") || evj.getStatus().equals("Upcoming")))
         } catch (FileNotFoundException ex) {
             Logger.getLogger(accGenerateInvoice.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {

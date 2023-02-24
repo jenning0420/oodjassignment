@@ -9,3 +9,7 @@ invoiceID,userID,Unit_No,Payment_Type,Amount(RM),Payment_Due
 8,2,QA-110,Rental/Utility/Services,0.0,04-02-2023,
 9,2,B-101,Rental,0.0,03-02-2023,
 10,206,A0111,Services,120,28-02-2023,
+11,2,A0202,Utility/Services,200,09-02-2023
+12,3,a101,Rental/Utility/Services,100,05-02-2023
+13,3,a1011,Utility,100,22-02-2023
+

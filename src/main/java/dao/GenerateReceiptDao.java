@@ -1,6 +1,6 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Interface.java to edit this template
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package dao;
 
@@ -17,31 +17,30 @@ import sng.GenerateInvoiceSng;
  *
  * @author User
  */
-public class GenerateInvoiceDao implements ObjectDao<GenerateInvoiceSng> {
+public class GenerateReceiptDao implements ObjectDao<GenerateInvoiceSng> {
 
-    @Override
     public boolean add(GenerateInvoiceSng gis) {
         try {
-            if (!"".equals(gis.getUserID()) && !"".equals(gis.getUnitNo()) && !"".equals(gis.getPaymentType()) && !"".equals(gis.getAmount()) && !"".equals(gis.getPaymentDue())) {
-                File f = new File("src/textFiles/invoice.txt");
+            if (!"".equals(gis.getPaymentID()) && !"".equals(gis.getUserID()) && !"".equals(gis.getPaymentType()) && !"".equals(gis.getAmountPaid()) && !"".equals(gis.getPaidDate())) {
+                File f = new File("src/textFiles/receipt.txt");
                 if (!f.exists()) {
                     f.createNewFile();
                 }
                 BufferedReader br = new BufferedReader(new FileReader(f));
                 Object[] Lines = br.lines().toArray();
                 int i = 0;
-                int invoiceid = 0;
+                int receiptid = 0;
                 for (i = 1; i < Lines.length; i++) {
                     String line = Lines[i].toString().trim();
                     String[] row = line.split(",");
-                    invoiceid = Integer.parseInt(row[0]);
+                    receiptid = Integer.parseInt(row[0]);
 
                 }
-                int invoiceID = invoiceid + 1;
+                int receiptID = receiptid + 1;
                 FileWriter fw = new FileWriter(f, true);
                 BufferedWriter bw = new BufferedWriter(fw);
                 PrintWriter pw = new PrintWriter(bw);
-                pw.println(invoiceID + "," + gis.getUserID() + "," + gis.getUnitNo() + "," + gis.getPaymentType() + "," + gis.getAmount() + "," + gis.getPaymentDue() + ",");
+                pw.println(receiptID + "," + gis.getPaymentID() + "," + gis.getUserID() + "," + gis.getPaymentType() + "," + gis.getAmountPaid() + "," + gis.getPaidDate() + "," );
                 pw.flush();
                 pw.close();
                 bw.close();
