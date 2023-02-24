@@ -17,3 +17,5 @@ Complaint ID, User ID, Competition Title,Date,Competition Details,Issue Suggesti
 16,214,Floor wet,22-02-2023,clean floor,Floor dirty,Resident,Pending,
 17,9,fewfe,03-02-2023,fewfew,fewfwefewf,Resident,Pending,
 18,19,wd,19-02-2023,w,d,Admin,Pending,
+19,9,csd,02-02-2023,cds,cds,Resident,Pending,
+20,9,i just want to complaint,17-02-2023,i have no idea what i am talking about but anyway i just dont like your management team,Please change the entire management team so that i can have a sweet dream hereafter,Resident,Pending,
