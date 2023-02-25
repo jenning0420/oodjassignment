@@ -12,3 +12,4 @@ invoiceID,userID,Unit_No,Payment_Type,Amount(RM),Payment_Due
 11,2,A0202,Utility/Services,0.0,09-02-2023
 12,3,a101,Rental/Utility/Services,100,05-02-2023
 13,3,a1011,Utility,100,22-02-2023
+14,9,A0101,Utility,0.0,24-02-2023
