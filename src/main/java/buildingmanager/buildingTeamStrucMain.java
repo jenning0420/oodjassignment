@@ -24,7 +24,7 @@ public class buildingTeamStrucMain extends javax.swing.JFrame {
         add(new JLabel("JFrame set to center of the screen", SwingConstants.CENTER), BorderLayout.CENTER);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null); // this method display the JFrame to center position of a screen
-        setVisible(true);        
+        setVisible(false);        
     }
 
     /**
@@ -112,21 +112,18 @@ public class buildingTeamStrucMain extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        buildingTeamStrucAdd buildingTeamStrucAdd = new buildingTeamStrucAdd();
-        buildingTeamStrucAdd.setVisible(true);
-        this.dispose();
+        new buildingTeamStrucAdd().setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        buildingTeamStrucEdit buildingTeamStrucEdit = new buildingTeamStrucEdit();
-        buildingTeamStrucEdit.setVisible(true);
-        this.dispose();
+        new buildingTeamStrucEdit().setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        buildingTeamStrucView buildingTeamStrucView = new buildingTeamStrucView();
-        buildingTeamStrucView.setVisible(true);
-        this.dispose();
+        new buildingTeamStrucView().setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed

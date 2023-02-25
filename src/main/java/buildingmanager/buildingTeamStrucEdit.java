@@ -35,11 +35,11 @@ public class buildingTeamStrucEdit extends javax.swing.JFrame {
      */
     public buildingTeamStrucEdit() {
         initComponents();
-        setTitle("Edit Team Structure");
+        setTitle("Team Structure Main Page");
         add(new JLabel("JFrame set to center of the screen", SwingConstants.CENTER), BorderLayout.CENTER);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null); // this method display the JFrame to center position of a screen
-        setVisible(true);
+        setVisible(false);        
         
         String filePath = "src/textFiles/teamStruc.txt";
         File file = new File(filePath);
@@ -59,9 +59,9 @@ public class buildingTeamStrucEdit extends javax.swing.JFrame {
                 model.addRow(row);
             }
         } catch (FileNotFoundException ex) {
-            Logger.getLogger(buildingTeamStrucMain.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(buildingTeamStrucEdit.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
-            Logger.getLogger(buildingTeamStrucMain.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(buildingTeamStrucEdit.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -261,7 +261,7 @@ public class buildingTeamStrucEdit extends javax.swing.JFrame {
             model.setValueAt(modamount.getText(), item, 1);
 
 
-            String filePath = "src/textFiles/unitManage.txt";
+            String filePath = "src/textFiles/teamStruc.txt";
             File file = new File(filePath);
             try {
 
@@ -300,7 +300,7 @@ public class buildingTeamStrucEdit extends javax.swing.JFrame {
 
         if (item >= 0){
             model.removeRow(item);
-            String filePath = "src/textFiles/unitManage.txt";
+            String filePath = "src/textFiles/teamStruc.txt";
             File file = new File(filePath);
             try {
 

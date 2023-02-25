@@ -30,7 +30,7 @@ public class buildingTeamStrucView extends javax.swing.JFrame {
         add(new JLabel("JFrame set to center of the screen", SwingConstants.CENTER), BorderLayout.CENTER);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null); // this method display the JFrame to center position of a screen
-        setVisible(true);
+        setVisible(false);
 
         File file = new File("src/textFiles/teamStruc.txt");
         try {
