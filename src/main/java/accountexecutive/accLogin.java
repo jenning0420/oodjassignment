@@ -130,7 +130,7 @@ public class accLogin extends javax.swing.JFrame {
     String passwordfinal;
     UserLoginSng uls = new UserLoginSng();
     UserLoginDao uld = new UserLoginDao();
-    accexecmainpage acmp = new accexecmainpage();
+    accInvRcpStmManagement acmp = new accInvRcpStmManagement();
     
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         Usernamefinal = txtUsername.getText();
