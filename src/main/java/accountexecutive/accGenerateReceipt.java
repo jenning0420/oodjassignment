@@ -51,7 +51,7 @@ public class accGenerateReceipt extends javax.swing.JFrame {
 
             for (int i = 0; i < lines.length; i++) {
                 String[] row = lines[i].toString().split(",");
-                model.addRow(new Object[]{row[0], row[2], row[3], row[4]});
+                model.addRow(new Object[]{row[0], row[1], row[3], row[4]});
             }
         } catch (FileNotFoundException ex) {
             Logger.getLogger(accGenerateInvoice.class.getName()).log(Level.SEVERE, null, ex);
@@ -73,7 +73,7 @@ public class accGenerateReceipt extends javax.swing.JFrame {
 
             for (int i = 0; i < lines1.length; i++) {
                 String[] row1 = lines1[i].toString().split(",");
-                model1.addRow(new Object[]{row1[0], row1[2], row1[3], row1[4]});
+                model1.addRow(new Object[]{row1[0], row1[1], row1[3], row1[4]});
             }
         } catch (FileNotFoundException ex) {
             Logger.getLogger(accGenerateInvoice.class.getName()).log(Level.SEVERE, null, ex);
