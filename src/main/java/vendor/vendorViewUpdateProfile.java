@@ -317,7 +317,9 @@ public class vendorViewUpdateProfile extends javax.swing.JFrame {
         newpassword.setText("");
         
         // Show confirmation pop up
-        JOptionPane.showMessageDialog(this, "Item has been Modified");       
+        JOptionPane.showMessageDialog(this, "Item has been Modified");
+        new vendorHome().setVisible(true);
+        this.setVisible(false);
 
     }//GEN-LAST:event_UpdateActionPerformed
 
