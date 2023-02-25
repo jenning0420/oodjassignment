@@ -32,6 +32,7 @@ public class accGenerateStatement extends javax.swing.JFrame {
     private DefaultTableModel model123;
     GenerateInvoiceSng gis = new GenerateInvoiceSng();
     GenerateStatementDao gid = new GenerateStatementDao();
+    accInvRcpStmManagement airsm = new accInvRcpStmManagement();
 
     /**
      * Creates new form accGenerateStatement
@@ -40,8 +41,7 @@ public class accGenerateStatement extends javax.swing.JFrame {
         initComponents();
         Resident();
         Vendor();
-//        ac();
-//        calculate();
+
 
     }
 
@@ -71,7 +71,7 @@ public class accGenerateStatement extends javax.swing.JFrame {
             while (sc.hasNextLine()) {
                 String line = sc.nextLine();
                 String[] data = line.split(",");
-//            int pid = Integer.parseInt(data[0]);
+
                 if (data[0].equals(id)) {
                     String PaymentID = (data[0]);
                     int UserID = Integer.parseInt(data[1]);
@@ -81,26 +81,18 @@ public class accGenerateStatement extends javax.swing.JFrame {
                         PaymentID, UserID, PaymentType, Payment,});
 
                     double sum = 0;
-//                double sum = Double.parseDouble(total.getText());
-                    for (int i = 0; i < addUpTable.getRowCount(); i++) {
-//                    String lines = tableLines[i].toString().trim();
-//                    String[] dataRow = lines.split(",");
 
-//                    if dataRow[0].equals(lineId)
-//                    sum = sum + Double.parseDouble(jTable1.getValueAt(i,Order.price).toString());
+                    for (int i = 0; i < addUpTable.getRowCount(); i++) {
+
                         sum += Double.parseDouble(addUpTable.getValueAt(i, 3).toString());
                     }
 
                     totAmtPaid.setText(Double.toString(sum));
                     double Total = Double.parseDouble(totAmtPaid.getText());
 
-//                TotalAmt = Double.parseDouble(totAmtPaid.getText());
                     String iTotal = String.format("RM %.2f", Total);
                     totAmtPaid.setText(iTotal);
-//                totalvalue = String.format("RM %.2f", Total);
-//                String[] item = data[1].split(";");
-//                String pid = data[0];
-//            if (data[0] == id) {
+
 
                 }
             }
@@ -147,26 +139,15 @@ public class accGenerateStatement extends javax.swing.JFrame {
                         PaymentID, UserID, PaymentType, Payment,});
 
                     double sum = 0;
-//                double sum = Double.parseDouble(total.getText());
                     for (int i = 0; i < addUpTable.getRowCount(); i++) {
-//                    String lines = tableLines[i].toString().trim();
-//                    String[] dataRow = lines.split(",");
-
-//                    if dataRow[0].equals(lineId)
-//                    sum = sum + Double.parseDouble(jTable1.getValueAt(i,Order.price).toString());
                         sum += Double.parseDouble(addUpTable.getValueAt(i, 3).toString());
                     }
 
                     totAmtPaid.setText(Double.toString(sum));
                     double Total = Double.parseDouble(totAmtPaid.getText());
 
-//                TotalAmt = Double.parseDouble(totAmtPaid.getText());
                     String iTotal = String.format("RM %.2f", Total);
                     totAmtPaid.setText(iTotal);
-//                totalvalue = String.format("RM %.2f", Total);
-//                String[] item = data[1].split(";");
-//                String pid = data[0];
-//            if (data[0] == id) {
 
                 }
             }
@@ -220,71 +201,6 @@ public class accGenerateStatement extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, e);
         }
     }
-
-//    private void ac() {
-//        String filePath = "src/textFiles/residentPayment.txt";
-//        File file = new File(filePath);
-//
-//        try {
-//            FileReader fr = new FileReader(file);
-//            BufferedReader br = new BufferedReader(fr);
-//            String line = br.readLine();
-//
-//            DefaultTableModel model = (DefaultTableModel) residentPaymentTable.getModel();
-//
-//            Object[] lines = br.lines().toArray();
-//
-//            for (int i = 0; i < lines.length; i++) {
-//                String[] row = lines[i].toString().split(",");
-//                model.addRow(new Object[]{row[0], row[2], row[3], row[4]});
-//            }
-//        } catch (FileNotFoundException ex) {
-//            Logger.getLogger(accGenerateInvoice.class.getName()).log(Level.SEVERE, null, ex);
-//        } catch (IOException ex) {
-//            Logger.getLogger(accGenerateInvoice.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-//
-//        String filePath1 = "src/textFiles/vendorPayment.txt";
-//        File file1 = new File(filePath1);
-//
-//        try {
-//            FileReader fr1 = new FileReader(file1);
-//            BufferedReader br1 = new BufferedReader(fr1);
-//            String line1 = br1.readLine();
-//
-//            DefaultTableModel model1 = (DefaultTableModel) vendorPaymentTable.getModel();
-//
-//            Object[] lines1 = br1.lines().toArray();
-//
-//            for (int i = 0; i < lines1.length; i++) {
-//                String[] row1 = lines1[i].toString().split(",");
-//                model1.addRow(new Object[]{row1[0], row1[2], row1[3], row1[4]});
-//            }
-//        } catch (FileNotFoundException ex) {
-//            Logger.getLogger(accGenerateInvoice.class.getName()).log(Level.SEVERE, null, ex);
-//        } catch (IOException ex) {
-//            Logger.getLogger(accGenerateInvoice.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-//    }
-
-    /*
-    private void insertdata() {
-        try {
-            BufferedWriter writer = new BufferedWriter(new FileWriter("src/textfile/addUp.txt", true));
-            String newId
-                    = idtf.getText() + ","
-                    + fna.getText() + ","
-                    + fprice.getText() + ","
-                    + fdes.getText();
-            writer.append(newId);
-            writer.newLine();
-//            JOptionPane.showConfirmDialog(null, "Add to Cart?");
-            writer.close();
-            JOptionPane.showMessageDialog(null, "Item added! Back to Purchase Order");
-        } catch (IOException e) {
-            JOptionPane.showMessageDialog(null, e);
-        }
-    }*/
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -605,7 +521,7 @@ public class accGenerateStatement extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backActionPerformed
-        new accInvoiceManagement().setVisible(true);
+        new accInvRcpStmManagement().setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_backActionPerformed
 
@@ -622,14 +538,6 @@ public class accGenerateStatement extends javax.swing.JFrame {
         int column = vendorPaymentTable.getSelectedColumn();
         id = String.valueOf(vendorPaymentTable.getValueAt(row, 0));
         labeldata1();
-
-        /*DefaultTableModel model1 = (DefaultTableModel) vendorPaymentTable.getModel();
-        int selectedInfo1 = vendorPaymentTable.getSelectedRow();
-
-        totAmtPaid.setText(model1.getValueAt(selectedInfo1, 0).toString());
-        userID.setText(model1.getValueAt(selectedInfo1, 1).toString());
-        paymentType.setText(model1.getValueAt(selectedInfo1, 2).toString());
-        amountPaid.setText(model1.getValueAt(selectedInfo1, 3).toString());*/
     }//GEN-LAST:event_vendorPaymentTableMouseClicked
 
     private JFrame frame;
@@ -646,7 +554,7 @@ public class accGenerateStatement extends javax.swing.JFrame {
         if (gid.add(gis) == true) {
             JOptionPane.showMessageDialog(this, "Statement GENERATED successfully!");
 
-            new accGenerateStatement().setVisible(true);
+            airsm.setVisible(true);
             this.setVisible(false);
         } else {
             JOptionPane.showMessageDialog(this, "Please fill up ALL the information.");

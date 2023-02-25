@@ -27,7 +27,7 @@ public class accGenerateInvoice extends javax.swing.JFrame {
 
     GenerateInvoiceSng gis = new GenerateInvoiceSng();
     GenerateInvoiceDao gid = new GenerateInvoiceDao();
-    accInvoiceManagement aim = new accInvoiceManagement();
+    accInvRcpStmManagement airsm = new accInvRcpStmManagement();
 
     /**
      * Creates new form accGenerateInvoice
@@ -365,7 +365,7 @@ public class accGenerateInvoice extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backActionPerformed
-        new accInvoiceManagement().setVisible(true);
+        new accInvRcpStmManagement().setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_backActionPerformed
 
@@ -391,7 +391,7 @@ public class accGenerateInvoice extends javax.swing.JFrame {
         if (gid.add(gis) == true) {
             JOptionPane.showMessageDialog(this, "Invoice GENERATED!");
 
-            aim.setVisible(true);
+            airsm.setVisible(true);
             this.setVisible(false);
         } else {
             JOptionPane.showMessageDialog(this, "Please fill up ALL the information.");

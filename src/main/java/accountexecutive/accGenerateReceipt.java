@@ -30,7 +30,7 @@ public class accGenerateReceipt extends javax.swing.JFrame {
     String paidDateFinal;
     GenerateInvoiceSng gis = new GenerateInvoiceSng();
     GenerateReceiptDao gid = new GenerateReceiptDao();
-    accInvoiceManagement aim = new accInvoiceManagement();
+    accInvRcpStmManagement airsm = new accInvRcpStmManagement();
 
     /**
      * Creates new form accGenerateReceipt
@@ -381,7 +381,7 @@ public class accGenerateReceipt extends javax.swing.JFrame {
     }//GEN-LAST:event_residentPaymentTableMouseClicked
 
     private void backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backActionPerformed
-        new accInvoiceManagement().setVisible(true);
+        new accInvRcpStmManagement().setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_backActionPerformed
 
@@ -402,7 +402,7 @@ public class accGenerateReceipt extends javax.swing.JFrame {
         if (gid.add(gis) == true) {
             JOptionPane.showMessageDialog(this, "Receipt GENERATED!");
 
-            aim.setVisible(true);
+            airsm.setVisible(true);
             this.setVisible(false);
         } else {
             JOptionPane.showMessageDialog(this, "Please fill up ALL the information.");
