@@ -251,6 +251,8 @@ public class buildingSetupPatrol extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        userID.setEnabled(false);
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 

@@ -12,14 +12,7 @@ public class Unit {
     private String PID;
     private String PUnitNo;
     private String PType;
-    private double PPrice;
-
-    public Unit(String PID, String PUnitNo, String PType, double PPrice) {
-        this.PID = PID;
-        this.PUnitNo = PUnitNo;
-        this.PType = PType;
-        this.PPrice = PPrice;
-    }
+    private String PPrice;
     
     public String getPID() {
         return PID;
@@ -46,11 +39,11 @@ public class Unit {
         this.PType = PType;
     }
     
-    public double getPPrice() {
+    public String getPPrice() {
         return PPrice;
     }
 
-    public void setPPrice(double PPrice) {
+    public void setPPrice(String PPrice) {
         this.PPrice = PPrice;
     }
     

@@ -130,7 +130,7 @@ public class accLogin extends javax.swing.JFrame {
     String passwordfinal;
     UserLoginSng uls = new UserLoginSng();
     UserLoginDao uld = new UserLoginDao();
-    accInvRcpStmManagement acmp = new accInvRcpStmManagement();
+    accExecHome aeh = new accExecHome();
     
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         Usernamefinal = txtUsername.getText();
@@ -141,7 +141,7 @@ public class accLogin extends javax.swing.JFrame {
         if (uld.add(uls) == true) {
             JOptionPane.showMessageDialog(this, "Log In SUCCESSFULLY! Welcome back Account Executive.");
 
-            acmp.setVisible(true);
+            aeh.setVisible(true);
             this.setVisible(false);
         } else {
             JOptionPane.showMessageDialog(this, "INCORRECT Username OR Password. Please try again.");

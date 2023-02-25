@@ -1,9 +1,11 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Interface.java to edit this template
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package dao;
+package Propmanagement.system;
 
+import Propmanagement.function.Unit;
+import dao.ObjectDao;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -11,19 +13,18 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
-import sng.GenerateInvoiceSng;
 
 /**
  *
- * @author User
+ * @author Admin
  */
-public class GenerateInvoiceDao implements ObjectDao<GenerateInvoiceSng> {
-
+public class ManageUnit implements ManagingUnit<Unit>{
+    
     @Override
-    public boolean add(GenerateInvoiceSng gis) {
+    public boolean add(Unit uit) {
         try {
-            if (!"".equals(gis.getUserID()) && !"".equals(gis.getUnitNo()) && !"".equals(gis.getPaymentType()) && !"".equals(gis.getAmount()) && !"".equals(gis.getPaymentDue())) {
-                File f = new File("src/textFiles/invoice.txt");
+            if (!"".equals(uit.getPID()) && !"".equals(uit.getPUnitNo()) && !"".equals(uit.getPType()) && !"".equals(uit.getPPrice())) {
+                File f = new File("src/textFiles/unitManage.txt");
                 if (!f.exists()) {
                     f.createNewFile();
                 }
@@ -41,7 +42,7 @@ public class GenerateInvoiceDao implements ObjectDao<GenerateInvoiceSng> {
                 FileWriter fw = new FileWriter(f, true);
                 BufferedWriter bw = new BufferedWriter(fw);
                 PrintWriter pw = new PrintWriter(bw);
-                pw.println(invoiceID + "," + gis.getUserID() + "," + gis.getUnitNo() + "," + gis.getPaymentType() + "," + gis.getAmount() + "," + gis.getPaymentDue());
+                pw.println(uit.getPID() + "," + uit.getPUnitNo() + "," + uit.getPType() + "," + uit.getPPrice());
                 pw.flush();
                 pw.close();
                 bw.close();
@@ -56,5 +57,5 @@ public class GenerateInvoiceDao implements ObjectDao<GenerateInvoiceSng> {
 
         return false;
 
-    }
+    }    
 }

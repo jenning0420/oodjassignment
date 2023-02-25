@@ -328,6 +328,8 @@ public class residentPayment extends javax.swing.JFrame {
                 writer.write(paymentID + "," + userid + "," + unitno + "," + paymenttype + "," + amount + "\n");
                 writer.close();
                 JOptionPane.showMessageDialog(null, "Your receipt will be generated soon!");
+                new residentHome().setVisible(true);
+        this.setVisible(false);
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, "Error generating receipt!");
             }            

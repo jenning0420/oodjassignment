@@ -1,0 +1,6 @@
+PropertyID,UnitNumber,PropertyType,PropertyPrice,
+2001,A-LOL,Penthouse,10.0,
+2002,B-LOL,Studio,50000.0,
+1008,B-7-1,Rental,50000,
+1012,C-17-09,Studio,5000,
+1010,C-19-07,Studio,9000,

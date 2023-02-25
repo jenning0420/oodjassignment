@@ -296,6 +296,8 @@ public class buildingAssignJob extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        empID.setEnabled(false);
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
