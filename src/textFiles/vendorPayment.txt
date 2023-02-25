@@ -5,3 +5,5 @@ PaymentID,UserID,UnitNo,PaymentType,Amount
 204,202,B0201,Rental,2.0
 205,202,B0201,Utility,10
 206,202,B0201,Utility,10
+207,202,B0201,Rental,3
+208,202,B0201,Rental,3

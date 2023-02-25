@@ -116,7 +116,7 @@ public class accGenerateReceipt extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("Residents' payment"));
+        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("Residents' Payment"));
 
         residentPaymentTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {

@@ -190,7 +190,7 @@ public class residentHome extends javax.swing.JFrame {
     }//GEN-LAST:event_residentViewUpdateProfileActionPerformed
 
     private void residentViewPaymentHistoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_residentViewPaymentHistoryActionPerformed
-        new residentViewPaymentHistory().setVisible(true);
+        new residentPaymentHistoryMain().setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_residentViewPaymentHistoryActionPerformed
 
