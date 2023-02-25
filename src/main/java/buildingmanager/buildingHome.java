@@ -87,7 +87,8 @@ public class buildingHome extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void variousReportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_variousReportActionPerformed
-        // TODO add your handling code here:
+        new buildingGenerateReport().setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_variousReportActionPerformed
 
     private void userManagementActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userManagementActionPerformed
