@@ -46,6 +46,11 @@ public class adminexecmainpage extends javax.swing.JFrame {
         jLabel1.setText("Admin Executive Page");
 
         jButton1.setText("Unit Management");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Resident / Tenant Management");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -69,6 +74,11 @@ public class adminexecmainpage extends javax.swing.JFrame {
         });
 
         jButton5.setText("Facilities Home");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
 
         exit.setText("Log Out");
         exit.addActionListener(new java.awt.event.ActionListener() {
@@ -129,9 +139,9 @@ public class adminexecmainpage extends javax.swing.JFrame {
     private void exitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitActionPerformed
         frame = new JFrame("Log Out");
         if (JOptionPane.showConfirmDialog(frame, "Are you sure to LOG OUT from Admin Executive page?", "Parkhill Residence Management System",
-            JOptionPane.YES_NO_OPTION) == JOptionPane.YES_NO_OPTION) {
-        new Visitor.visitorHome().setVisible(true);
-        this.setVisible(false);
+                JOptionPane.YES_NO_OPTION) == JOptionPane.YES_NO_OPTION) {
+            new Visitor.visitorHome().setVisible(true);
+            this.setVisible(false);
         }
     }//GEN-LAST:event_exitActionPerformed
 
@@ -149,6 +159,16 @@ public class adminexecmainpage extends javax.swing.JFrame {
         new adminManageEmp().setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        new adminExecUnitManage().setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        new adminExecFacilityHome().setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_jButton5ActionPerformed
 
     /**
      * @param args the command line arguments
