@@ -5,3 +5,4 @@ Building Executive,3
 Building Manager,3
 Account Executive,3
 Admin Executive,1
+Account Executive,6
