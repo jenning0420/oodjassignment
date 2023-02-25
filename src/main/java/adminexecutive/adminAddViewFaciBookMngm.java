@@ -46,41 +46,41 @@ public class adminAddViewFaciBookMngm extends javax.swing.JFrame {
         initComponents();
         facilityCombo();
 
-//        File combo = new File("src/textFiles/facility.txt");
-//
-//        BufferedReader reader;
-//        try {
-//            reader = new BufferedReader(new FileReader(combo));
-//            ArrayList<String> columnData = new ArrayList<>();
-//            String line;
-//            while ((line = reader.readLine()) != null) {
-//                String[] columns = line.split(",");
-//                columnData.add(columns[0]);
-//            }
-//            reader.close();
-////            JComboBox<String> comboBox = new JComboBox<>(columnData.toArray(new String[0]));
-//            facility.setModel(new javax.swing.DefaultComboBoxModel<>(columnData.toArray(new String[0])));
-//        } catch (FileNotFoundException ex) {
-//            Logger.getLogger(adminAddViewFaciBookMngm.class.getName()).log(Level.SEVERE, null, ex);
-//        } catch (IOException ex) {
-//            Logger.getLogger(adminAddViewFaciBookMngm.class.getName()).log(Level.SEVERE, null, ex);
-//        }
+        String f = "src/textFiles/facilityBooking.txt";
+            File file1 = new File(f);
 
-        /*
-        try {
-            FileReader fr = new FileReader("src/textFiles/activeUser.txt");
-            try ( BufferedReader br = new BufferedReader(fr)) {
-                String line = null;
-                String[] splt = null;
+            try {
+                FileReader fr = new FileReader(file1);
+                BufferedReader br = new BufferedReader(fr);
+                String line = br.readLine();
+                //String[] colHeadings = line.trim().split(",");
 
-                while ((line = br.readLine()) != null) {
-                    splt = line.split(",");
-                    fbms.setUserID(splt[0]);
+                DefaultTableModel model = (DefaultTableModel) facilityBookingTable.getModel();
+                //model.setColumnIdentifiers(colHeadings);
+                Object[] lines = br.lines().toArray();
+
+                if (model != null) {
+                    int row123 = facilityBookingTable.getRowCount();
+                    for (int n = row123 - 1; n >= 0; n--) {
+                        model.removeRow(n);
+                    }
+
                 }
+
+                for (int i = 0; i < lines.length; i++) {
+                    String[] row = lines[i].toString().split(",");
+                    //fbms.setUserID(row[1]);
+                    model.addRow(new Object[]{row[0], row[2], row[3], row[4], row[5]});
+                }
+
+            } catch (FileNotFoundException ex) {
+                Logger.getLogger(adminAddViewFaciBookMngm.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (IOException ex) {
+                Logger.getLogger(adminAddViewFaciBookMngm.class.getName()).log(Level.SEVERE, null, ex);
             }
-        } catch (IOException e) {
-            System.out.println("File Not Found");
-        }*/
+        
+        
+        
         String filePath = "src/textFiles/residentLogin.txt";
         File file = new File(filePath);
 
@@ -351,34 +351,36 @@ public class adminAddViewFaciBookMngm extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(41, 41, 41)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 958, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(90, 90, 90)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 737, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(back, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 305, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(41, 41, 41)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 958, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 305, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(back, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(35, 35, 35)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 737, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(48, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(13, 13, 13)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(back, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addGap(30, 30, 30)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 395, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(62, Short.MAX_VALUE))
+                .addContainerGap(76, Short.MAX_VALUE))
         );
 
         pack();
@@ -406,39 +408,10 @@ public class adminAddViewFaciBookMngm extends javax.swing.JFrame {
 
         if (fbmd.add(fbms) == true) {
             JOptionPane.showMessageDialog(this, "Facility Booking Record ADDED!");
+            new adminExecFacilityHome().setVisible(true);
+            this.setVisible(false);
 
-            String filePath = "src/textFiles/facilityBooking.txt";
-            File file = new File(filePath);
-
-            try {
-                FileReader fr = new FileReader(file);
-                BufferedReader br = new BufferedReader(fr);
-                String line = br.readLine();
-                //String[] colHeadings = line.trim().split(",");
-
-                DefaultTableModel model = (DefaultTableModel) facilityBookingTable.getModel();
-                //model.setColumnIdentifiers(colHeadings);
-                Object[] lines = br.lines().toArray();
-
-                if (model != null) {
-                    int row123 = facilityBookingTable.getRowCount();
-                    for (int n = row123 - 1; n >= 0; n--) {
-                        model.removeRow(n);
-                    }
-
-                }
-
-                for (int i = 0; i < lines.length; i++) {
-                    String[] row = lines[i].toString().split(",");
-                    //fbms.setUserID(row[1]);
-                    model.addRow(new Object[]{row[0], row[2], row[3], row[4], row[5]});
-                }
-
-            } catch (FileNotFoundException ex) {
-                Logger.getLogger(adminAddViewFaciBookMngm.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (IOException ex) {
-                Logger.getLogger(adminAddViewFaciBookMngm.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            
         } else {
             JOptionPane.showMessageDialog(this, "Please fill up ALL the information.");
         }
@@ -452,25 +425,25 @@ public class adminAddViewFaciBookMngm extends javax.swing.JFrame {
 
 
     private void facilityBookingTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_facilityBookingTableMouseClicked
-        SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm");
-        DefaultTableModel model = (DefaultTableModel) facilityBookingTable.getModel();
-        int selectedInfo = facilityBookingTable.getSelectedRow();
-
-        userID.setText(model.getValueAt(selectedInfo, 1).toString());
-        ((JTextField) dateIn.getDateEditor().getUiComponent()).setText(model.getValueAt(selectedInfo, 2).toString());
-        String durationValue = (String) model.getValueAt(selectedInfo, 3);
-        duration.setValue(Integer.parseInt(durationValue));
-
-        String timeValue = (String) model.getValueAt(selectedInfo, 4);
-        Date dateValue;
-        try {
-            dateValue = dateFormat.parse(timeValue);
-            //            SpinnerDateModel spinnerModel = new SpinnerDateModel(dateValue, null, null, Calendar.DAY_OF_MONTH);
-            //            JSpinner spinner = new JSpinner(spinnerModel);
-            time.setValue(dateValue);
-        } catch (ParseException ex) {
-            Logger.getLogger(adminAddViewFaciBookMngm.class.getName()).log(Level.SEVERE, null, ex);
-        }
+//        SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm");
+//        DefaultTableModel model = (DefaultTableModel) facilityBookingTable.getModel();
+//        int selectedInfo = facilityBookingTable.getSelectedRow();
+//
+//        userID.setText(model.getValueAt(selectedInfo, 1).toString());
+//        ((JTextField) dateIn.getDateEditor().getUiComponent()).setText(model.getValueAt(selectedInfo, 2).toString());
+//        String durationValue = (String) model.getValueAt(selectedInfo, 3);
+//        duration.setValue(Integer.parseInt(durationValue));
+//
+//        String timeValue = (String) model.getValueAt(selectedInfo, 4);
+//        Date dateValue;
+//        try {
+//            dateValue = dateFormat.parse(timeValue);
+//            //            SpinnerDateModel spinnerModel = new SpinnerDateModel(dateValue, null, null, Calendar.DAY_OF_MONTH);
+//            //            JSpinner spinner = new JSpinner(spinnerModel);
+//            time.setValue(dateValue);
+//        } catch (ParseException ex) {
+//            Logger.getLogger(adminAddViewFaciBookMngm.class.getName()).log(Level.SEVERE, null, ex);
+//        }
     }//GEN-LAST:event_facilityBookingTableMouseClicked
 
     private void userTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_userTableMouseClicked

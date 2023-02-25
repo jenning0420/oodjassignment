@@ -17,8 +17,3 @@ PaymentID,UserID,UnitNo,PaymentType,Amount
 16,2,A0202,Utility/Services,200
 17,2,A0202,Utility/Services,200
 18,2,A0202,Utility/Services,200
-19,2,A0202,Utility/Services,111
-20,2,A0202,Utility/Services,111
-21,2,A0202,Utility/Services,111
-22,2,A0202,Utility/Services,111
-23,2,A0202,Utility/Services,111

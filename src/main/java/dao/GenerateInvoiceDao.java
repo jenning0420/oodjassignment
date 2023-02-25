@@ -41,7 +41,7 @@ public class GenerateInvoiceDao implements ObjectDao<GenerateInvoiceSng> {
                 FileWriter fw = new FileWriter(f, true);
                 BufferedWriter bw = new BufferedWriter(fw);
                 PrintWriter pw = new PrintWriter(bw);
-                pw.println(invoiceID + "," + gis.getUserID() + "," + gis.getUnitNo() + "," + gis.getPaymentType() + "," + gis.getAmount() + "," + gis.getPaymentDue() + ",");
+                pw.println(invoiceID + "," + gis.getUserID() + "," + gis.getUnitNo() + "," + gis.getPaymentType() + "," + gis.getAmount() + "," + gis.getPaymentDue());
                 pw.flush();
                 pw.close();
                 bw.close();

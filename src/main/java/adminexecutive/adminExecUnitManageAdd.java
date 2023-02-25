@@ -8,7 +8,6 @@ import Propmanagement.function.Unit;
 import Propmanagement.function.getPropID;
 import Propmanagement.system.ManageUnit;
 import javax.swing.JOptionPane;
-import Propmanagement.system.ManageUnitSystem;
 import accountexecutive.accGenerateInvoice;
 import java.awt.BorderLayout;
 import java.io.BufferedReader;

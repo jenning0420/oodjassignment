@@ -30,6 +30,38 @@ public class adminAddViewFacilityMngm extends javax.swing.JFrame {
      */
     public adminAddViewFacilityMngm() {
         initComponents();
+
+        String filePath = "src/textFiles/facility.txt";
+        File file = new File(filePath);
+
+        try {
+            FileReader fr = new FileReader(file);
+            BufferedReader br = new BufferedReader(fr);
+            String line = br.readLine();
+            String[] colHeadings = line.trim().split(",");
+
+            DefaultTableModel model = (DefaultTableModel) facilityTable.getModel();
+            model.setColumnIdentifiers(colHeadings);
+            Object[] lines = br.lines().toArray();
+
+            if (model != null) {
+                int row123 = facilityTable.getRowCount();
+                for (int n = row123 - 1; n >= 0; n--) {
+                    model.removeRow(n);
+                }
+
+            }
+
+            for (int i = 0; i < lines.length; i++) {
+                String[] row = lines[i].toString().split(",");
+                model.addRow(row);
+            }
+
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(adminAddViewFacilityMngm.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(adminAddViewFacilityMngm.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -203,23 +235,23 @@ public class adminAddViewFacilityMngm extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(49, 49, 49)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 826, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(layout.createSequentialGroup()
                             .addGap(202, 202, 202)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 419, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(110, 110, 110)
-                            .addComponent(back, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 419, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(back, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(51, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(19, 19, 19)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(back, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(back, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -256,38 +288,9 @@ public class adminAddViewFacilityMngm extends javax.swing.JFrame {
 
         if (fmd.add(fms) == true) {
             JOptionPane.showMessageDialog(this, "Facility Record ADDED!");
+            new adminExecFacilityHome().setVisible(true);
+            this.setVisible(false);
 
-            String filePath = "src/textFiles/facility.txt";
-            File file = new File(filePath);
-
-            try {
-                FileReader fr = new FileReader(file);
-                BufferedReader br = new BufferedReader(fr);
-                String line = br.readLine();
-                String[] colHeadings = line.trim().split(",");
-
-                DefaultTableModel model = (DefaultTableModel) facilityTable.getModel();
-                model.setColumnIdentifiers(colHeadings);
-                Object[] lines = br.lines().toArray();
-
-                if (model != null) {
-                    int row123 = facilityTable.getRowCount();
-                    for (int n = row123 - 1; n >= 0; n--) {
-                        model.removeRow(n);
-                    }
-
-                }
-
-                for (int i = 0; i < lines.length; i++) {
-                    String[] row = lines[i].toString().split(",");
-                    model.addRow(row);
-                }
-
-            } catch (FileNotFoundException ex) {
-                Logger.getLogger(adminAddViewFacilityMngm.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (IOException ex) {
-                Logger.getLogger(adminAddViewFacilityMngm.class.getName()).log(Level.SEVERE, null, ex);
-            }
         } else {
             JOptionPane.showMessageDialog(this, "Please fill up ALL the information.");
         }
@@ -309,13 +312,7 @@ public class adminAddViewFacilityMngm extends javax.swing.JFrame {
     }//GEN-LAST:event_facilityActionPerformed
 
     private void facilityTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_facilityTableMouseClicked
-        DefaultTableModel model = (DefaultTableModel) facilityTable.getModel();
-        int selectedInfo = facilityTable.getSelectedRow();
 
-        facility.setText(model.getValueAt(selectedInfo, 0).toString());
-        equipment.setText(model.getValueAt(selectedInfo, 1).toString());
-        quantity.setText(model.getValueAt(selectedInfo, 2).toString());
-        condition.setValue(model.getValueAt(selectedInfo, 3).toString());
     }//GEN-LAST:event_facilityTableMouseClicked
 
     /**

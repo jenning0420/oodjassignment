@@ -5,7 +5,6 @@
 package adminexecutive;
 
 import Propmanagement.function.getPropID;
-import Propmanagement.system.ManageUnitSystem;
 import java.awt.BorderLayout;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
