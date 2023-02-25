@@ -131,7 +131,7 @@ public class adminExecUnitManage extends javax.swing.JFrame {
     }//GEN-LAST:event_AddPageActionPerformed
 
     private void ModifyPageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ModifyPageActionPerformed
-        adminExecUnitManageEdit adminexecunitmanageedit = new adminExecUnitManageEdit();
+        adminExecUnitManageModify adminexecunitmanageedit = new adminExecUnitManageModify();
         adminexecunitmanageedit.setVisible(true);
         this.dispose();        
     }//GEN-LAST:event_ModifyPageActionPerformed

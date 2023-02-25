@@ -1,4 +1,6 @@
-PropertyID,PropertyType,OwnerID,PropertyPrice
-2001,B-LOL,Studio,10000.0
-2002,C-LOL,Penthouse,50000.0
-2003,D-LOL,Penthouse,10000.0
+Role,Amount,
+Account Executive,5,
+Admin Executive,5,
+Building Executive,3,
+Building Manager,3,
+Account Executive,3,
