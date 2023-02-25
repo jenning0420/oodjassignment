@@ -46,7 +46,7 @@ public class adminExecUnitManageAdd extends javax.swing.JFrame {
 
                 while ((line1 = br1.readLine()) != null) {
                     splt1 = line1.split(",");
-                    get.setPropID(splt1[2]);
+                    get.setPropID(splt1[0]);
 
                 }
 
