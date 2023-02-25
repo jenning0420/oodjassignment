@@ -8,7 +8,6 @@ import Propmanagement.function.TeamStruc;
 import Propmanagement.function.Unit;
 import Propmanagement.function.Vendor;
 import Propmanagement.function.getUserID;
-import Propmanagement.system.ManageUnitSystem;
 import Propmanagement.system.VendorEditSystem;
 import buildingmanager.buildingTeamStrucEdit;
 import java.awt.BorderLayout;

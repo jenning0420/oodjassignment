@@ -41,7 +41,7 @@ public class TeamStrucSystem {
                 items.add(item);
             }
         } catch (FileNotFoundException ex) {
-            Logger.getLogger(ManageUnitSystem.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(TeamStrucSystem.class.getName()).log(Level.SEVERE, null, ex);
         }
         return items;
     }
@@ -60,7 +60,7 @@ public class TeamStrucSystem {
         try (PrintWriter pw = new PrintWriter(new FileOutputStream("src/textFiles/teamStruc.txt", true))) {
             pw.println(item.getTSRole() + "," + item.getTSAmount());
         } catch (FileNotFoundException ex) {
-            Logger.getLogger(ManageUnitSystem.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(TeamStrucSystem.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     

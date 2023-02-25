@@ -6,7 +6,7 @@ Complaint ID, User ID, Competition Title,Date,Competition Details,Issue Suggesti
 5,2,Floor,02-02-2023,Floor too dirty	.,Please clean twice a week,Admin,Pending,
 6,9,Rude Management,05-02-2023,Ignored my question,Please change the entire management team.,Resident,Pending,
 7,9,another,07-02-2023,function,function,Admin,Pending,
-8,9,Testing,02-02-2023,Testing,Testing,Admin,Urgent,
+8,9,Testing,02-02-2023,Testing,Testing,Admin,Completed,
 9,9,qwe,03-02-2023,qwe,qwe,Admin,Pending,
 10,6,Window Broken,05-02-2023,Window in guardhouse broken,change immediately,Vendor,Pending,
 11,207,Floor too dirty,07-02-2023,Floor in lobby too dirty.,Clean floor immediately.,Vendor,Urgent,
