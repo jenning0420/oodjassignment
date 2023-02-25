@@ -69,7 +69,7 @@ public class vendorViewReceipt extends javax.swing.JFrame {
 
             for (int i = 0; i < lines.length; i++) {
                 String[] row = lines[i].toString().split(",");
-                rucs.setUserID(row[1]);
+                rucs.setUserID(row[2]);
                 if (rucs.getUserID().equals(rucs.getUserID1())) {
                     model.addRow(row);
                 }
