@@ -12,10 +12,12 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.JSpinner;
 import javax.swing.JTextField;
@@ -42,6 +44,28 @@ public class adminAddViewFaciBookMngm extends javax.swing.JFrame {
      */
     public adminAddViewFaciBookMngm() {
         initComponents();
+        facilityCombo();
+
+//        File combo = new File("src/textFiles/facility.txt");
+//
+//        BufferedReader reader;
+//        try {
+//            reader = new BufferedReader(new FileReader(combo));
+//            ArrayList<String> columnData = new ArrayList<>();
+//            String line;
+//            while ((line = reader.readLine()) != null) {
+//                String[] columns = line.split(",");
+//                columnData.add(columns[0]);
+//            }
+//            reader.close();
+////            JComboBox<String> comboBox = new JComboBox<>(columnData.toArray(new String[0]));
+//            facility.setModel(new javax.swing.DefaultComboBoxModel<>(columnData.toArray(new String[0])));
+//        } catch (FileNotFoundException ex) {
+//            Logger.getLogger(adminAddViewFaciBookMngm.class.getName()).log(Level.SEVERE, null, ex);
+//        } catch (IOException ex) {
+//            Logger.getLogger(adminAddViewFaciBookMngm.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+
         /*
         try {
             FileReader fr = new FileReader("src/textFiles/activeUser.txt");
@@ -57,7 +81,6 @@ public class adminAddViewFaciBookMngm extends javax.swing.JFrame {
         } catch (IOException e) {
             System.out.println("File Not Found");
         }*/
-
         String filePath = "src/textFiles/residentLogin.txt";
         File file = new File(filePath);
 
@@ -92,6 +115,27 @@ public class adminAddViewFaciBookMngm extends javax.swing.JFrame {
         }
     }
 
+    private void facilityCombo() {
+        File file = new File("src/textFiles/facility.txt");
+
+        BufferedReader reader;
+        try {
+            reader = new BufferedReader(new FileReader(file));
+            ArrayList<String> columnData = new ArrayList<>();
+            String line;
+            while ((line = reader.readLine()) != null) {
+                String[] columns = line.split(",");
+                columnData.add(columns[0]);
+            }
+            reader.close();
+            facility.setModel(new javax.swing.DefaultComboBoxModel<>(columnData.toArray(new String[0])));
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(adminAddViewFaciBookMngm.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(adminAddViewFaciBookMngm.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -103,7 +147,6 @@ public class adminAddViewFaciBookMngm extends javax.swing.JFrame {
 
         back = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
-        userID = new javax.swing.JTextField();
         add = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         clear = new javax.swing.JButton();
@@ -118,7 +161,8 @@ public class adminAddViewFaciBookMngm extends javax.swing.JFrame {
         new SpinnerDateModel(date, null, null, Calendar.HOUR_OF_DAY);
         time = new javax.swing.JSpinner(sm);
         jLabel4 = new javax.swing.JLabel();
-        facility = new javax.swing.JTextField();
+        facility = new javax.swing.JComboBox<>();
+        userID = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         facilityBookingTable = new javax.swing.JTable();
@@ -137,13 +181,6 @@ public class adminAddViewFaciBookMngm extends javax.swing.JFrame {
 
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
 
-        userID.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                userIDActionPerformed(evt);
-            }
-        });
-
-        add.setForeground(java.awt.Color.black);
         add.setText("ADD");
         add.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -155,7 +192,6 @@ public class adminAddViewFaciBookMngm extends javax.swing.JFrame {
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel5.setText("Date In :");
 
-        clear.setForeground(java.awt.Color.black);
         clear.setText("CLEAR");
         clear.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -205,7 +241,7 @@ public class adminAddViewFaciBookMngm extends javax.swing.JFrame {
                         .addComponent(clear, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(67, 67, 67)
                         .addComponent(add, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
+                        .addGap(0, 81, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addContainerGap(53, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -213,21 +249,24 @@ public class adminAddViewFaciBookMngm extends javax.swing.JFrame {
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addComponent(jLabel4)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(facility, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(12, 12, 12)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(facility, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
                                         .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addComponent(jLabel2)
-                                        .addGap(239, 239, 239)
-                                        .addComponent(jLabel10)))
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                                .addGap(239, 239, 239)
+                                                .addComponent(jLabel10))
+                                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                                .addGap(18, 18, 18)
+                                                .addComponent(userID, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(duration, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(time, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(duration, javax.swing.GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE)
+                                    .addComponent(time)))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(userID, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(dateIn, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)))))
@@ -243,10 +282,8 @@ public class adminAddViewFaciBookMngm extends javax.swing.JFrame {
                         .addGap(23, 23, 23)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel5)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(dateIn, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE)))
-                        .addGap(18, 18, 18)
+                            .addComponent(dateIn, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 18, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(duration, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -260,12 +297,12 @@ public class adminAddViewFaciBookMngm extends javax.swing.JFrame {
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(userID, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(userID))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(facility, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(35, 35, 35)))
+                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(facility, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(42, 42, 42)))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(add, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(clear, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -352,15 +389,11 @@ public class adminAddViewFaciBookMngm extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_backActionPerformed
 
-    private void userIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userIDActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_userIDActionPerformed
-
 
     private void addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addActionPerformed
         SimpleDateFormat formatter = new SimpleDateFormat("HH:mm");
         userIDFinal = userID.getText();
-        facilityFinal = facility.getText();
+        facilityFinal = (String) facility.getSelectedItem();
         dateInFinal = ((JTextField) dateIn.getDateEditor().getUiComponent()).getText();
         durationFinal = duration.getValue().toString();
         Date time1 = (Date) time.getValue();
@@ -414,7 +447,7 @@ public class adminAddViewFaciBookMngm extends javax.swing.JFrame {
     private void clearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearActionPerformed
         userID.setText(null);
         dateIn.setDate(null);
-        duration.setValue(null);
+        facility.setSelectedItem(null);
     }//GEN-LAST:event_clearActionPerformed
 
 
@@ -492,7 +525,7 @@ public class adminAddViewFaciBookMngm extends javax.swing.JFrame {
     private javax.swing.JButton clear;
     private com.toedter.calendar.JDateChooser dateIn;
     private javax.swing.JSpinner duration;
-    private javax.swing.JTextField facility;
+    private javax.swing.JComboBox<String> facility;
     private javax.swing.JTable facilityBookingTable;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -505,7 +538,7 @@ public class adminAddViewFaciBookMngm extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JSpinner time;
-    private javax.swing.JTextField userID;
+    private javax.swing.JLabel userID;
     private javax.swing.JTable userTable;
     // End of variables declaration//GEN-END:variables
 }
