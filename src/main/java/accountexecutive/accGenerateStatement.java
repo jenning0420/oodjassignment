@@ -201,6 +201,22 @@ public class accGenerateStatement extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, e);
         }
     }
+    
+    private void generateStatement(){
+        userIDFinal = userID.getText();
+        totAmtPaidFinal = totAmtPaid.getText();
+        gis.setUserID(userIDFinal);
+        gis.setTotAmtPaid(totAmtPaidFinal);
+        
+        if (gid.add(gis) == true) {
+            JOptionPane.showMessageDialog(this, "Statement GENERATED successfully!");
+
+            airsm.setVisible(true);
+            this.setVisible(false);
+        } else {
+            JOptionPane.showMessageDialog(this, "Please fill up ALL the information.");
+        }
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -544,19 +560,7 @@ public class accGenerateStatement extends javax.swing.JFrame {
     String totAmtPaidFinal;
 
     private void generateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_generateActionPerformed
-        userIDFinal = userID.getText();
-        totAmtPaidFinal = totAmtPaid.getText();
-        gis.setUserID(userIDFinal);
-        gis.setTotAmtPaid(totAmtPaidFinal);
-        
-        if (gid.add(gis) == true) {
-            JOptionPane.showMessageDialog(this, "Statement GENERATED successfully!");
-
-            airsm.setVisible(true);
-            this.setVisible(false);
-        } else {
-            JOptionPane.showMessageDialog(this, "Please fill up ALL the information.");
-        }
+        generateStatement();
     }//GEN-LAST:event_generateActionPerformed
 
     private void totAmtPaidActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_totAmtPaidActionPerformed

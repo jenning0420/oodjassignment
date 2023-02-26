@@ -173,6 +173,50 @@ public class residentUpdateComplaint extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(rootPane, "Please fill up ALL details!");
         }
     }
+    
+    public void deleteComplaint(){
+        int item = userTable.getSelectedRow();
+        DefaultTableModel model = (DefaultTableModel) userTable.getModel();
+
+        if (item >= 0) {
+            String filePath = "src/textFiles/complaint.txt";
+            ArrayList<String[]> array = FileService.readFile(filePath);
+            File file = new File(filePath);
+            try {
+
+                FileWriter fw = new FileWriter(file);
+                BufferedWriter bw = new BufferedWriter(fw);
+                String colHeadings = "";
+                for (int i = 0; i < model.getColumnCount(); i++) {
+                    colHeadings = colHeadings + model.getColumnName(i) + ",";
+                }
+                bw.write(colHeadings + "\n");
+
+                String compId = userTable.getValueAt(item, 0).toString();
+                String userId = userTable.getValueAt(item, 1).toString();
+
+                String content = "";
+                for (String[] tempArray : array) {
+                    if (compId.equals(tempArray[0]) && userId.equals(tempArray[1])) {
+                        continue;
+                    }
+                    content += String.join(",", tempArray) + ",\n";
+                }
+                bw.write(content);
+                bw.close();
+                model.removeRow(item);
+
+            } catch (IOException ex) {
+                Logger.getLogger(residentUpdateComplaint.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+            JOptionPane.showMessageDialog(rootPane, "Complaint Removed SUCCESSFULLY!");
+            rcm.setVisible(true);
+            this.setVisible(false);
+        } else {
+            JOptionPane.showMessageDialog(rootPane, "Please select the fill to Delete!");
+        }
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -496,47 +540,7 @@ public class residentUpdateComplaint extends javax.swing.JFrame {
     }//GEN-LAST:event_statusActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        int item = userTable.getSelectedRow();
-        DefaultTableModel model = (DefaultTableModel) userTable.getModel();
-
-        if (item >= 0) {
-            String filePath = "src/textFiles/complaint.txt";
-            ArrayList<String[]> array = FileService.readFile(filePath);
-            File file = new File(filePath);
-            try {
-
-                FileWriter fw = new FileWriter(file);
-                BufferedWriter bw = new BufferedWriter(fw);
-                String colHeadings = "";
-                for (int i = 0; i < model.getColumnCount(); i++) {
-                    colHeadings = colHeadings + model.getColumnName(i) + ",";
-                }
-                bw.write(colHeadings + "\n");
-
-                String compId = userTable.getValueAt(item, 0).toString();
-                String userId = userTable.getValueAt(item, 1).toString();
-
-                String content = "";
-                for (String[] tempArray : array) {
-                    if (compId.equals(tempArray[0]) && userId.equals(tempArray[1])) {
-                        continue;
-                    }
-                    content += String.join(",", tempArray) + ",\n";
-                }
-                bw.write(content);
-                bw.close();
-                model.removeRow(item);
-
-            } catch (IOException ex) {
-                Logger.getLogger(residentUpdateComplaint.class.getName()).log(Level.SEVERE, null, ex);
-            }
-
-            JOptionPane.showMessageDialog(rootPane, "Complaint Removed SUCCESSFULLY!");
-            rcm.setVisible(true);
-            this.setVisible(false);
-        } else {
-            JOptionPane.showMessageDialog(rootPane, "Please select the fill to Delete!");
-        }
+        deleteComplaint();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**

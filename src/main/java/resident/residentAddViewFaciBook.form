@@ -212,9 +212,6 @@
         </Component>
         <Component class="javax.swing.JButton" name="add">
           <Properties>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="0" green="0" id="black" palette="1" red="0" type="palette"/>
-            </Property>
             <Property name="text" type="java.lang.String" value="ADD"/>
           </Properties>
           <Events>
@@ -232,9 +229,6 @@
         </Component>
         <Component class="javax.swing.JButton" name="clear">
           <Properties>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="0" green="0" id="black" palette="1" red="0" type="palette"/>
-            </Property>
             <Property name="text" type="java.lang.String" value="CLEAR"/>
           </Properties>
           <Events>

@@ -20,6 +20,24 @@ public class vendorLogin extends javax.swing.JFrame {
     public vendorLogin() {
         initComponents();
     }
+    
+    private void login(){
+        Usernamefinal = txtUsername.getText();
+        passwordfinal = txtPassword.getText();
+        rls.setUsername(Usernamefinal);
+        rls.setPassword(passwordfinal);
+        rls.setTextFile("src/textFiles/vendorLogin.txt");
+        if (rld.add(rls) == true) {
+            JOptionPane.showMessageDialog(this, "Log In SUCCESSFULLY! Welcome back our dearest Vendor!");
+
+            vh.setVisible(true);
+            this.setVisible(false);
+        } else {
+            JOptionPane.showMessageDialog(this, "INCORRECT Username OR Password. Please try again.");
+            txtUsername.setText(null);
+            txtPassword.setText(null);
+        }
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -149,21 +167,7 @@ public class vendorLogin extends javax.swing.JFrame {
     vendorHome vh = new vendorHome();
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        Usernamefinal = txtUsername.getText();
-        passwordfinal = txtPassword.getText();
-        rls.setUsername(Usernamefinal);
-        rls.setPassword(passwordfinal);
-        rls.setTextFile("src/textFiles/vendorLogin.txt");
-        if (rld.add(rls) == true) {
-            JOptionPane.showMessageDialog(this, "Log In SUCCESSFULLY! Welcome back our dearest Vendor!");
-
-            vh.setVisible(true);
-            this.setVisible(false);
-        } else {
-            JOptionPane.showMessageDialog(this, "INCORRECT Username OR Password. Please try again.");
-            txtUsername.setText(null);
-            txtPassword.setText(null);
-        }
+    login();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backActionPerformed

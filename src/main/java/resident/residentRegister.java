@@ -20,6 +20,29 @@ public class residentRegister extends javax.swing.JFrame {
     public residentRegister() {
         initComponents();
     }
+    
+    private void register(){
+        Usernamefinal = Username.getText();
+        Namefinal = Name.getText();
+        ContactNumberfinal = ContactNumber.getText();
+        Genderfinal = (String) Gender.getSelectedItem();
+        Passwordfinal = Password.getText();
+        urs.setUsername(Usernamefinal);
+        urs.setName(Namefinal);
+        urs.setContactNumber(ContactNumberfinal);
+        urs.setGender(Genderfinal);
+        urs.setPassword(Passwordfinal);
+        urs.setTextFile("src/textFiles/residentLogin.txt");
+
+        if (urd.add(urs) == true) {
+            JOptionPane.showMessageDialog(this, "Resident registered SUCCESSFULLY.");
+
+            rl.setVisible(true);
+            this.setVisible(false);
+        } else {
+            JOptionPane.showMessageDialog(this, "Please fill up ALL the information.");
+        }
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -204,26 +227,7 @@ public class residentRegister extends javax.swing.JFrame {
     residentLogin rl = new residentLogin();
     
     private void addUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addUserActionPerformed
-        Usernamefinal = Username.getText();
-        Namefinal = Name.getText();
-        ContactNumberfinal = ContactNumber.getText();
-        Genderfinal = (String) Gender.getSelectedItem();
-        Passwordfinal = Password.getText();
-        urs.setUsername(Usernamefinal);
-        urs.setName(Namefinal);
-        urs.setContactNumber(ContactNumberfinal);
-        urs.setGender(Genderfinal);
-        urs.setPassword(Passwordfinal);
-        urs.setTextFile("src/textFiles/residentLogin.txt");
-
-        if (urd.add(urs) == true) {
-            JOptionPane.showMessageDialog(this, "Resident registered SUCCESSFULLY.");
-
-            rl.setVisible(true);
-            this.setVisible(false);
-        } else {
-            JOptionPane.showMessageDialog(this, "Please fill up ALL the information.");
-        }
+        register();
     }//GEN-LAST:event_addUserActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed

@@ -52,6 +52,25 @@ public class securityRecordIncident extends javax.swing.JFrame {
             System.out.println("File Not Found");
         }
     }
+    
+    private void recordIncident(){
+        descriptionFinal = description.getText();
+        dateInFinal = ((JTextField) dateIn.getDateEditor().getUiComponent()).getText();
+        Date time = (Date) timeIn.getValue();
+        timeInFinal = formatter.format(time);
+        sris.setDescription(descriptionFinal);
+        sris.setDateIn(dateInFinal);
+        sris.setTimeIn(timeInFinal);
+
+        if (srid.add(sris) == true) {
+            JOptionPane.showMessageDialog(this, "Incident ADDED!");
+
+            sim.setVisible(true);
+            this.setVisible(false);
+        } else {
+            JOptionPane.showMessageDialog(this, "Please fill up ALL the information.");
+        }
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -217,22 +236,7 @@ public class securityRecordIncident extends javax.swing.JFrame {
     }//GEN-LAST:event_backActionPerformed
 
     private void addRecordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addRecordActionPerformed
-        descriptionFinal = description.getText();
-        dateInFinal = ((JTextField) dateIn.getDateEditor().getUiComponent()).getText();
-        Date time = (Date) timeIn.getValue();
-        timeInFinal = formatter.format(time);
-        sris.setDescription(descriptionFinal);
-        sris.setDateIn(dateInFinal);
-        sris.setTimeIn(timeInFinal);
-
-        if (srid.add(sris) == true) {
-            JOptionPane.showMessageDialog(this, "Incident ADDED!");
-
-            sim.setVisible(true);
-            this.setVisible(false);
-        } else {
-            JOptionPane.showMessageDialog(this, "Please fill up ALL the information.");
-        }
+        recordIncident();
     }//GEN-LAST:event_addRecordActionPerformed
 
     private void clearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearActionPerformed

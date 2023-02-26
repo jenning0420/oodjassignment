@@ -80,6 +80,116 @@ public class residentUpdatePass extends javax.swing.JFrame {
             Logger.getLogger(residentUpdateComplaint.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
+    public void updatePass(){
+        int item = passTable.getSelectedRow();
+        DefaultTableModel model = (DefaultTableModel) passTable.getModel();
+
+        if (item >= 0) {
+            model.setValueAt(passID.getText(), item, 0);
+            model.setValueAt(userID.getText(), item, 1);
+            model.setValueAt(visitorName.getText(), item, 2);
+            model.setValueAt(carPlate.getText(), item, 3);
+            model.setValueAt(unitNo.getText(), item, 4);
+            model.setValueAt(((JTextField) dateIn.getDateEditor().getUiComponent()).getText(), item, 5);
+            model.setValueAt(duration.getValue(), item, 6);
+
+            ArrayList<String[]> tableArray = new ArrayList<>();
+            for (int i = 0; i < passTable.getRowCount(); i++) {
+                String[] tempArray = new String[7];
+                for (int j = 0; j < passTable.getColumnCount(); j++) {
+                    tempArray[j] = passTable.getValueAt(i, j).toString();
+                }
+                tableArray.add(tempArray);
+            }
+
+            String filePath = "src/textFiles/visitorPass.txt";
+            ArrayList<String[]> array = FileService.readFile(filePath);
+            File file = new File(filePath);
+            try {
+
+                FileWriter fw = new FileWriter(file);
+                BufferedWriter bw = new BufferedWriter(fw);
+                String colHeadings = "";
+                for (int i = 0; i < model.getColumnCount(); i++) {
+                    colHeadings = colHeadings + model.getColumnName(i) + ",";
+                }
+                bw.write(colHeadings + "\n");
+                String content = "";
+                boolean change = false;
+                for (String[] tempArray : array) {
+                    for (String[] tempTableArray : tableArray) {
+                        if (tempTableArray[0].equals(tempArray[0]) && tempTableArray[1].equals(tempArray[1])) {
+                            content += String.join(",", tempTableArray) + ",\n";
+                            change = true;
+                            break;
+                        }
+                    }
+                    if (change) {
+                        change = false;
+                        continue;
+                    }
+                    content += String.join(",", tempArray) + ",\n";
+                }
+                bw.write(content);
+                bw.close();
+
+            } catch (IOException ex) {
+                Logger.getLogger(residentUpdatePass.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+            JOptionPane.showMessageDialog(this, "Visitor Pass UPDATED!");
+            rpm.setVisible(true);
+            this.setVisible(false);
+        } else {
+            JOptionPane.showMessageDialog(rootPane, "Please fill up ALL details!");
+        }
+    }
+    
+    
+    public void deletePass(){
+                int item = passTable.getSelectedRow();
+        DefaultTableModel model = (DefaultTableModel) passTable.getModel();
+
+        if (item >= 0) {
+            String filePath = "src/textFiles/visitorPass.txt";
+            ArrayList<String[]> array = FileService.readFile(filePath);
+            File file = new File(filePath);
+            try {
+
+                FileWriter fw = new FileWriter(file);
+                BufferedWriter bw = new BufferedWriter(fw);
+                String colHeadings = "";
+                for (int i = 0; i < model.getColumnCount(); i++) {
+                    colHeadings = colHeadings + model.getColumnName(i) + ",";
+                }
+                bw.write(colHeadings + "\n");
+
+                String compId = passTable.getValueAt(item, 0).toString();
+                String userId = passTable.getValueAt(item, 1).toString();
+
+                String content = "";
+                for (String[] tempArray : array) {
+                    if (compId.equals(tempArray[0]) && userId.equals(tempArray[1])) {
+                        continue;
+                    }
+                    content += String.join(",", tempArray) + ",\n";
+                }
+                bw.write(content);
+                bw.close();
+                model.removeRow(item);
+
+            } catch (IOException ex) {
+                Logger.getLogger(residentUpdatePass.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+            JOptionPane.showMessageDialog(rootPane, "Visitor Pass REMOVED!");
+            rpm.setVisible(true);
+            this.setVisible(false);
+        } else {
+            JOptionPane.showMessageDialog(rootPane, "Please select from table to DELETE!");
+        }
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -403,112 +513,11 @@ public class residentUpdatePass extends javax.swing.JFrame {
     residentPassManagement rpm = new residentPassManagement();
 
     private void updateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateActionPerformed
-        int item = passTable.getSelectedRow();
-        DefaultTableModel model = (DefaultTableModel) passTable.getModel();
-
-        if (item >= 0) {
-            model.setValueAt(passID.getText(), item, 0);
-            model.setValueAt(userID.getText(), item, 1);
-            model.setValueAt(visitorName.getText(), item, 2);
-            model.setValueAt(carPlate.getText(), item, 3);
-            model.setValueAt(unitNo.getText(), item, 4);
-            model.setValueAt(((JTextField) dateIn.getDateEditor().getUiComponent()).getText(), item, 5);
-            model.setValueAt(duration.getValue(), item, 6);
-
-            ArrayList<String[]> tableArray = new ArrayList<>();
-            for (int i = 0; i < passTable.getRowCount(); i++) {
-                String[] tempArray = new String[7];
-                for (int j = 0; j < passTable.getColumnCount(); j++) {
-                    tempArray[j] = passTable.getValueAt(i, j).toString();
-                }
-                tableArray.add(tempArray);
-            }
-
-            String filePath = "src/textFiles/visitorPass.txt";
-            ArrayList<String[]> array = FileService.readFile(filePath);
-            File file = new File(filePath);
-            try {
-
-                FileWriter fw = new FileWriter(file);
-                BufferedWriter bw = new BufferedWriter(fw);
-                String colHeadings = "";
-                for (int i = 0; i < model.getColumnCount(); i++) {
-                    colHeadings = colHeadings + model.getColumnName(i) + ",";
-                }
-                bw.write(colHeadings + "\n");
-                String content = "";
-                boolean change = false;
-                for (String[] tempArray : array) {
-                    for (String[] tempTableArray : tableArray) {
-                        if (tempTableArray[0].equals(tempArray[0]) && tempTableArray[1].equals(tempArray[1])) {
-                            content += String.join(",", tempTableArray) + ",\n";
-                            change = true;
-                            break;
-                        }
-                    }
-                    if (change) {
-                        change = false;
-                        continue;
-                    }
-                    content += String.join(",", tempArray) + ",\n";
-                }
-                bw.write(content);
-                bw.close();
-
-            } catch (IOException ex) {
-                Logger.getLogger(residentUpdatePass.class.getName()).log(Level.SEVERE, null, ex);
-            }
-
-            JOptionPane.showMessageDialog(this, "Visitor Pass UPDATED!");
-            rpm.setVisible(true);
-            this.setVisible(false);
-        } else {
-            JOptionPane.showMessageDialog(rootPane, "Please fill up ALL details!");
-        }
+        updatePass();
     }//GEN-LAST:event_updateActionPerformed
 
     private void removeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeActionPerformed
-        int item = passTable.getSelectedRow();
-        DefaultTableModel model = (DefaultTableModel) passTable.getModel();
-
-        if (item >= 0) {
-            String filePath = "src/textFiles/visitorPass.txt";
-            ArrayList<String[]> array = FileService.readFile(filePath);
-            File file = new File(filePath);
-            try {
-
-                FileWriter fw = new FileWriter(file);
-                BufferedWriter bw = new BufferedWriter(fw);
-                String colHeadings = "";
-                for (int i = 0; i < model.getColumnCount(); i++) {
-                    colHeadings = colHeadings + model.getColumnName(i) + ",";
-                }
-                bw.write(colHeadings + "\n");
-
-                String compId = passTable.getValueAt(item, 0).toString();
-                String userId = passTable.getValueAt(item, 1).toString();
-
-                String content = "";
-                for (String[] tempArray : array) {
-                    if (compId.equals(tempArray[0]) && userId.equals(tempArray[1])) {
-                        continue;
-                    }
-                    content += String.join(",", tempArray) + ",\n";
-                }
-                bw.write(content);
-                bw.close();
-                model.removeRow(item);
-
-            } catch (IOException ex) {
-                Logger.getLogger(residentUpdatePass.class.getName()).log(Level.SEVERE, null, ex);
-            }
-
-            JOptionPane.showMessageDialog(rootPane, "Visitor Pass REMOVED!");
-            rpm.setVisible(true);
-            this.setVisible(false);
-        } else {
-            JOptionPane.showMessageDialog(rootPane, "Please select from table to DELETE!");
-        }
+        deletePass();
     }//GEN-LAST:event_removeActionPerformed
 
     /**

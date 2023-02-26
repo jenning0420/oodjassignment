@@ -54,6 +54,29 @@ public class residentApplyPass extends javax.swing.JFrame {
             System.out.println("FileNotFound");
         }
     }
+    
+    private void applyPass(){
+        visitorNameFinal = visitorName.getText();
+        carPlateFinal = carPlate.getText();
+        unitNoFinal = unitNo.getText();
+        dateInFinal = ((JTextField) dateIn.getDateEditor().getUiComponent()).getText();
+        durationFinal = duration.getValue().toString();
+        aps.setVisitorName(visitorNameFinal);
+        aps.setCarPlate(carPlateFinal);
+        aps.setDateIn(dateInFinal);
+        aps.setUnitNo(unitNoFinal);
+        aps.setDuration(durationFinal);
+
+
+        if (apd.add(aps) == true) {
+            JOptionPane.showMessageDialog(this, "Visitor pass applied successfully!");
+
+            rpm.setVisible(true);
+            this.setVisible(false);
+        } else {
+            JOptionPane.showMessageDialog(this, "Please fill up ALL the information.");
+        }
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -275,26 +298,7 @@ public class residentApplyPass extends javax.swing.JFrame {
     
     
     private void submitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitActionPerformed
-        visitorNameFinal = visitorName.getText();
-        carPlateFinal = carPlate.getText();
-        unitNoFinal = unitNo.getText();
-        dateInFinal = ((JTextField) dateIn.getDateEditor().getUiComponent()).getText();
-        durationFinal = duration.getValue().toString();
-        aps.setVisitorName(visitorNameFinal);
-        aps.setCarPlate(carPlateFinal);
-        aps.setDateIn(dateInFinal);
-        aps.setUnitNo(unitNoFinal);
-        aps.setDuration(durationFinal);
-
-
-        if (apd.add(aps) == true) {
-            JOptionPane.showMessageDialog(this, "Visitor pass applied successfully!");
-
-            rpm.setVisible(true);
-            this.setVisible(false);
-        } else {
-            JOptionPane.showMessageDialog(this, "Please fill up ALL the information.");
-        }
+    applyPass();
     }//GEN-LAST:event_submitActionPerformed
 
     private void carPlateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_carPlateActionPerformed

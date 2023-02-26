@@ -87,6 +87,108 @@ public class residentUptDelFaciBook extends javax.swing.JFrame {
             Logger.getLogger(residentUpdateComplaint.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
+    private void updateFacBook(){
+        int item = facilityBookingTable.getSelectedRow();
+        DefaultTableModel model = (DefaultTableModel) facilityBookingTable.getModel();
+
+        if (item >= 0) {
+            model.setValueAt(facility.getText(), item, 2);
+            model.setValueAt(((JTextField) dateIn.getDateEditor().getUiComponent()).getText(), item, 3);
+            model.setValueAt(duration.getValue(), item, 4);
+            Date time1 = (Date) time.getValue();
+            timeFinal = formatter.format(time1);
+            model.setValueAt(timeFinal, item, 5);
+            
+            ArrayList<String[]> tableArray = new ArrayList<>();
+            for (int i = 0; i < facilityBookingTable.getRowCount(); i++) {
+                String[] tempArray = new String[7];
+                for (int j = 0; j < facilityBookingTable.getColumnCount(); j++) {
+                    tempArray[j] = facilityBookingTable.getValueAt(i, j).toString();
+                }
+                tableArray.add(tempArray);
+            }
+
+            String filePath = "src/textFiles/facilityBooking.txt";
+            ArrayList<String[]> array = FileService.readFile(filePath);
+            File file = new File(filePath);
+            try {
+
+                FileWriter fw = new FileWriter(file);
+                BufferedWriter bw = new BufferedWriter(fw);
+                String colHeadings = "";
+                for (int i = 0; i < model.getColumnCount(); i++) {
+                    colHeadings = colHeadings + model.getColumnName(i) + ",";
+                }
+                bw.write(colHeadings + "\n");
+                String content = "";
+                boolean change = false;
+                for (String[] tempArray : array) {
+                    for (String[] tempTableArray : tableArray) {
+                        if (tempTableArray[0].equals(tempArray[0]) && tempTableArray[1].equals(tempArray[1])) {
+                            content += String.join(",", tempTableArray) + ",\n";
+                            change = true;
+                            break;
+                        }
+                    }
+                    if (change) {
+                        change = false;
+                        continue;
+                    }
+                    content += String.join(",", tempArray) + ",\n";
+                }
+                bw.write(content);
+                bw.close();
+            } catch (IOException ex) {
+                Logger.getLogger(residentUptDelFaciBook.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+            JOptionPane.showMessageDialog(this, "Facility Booking Record UPDATED!");
+            new residentFaciBookHome().setVisible(true);
+            this.setVisible(false);
+        } else {
+            JOptionPane.showMessageDialog(rootPane, "Please fill up ALL details!");
+        }
+    }
+    
+    private void deleteFaciBook(){
+        int item = facilityBookingTable.getSelectedRow();
+        DefaultTableModel model = (DefaultTableModel) facilityBookingTable.getModel();
+
+        if (item >= 0) {
+            model.removeRow(item);
+            String filePath = "src/textFiles/facilityBooking.txt";
+            File file = new File(filePath);
+            try {
+
+                FileWriter fw = new FileWriter(file);
+                BufferedWriter bw = new BufferedWriter(fw);
+                String colHeadings = "";
+                for (int i = 0; i < model.getColumnCount(); i++) {
+                    colHeadings = colHeadings + model.getColumnName(i) + ",";
+                }
+                bw.write(colHeadings + "\n");
+
+                for (int i = 0; i < facilityBookingTable.getRowCount(); i++) {
+                    for (int j = 0; j < facilityBookingTable.getColumnCount(); j++) {
+                        bw.write(facilityBookingTable.getValueAt(i, j).toString() + ",");
+                    }
+                    bw.newLine();
+                }
+
+                bw.close();
+                fw.close();
+            } catch (IOException ex) {
+                Logger.getLogger(residentUptDelFaciBook.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+            JOptionPane.showMessageDialog(rootPane, "Facility Booking Record DELETED!");
+            new residentFaciBookHome().setVisible(true);
+            this.setVisible(false);
+        } else {
+            JOptionPane.showMessageDialog(rootPane, "Please select the fill to Delete!");
+        }
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -325,105 +427,11 @@ public class residentUptDelFaciBook extends javax.swing.JFrame {
     SimpleDateFormat formatter = new SimpleDateFormat("HH:mm");
     
     private void updateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateActionPerformed
-        int item = facilityBookingTable.getSelectedRow();
-        DefaultTableModel model = (DefaultTableModel) facilityBookingTable.getModel();
-
-        if (item >= 0) {
-            model.setValueAt(facility.getText(), item, 2);
-            model.setValueAt(((JTextField) dateIn.getDateEditor().getUiComponent()).getText(), item, 3);
-            model.setValueAt(duration.getValue(), item, 4);
-            Date time1 = (Date) time.getValue();
-            timeFinal = formatter.format(time1);
-            model.setValueAt(timeFinal, item, 5);
-            
-            ArrayList<String[]> tableArray = new ArrayList<>();
-            for (int i = 0; i < facilityBookingTable.getRowCount(); i++) {
-                String[] tempArray = new String[7];
-                for (int j = 0; j < facilityBookingTable.getColumnCount(); j++) {
-                    tempArray[j] = facilityBookingTable.getValueAt(i, j).toString();
-                }
-                tableArray.add(tempArray);
-            }
-
-            String filePath = "src/textFiles/facilityBooking.txt";
-            ArrayList<String[]> array = FileService.readFile(filePath);
-            File file = new File(filePath);
-            try {
-
-                FileWriter fw = new FileWriter(file);
-                BufferedWriter bw = new BufferedWriter(fw);
-                String colHeadings = "";
-                for (int i = 0; i < model.getColumnCount(); i++) {
-                    colHeadings = colHeadings + model.getColumnName(i) + ",";
-                }
-                bw.write(colHeadings + "\n");
-                String content = "";
-                boolean change = false;
-                for (String[] tempArray : array) {
-                    for (String[] tempTableArray : tableArray) {
-                        if (tempTableArray[0].equals(tempArray[0]) && tempTableArray[1].equals(tempArray[1])) {
-                            content += String.join(",", tempTableArray) + ",\n";
-                            change = true;
-                            break;
-                        }
-                    }
-                    if (change) {
-                        change = false;
-                        continue;
-                    }
-                    content += String.join(",", tempArray) + ",\n";
-                }
-                bw.write(content);
-                bw.close();
-            } catch (IOException ex) {
-                Logger.getLogger(residentUptDelFaciBook.class.getName()).log(Level.SEVERE, null, ex);
-            }
-
-            JOptionPane.showMessageDialog(this, "Facility Booking Record UPDATED!");
-            new residentFaciBookHome().setVisible(true);
-            this.setVisible(false);
-        } else {
-            JOptionPane.showMessageDialog(rootPane, "Please fill up ALL details!");
-        }
+        updateFacBook();
     }//GEN-LAST:event_updateActionPerformed
 
     private void deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteActionPerformed
-        int item = facilityBookingTable.getSelectedRow();
-        DefaultTableModel model = (DefaultTableModel) facilityBookingTable.getModel();
-
-        if (item >= 0) {
-            model.removeRow(item);
-            String filePath = "src/textFiles/facilityBooking.txt";
-            File file = new File(filePath);
-            try {
-
-                FileWriter fw = new FileWriter(file);
-                BufferedWriter bw = new BufferedWriter(fw);
-                String colHeadings = "";
-                for (int i = 0; i < model.getColumnCount(); i++) {
-                    colHeadings = colHeadings + model.getColumnName(i) + ",";
-                }
-                bw.write(colHeadings + "\n");
-
-                for (int i = 0; i < facilityBookingTable.getRowCount(); i++) {
-                    for (int j = 0; j < facilityBookingTable.getColumnCount(); j++) {
-                        bw.write(facilityBookingTable.getValueAt(i, j).toString() + ",");
-                    }
-                    bw.newLine();
-                }
-
-                bw.close();
-                fw.close();
-            } catch (IOException ex) {
-                Logger.getLogger(residentUptDelFaciBook.class.getName()).log(Level.SEVERE, null, ex);
-            }
-
-            JOptionPane.showMessageDialog(rootPane, "Facility Booking Record DELETED!");
-            new residentFaciBookHome().setVisible(true);
-            this.setVisible(false);
-        } else {
-            JOptionPane.showMessageDialog(rootPane, "Please select the fill to Delete!");
-        }
+        deleteFaciBook();
     }//GEN-LAST:event_deleteActionPerformed
 
     private void facilityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_facilityActionPerformed

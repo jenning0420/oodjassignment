@@ -21,6 +21,24 @@ public class securityLogin extends javax.swing.JFrame {
     public securityLogin() {
         initComponents();
     }
+    
+    private void login(){
+        Usernamefinal = securityUsername.getText();
+        passwordfinal = securityPassword.getText();
+        uls.setUsername(Usernamefinal);
+        uls.setPassword(passwordfinal);
+        uls.setTextFile("src/textFiles/securityLogin.txt");
+        if (uld.add(uls) == true) {
+            JOptionPane.showMessageDialog(this, "Log In SUCCESSFULLY! Welcome back Security Guard.");
+
+            sh.setVisible(true);
+            this.setVisible(false);
+        } else {
+            JOptionPane.showMessageDialog(this, "INCORRECT Username OR Password. Please try again.");
+            securityUsername.setText(null);
+            securityPassword.setText(null);
+        }
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -139,21 +157,7 @@ public class securityLogin extends javax.swing.JFrame {
     securityHome sh = new securityHome();
     
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        Usernamefinal = securityUsername.getText();
-        passwordfinal = securityPassword.getText();
-        uls.setUsername(Usernamefinal);
-        uls.setPassword(passwordfinal);
-        uls.setTextFile("src/textFiles/securityLogin.txt");
-        if (uld.add(uls) == true) {
-            JOptionPane.showMessageDialog(this, "Log In SUCCESSFULLY! Welcome back Security Guard.");
-
-            sh.setVisible(true);
-            this.setVisible(false);
-        } else {
-            JOptionPane.showMessageDialog(this, "INCORRECT Username OR Password. Please try again.");
-            securityUsername.setText(null);
-            securityPassword.setText(null);
-        }
+        login();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backActionPerformed

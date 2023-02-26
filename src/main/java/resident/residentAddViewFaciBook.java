@@ -58,6 +58,57 @@ public class residentAddViewFaciBook extends javax.swing.JFrame {
             System.out.println("File Not Found");
         }
     }
+    
+    private void addViewFaciBook(){
+        SimpleDateFormat formatter = new SimpleDateFormat("HH:mm");
+        facilityFinal = facility.getText();
+        dateInFinal = ((JTextField) dateIn.getDateEditor().getUiComponent()).getText();
+        durationFinal = duration.getValue().toString();
+        Date time1 = (Date) time.getValue();
+        timeFinal = formatter.format(time1);
+        fbms.setFacility(facilityFinal);
+        fbms.setDateIn(dateInFinal);
+        fbms.setDuration(durationFinal);
+        fbms.setTime(timeFinal);
+
+        if (fbmd.add(fbms) == true) {
+            JOptionPane.showMessageDialog(this, "Facility Booking Record ADDED!");
+
+            String filePath = "src/textFiles/facilityBooking.txt";
+            File file = new File(filePath);
+
+            try {
+                FileReader fr = new FileReader(file);
+                BufferedReader br = new BufferedReader(fr);
+                String line = br.readLine();
+                String[] colHeadings = line.trim().split(",");
+
+                DefaultTableModel model = (DefaultTableModel) facilityBookingTable.getModel();
+                model.setColumnIdentifiers(colHeadings);
+                Object[] lines = br.lines().toArray();
+
+                if (model != null) {
+                    int row123 = facilityBookingTable.getRowCount();
+                    for (int n = row123 - 1; n >= 0; n--) {
+                        model.removeRow(n);
+                    }
+
+                }
+
+                for (int i = 0; i < lines.length; i++) {
+                    String[] row = lines[i].toString().split(",");
+                    model.addRow(row);
+                }
+ 
+            } catch (FileNotFoundException ex) {
+                Logger.getLogger(residentAddViewFaciBook.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (IOException ex) {
+                Logger.getLogger(residentAddViewFaciBook.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, "Please fill up ALL the information.");
+        }
+    }
 
         /**
          * This method is called from within the constructor to initialize the
@@ -299,54 +350,7 @@ public class residentAddViewFaciBook extends javax.swing.JFrame {
     }//GEN-LAST:event_facilityActionPerformed
 
     private void addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addActionPerformed
-        SimpleDateFormat formatter = new SimpleDateFormat("HH:mm");
-        facilityFinal = facility.getText();
-        dateInFinal = ((JTextField) dateIn.getDateEditor().getUiComponent()).getText();
-        durationFinal = duration.getValue().toString();
-        Date time1 = (Date) time.getValue();
-        timeFinal = formatter.format(time1);
-        fbms.setFacility(facilityFinal);
-        fbms.setDateIn(dateInFinal);
-        fbms.setDuration(durationFinal);
-        fbms.setTime(timeFinal);
-
-        if (fbmd.add(fbms) == true) {
-            JOptionPane.showMessageDialog(this, "Facility Booking Record ADDED!");
-
-            String filePath = "src/textFiles/facilityBooking.txt";
-            File file = new File(filePath);
-
-            try {
-                FileReader fr = new FileReader(file);
-                BufferedReader br = new BufferedReader(fr);
-                String line = br.readLine();
-                String[] colHeadings = line.trim().split(",");
-
-                DefaultTableModel model = (DefaultTableModel) facilityBookingTable.getModel();
-                model.setColumnIdentifiers(colHeadings);
-                Object[] lines = br.lines().toArray();
-
-                if (model != null) {
-                    int row123 = facilityBookingTable.getRowCount();
-                    for (int n = row123 - 1; n >= 0; n--) {
-                        model.removeRow(n);
-                    }
-
-                }
-
-                for (int i = 0; i < lines.length; i++) {
-                    String[] row = lines[i].toString().split(",");
-                    model.addRow(row);
-                }
- 
-            } catch (FileNotFoundException ex) {
-                Logger.getLogger(residentAddViewFaciBook.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (IOException ex) {
-                Logger.getLogger(residentAddViewFaciBook.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        } else {
-            JOptionPane.showMessageDialog(this, "Please fill up ALL the information.");
-        }
+        addViewFaciBook();
     }//GEN-LAST:event_addActionPerformed
 
     private void clearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearActionPerformed

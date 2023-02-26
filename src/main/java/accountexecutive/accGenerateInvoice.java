@@ -80,6 +80,30 @@ public class accGenerateInvoice extends javax.swing.JFrame {
         }
 
     }
+    
+    private void generateInvoice(){
+        userIDFinal = userID.getText();
+        unitNoFinal = unitNo.getText();
+        paymentTypeFinal = (String) paymentType.getSelectedItem();
+        amountFinal = amount.getText();
+        paymentDueFinal = ((JTextField) paymentDue.getDateEditor().getUiComponent()).getText();
+
+        gis.setUserID(userIDFinal);
+        gis.setUnitNo(unitNoFinal);
+        gis.setPaymentType(paymentTypeFinal);
+        gis.setAmount(amountFinal);
+        gis.setPaymentDue(paymentDueFinal);
+
+        if (gid.add(gis) == true) {
+            JOptionPane.showMessageDialog(this, "Invoice GENERATED!");
+
+            airsm.setVisible(true);
+            this.setVisible(false);
+        } else {
+            JOptionPane.showMessageDialog(this, "Please fill up ALL the information.");
+        }
+    
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -370,26 +394,7 @@ public class accGenerateInvoice extends javax.swing.JFrame {
     String amountFinal;
 
     private void generateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_generateActionPerformed
-        userIDFinal = userID.getText();
-        unitNoFinal = unitNo.getText();
-        paymentTypeFinal = (String) paymentType.getSelectedItem();
-        amountFinal = amount.getText();
-        paymentDueFinal = ((JTextField) paymentDue.getDateEditor().getUiComponent()).getText();
-
-        gis.setUserID(userIDFinal);
-        gis.setUnitNo(unitNoFinal);
-        gis.setPaymentType(paymentTypeFinal);
-        gis.setAmount(amountFinal);
-        gis.setPaymentDue(paymentDueFinal);
-
-        if (gid.add(gis) == true) {
-            JOptionPane.showMessageDialog(this, "Invoice GENERATED!");
-
-            airsm.setVisible(true);
-            this.setVisible(false);
-        } else {
-            JOptionPane.showMessageDialog(this, "Please fill up ALL the information.");
-        }
+        generateInvoice();
     }//GEN-LAST:event_generateActionPerformed
 
     private void clearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearActionPerformed

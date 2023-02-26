@@ -51,6 +51,90 @@ public class accPayment extends javax.swing.JFrame {
             Logger.getLogger(accPayment.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
+    private void managePayment(){
+        int item = paymentdetails.getSelectedRow();
+        DefaultTableModel model = (DefaultTableModel) paymentdetails.getModel();
+
+        if (item >= 0) {
+            model.setValueAt(disInvoiceID.getText(), item, 0);
+            model.setValueAt(disUserID.getText(), item, 1);
+            model.setValueAt(disUnitNo.getText(), item, 2);
+            model.setValueAt(disPaymentType.getSelectedItem(), item, 3);
+            model.setValueAt(disAmount.getText(), item, 4);
+            model.setValueAt(disDueDate.getText(), item, 5);
+
+            String filePath = "src/textFiles/invoice.txt";
+            File file = new File(filePath);
+            try {
+
+                FileWriter fw = new FileWriter(file);
+                BufferedWriter bw = new BufferedWriter(fw);
+                String colHeadings = "";
+                for (int i = 0; i < model.getColumnCount(); i++) {
+                    colHeadings = colHeadings + model.getColumnName(i) + ",";
+                }
+                bw.write(colHeadings + "\n");
+
+                for (int i = 0; i < paymentdetails.getRowCount(); i++) {
+                    for (int j = 0; j < paymentdetails.getColumnCount(); j++) {
+                        bw.write(paymentdetails.getValueAt(i, j).toString() + ",");
+                    }
+                    bw.newLine();
+                }
+
+                bw.close();
+                fw.close();
+            } catch (IOException ex) {
+                Logger.getLogger(accPayment.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+            JOptionPane.showMessageDialog(this, "Payment Details Updated SUCCESSFULLY!");
+            new accExecHome().setVisible(true);
+            this.setVisible(false);
+        } else {
+            JOptionPane.showMessageDialog(rootPane, "Please fill up ALL details!");
+        }
+    }
+    
+    private void deletePayment(){
+        int item = paymentdetails.getSelectedRow();
+        DefaultTableModel model = (DefaultTableModel) paymentdetails.getModel();
+
+        if (item >= 0) {
+            model.removeRow(item);
+            String filePath = "src/textFiles/invoice.txt";
+            File file = new File(filePath);
+            try {
+
+                FileWriter fw = new FileWriter(file);
+                BufferedWriter bw = new BufferedWriter(fw);
+                String colHeadings = "";
+                for (int i = 0; i < model.getColumnCount(); i++) {
+                    colHeadings = colHeadings + model.getColumnName(i) + ",";
+                }
+                bw.write(colHeadings + "\n");
+
+                for (int i = 0; i < paymentdetails.getRowCount(); i++) {
+                    for (int j = 0; j < paymentdetails.getColumnCount(); j++) {
+                        bw.write(paymentdetails.getValueAt(i, j).toString() + ",");
+                    }
+                    bw.newLine();
+                }
+
+                bw.close();
+                fw.close();
+            } catch (IOException ex) {
+                Logger.getLogger(accPayment.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+            JOptionPane.showMessageDialog(rootPane, "Payment Details Removed SUCCESSFULLY!");
+          new accExecHome().setVisible(true);
+            this.setVisible(false);
+        } else {
+            JOptionPane.showMessageDialog(rootPane, "Please select the fill to Delete!");
+        }
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -301,87 +385,11 @@ public class accPayment extends javax.swing.JFrame {
     }//GEN-LAST:event_paymentdetailsMouseClicked
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        int item = paymentdetails.getSelectedRow();
-        DefaultTableModel model = (DefaultTableModel) paymentdetails.getModel();
-
-        if (item >= 0) {
-            model.removeRow(item);
-            String filePath = "src/textFiles/invoice.txt";
-            File file = new File(filePath);
-            try {
-
-                FileWriter fw = new FileWriter(file);
-                BufferedWriter bw = new BufferedWriter(fw);
-                String colHeadings = "";
-                for (int i = 0; i < model.getColumnCount(); i++) {
-                    colHeadings = colHeadings + model.getColumnName(i) + ",";
-                }
-                bw.write(colHeadings + "\n");
-
-                for (int i = 0; i < paymentdetails.getRowCount(); i++) {
-                    for (int j = 0; j < paymentdetails.getColumnCount(); j++) {
-                        bw.write(paymentdetails.getValueAt(i, j).toString() + ",");
-                    }
-                    bw.newLine();
-                }
-
-                bw.close();
-                fw.close();
-            } catch (IOException ex) {
-                Logger.getLogger(accPayment.class.getName()).log(Level.SEVERE, null, ex);
-            }
-
-            JOptionPane.showMessageDialog(rootPane, "Payment Details Removed SUCCESSFULLY!");
-          new accExecHome().setVisible(true);
-            this.setVisible(false);
-        } else {
-            JOptionPane.showMessageDialog(rootPane, "Please select the fill to Delete!");
-        }
+        deletePayment();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        int item = paymentdetails.getSelectedRow();
-        DefaultTableModel model = (DefaultTableModel) paymentdetails.getModel();
-
-        if (item >= 0) {
-            model.setValueAt(disInvoiceID.getText(), item, 0);
-            model.setValueAt(disUserID.getText(), item, 1);
-            model.setValueAt(disUnitNo.getText(), item, 2);
-            model.setValueAt(disPaymentType.getSelectedItem(), item, 3);
-            model.setValueAt(disAmount.getText(), item, 4);
-            model.setValueAt(disDueDate.getText(), item, 5);
-
-            String filePath = "src/textFiles/invoice.txt";
-            File file = new File(filePath);
-            try {
-
-                FileWriter fw = new FileWriter(file);
-                BufferedWriter bw = new BufferedWriter(fw);
-                String colHeadings = "";
-                for (int i = 0; i < model.getColumnCount(); i++) {
-                    colHeadings = colHeadings + model.getColumnName(i) + ",";
-                }
-                bw.write(colHeadings + "\n");
-
-                for (int i = 0; i < paymentdetails.getRowCount(); i++) {
-                    for (int j = 0; j < paymentdetails.getColumnCount(); j++) {
-                        bw.write(paymentdetails.getValueAt(i, j).toString() + ",");
-                    }
-                    bw.newLine();
-                }
-
-                bw.close();
-                fw.close();
-            } catch (IOException ex) {
-                Logger.getLogger(accPayment.class.getName()).log(Level.SEVERE, null, ex);
-            }
-
-            JOptionPane.showMessageDialog(this, "Payment Details Updated SUCCESSFULLY!");
-            new accExecHome().setVisible(true);
-            this.setVisible(false);
-        } else {
-            JOptionPane.showMessageDialog(rootPane, "Please fill up ALL details!");
-        }
+        managePayment();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void disUnitNoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_disUnitNoActionPerformed

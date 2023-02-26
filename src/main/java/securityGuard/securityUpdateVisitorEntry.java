@@ -90,6 +90,72 @@ public class securityUpdateVisitorEntry extends javax.swing.JFrame {
             Logger.getLogger(residentUpdateComplaint.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
+    private void updateVisitorEntry(){
+        int item = entryTable.getSelectedRow();
+        DefaultTableModel model = (DefaultTableModel) entryTable.getModel();
+
+        if (item >= 0) {
+            model.setValueAt(entryID.getText(), item, 0);
+            model.setValueAt(userID.getText(), item, 1);
+            model.setValueAt(visitorName.getText(), item, 2);
+            model.setValueAt(unitNo.getText(), item, 3);
+            model.setValueAt(((JTextField) dateIn.getDateEditor().getUiComponent()).getText(), item, 4);
+            Date time = (Date) timeIn.getValue();
+            timeInFinal = formatter.format(time);
+            model.setValueAt(timeInFinal, item, 5);
+
+            ArrayList<String[]> tableArray = new ArrayList<>();
+            for (int i = 0; i < entryTable.getRowCount(); i++) {
+                String[] tempArray = new String[6];
+                for (int j = 0; j < entryTable.getColumnCount(); j++) {
+                    tempArray[j] = entryTable.getValueAt(i, j).toString();
+                }
+                tableArray.add(tempArray);
+            }
+
+            String filePath = "src/textFiles/visitorEntry.txt";
+            ArrayList<String[]> array = FileService.readFile(filePath);
+            File file = new File(filePath);
+            try {
+
+                FileWriter fw = new FileWriter(file);
+                BufferedWriter bw = new BufferedWriter(fw);
+                String colHeadings = "";
+                for (int i = 0; i < model.getColumnCount(); i++) {
+                    colHeadings = colHeadings + model.getColumnName(i) + ",";
+                }
+                bw.write(colHeadings + "\n");
+                String content = "";
+                boolean change = false;
+                for (String[] tempArray : array) {
+                    for (String[] tempTableArray : tableArray) {
+                        if (tempTableArray[0].equals(tempArray[0]) && tempTableArray[1].equals(tempArray[1])) {
+                            content += String.join(",", tempTableArray) + ",\n";
+                            change = true;
+                            break;
+                        }
+                    }
+                    if (change) {
+                        change = false;
+                        continue;
+                    }
+                    content += String.join(",", tempArray) + ",\n";
+                }
+                bw.write(content);
+                bw.close();
+
+            } catch (IOException ex) {
+                Logger.getLogger(securityUpdateVisitorEntry.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+            JOptionPane.showMessageDialog(this, "Visitor Entry UPDATED!");
+            new securityVisitorEntryManagement().setVisible(true);
+            this.setVisible(false);
+        } else {
+            JOptionPane.showMessageDialog(rootPane, "Please fill up ALL details!");
+        }
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -392,69 +458,7 @@ public class securityUpdateVisitorEntry extends javax.swing.JFrame {
     SimpleDateFormat formatter = new SimpleDateFormat("HH:mm");
 
     private void updateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateActionPerformed
-        int item = entryTable.getSelectedRow();
-        DefaultTableModel model = (DefaultTableModel) entryTable.getModel();
-
-        if (item >= 0) {
-            model.setValueAt(entryID.getText(), item, 0);
-            model.setValueAt(userID.getText(), item, 1);
-            model.setValueAt(visitorName.getText(), item, 2);
-            model.setValueAt(unitNo.getText(), item, 3);
-            model.setValueAt(((JTextField) dateIn.getDateEditor().getUiComponent()).getText(), item, 4);
-            Date time = (Date) timeIn.getValue();
-            timeInFinal = formatter.format(time);
-            model.setValueAt(timeInFinal, item, 5);
-
-            ArrayList<String[]> tableArray = new ArrayList<>();
-            for (int i = 0; i < entryTable.getRowCount(); i++) {
-                String[] tempArray = new String[6];
-                for (int j = 0; j < entryTable.getColumnCount(); j++) {
-                    tempArray[j] = entryTable.getValueAt(i, j).toString();
-                }
-                tableArray.add(tempArray);
-            }
-
-            String filePath = "src/textFiles/visitorEntry.txt";
-            ArrayList<String[]> array = FileService.readFile(filePath);
-            File file = new File(filePath);
-            try {
-
-                FileWriter fw = new FileWriter(file);
-                BufferedWriter bw = new BufferedWriter(fw);
-                String colHeadings = "";
-                for (int i = 0; i < model.getColumnCount(); i++) {
-                    colHeadings = colHeadings + model.getColumnName(i) + ",";
-                }
-                bw.write(colHeadings + "\n");
-                String content = "";
-                boolean change = false;
-                for (String[] tempArray : array) {
-                    for (String[] tempTableArray : tableArray) {
-                        if (tempTableArray[0].equals(tempArray[0]) && tempTableArray[1].equals(tempArray[1])) {
-                            content += String.join(",", tempTableArray) + ",\n";
-                            change = true;
-                            break;
-                        }
-                    }
-                    if (change) {
-                        change = false;
-                        continue;
-                    }
-                    content += String.join(",", tempArray) + ",\n";
-                }
-                bw.write(content);
-                bw.close();
-
-            } catch (IOException ex) {
-                Logger.getLogger(securityUpdateVisitorEntry.class.getName()).log(Level.SEVERE, null, ex);
-            }
-
-            JOptionPane.showMessageDialog(this, "Visitor Entry UPDATED!");
-            new securityVisitorEntryManagement().setVisible(true);
-            this.setVisible(false);
-        } else {
-            JOptionPane.showMessageDialog(rootPane, "Please fill up ALL details!");
-        }
+        updateVisitorEntry();
     }//GEN-LAST:event_updateActionPerformed
 
     private void clearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearActionPerformed

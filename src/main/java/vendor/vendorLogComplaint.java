@@ -50,6 +50,29 @@ public class vendorLogComplaint extends javax.swing.JFrame {
             System.out.println("FileNotFound");
         }
     }
+    
+    private void logComplaint(){
+        compTitleFinal = compTitle.getText();
+        compDateFinal = ((JTextField) compDate.getDateEditor().getUiComponent()).getText();
+        compDetailsFinal = compDetails.getText();
+        suggestionFinal = suggestion.getText();
+
+        acs.setCompTitle(compTitleFinal);
+        acs.setCompDate(compDateFinal);
+        acs.setCompDetails(compDetailsFinal);
+        acs.setSuggestion(suggestionFinal);
+        acs.setStatus(status);
+        acs.setComplainant(complainant);
+
+        if (acd.add(acs) == true) {
+            JOptionPane.showMessageDialog(this, "Complaint logged SUCCESSFULLY.");
+
+            vcm.setVisible(true);
+            this.setVisible(false);
+        } else {
+            JOptionPane.showMessageDialog(this, "Please fill up ALL the information.");
+        }
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -221,26 +244,7 @@ public class vendorLogComplaint extends javax.swing.JFrame {
     }//GEN-LAST:event_resetActionPerformed
 
     private void submitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitActionPerformed
-        compTitleFinal = compTitle.getText();
-        compDateFinal = ((JTextField) compDate.getDateEditor().getUiComponent()).getText();
-        compDetailsFinal = compDetails.getText();
-        suggestionFinal = suggestion.getText();
-
-        acs.setCompTitle(compTitleFinal);
-        acs.setCompDate(compDateFinal);
-        acs.setCompDetails(compDetailsFinal);
-        acs.setSuggestion(suggestionFinal);
-        acs.setStatus(status);
-        acs.setComplainant(complainant);
-
-        if (acd.add(acs) == true) {
-            JOptionPane.showMessageDialog(this, "Complaint logged SUCCESSFULLY.");
-
-            vcm.setVisible(true);
-            this.setVisible(false);
-        } else {
-            JOptionPane.showMessageDialog(this, "Please fill up ALL the information.");
-        }
+        logComplaint();
     }//GEN-LAST:event_submitActionPerformed
 
     private void backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backActionPerformed

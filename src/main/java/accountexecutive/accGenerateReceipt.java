@@ -82,6 +82,29 @@ public class accGenerateReceipt extends javax.swing.JFrame {
         }
 
     }
+    
+    private void generateReceipt(){
+        paymentIDFinal = paymentID.getText();
+        userIDFinal = userID.getText();
+        paymentTypeFinal = paymentType.getText();
+        amountPaidFinal = amountPaid.getText();
+        paidDateFinal = ((JTextField) paidDate.getDateEditor().getUiComponent()).getText();
+
+        gis.setPaymentID(paymentIDFinal);
+        gis.setUserID(userIDFinal);
+        gis.setPaidDate(paidDateFinal);
+        gis.setPaymentType(paymentTypeFinal);
+        gis.setAmountPaid(amountPaidFinal);
+
+        if (gid.add(gis) == true) {
+            JOptionPane.showMessageDialog(this, "Receipt GENERATED!");
+
+            airsm.setVisible(true);
+            this.setVisible(false);
+        } else {
+            JOptionPane.showMessageDialog(this, "Please fill up ALL the information.");
+        }
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -367,27 +390,7 @@ public class accGenerateReceipt extends javax.swing.JFrame {
     }//GEN-LAST:event_backActionPerformed
 
     private void generateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_generateActionPerformed
-
-        paymentIDFinal = paymentID.getText();
-        userIDFinal = userID.getText();
-        paymentTypeFinal = paymentType.getText();
-        amountPaidFinal = amountPaid.getText();
-        paidDateFinal = ((JTextField) paidDate.getDateEditor().getUiComponent()).getText();
-
-        gis.setPaymentID(paymentIDFinal);
-        gis.setUserID(userIDFinal);
-        gis.setPaidDate(paidDateFinal);
-        gis.setPaymentType(paymentTypeFinal);
-        gis.setAmountPaid(amountPaidFinal);
-
-        if (gid.add(gis) == true) {
-            JOptionPane.showMessageDialog(this, "Receipt GENERATED!");
-
-            airsm.setVisible(true);
-            this.setVisible(false);
-        } else {
-            JOptionPane.showMessageDialog(this, "Please fill up ALL the information.");
-        }
+        generateReceipt();
     }//GEN-LAST:event_generateActionPerformed
 
     private void vendorPaymentTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_vendorPaymentTableMouseClicked

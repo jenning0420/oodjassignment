@@ -27,6 +27,44 @@ public class securityVisitorPass extends javax.swing.JFrame {
     public securityVisitorPass() {
         initComponents();
     }
+    
+    private void searchVisitorPass(){
+        String filePath = "src/textFiles/visitorPass.txt";
+        File file = new File(filePath);
+
+        try {
+            FileReader fr = new FileReader(file);
+            BufferedReader br = new BufferedReader(fr);
+            String line = br.readLine();
+            String[] colHeadings = line.trim().split(",");
+
+            DefaultTableModel model = (DefaultTableModel) passTable.getModel();
+            model.setColumnIdentifiers(colHeadings);
+            Object[] lines = br.lines().toArray();
+
+            if(model != null){
+                int row123 = passTable.getRowCount();
+                for (int n = row123 - 1; n >= 0; n--){
+                    model.removeRow(n);
+                }
+
+            }
+
+            String keywords = searchKeywords.getText().toLowerCase();
+
+            for (int i = 0; i < lines.length; i++) {
+                String[] row = lines[i].toString().split(",");
+                if(row[0].contains(keywords) || row[1].contains(keywords) || row[2].contains(keywords) || row[3].contains(keywords) || row[4].contains(keywords) || row[5].contains(keywords)){
+                    model.addRow(row);
+                }
+
+            }
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(residentApplyPass.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(residentApplyPass.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -187,41 +225,7 @@ public class securityVisitorPass extends javax.swing.JFrame {
 
     }  
     private void searchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchActionPerformed
-        String filePath = "src/textFiles/visitorPass.txt";
-        File file = new File(filePath);
-
-        try {
-            FileReader fr = new FileReader(file);
-            BufferedReader br = new BufferedReader(fr);
-            String line = br.readLine();
-            String[] colHeadings = line.trim().split(",");
-
-            DefaultTableModel model = (DefaultTableModel) passTable.getModel();
-            model.setColumnIdentifiers(colHeadings);
-            Object[] lines = br.lines().toArray();
-
-            if(model != null){
-                int row123 = passTable.getRowCount();
-                for (int n = row123 - 1; n >= 0; n--){
-                    model.removeRow(n);
-                }
-
-            }
-
-            String keywords = searchKeywords.getText().toLowerCase();
-
-            for (int i = 0; i < lines.length; i++) {
-                String[] row = lines[i].toString().split(",");
-                if(row[0].contains(keywords) || row[1].contains(keywords) || row[2].contains(keywords) || row[3].contains(keywords) || row[4].contains(keywords) || row[5].contains(keywords)){
-                    model.addRow(row);
-                }
-
-            }
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(residentApplyPass.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(residentApplyPass.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        searchVisitorPass();
     }//GEN-LAST:event_searchActionPerformed
 
     private void backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backActionPerformed

@@ -82,7 +82,71 @@ public class securityUpdateCheckpoint extends javax.swing.JFrame {
             Logger.getLogger(securityUpdateCheckpoint.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
+    private void updateCheckpoint(){
+        int item = userTable.getSelectedRow();
+        DefaultTableModel model = (DefaultTableModel) userTable.getModel();
 
+        if (item >= 0) {
+            model.setValueAt(patrolID.getText(), item, 0);
+            model.setValueAt(userID.getText(), item, 1);
+            model.setValueAt(patrolVenue.getText(), item, 2);
+            model.setValueAt(patrolDetails.getText(), item, 3);
+            model.setValueAt(patrolDate.getText(), item, 4);
+            model.setValueAt(patrolTime.getText(), item, 5);
+            model.setValueAt(status.getSelectedItem(), item, 6);
+
+            ArrayList<String[]> tableArray = new ArrayList<>();
+            for (int i = 0; i < userTable.getRowCount(); i++) {
+                String[] tempArray = new String[7];
+                for (int j = 0; j < userTable.getColumnCount(); j++) {
+                    tempArray[j] = userTable.getValueAt(i, j).toString();
+                }
+                tableArray.add(tempArray);
+            }
+
+            String filePath = "src/textFiles/securityPatrol.txt";
+            ArrayList<String[]> array = FileService.readFile(filePath);
+            File file = new File(filePath);
+            try {
+
+                FileWriter fw = new FileWriter(file);
+                BufferedWriter bw = new BufferedWriter(fw);
+                String colHeadings = "";
+                for (int i = 0; i < model.getColumnCount(); i++) {
+                    colHeadings = colHeadings + model.getColumnName(i) + ",";
+                }
+                bw.write(colHeadings + "\n");
+                String content = "";
+                boolean change = false;
+                for (String[] tempArray : array) {
+                    for (String[] tempTableArray : tableArray) {
+                        if (tempTableArray[0].equals(tempArray[0]) && tempTableArray[1].equals(tempArray[1])) {
+                            content += String.join(",", tempTableArray) + ",\n";
+                            change = true;
+                            break;
+                        }
+                    }
+                    if (change) {
+                        change = false;
+                        continue;
+                    }
+                    content += String.join(",", tempArray) + ",\n";
+                }
+                bw.write(content);
+                bw.close();
+
+            } catch (IOException ex) {
+                Logger.getLogger(securityViewJob.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+            JOptionPane.showMessageDialog(this, "Patrol Checkpoint updated SUCCESSFULLY!");
+            sh.setVisible(true);
+            this.setVisible(false);
+        } else {
+            JOptionPane.showMessageDialog(rootPane, "Please select scheduled patrol task from table list!");
+        }
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -346,68 +410,7 @@ public class securityUpdateCheckpoint extends javax.swing.JFrame {
     String jobDurationFinal;
     
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        int item = userTable.getSelectedRow();
-        DefaultTableModel model = (DefaultTableModel) userTable.getModel();
-
-        if (item >= 0) {
-            model.setValueAt(patrolID.getText(), item, 0);
-            model.setValueAt(userID.getText(), item, 1);
-            model.setValueAt(patrolVenue.getText(), item, 2);
-            model.setValueAt(patrolDetails.getText(), item, 3);
-            model.setValueAt(patrolDate.getText(), item, 4);
-            model.setValueAt(patrolTime.getText(), item, 5);
-            model.setValueAt(status.getSelectedItem(), item, 6);
-
-            ArrayList<String[]> tableArray = new ArrayList<>();
-            for (int i = 0; i < userTable.getRowCount(); i++) {
-                String[] tempArray = new String[7];
-                for (int j = 0; j < userTable.getColumnCount(); j++) {
-                    tempArray[j] = userTable.getValueAt(i, j).toString();
-                }
-                tableArray.add(tempArray);
-            }
-
-            String filePath = "src/textFiles/securityPatrol.txt";
-            ArrayList<String[]> array = FileService.readFile(filePath);
-            File file = new File(filePath);
-            try {
-
-                FileWriter fw = new FileWriter(file);
-                BufferedWriter bw = new BufferedWriter(fw);
-                String colHeadings = "";
-                for (int i = 0; i < model.getColumnCount(); i++) {
-                    colHeadings = colHeadings + model.getColumnName(i) + ",";
-                }
-                bw.write(colHeadings + "\n");
-                String content = "";
-                boolean change = false;
-                for (String[] tempArray : array) {
-                    for (String[] tempTableArray : tableArray) {
-                        if (tempTableArray[0].equals(tempArray[0]) && tempTableArray[1].equals(tempArray[1])) {
-                            content += String.join(",", tempTableArray) + ",\n";
-                            change = true;
-                            break;
-                        }
-                    }
-                    if (change) {
-                        change = false;
-                        continue;
-                    }
-                    content += String.join(",", tempArray) + ",\n";
-                }
-                bw.write(content);
-                bw.close();
-
-            } catch (IOException ex) {
-                Logger.getLogger(securityViewJob.class.getName()).log(Level.SEVERE, null, ex);
-            }
-
-            JOptionPane.showMessageDialog(this, "Patrol Checkpoint updated SUCCESSFULLY!");
-            sh.setVisible(true);
-            this.setVisible(false);
-        } else {
-            JOptionPane.showMessageDialog(rootPane, "Please select scheduled patrol task from table list!");
-        }
+        updateCheckpoint();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**

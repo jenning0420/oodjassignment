@@ -56,6 +56,69 @@ public class residentViewUpdateProfile extends javax.swing.JFrame {
             System.out.println("FileNotFound");
         }    
     }
+    
+    private void updateProf(){
+        String srcUserID = get.getUserID();
+        String modUserID = srcUserID;
+        String srcUsername = oldusername.getText();
+        String modUsername = newusername.getText();
+        String modName = newname.getText();
+        String modContact = newcontactnumber.getText();
+        String modGender = (String)newgender.getSelectedItem();
+        String modPassword = newpassword.getText();
+        String srcPropID = get.getPropID();
+        String modPropID = srcPropID;
+
+        if(srcUsername.isEmpty() || modUsername.isEmpty() || modName.isEmpty() || modContact.isEmpty() || modGender.isEmpty() || modPassword.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Please enter a valid username");
+            return;
+        }
+
+        if(modUsername.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "New username cannot be empty");
+            return;
+        }
+
+        if(modName.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "New name cannot be empty");
+            return;
+        }
+
+        if(modContact.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "New contact number cannot be empty");
+            return;
+        }
+
+        if(modGender.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "New gender cannot be empty");
+            return;
+        }
+
+        if(modPassword.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "New password cannot be empty");
+            return;
+        }
+
+        Resident updatedItem = new Resident(modUserID, modUsername, modName, modContact, modGender, modPassword, modPropID);
+
+        boolean isUpdated = ResidentEditSystem.update(srcUsername, updatedItem);
+
+        if (!isUpdated) {
+            JOptionPane.showMessageDialog(this, "Resident name not found");
+            return;
+        }
+
+        // Reset the modify fields
+        oldusername.setText("");
+        newusername.setText("");
+        newname.setText("");
+        newcontactnumber.setText("");
+        newgender.setSelectedItem("");
+        newpassword.setText("");
+
+        // Show confirmation pop up
+        JOptionPane.showMessageDialog(this, "Item has been Modified");
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -235,66 +298,7 @@ public class residentViewUpdateProfile extends javax.swing.JFrame {
     }//GEN-LAST:event_backActionPerformed
 
     private void UpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpdateActionPerformed
-        String srcUserID = get.getUserID();
-        String modUserID = srcUserID;
-        String srcUsername = oldusername.getText();
-        String modUsername = newusername.getText();
-        String modName = newname.getText();
-        String modContact = newcontactnumber.getText();
-        String modGender = (String)newgender.getSelectedItem();
-        String modPassword = newpassword.getText();
-        String srcPropID = get.getPropID();
-        String modPropID = srcPropID;
-
-        if(srcUsername.isEmpty() || modUsername.isEmpty() || modName.isEmpty() || modContact.isEmpty() || modGender.isEmpty() || modPassword.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Please enter a valid username");
-            return;
-        }
-
-        if(modUsername.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "New username cannot be empty");
-            return;
-        }
-
-        if(modName.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "New name cannot be empty");
-            return;
-        }
-
-        if(modContact.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "New contact number cannot be empty");
-            return;
-        }
-
-        if(modGender.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "New gender cannot be empty");
-            return;
-        }
-
-        if(modPassword.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "New password cannot be empty");
-            return;
-        }
-
-        Resident updatedItem = new Resident(modUserID, modUsername, modName, modContact, modGender, modPassword, modPropID);
-
-        boolean isUpdated = ResidentEditSystem.update(srcUsername, updatedItem);
-
-        if (!isUpdated) {
-            JOptionPane.showMessageDialog(this, "Resident name not found");
-            return;
-        }
-
-        // Reset the modify fields
-        oldusername.setText("");
-        newusername.setText("");
-        newname.setText("");
-        newcontactnumber.setText("");
-        newgender.setSelectedItem("");
-        newpassword.setText("");
-
-        // Show confirmation pop up
-        JOptionPane.showMessageDialog(this, "Item has been Modified");
+        updateProf();
     }//GEN-LAST:event_UpdateActionPerformed
 
     private void newgenderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newgenderActionPerformed
