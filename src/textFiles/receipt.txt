@@ -1,3 +1,4 @@
 ReceiptID,PaymentID,UserID,PaymentType,AmountPaid,DateOfPaymentPaid,
 1,2,5,Rental,9000,25-02-2023,
 2,2,5,Rental,8000,26-02-2023,
+3,1,202,Services,100,26-02-2023,
