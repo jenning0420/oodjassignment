@@ -119,6 +119,23 @@ public class managerViewComplaintReport extends javax.swing.JFrame {
         }
 
     }
+    
+    private void complaintReport(){
+        frame = new JFrame("Generate Report");
+        if (JOptionPane.showConfirmDialog(frame, "Are you sure to GENERATE Complaint Report?", "Generate Report",
+                JOptionPane.YES_NO_OPTION) == JOptionPane.YES_NO_OPTION) {
+            generate();
+            JOptionPane.showMessageDialog(null, "Report generated Successfully!");
+            try {
+                new managerViewComplaintReport().setVisible(true);
+            } catch (IOException ex) {
+                Logger.getLogger(managerViewJobReport.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            this.setVisible(false);
+        } else {
+            JOptionPane.showMessageDialog(null, "Please try again later.");
+        }
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -578,20 +595,7 @@ public class managerViewComplaintReport extends javax.swing.JFrame {
 
     private JFrame frame;
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        frame = new JFrame("Generate Report");
-        if (JOptionPane.showConfirmDialog(frame, "Are you sure to GENERATE Complaint Report?", "Generate Report",
-                JOptionPane.YES_NO_OPTION) == JOptionPane.YES_NO_OPTION) {
-            generate();
-            JOptionPane.showMessageDialog(null, "Report generated Successfully!");
-            try {
-                new managerViewComplaintReport().setVisible(true);
-            } catch (IOException ex) {
-                Logger.getLogger(managerViewJobReport.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            this.setVisible(false);
-        } else {
-            JOptionPane.showMessageDialog(null, "Please try again later.");
-        }
+        complaintReport();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed

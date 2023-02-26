@@ -21,6 +21,24 @@ public class managerLogin extends javax.swing.JFrame {
     public managerLogin() {
         initComponents();
     }
+    
+    private void login(){
+        String username = managerUsername.getText();
+        String password = managerPassword.getText();
+        
+        if(username.equals("manager") & password.equals("123456")){
+            JOptionPane.showMessageDialog(this, "Log In SUCCESSFULLY! Welcome back Building Manager.");
+
+            bh.setVisible(true);
+            this.setVisible(false);
+            
+            
+        }else {
+            JOptionPane.showMessageDialog(this, "INCORRECT Username OR Password. Please try again.");
+            managerUsername.setText(null);
+            managerPassword.setText(null);
+        }
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -98,21 +116,7 @@ public class managerLogin extends javax.swing.JFrame {
     buildingHome bh = new buildingHome();
     
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        String username = managerUsername.getText();
-        String password = managerPassword.getText();
-        
-        if(username.equals("manager") & password.equals("123456")){
-            JOptionPane.showMessageDialog(this, "Log In SUCCESSFULLY! Welcome back Building Manager.");
-
-            bh.setVisible(true);
-            this.setVisible(false);
-            
-            
-        }else {
-            JOptionPane.showMessageDialog(this, "INCORRECT Username OR Password. Please try again.");
-            managerUsername.setText(null);
-            managerPassword.setText(null);
-        }
+        login();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backActionPerformed

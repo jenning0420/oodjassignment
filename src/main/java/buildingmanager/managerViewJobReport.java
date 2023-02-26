@@ -119,6 +119,23 @@ public class managerViewJobReport extends javax.swing.JFrame {
         }
 
     }
+    
+    private void jobReport(){
+        frame = new JFrame("Generate Report");
+        if (JOptionPane.showConfirmDialog(frame, "Are you sure to GENERATE Job Assigned Report?", "Generate Report",
+                JOptionPane.YES_NO_OPTION) == JOptionPane.YES_NO_OPTION) {
+            generate();
+            JOptionPane.showMessageDialog(null, "Report generated Successfully!");
+            try {
+                new managerViewJobReport().setVisible(true);
+            } catch (IOException ex) {
+                Logger.getLogger(managerViewJobReport.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            this.setVisible(false);
+        } else {
+            JOptionPane.showMessageDialog(null, "Please try again later.");
+        }
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -578,20 +595,7 @@ public class managerViewJobReport extends javax.swing.JFrame {
 
     private JFrame frame;
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        frame = new JFrame("Generate Report");
-        if (JOptionPane.showConfirmDialog(frame, "Are you sure to GENERATE Job Assigned Report?", "Generate Report",
-                JOptionPane.YES_NO_OPTION) == JOptionPane.YES_NO_OPTION) {
-            generate();
-            JOptionPane.showMessageDialog(null, "Report generated Successfully!");
-            try {
-                new managerViewJobReport().setVisible(true);
-            } catch (IOException ex) {
-                Logger.getLogger(managerViewJobReport.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            this.setVisible(false);
-        } else {
-            JOptionPane.showMessageDialog(null, "Please try again later.");
-        }
+        jobReport();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**

@@ -64,6 +64,87 @@ public class buildingTeamStrucEdit extends javax.swing.JFrame {
             Logger.getLogger(buildingTeamStrucEdit.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
+    private void editTeamStruc(){
+        int item = userTable.getSelectedRow();
+        DefaultTableModel model = (DefaultTableModel) userTable.getModel();
+
+        if (item >= 0) {
+            model.setValueAt(modrole.getSelectedItem(), item, 0);
+            model.setValueAt(modamount.getText(), item, 1);
+
+
+            String filePath = "src/textFiles/teamStruc.txt";
+            File file = new File(filePath);
+            try {
+
+                FileWriter fw = new FileWriter(file);
+                BufferedWriter bw = new BufferedWriter(fw);
+                String colHeadings = "";
+                for (int i = 0; i < model.getColumnCount();i++){
+                    colHeadings = colHeadings + model.getColumnName(i) + ",";
+                }
+                bw.write(colHeadings + "\n");
+
+                for (int i = 0; i < userTable.getRowCount(); i++) {
+                    for (int j = 0; j < userTable.getColumnCount(); j++) {
+                        bw.write(userTable.getValueAt(i, j).toString() + ",");
+                    }
+                    bw.newLine();
+                }
+
+                bw.close();
+                fw.close();
+            } catch (IOException ex) {
+                Logger.getLogger(buildingTeamStrucEdit.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+            JOptionPane.showMessageDialog(this, "Account Updated SUCCESSFULLY!");
+            btsm.setVisible(true);
+            this.setVisible(false);
+        } else {
+            JOptionPane.showMessageDialog(rootPane, "Please fill up ALL details!");
+        }
+    }
+    
+    private void removeTeamStruc(){
+        int item = userTable.getSelectedRow();
+        DefaultTableModel model = (DefaultTableModel) userTable.getModel();
+
+        if (item >= 0){
+            model.removeRow(item);
+            String filePath = "src/textFiles/teamStruc.txt";
+            File file = new File(filePath);
+            try {
+
+                FileWriter fw = new FileWriter(file);
+                BufferedWriter bw = new BufferedWriter(fw);
+                String colHeadings = "";
+                for (int i = 0; i < model.getColumnCount();i++){
+                    colHeadings = colHeadings + model.getColumnName(i) + ",";
+                }
+                bw.write(colHeadings + "\n");
+
+                for (int i = 0; i < userTable.getRowCount(); i++) {
+                    for (int j = 0; j < userTable.getColumnCount(); j++) {
+                        bw.write(userTable.getValueAt(i, j).toString() + ",");
+                    }
+                    bw.newLine();
+                }
+
+                bw.close();
+                fw.close();
+            } catch (IOException ex) {
+                Logger.getLogger(buildingTeamStrucEdit.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+            JOptionPane.showMessageDialog(rootPane, "Property Removed SUCCESSFULLY!");
+            btsm.setVisible(true);
+            this.setVisible(false);
+        } else {
+            JOptionPane.showMessageDialog(rootPane, "Please select the fill to Delete!");
+        }
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -255,84 +336,11 @@ public class buildingTeamStrucEdit extends javax.swing.JFrame {
     buildingTeamStrucMain btsm = new buildingTeamStrucMain();    
     
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        int item = userTable.getSelectedRow();
-        DefaultTableModel model = (DefaultTableModel) userTable.getModel();
-
-        if (item >= 0) {
-            model.setValueAt(modrole.getSelectedItem(), item, 0);
-            model.setValueAt(modamount.getText(), item, 1);
-
-
-            String filePath = "src/textFiles/teamStruc.txt";
-            File file = new File(filePath);
-            try {
-
-                FileWriter fw = new FileWriter(file);
-                BufferedWriter bw = new BufferedWriter(fw);
-                String colHeadings = "";
-                for (int i = 0; i < model.getColumnCount();i++){
-                    colHeadings = colHeadings + model.getColumnName(i) + ",";
-                }
-                bw.write(colHeadings + "\n");
-
-                for (int i = 0; i < userTable.getRowCount(); i++) {
-                    for (int j = 0; j < userTable.getColumnCount(); j++) {
-                        bw.write(userTable.getValueAt(i, j).toString() + ",");
-                    }
-                    bw.newLine();
-                }
-
-                bw.close();
-                fw.close();
-            } catch (IOException ex) {
-                Logger.getLogger(buildingTeamStrucEdit.class.getName()).log(Level.SEVERE, null, ex);
-            }
-
-            JOptionPane.showMessageDialog(this, "Account Updated SUCCESSFULLY!");
-            btsm.setVisible(true);
-            this.setVisible(false);
-        } else {
-            JOptionPane.showMessageDialog(rootPane, "Please fill up ALL details!");
-        }
+        editTeamStruc();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        int item = userTable.getSelectedRow();
-        DefaultTableModel model = (DefaultTableModel) userTable.getModel();
-
-        if (item >= 0){
-            model.removeRow(item);
-            String filePath = "src/textFiles/teamStruc.txt";
-            File file = new File(filePath);
-            try {
-
-                FileWriter fw = new FileWriter(file);
-                BufferedWriter bw = new BufferedWriter(fw);
-                String colHeadings = "";
-                for (int i = 0; i < model.getColumnCount();i++){
-                    colHeadings = colHeadings + model.getColumnName(i) + ",";
-                }
-                bw.write(colHeadings + "\n");
-
-                for (int i = 0; i < userTable.getRowCount(); i++) {
-                    for (int j = 0; j < userTable.getColumnCount(); j++) {
-                        bw.write(userTable.getValueAt(i, j).toString() + ",");
-                    }
-                    bw.newLine();
-                }
-
-                bw.close();
-                fw.close();
-            } catch (IOException ex) {
-                Logger.getLogger(buildingTeamStrucEdit.class.getName()).log(Level.SEVERE, null, ex);
-            }
-
-            JOptionPane.showMessageDialog(rootPane, "Property Removed SUCCESSFULLY!");
-            btsm.setVisible(true);
-            this.setVisible(false);
-        } else {
-            JOptionPane.showMessageDialog(rootPane, "Please select the fill to Delete!");
-        }
+        removeTeamStruc();
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void modroleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modroleActionPerformed

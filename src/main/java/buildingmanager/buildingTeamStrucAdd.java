@@ -32,6 +32,31 @@ public class buildingTeamStrucAdd extends javax.swing.JFrame {
         setVisible(false);        
         this.teamstrucsystem = new TeamStrucSystem();        
     }
+    
+    private void addTeamStruc(){
+        String TSRole = (String)Role.getSelectedItem();
+        String TSAmount = Amount.getText();
+
+        if(TSRole.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Please enter a valid Role");
+            return;
+        }
+
+        if(TSAmount.isEmpty() || !TSAmount.chars().allMatch( Character::isDigit) 
+                || Integer.parseInt(TSAmount) <=0) {                
+            JOptionPane.showMessageDialog(this, "Please enter a valid Amount");
+            return;
+        }
+
+        TeamStruc item = new TeamStruc(TSRole,
+            Integer.parseInt(Amount.getText()));
+
+        teamstrucsystem.create(item);
+
+        Role.setSelectedItem("");
+        Amount.setText("");
+        JOptionPane.showMessageDialog(this, "Item has been added");
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -130,28 +155,7 @@ public class buildingTeamStrucAdd extends javax.swing.JFrame {
     }//GEN-LAST:event_BackActionPerformed
 
     private void AddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddActionPerformed
-        String TSRole = (String)Role.getSelectedItem();
-        String TSAmount = Amount.getText();
-
-        if(TSRole.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Please enter a valid Role");
-            return;
-        }
-
-        if(TSAmount.isEmpty() || !TSAmount.chars().allMatch( Character::isDigit) 
-                || Integer.parseInt(TSAmount) <=0) {                
-            JOptionPane.showMessageDialog(this, "Please enter a valid Amount");
-            return;
-        }
-
-        TeamStruc item = new TeamStruc(TSRole,
-            Integer.parseInt(Amount.getText()));
-
-        teamstrucsystem.create(item);
-
-        Role.setSelectedItem("");
-        Amount.setText("");
-        JOptionPane.showMessageDialog(this, "Item has been added");
+        addTeamStruc();
     }//GEN-LAST:event_AddActionPerformed
 
     /**

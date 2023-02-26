@@ -20,6 +20,28 @@ public class buildingAddOperation extends javax.swing.JFrame {
     public buildingAddOperation() {
         initComponents();
     }
+    
+    private void addOperation(){
+        operationTypeFinal = (String) operationType.getSelectedItem();
+        operationTitleFinal = operationTitle.getText();
+        operationDetailsFinal = operationDetails.getText();
+        fundAllocatedFinal = fundAllocated.getText();
+        urgencyLevelFinal = (String) urgencyLevel.getSelectedItem();
+        aos.setOperationType(operationTypeFinal);
+        aos.setOperationTitle(operationTitleFinal);
+        aos.setOperationDetails(operationDetailsFinal);
+        aos.setFundAllocated(fundAllocatedFinal);
+        aos.setUrgencyLevel(urgencyLevelFinal);
+
+        if (aod.add(aos) == true) {
+            JOptionPane.showMessageDialog(this, "Operation planning added SUCCESSFULLY.");
+
+            bom.setVisible(true);
+            this.setVisible(false);
+        } else {
+            JOptionPane.showMessageDialog(this, "Please fill up ALL the information.");
+        }
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -216,25 +238,7 @@ public class buildingAddOperation extends javax.swing.JFrame {
     buildingOperationManagement bom = new buildingOperationManagement();
     
     private void addUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addUserActionPerformed
-        operationTypeFinal = (String) operationType.getSelectedItem();
-        operationTitleFinal = operationTitle.getText();
-        operationDetailsFinal = operationDetails.getText();
-        fundAllocatedFinal = fundAllocated.getText();
-        urgencyLevelFinal = (String) urgencyLevel.getSelectedItem();
-        aos.setOperationType(operationTypeFinal);
-        aos.setOperationTitle(operationTitleFinal);
-        aos.setOperationDetails(operationDetailsFinal);
-        aos.setFundAllocated(fundAllocatedFinal);
-        aos.setUrgencyLevel(urgencyLevelFinal);
-
-        if (aod.add(aos) == true) {
-            JOptionPane.showMessageDialog(this, "Operation planning added SUCCESSFULLY.");
-
-            bom.setVisible(true);
-            this.setVisible(false);
-        } else {
-            JOptionPane.showMessageDialog(this, "Please fill up ALL the information.");
-        }
+        addOperation();
     }//GEN-LAST:event_addUserActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
