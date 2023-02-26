@@ -58,6 +58,30 @@ public class buildingSetupPatrol extends javax.swing.JFrame {
             Logger.getLogger(buildingSetupPatrol.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
+    private void setupPatrol(){
+        userIDFinal = userID.getText();
+        patrolVenueFinal = (String)patrolVenue.getSelectedItem();
+        patrolDetailsFinal = patrolDetails.getText();
+        patrolDateFinal = ((JTextField) patrolDate.getDateEditor().getUiComponent()).getText();
+        Date time = (Date) patrolTime.getValue();
+        patrolTimeFinal = formatter.format(time);
+        sps.setUserID(userIDFinal);
+        sps.setPatrolVenue(patrolVenueFinal);
+        sps.setPatrolDetails(patrolDetailsFinal);
+        sps.setPatrolDate(patrolDateFinal);
+        sps.setPatrolTime(patrolTimeFinal);
+        sps.setPatrolStatus(status);
+
+        if (spd.add(sps) == true) {
+            JOptionPane.showMessageDialog(this, "Patrol Schedule Set Up SUCCESSFULLY.");
+
+            beh.setVisible(true);
+            this.setVisible(false);
+        } else {
+            JOptionPane.showMessageDialog(this, "Please fill up ALL the information.");
+        }
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -284,27 +308,7 @@ public class buildingSetupPatrol extends javax.swing.JFrame {
     SimpleDateFormat formatter = new SimpleDateFormat("HH:mm");
     
     private void submitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitActionPerformed
-        userIDFinal = userID.getText();
-        patrolVenueFinal = (String)patrolVenue.getSelectedItem();
-        patrolDetailsFinal = patrolDetails.getText();
-        patrolDateFinal = ((JTextField) patrolDate.getDateEditor().getUiComponent()).getText();
-        Date time = (Date) patrolTime.getValue();
-        patrolTimeFinal = formatter.format(time);
-        sps.setUserID(userIDFinal);
-        sps.setPatrolVenue(patrolVenueFinal);
-        sps.setPatrolDetails(patrolDetailsFinal);
-        sps.setPatrolDate(patrolDateFinal);
-        sps.setPatrolTime(patrolTimeFinal);
-        sps.setPatrolStatus(status);
-
-        if (spd.add(sps) == true) {
-            JOptionPane.showMessageDialog(this, "Patrol Schedule Set Up SUCCESSFULLY.");
-
-            beh.setVisible(true);
-            this.setVisible(false);
-        } else {
-            JOptionPane.showMessageDialog(this, "Please fill up ALL the information.");
-        }
+        setupPatrol();
     }//GEN-LAST:event_submitActionPerformed
 
     private void resetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resetActionPerformed

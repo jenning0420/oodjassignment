@@ -20,6 +20,24 @@ public class buildingLogin extends javax.swing.JFrame {
     public buildingLogin() {
         initComponents();
     }
+    
+    private void login(){
+        Usernamefinal = txtUsername.getText();
+        passwordfinal = txtPassword.getText();
+        uls.setUsername(Usernamefinal);
+        uls.setPassword(passwordfinal);
+        uls.setTextFile("src/textFiles/buildingLogin.txt");
+        if (uld.add(uls) == true) {
+            JOptionPane.showMessageDialog(this, "Log In SUCCESSFULLY! Welcome back Building Executive.");
+
+            beh.setVisible(true);
+            this.setVisible(false);
+        } else {
+            JOptionPane.showMessageDialog(this, "INCORRECT Username OR Password. Please try again.");
+            txtUsername.setText(null);
+            txtPassword.setText(null);
+        }
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -140,21 +158,7 @@ public class buildingLogin extends javax.swing.JFrame {
     buildingExecHome beh = new buildingExecHome();
     
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        Usernamefinal = txtUsername.getText();
-        passwordfinal = txtPassword.getText();
-        uls.setUsername(Usernamefinal);
-        uls.setPassword(passwordfinal);
-        uls.setTextFile("src/textFiles/buildingLogin.txt");
-        if (uld.add(uls) == true) {
-            JOptionPane.showMessageDialog(this, "Log In SUCCESSFULLY! Welcome back Building Executive.");
-
-            beh.setVisible(true);
-            this.setVisible(false);
-        } else {
-            JOptionPane.showMessageDialog(this, "INCORRECT Username OR Password. Please try again.");
-            txtUsername.setText(null);
-            txtPassword.setText(null);
-        }
+        login();
 
     }//GEN-LAST:event_jButton1ActionPerformed
 

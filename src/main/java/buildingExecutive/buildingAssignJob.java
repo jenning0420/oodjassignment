@@ -73,6 +73,32 @@ public class buildingAssignJob extends javax.swing.JFrame {
             Logger.getLogger(buildingAssignJob.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
+    private void assignJob(){
+        empIDFinal = empID.getText();
+        jobTitleFinal = jobTitle.getText();
+        jobDetailsFinal = jobDetails.getText();
+        jobDateFinal = ((JTextField) jobDate.getDateEditor().getUiComponent()).getText();
+        Date time = (Date) jobTime.getValue();
+        jobTimeFinal = formatter.format(time);
+        jobDurationFinal = jobDuration.getValue().toString();
+        ajs.setUserID(empIDFinal);
+        ajs.setJobTitle(jobTitleFinal);
+        ajs.setJobDetails(jobDetailsFinal);
+        ajs.setJobDate(jobDateFinal);
+        ajs.setJobTime(jobTimeFinal);
+        ajs.setJobDuration(jobDurationFinal);
+        ajs.setStatus(status);
+
+        if (ajd.add(ajs) == true) {
+            JOptionPane.showMessageDialog(this, "Job Assigned SUCCESSFULLY.");
+
+            beh.setVisible(true);
+            this.setVisible(false);
+        } else {
+            JOptionPane.showMessageDialog(this, "Please fill up ALL the information.");
+        }
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -331,29 +357,7 @@ public class buildingAssignJob extends javax.swing.JFrame {
     SimpleDateFormat formatter = new SimpleDateFormat("HH:mm");
 
     private void submitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitActionPerformed
-        empIDFinal = empID.getText();
-        jobTitleFinal = jobTitle.getText();
-        jobDetailsFinal = jobDetails.getText();
-        jobDateFinal = ((JTextField) jobDate.getDateEditor().getUiComponent()).getText();
-        Date time = (Date) jobTime.getValue();
-        jobTimeFinal = formatter.format(time);
-        jobDurationFinal = jobDuration.getValue().toString();
-        ajs.setUserID(empIDFinal);
-        ajs.setJobTitle(jobTitleFinal);
-        ajs.setJobDetails(jobDetailsFinal);
-        ajs.setJobDate(jobDateFinal);
-        ajs.setJobTime(jobTimeFinal);
-        ajs.setJobDuration(jobDurationFinal);
-        ajs.setStatus(status);
-
-        if (ajd.add(ajs) == true) {
-            JOptionPane.showMessageDialog(this, "Job Assigned SUCCESSFULLY.");
-
-            beh.setVisible(true);
-            this.setVisible(false);
-        } else {
-            JOptionPane.showMessageDialog(this, "Please fill up ALL the information.");
-        }
+        assignJob();
     }//GEN-LAST:event_submitActionPerformed
 
     private void userTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_userTableMouseClicked
