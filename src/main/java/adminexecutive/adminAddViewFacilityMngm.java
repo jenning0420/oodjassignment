@@ -63,6 +63,26 @@ public class adminAddViewFacilityMngm extends javax.swing.JFrame {
             Logger.getLogger(adminAddViewFacilityMngm.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
+    private void addViewFacility(){
+        facilityFinal = facility.getText();
+        equipmentFinal = equipment.getText();
+        quantityFinal = quantity.getText();
+        conditionFinal = condition.getValue().toString();
+        fms.setFacility(facilityFinal);
+        fms.setEquipment(equipmentFinal);
+        fms.setQuantity(quantityFinal);
+        fms.setCondition(conditionFinal);
+
+        if (fmd.add(fms) == true) {
+            JOptionPane.showMessageDialog(this, "Facility Record ADDED!");
+            new adminExecFacilityHome().setVisible(true);
+            this.setVisible(false);
+
+        } else {
+            JOptionPane.showMessageDialog(this, "Please fill up ALL the information.");
+        }
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -277,23 +297,7 @@ public class adminAddViewFacilityMngm extends javax.swing.JFrame {
     String conditionFinal;
 
     private void addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addActionPerformed
-        facilityFinal = facility.getText();
-        equipmentFinal = equipment.getText();
-        quantityFinal = quantity.getText();
-        conditionFinal = condition.getValue().toString();
-        fms.setFacility(facilityFinal);
-        fms.setEquipment(equipmentFinal);
-        fms.setQuantity(quantityFinal);
-        fms.setCondition(conditionFinal);
-
-        if (fmd.add(fms) == true) {
-            JOptionPane.showMessageDialog(this, "Facility Record ADDED!");
-            new adminExecFacilityHome().setVisible(true);
-            this.setVisible(false);
-
-        } else {
-            JOptionPane.showMessageDialog(this, "Please fill up ALL the information.");
-        }
+        addViewFacility();
     }//GEN-LAST:event_addActionPerformed
 
     private void clearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearActionPerformed

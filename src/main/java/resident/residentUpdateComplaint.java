@@ -108,6 +108,71 @@ public class residentUpdateComplaint extends javax.swing.JFrame {
         }
     }
 
+    public void updateComplaint(){
+        int item = userTable.getSelectedRow();
+        DefaultTableModel model = (DefaultTableModel) userTable.getModel();
+
+        if (item >= 0) {
+            model.setValueAt(compID.getText(), item, 0);
+            model.setValueAt(userID.getText(), item, 1);
+            model.setValueAt(compTitle.getText(), item, 2);
+            model.setValueAt(((JTextField) compDate.getDateEditor().getUiComponent()).getText(), item, 3);
+            model.setValueAt(compDetails.getText(), item, 4);
+            model.setValueAt(suggestion.getText(), item, 5);
+            model.setValueAt(complainant.getText(), item, 6);
+            model.setValueAt(status.getSelectedItem(), item, 7);
+
+            ArrayList<String[]> tableArray = new ArrayList<>();
+            for (int i = 0; i < userTable.getRowCount(); i++) {
+                String[] tempArray = new String[8];
+                for (int j = 0; j < userTable.getColumnCount(); j++) {
+                    tempArray[j] = userTable.getValueAt(i, j).toString();
+                }
+                tableArray.add(tempArray);
+            }
+
+            String filePath = "src/textFiles/complaint.txt";
+            ArrayList<String[]> array = FileService.readFile(filePath);
+            File file = new File(filePath);
+            try {
+
+                FileWriter fw = new FileWriter(file);
+                BufferedWriter bw = new BufferedWriter(fw);
+                String colHeadings = "";
+                for (int i = 0; i < model.getColumnCount(); i++) {
+                    colHeadings = colHeadings + model.getColumnName(i) + ",";
+                }
+                bw.write(colHeadings + "\n");
+                String content = "";
+                boolean change = false;
+                for (String[] tempArray : array) {
+                    for (String[] tempTableArray : tableArray) {
+                        if (tempTableArray[0].equals(tempArray[0]) && tempTableArray[1].equals(tempArray[1])) {
+                            content += String.join(",", tempTableArray) + ",\n";
+                            change = true;
+                            break;
+                        }
+                    }
+                    if (change) {
+                        change = false;
+                        continue;
+                    }
+                    content += String.join(",", tempArray) + ",\n";
+                }
+                bw.write(content);
+                bw.close();
+
+            } catch (IOException ex) {
+                Logger.getLogger(residentUpdateComplaint.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+            JOptionPane.showMessageDialog(this, "Complaint Updated SUCCESSFULLY!");
+            rcm.setVisible(true);
+            this.setVisible(false);
+        } else {
+            JOptionPane.showMessageDialog(rootPane, "Please fill up ALL details!");
+        }
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -423,69 +488,7 @@ public class residentUpdateComplaint extends javax.swing.JFrame {
     residentComplaintManagement rcm = new residentComplaintManagement();
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        int item = userTable.getSelectedRow();
-        DefaultTableModel model = (DefaultTableModel) userTable.getModel();
-
-        if (item >= 0) {
-            model.setValueAt(compID.getText(), item, 0);
-            model.setValueAt(userID.getText(), item, 1);
-            model.setValueAt(compTitle.getText(), item, 2);
-            model.setValueAt(((JTextField) compDate.getDateEditor().getUiComponent()).getText(), item, 3);
-            model.setValueAt(compDetails.getText(), item, 4);
-            model.setValueAt(suggestion.getText(), item, 5);
-            model.setValueAt(complainant.getText(), item, 6);
-            model.setValueAt(status.getSelectedItem(), item, 7);
-
-            ArrayList<String[]> tableArray = new ArrayList<>();
-            for (int i = 0; i < userTable.getRowCount(); i++) {
-                String[] tempArray = new String[8];
-                for (int j = 0; j < userTable.getColumnCount(); j++) {
-                    tempArray[j] = userTable.getValueAt(i, j).toString();
-                }
-                tableArray.add(tempArray);
-            }
-
-            String filePath = "src/textFiles/complaint.txt";
-            ArrayList<String[]> array = FileService.readFile(filePath);
-            File file = new File(filePath);
-            try {
-
-                FileWriter fw = new FileWriter(file);
-                BufferedWriter bw = new BufferedWriter(fw);
-                String colHeadings = "";
-                for (int i = 0; i < model.getColumnCount(); i++) {
-                    colHeadings = colHeadings + model.getColumnName(i) + ",";
-                }
-                bw.write(colHeadings + "\n");
-                String content = "";
-                boolean change = false;
-                for (String[] tempArray : array) {
-                    for (String[] tempTableArray : tableArray) {
-                        if (tempTableArray[0].equals(tempArray[0]) && tempTableArray[1].equals(tempArray[1])) {
-                            content += String.join(",", tempTableArray) + ",\n";
-                            change = true;
-                            break;
-                        }
-                    }
-                    if (change) {
-                        change = false;
-                        continue;
-                    }
-                    content += String.join(",", tempArray) + ",\n";
-                }
-                bw.write(content);
-                bw.close();
-
-            } catch (IOException ex) {
-                Logger.getLogger(residentUpdateComplaint.class.getName()).log(Level.SEVERE, null, ex);
-            }
-
-            JOptionPane.showMessageDialog(this, "Complaint Updated SUCCESSFULLY!");
-            rcm.setVisible(true);
-            this.setVisible(false);
-        } else {
-            JOptionPane.showMessageDialog(rootPane, "Please fill up ALL details!");
-        }
+        updateComplaint();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void statusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_statusActionPerformed
