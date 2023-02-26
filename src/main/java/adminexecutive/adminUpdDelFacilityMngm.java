@@ -51,6 +51,88 @@ public class adminUpdDelFacilityMngm extends javax.swing.JFrame {
             Logger.getLogger(adminUpdDelFacilityMngm.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
+    private void updateFacility(){
+        int item = facilityTable.getSelectedRow();
+        DefaultTableModel model = (DefaultTableModel) facilityTable.getModel();
+
+        if (item >= 0) {
+            model.setValueAt(facility.getText(), item, 0);
+            model.setValueAt(equipment.getText(), item, 1);
+            model.setValueAt(quantity.getText(), item, 2);
+            model.setValueAt(condition.getValue(), item, 3);
+
+            String filePath = "src/textFiles/facility.txt";
+            File file = new File(filePath);
+            try {
+
+                FileWriter fw = new FileWriter(file);
+                BufferedWriter bw = new BufferedWriter(fw);
+                String colHeadings = "";
+                for (int i = 0; i < model.getColumnCount(); i++) {
+                    colHeadings = colHeadings + model.getColumnName(i) + ",";
+                }
+                bw.write(colHeadings + "\n");
+
+                for (int i = 0; i < facilityTable.getRowCount(); i++) {
+                    for (int j = 0; j < facilityTable.getColumnCount(); j++) {
+                        bw.write(facilityTable.getValueAt(i, j).toString() + ",");
+                    }
+                    bw.newLine();
+                }
+
+                bw.close();
+                fw.close();
+            } catch (IOException ex) {
+                Logger.getLogger(adminUpdDelFacilityMngm.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+            JOptionPane.showMessageDialog(this, "Facility Record UPDATED!");
+            new adminExecFacilityHome().setVisible(true);
+            this.setVisible(false);
+        } else {
+            JOptionPane.showMessageDialog(rootPane, "Please fill up ALL details!");
+        }
+    }
+    
+    private void deleteFacility(){
+        int item = facilityTable.getSelectedRow();
+        DefaultTableModel model = (DefaultTableModel) facilityTable.getModel();
+
+        if (item >= 0) {
+            model.removeRow(item);
+            String filePath = "src/textFiles/facility.txt";
+            File file = new File(filePath);
+            try {
+
+                FileWriter fw = new FileWriter(file);
+                BufferedWriter bw = new BufferedWriter(fw);
+                String colHeadings = "";
+                for (int i = 0; i < model.getColumnCount(); i++) {
+                    colHeadings = colHeadings + model.getColumnName(i) + ",";
+                }
+                bw.write(colHeadings + "\n");
+
+                for (int i = 0; i < facilityTable.getRowCount(); i++) {
+                    for (int j = 0; j < facilityTable.getColumnCount(); j++) {
+                        bw.write(facilityTable.getValueAt(i, j).toString() + ",");
+                    }
+                    bw.newLine();
+                }
+
+                bw.close();
+                fw.close();
+            } catch (IOException ex) {
+                Logger.getLogger(adminUpdDelFacilityMngm.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+            JOptionPane.showMessageDialog(rootPane, "Facility Record DELETED!");
+            new adminExecFacilityHome().setVisible(true);
+            this.setVisible(false);
+        } else {
+            JOptionPane.showMessageDialog(rootPane, "Please select the fill to Delete!");
+        }
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -256,85 +338,11 @@ public class adminUpdDelFacilityMngm extends javax.swing.JFrame {
 
 
     private void updateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateActionPerformed
-        int item = facilityTable.getSelectedRow();
-        DefaultTableModel model = (DefaultTableModel) facilityTable.getModel();
-
-        if (item >= 0) {
-            model.setValueAt(facility.getText(), item, 0);
-            model.setValueAt(equipment.getText(), item, 1);
-            model.setValueAt(quantity.getText(), item, 2);
-            model.setValueAt(condition.getValue(), item, 3);
-
-            String filePath = "src/textFiles/facility.txt";
-            File file = new File(filePath);
-            try {
-
-                FileWriter fw = new FileWriter(file);
-                BufferedWriter bw = new BufferedWriter(fw);
-                String colHeadings = "";
-                for (int i = 0; i < model.getColumnCount(); i++) {
-                    colHeadings = colHeadings + model.getColumnName(i) + ",";
-                }
-                bw.write(colHeadings + "\n");
-
-                for (int i = 0; i < facilityTable.getRowCount(); i++) {
-                    for (int j = 0; j < facilityTable.getColumnCount(); j++) {
-                        bw.write(facilityTable.getValueAt(i, j).toString() + ",");
-                    }
-                    bw.newLine();
-                }
-
-                bw.close();
-                fw.close();
-            } catch (IOException ex) {
-                Logger.getLogger(adminUpdDelFacilityMngm.class.getName()).log(Level.SEVERE, null, ex);
-            }
-
-            JOptionPane.showMessageDialog(this, "Facility Record UPDATED!");
-            new adminExecFacilityHome().setVisible(true);
-            this.setVisible(false);
-        } else {
-            JOptionPane.showMessageDialog(rootPane, "Please fill up ALL details!");
-        }
+        updateFacility();
     }//GEN-LAST:event_updateActionPerformed
 
     private void deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteActionPerformed
-        int item = facilityTable.getSelectedRow();
-        DefaultTableModel model = (DefaultTableModel) facilityTable.getModel();
-
-        if (item >= 0) {
-            model.removeRow(item);
-            String filePath = "src/textFiles/facility.txt";
-            File file = new File(filePath);
-            try {
-
-                FileWriter fw = new FileWriter(file);
-                BufferedWriter bw = new BufferedWriter(fw);
-                String colHeadings = "";
-                for (int i = 0; i < model.getColumnCount(); i++) {
-                    colHeadings = colHeadings + model.getColumnName(i) + ",";
-                }
-                bw.write(colHeadings + "\n");
-
-                for (int i = 0; i < facilityTable.getRowCount(); i++) {
-                    for (int j = 0; j < facilityTable.getColumnCount(); j++) {
-                        bw.write(facilityTable.getValueAt(i, j).toString() + ",");
-                    }
-                    bw.newLine();
-                }
-
-                bw.close();
-                fw.close();
-            } catch (IOException ex) {
-                Logger.getLogger(adminUpdDelFacilityMngm.class.getName()).log(Level.SEVERE, null, ex);
-            }
-
-            JOptionPane.showMessageDialog(rootPane, "Facility Record DELETED!");
-            new adminExecFacilityHome().setVisible(true);
-            this.setVisible(false);
-        } else {
-            JOptionPane.showMessageDialog(rootPane, "Please select the fill to Delete!");
-        }
+        deleteFacility();
     }//GEN-LAST:event_deleteActionPerformed
 
     private void equipmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_equipmentActionPerformed

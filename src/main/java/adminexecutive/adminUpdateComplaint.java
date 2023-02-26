@@ -52,6 +52,54 @@ public class adminUpdateComplaint extends javax.swing.JFrame {
             Logger.getLogger(adminUpdateComplaint.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
+    private void updateComplaint(){
+        int item = userTable.getSelectedRow();
+        DefaultTableModel model = (DefaultTableModel) userTable.getModel();
+
+        if (item >= 0) {
+            model.setValueAt(compID.getText(), item, 0);
+            model.setValueAt(userID.getText(), item, 1);
+            model.setValueAt(compTitle.getText(), item, 2);
+            model.setValueAt(((JTextField) compDate.getDateEditor().getUiComponent()).getText(), item, 3);
+            model.setValueAt(compDetails.getText(), item, 4);
+            model.setValueAt(suggestion.getText(), item, 5);
+            model.setValueAt(complainant.getText(), item, 6);
+            model.setValueAt(status.getSelectedItem(), item, 7);
+            
+
+            String filePath = "src/textFiles/complaint.txt";
+            File file = new File(filePath);
+            try {
+
+                FileWriter fw = new FileWriter(file);
+                BufferedWriter bw = new BufferedWriter(fw);
+                String colHeadings = "";
+                for (int i = 0; i < model.getColumnCount();i++){
+                    colHeadings = colHeadings + model.getColumnName(i) + ",";
+                }
+                bw.write(colHeadings + "\n");
+
+                for (int i = 0; i < userTable.getRowCount(); i++) {
+                    for (int j = 0; j < userTable.getColumnCount(); j++) {
+                        bw.write(userTable.getValueAt(i, j).toString() + ",");
+                    }
+                    bw.newLine();
+                }
+
+                bw.close();
+                fw.close();
+            } catch (IOException ex) {
+                Logger.getLogger(adminUpdateComplaint.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+            JOptionPane.showMessageDialog(this, "Complaint Updated SUCCESSFULLY!");
+            acm.setVisible(true);
+            this.setVisible(false);
+        } else {
+            JOptionPane.showMessageDialog(rootPane, "Please fill up ALL details!");
+        }
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -334,51 +382,7 @@ public class adminUpdateComplaint extends javax.swing.JFrame {
     adminComplaintManagement acm = new adminComplaintManagement();
     
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        int item = userTable.getSelectedRow();
-        DefaultTableModel model = (DefaultTableModel) userTable.getModel();
-
-        if (item >= 0) {
-            model.setValueAt(compID.getText(), item, 0);
-            model.setValueAt(userID.getText(), item, 1);
-            model.setValueAt(compTitle.getText(), item, 2);
-            model.setValueAt(((JTextField) compDate.getDateEditor().getUiComponent()).getText(), item, 3);
-            model.setValueAt(compDetails.getText(), item, 4);
-            model.setValueAt(suggestion.getText(), item, 5);
-            model.setValueAt(complainant.getText(), item, 6);
-            model.setValueAt(status.getSelectedItem(), item, 7);
-            
-
-            String filePath = "src/textFiles/complaint.txt";
-            File file = new File(filePath);
-            try {
-
-                FileWriter fw = new FileWriter(file);
-                BufferedWriter bw = new BufferedWriter(fw);
-                String colHeadings = "";
-                for (int i = 0; i < model.getColumnCount();i++){
-                    colHeadings = colHeadings + model.getColumnName(i) + ",";
-                }
-                bw.write(colHeadings + "\n");
-
-                for (int i = 0; i < userTable.getRowCount(); i++) {
-                    for (int j = 0; j < userTable.getColumnCount(); j++) {
-                        bw.write(userTable.getValueAt(i, j).toString() + ",");
-                    }
-                    bw.newLine();
-                }
-
-                bw.close();
-                fw.close();
-            } catch (IOException ex) {
-                Logger.getLogger(adminUpdateComplaint.class.getName()).log(Level.SEVERE, null, ex);
-            }
-
-            JOptionPane.showMessageDialog(this, "Complaint Updated SUCCESSFULLY!");
-            acm.setVisible(true);
-            this.setVisible(false);
-        } else {
-            JOptionPane.showMessageDialog(rootPane, "Please fill up ALL details!");
-        }
+        updateComplaint();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void statusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_statusActionPerformed

@@ -61,6 +61,28 @@ public class adminExecUnitManageAdd extends javax.swing.JFrame {
             Logger.getLogger(accGenerateInvoice.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
+    private void addUnit(){
+        newpropid = srcpropid.getText();
+        newunitno = unitno.getText();
+        newproptype = (String) proptype.getSelectedItem();
+        newprice = price.getText();
+
+
+        uit.setPID(newpropid);
+        uit.setPUnitNo(newunitno);
+        uit.setPType(newproptype);
+        uit.setPPrice(newprice);
+
+        if (mu.add(uit) == true) {
+            JOptionPane.showMessageDialog(this, "Unit GENERATED!");
+
+            aeum.setVisible(true);
+            this.setVisible(false);
+        } else {
+            JOptionPane.showMessageDialog(this, "Please fill up ALL the information.");
+        }
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -308,25 +330,7 @@ public class adminExecUnitManageAdd extends javax.swing.JFrame {
     String newprice;
     
     private void generateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_generateActionPerformed
-        newpropid = srcpropid.getText();
-        newunitno = unitno.getText();
-        newproptype = (String) proptype.getSelectedItem();
-        newprice = price.getText();
-
-
-        uit.setPID(newpropid);
-        uit.setPUnitNo(newunitno);
-        uit.setPType(newproptype);
-        uit.setPPrice(newprice);
-
-        if (mu.add(uit) == true) {
-            JOptionPane.showMessageDialog(this, "Unit GENERATED!");
-
-            aeum.setVisible(true);
-            this.setVisible(false);
-        } else {
-            JOptionPane.showMessageDialog(this, "Please fill up ALL the information.");
-        }
+        addUnit();
     }//GEN-LAST:event_generateActionPerformed
 
     private void clearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearActionPerformed

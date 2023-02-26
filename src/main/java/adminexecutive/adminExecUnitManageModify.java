@@ -59,6 +59,88 @@ public class adminExecUnitManageModify extends javax.swing.JFrame {
             Logger.getLogger(adminExecUnitManage.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
+    private void modifyUnit(){
+        int item = userTable.getSelectedRow();
+        DefaultTableModel model = (DefaultTableModel) userTable.getModel();
+
+        if (item >= 0) {
+            model.setValueAt(propid.getText(), item, 0);
+            model.setValueAt(modunitno.getText(), item, 1);
+            model.setValueAt(modproptype.getSelectedItem(), item, 2);
+            model.setValueAt(modpropprice.getText(), item, 3);
+
+            String filePath = "src/textFiles/unitManage.txt";
+            File file = new File(filePath);
+            try {
+
+                FileWriter fw = new FileWriter(file);
+                BufferedWriter bw = new BufferedWriter(fw);
+                String colHeadings = "";
+                for (int i = 0; i < model.getColumnCount();i++){
+                    colHeadings = colHeadings + model.getColumnName(i) + ",";
+                }
+                bw.write(colHeadings + "\n");
+
+                for (int i = 0; i < userTable.getRowCount(); i++) {
+                    for (int j = 0; j < userTable.getColumnCount(); j++) {
+                        bw.write(userTable.getValueAt(i, j).toString() + ",");
+                    }
+                    bw.newLine();
+                }
+
+                bw.close();
+                fw.close();
+            } catch (IOException ex) {
+                Logger.getLogger(adminExecUnitManageModify.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+            JOptionPane.showMessageDialog(this, "Account Updated SUCCESSFULLY!");
+            aeum.setVisible(true);
+            this.setVisible(false);
+        } else {
+            JOptionPane.showMessageDialog(rootPane, "Please fill up ALL details!");
+        }
+    }
+    
+    private void removeUnit(){
+        int item = userTable.getSelectedRow();
+        DefaultTableModel model = (DefaultTableModel) userTable.getModel();
+
+        if (item >= 0){
+            model.removeRow(item);
+            String filePath = "src/textFiles/unitManage.txt";
+            File file = new File(filePath);
+            try {
+
+                FileWriter fw = new FileWriter(file);
+                BufferedWriter bw = new BufferedWriter(fw);
+                String colHeadings = "";
+                for (int i = 0; i < model.getColumnCount();i++){
+                    colHeadings = colHeadings + model.getColumnName(i) + ",";
+                }
+                bw.write(colHeadings + "\n");
+
+                for (int i = 0; i < userTable.getRowCount(); i++) {
+                    for (int j = 0; j < userTable.getColumnCount(); j++) {
+                        bw.write(userTable.getValueAt(i, j).toString() + ",");
+                    }
+                    bw.newLine();
+                }
+
+                bw.close();
+                fw.close();
+            } catch (IOException ex) {
+                Logger.getLogger(adminExecUnitManageModify.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+            JOptionPane.showMessageDialog(rootPane, "Property Removed SUCCESSFULLY!");
+            aeum.setVisible(true);
+            this.setVisible(false);
+        } else {
+            JOptionPane.showMessageDialog(rootPane, "Please select the fill to Delete!");
+        }
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -286,85 +368,11 @@ public class adminExecUnitManageModify extends javax.swing.JFrame {
     adminExecUnitManage aeum = new adminExecUnitManage();
     
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        int item = userTable.getSelectedRow();
-        DefaultTableModel model = (DefaultTableModel) userTable.getModel();
-
-        if (item >= 0) {
-            model.setValueAt(propid.getText(), item, 0);
-            model.setValueAt(modunitno.getText(), item, 1);
-            model.setValueAt(modproptype.getSelectedItem(), item, 2);
-            model.setValueAt(modpropprice.getText(), item, 3);
-
-            String filePath = "src/textFiles/unitManage.txt";
-            File file = new File(filePath);
-            try {
-
-                FileWriter fw = new FileWriter(file);
-                BufferedWriter bw = new BufferedWriter(fw);
-                String colHeadings = "";
-                for (int i = 0; i < model.getColumnCount();i++){
-                    colHeadings = colHeadings + model.getColumnName(i) + ",";
-                }
-                bw.write(colHeadings + "\n");
-
-                for (int i = 0; i < userTable.getRowCount(); i++) {
-                    for (int j = 0; j < userTable.getColumnCount(); j++) {
-                        bw.write(userTable.getValueAt(i, j).toString() + ",");
-                    }
-                    bw.newLine();
-                }
-
-                bw.close();
-                fw.close();
-            } catch (IOException ex) {
-                Logger.getLogger(adminExecUnitManageModify.class.getName()).log(Level.SEVERE, null, ex);
-            }
-
-            JOptionPane.showMessageDialog(this, "Account Updated SUCCESSFULLY!");
-            aeum.setVisible(true);
-            this.setVisible(false);
-        } else {
-            JOptionPane.showMessageDialog(rootPane, "Please fill up ALL details!");
-        }
+        modifyUnit();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        int item = userTable.getSelectedRow();
-        DefaultTableModel model = (DefaultTableModel) userTable.getModel();
-
-        if (item >= 0){
-            model.removeRow(item);
-            String filePath = "src/textFiles/unitManage.txt";
-            File file = new File(filePath);
-            try {
-
-                FileWriter fw = new FileWriter(file);
-                BufferedWriter bw = new BufferedWriter(fw);
-                String colHeadings = "";
-                for (int i = 0; i < model.getColumnCount();i++){
-                    colHeadings = colHeadings + model.getColumnName(i) + ",";
-                }
-                bw.write(colHeadings + "\n");
-
-                for (int i = 0; i < userTable.getRowCount(); i++) {
-                    for (int j = 0; j < userTable.getColumnCount(); j++) {
-                        bw.write(userTable.getValueAt(i, j).toString() + ",");
-                    }
-                    bw.newLine();
-                }
-
-                bw.close();
-                fw.close();
-            } catch (IOException ex) {
-                Logger.getLogger(adminExecUnitManageModify.class.getName()).log(Level.SEVERE, null, ex);
-            }
-
-            JOptionPane.showMessageDialog(rootPane, "Property Removed SUCCESSFULLY!");
-            aeum.setVisible(true);
-            this.setVisible(false);
-        } else {
-            JOptionPane.showMessageDialog(rootPane, "Please select the fill to Delete!");
-        }
+        removeUnit();
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void modproptypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modproptypeActionPerformed

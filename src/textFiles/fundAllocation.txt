@@ -1,5 +1,5 @@
 Operation ID,Operation Type,Operation Title,Operation Details,Allocated Fund,Urgency Level,
 1,Maintenance,Renovate Swimming Pool,Make swimming pool deeper,20000,Less Urgent,
 2,Fund Allocation,Charity,Charity event for flood area,5000,Less Urgent,
-3,Maintenance,Water pipe maintanance,Pipe leakage and cause the floor wet,6000,Urgent,
+3,Maintenance,Water pipe maintanance,water leakage and cause the floor wet,6000,Urgent,
 4,Maintenance,Renovate floor,change new pattern for floors,30000,Non Urgent,

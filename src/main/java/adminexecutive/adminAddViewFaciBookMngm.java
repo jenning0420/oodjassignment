@@ -136,6 +136,31 @@ public class adminAddViewFaciBookMngm extends javax.swing.JFrame {
         }
 
     }
+    
+    private void addViewFacilityBook(){
+        SimpleDateFormat formatter = new SimpleDateFormat("HH:mm");
+        userIDFinal = userID.getText();
+        facilityFinal = (String) facility.getSelectedItem();
+        dateInFinal = ((JTextField) dateIn.getDateEditor().getUiComponent()).getText();
+        durationFinal = duration.getValue().toString();
+        Date time1 = (Date) time.getValue();
+        timeFinal = formatter.format(time1);
+        fbms.setUserID(userIDFinal);
+        fbms.setFacility(facilityFinal);
+        fbms.setDateIn(dateInFinal);
+        fbms.setDuration(durationFinal);
+        fbms.setTime(timeFinal);
+
+        if (fbmd.add(fbms) == true) {
+            JOptionPane.showMessageDialog(this, "Facility Booking Record ADDED!");
+            new adminExecFacilityHome().setVisible(true);
+            this.setVisible(false);
+
+            
+        } else {
+            JOptionPane.showMessageDialog(this, "Please fill up ALL the information.");
+        }
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -393,28 +418,7 @@ public class adminAddViewFaciBookMngm extends javax.swing.JFrame {
 
 
     private void addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addActionPerformed
-        SimpleDateFormat formatter = new SimpleDateFormat("HH:mm");
-        userIDFinal = userID.getText();
-        facilityFinal = (String) facility.getSelectedItem();
-        dateInFinal = ((JTextField) dateIn.getDateEditor().getUiComponent()).getText();
-        durationFinal = duration.getValue().toString();
-        Date time1 = (Date) time.getValue();
-        timeFinal = formatter.format(time1);
-        fbms.setUserID(userIDFinal);
-        fbms.setFacility(facilityFinal);
-        fbms.setDateIn(dateInFinal);
-        fbms.setDuration(durationFinal);
-        fbms.setTime(timeFinal);
-
-        if (fbmd.add(fbms) == true) {
-            JOptionPane.showMessageDialog(this, "Facility Booking Record ADDED!");
-            new adminExecFacilityHome().setVisible(true);
-            this.setVisible(false);
-
-            
-        } else {
-            JOptionPane.showMessageDialog(this, "Please fill up ALL the information.");
-        }
+        addViewFacilityBook();
     }//GEN-LAST:event_addActionPerformed
 
     private void clearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearActionPerformed

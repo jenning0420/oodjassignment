@@ -20,6 +20,30 @@ public class adminAddSecurity extends javax.swing.JFrame {
     public adminAddSecurity() {
         initComponents();
     }
+    
+    private void addSecurity(){
+        Usernamefinal = Username.getText();
+        Namefinal = Name.getText();
+        ContactNumberfinal = ContactNumber.getText();
+        Genderfinal = (String) Gender.getSelectedItem();
+        Passwordfinal = Password.getText();
+        ers.setUsername(Usernamefinal);
+        ers.setName(Namefinal);
+        ers.setContactNumber(ContactNumberfinal);
+        ers.setGender(Genderfinal);
+        ers.setPassword(Passwordfinal);
+        ers.setEmpType(EmpTypefinal);
+        ers.setTextFile("src/textFiles/securityLogin.txt");
+
+        if (erd.add(ers) == true) {
+            JOptionPane.showMessageDialog(this, "Security Guard registered SUCCESSFULLY.");
+
+            ame.setVisible(true);
+            this.setVisible(false);
+        } else {
+            JOptionPane.showMessageDialog(this, "Please fill up ALL the information.");
+        }
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -205,27 +229,7 @@ public class adminAddSecurity extends javax.swing.JFrame {
     adminManageEmp ame = new adminManageEmp();
     
     private void addUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addUserActionPerformed
-        Usernamefinal = Username.getText();
-        Namefinal = Name.getText();
-        ContactNumberfinal = ContactNumber.getText();
-        Genderfinal = (String) Gender.getSelectedItem();
-        Passwordfinal = Password.getText();
-        ers.setUsername(Usernamefinal);
-        ers.setName(Namefinal);
-        ers.setContactNumber(ContactNumberfinal);
-        ers.setGender(Genderfinal);
-        ers.setPassword(Passwordfinal);
-        ers.setEmpType(EmpTypefinal);
-        ers.setTextFile("src/textFiles/securityLogin.txt");
-
-        if (erd.add(ers) == true) {
-            JOptionPane.showMessageDialog(this, "Security Guard registered SUCCESSFULLY.");
-
-            ame.setVisible(true);
-            this.setVisible(false);
-        } else {
-            JOptionPane.showMessageDialog(this, "Please fill up ALL the information.");
-        }
+        addSecurity();
     }//GEN-LAST:event_addUserActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed

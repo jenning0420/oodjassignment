@@ -52,6 +52,91 @@ public class adminModifyEmployee extends javax.swing.JFrame {
             Logger.getLogger(adminModifyEmployee.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
+    private void modifyEmployee(){
+        int item = userTable.getSelectedRow();
+        DefaultTableModel model = (DefaultTableModel) userTable.getModel();
+
+        if (item >= 0) {
+            model.setValueAt(userID.getText(), item, 0);
+            model.setValueAt(Username.getText(), item, 1);
+            model.setValueAt(Name.getText(), item, 2);
+            model.setValueAt(ContactNumber.getText(), item, 3);
+            model.setValueAt(Gender.getSelectedItem(), item, 4);
+            model.setValueAt(Password.getText(), item, 5);
+            model.setValueAt(empType.getSelectedItem(), item, 6);
+
+            String filePath = "src/textFiles/employeeLogin.txt";
+            File file = new File(filePath);
+            try {
+
+                FileWriter fw = new FileWriter(file);
+                BufferedWriter bw = new BufferedWriter(fw);
+                String colHeadings = "";
+                for (int i = 0; i < model.getColumnCount();i++){
+                    colHeadings = colHeadings + model.getColumnName(i) + ",";
+                }
+                bw.write(colHeadings + "\n");
+
+                for (int i = 0; i < userTable.getRowCount(); i++) {
+                    for (int j = 0; j < userTable.getColumnCount(); j++) {
+                        bw.write(userTable.getValueAt(i, j).toString() + ",");
+                    }
+                    bw.newLine();
+                }
+
+                bw.close();
+                fw.close();
+            } catch (IOException ex) {
+                Logger.getLogger(adminModifyEmployee.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+            JOptionPane.showMessageDialog(this, "Employee Account Updated SUCCESSFULLY!");
+            ame.setVisible(true);
+            this.setVisible(false);
+        } else {
+            JOptionPane.showMessageDialog(rootPane, "Please fill up ALL details!");
+        }
+    }
+    
+    private void removeEmployee(){
+        int item = userTable.getSelectedRow();
+        DefaultTableModel model = (DefaultTableModel) userTable.getModel();
+
+        if (item >= 0){
+            model.removeRow(item);
+            String filePath = "src/textFiles/employeeLogin.txt";
+            File file = new File(filePath);
+            try {
+
+                FileWriter fw = new FileWriter(file);
+                BufferedWriter bw = new BufferedWriter(fw);
+                String colHeadings = "";
+                for (int i = 0; i < model.getColumnCount();i++){
+                    colHeadings = colHeadings + model.getColumnName(i) + ",";
+                }
+                bw.write(colHeadings + "\n");
+
+                for (int i = 0; i < userTable.getRowCount(); i++) {
+                    for (int j = 0; j < userTable.getColumnCount(); j++) {
+                        bw.write(userTable.getValueAt(i, j).toString() + ",");
+                    }
+                    bw.newLine();
+                }
+
+                bw.close();
+                fw.close();
+            } catch (IOException ex) {
+                Logger.getLogger(adminModifyResident.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+            JOptionPane.showMessageDialog(rootPane, "Employee Account Removed SUCCESSFULLY!");
+            ame.setVisible(true);
+            this.setVisible(false);
+        } else {
+            JOptionPane.showMessageDialog(rootPane, "Please select the fill to Delete!");
+        }
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -320,88 +405,11 @@ public class adminModifyEmployee extends javax.swing.JFrame {
     adminManageEmp ame = new adminManageEmp();
     
     private void updateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateActionPerformed
-        int item = userTable.getSelectedRow();
-        DefaultTableModel model = (DefaultTableModel) userTable.getModel();
-
-        if (item >= 0) {
-            model.setValueAt(userID.getText(), item, 0);
-            model.setValueAt(Username.getText(), item, 1);
-            model.setValueAt(Name.getText(), item, 2);
-            model.setValueAt(ContactNumber.getText(), item, 3);
-            model.setValueAt(Gender.getSelectedItem(), item, 4);
-            model.setValueAt(Password.getText(), item, 5);
-            model.setValueAt(empType.getSelectedItem(), item, 6);
-
-            String filePath = "src/textFiles/employeeLogin.txt";
-            File file = new File(filePath);
-            try {
-
-                FileWriter fw = new FileWriter(file);
-                BufferedWriter bw = new BufferedWriter(fw);
-                String colHeadings = "";
-                for (int i = 0; i < model.getColumnCount();i++){
-                    colHeadings = colHeadings + model.getColumnName(i) + ",";
-                }
-                bw.write(colHeadings + "\n");
-
-                for (int i = 0; i < userTable.getRowCount(); i++) {
-                    for (int j = 0; j < userTable.getColumnCount(); j++) {
-                        bw.write(userTable.getValueAt(i, j).toString() + ",");
-                    }
-                    bw.newLine();
-                }
-
-                bw.close();
-                fw.close();
-            } catch (IOException ex) {
-                Logger.getLogger(adminModifyEmployee.class.getName()).log(Level.SEVERE, null, ex);
-            }
-
-            JOptionPane.showMessageDialog(this, "Employee Account Updated SUCCESSFULLY!");
-            ame.setVisible(true);
-            this.setVisible(false);
-        } else {
-            JOptionPane.showMessageDialog(rootPane, "Please fill up ALL details!");
-        }
+        modifyEmployee();
     }//GEN-LAST:event_updateActionPerformed
 
     private void removeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeActionPerformed
-        int item = userTable.getSelectedRow();
-        DefaultTableModel model = (DefaultTableModel) userTable.getModel();
-
-        if (item >= 0){
-            model.removeRow(item);
-            String filePath = "src/textFiles/employeeLogin.txt";
-            File file = new File(filePath);
-            try {
-
-                FileWriter fw = new FileWriter(file);
-                BufferedWriter bw = new BufferedWriter(fw);
-                String colHeadings = "";
-                for (int i = 0; i < model.getColumnCount();i++){
-                    colHeadings = colHeadings + model.getColumnName(i) + ",";
-                }
-                bw.write(colHeadings + "\n");
-
-                for (int i = 0; i < userTable.getRowCount(); i++) {
-                    for (int j = 0; j < userTable.getColumnCount(); j++) {
-                        bw.write(userTable.getValueAt(i, j).toString() + ",");
-                    }
-                    bw.newLine();
-                }
-
-                bw.close();
-                fw.close();
-            } catch (IOException ex) {
-                Logger.getLogger(adminModifyResident.class.getName()).log(Level.SEVERE, null, ex);
-            }
-
-            JOptionPane.showMessageDialog(rootPane, "Employee Account Removed SUCCESSFULLY!");
-            ame.setVisible(true);
-            this.setVisible(false);
-        } else {
-            JOptionPane.showMessageDialog(rootPane, "Please select the fill to Delete!");
-        }
+        removeEmployee();
     }//GEN-LAST:event_removeActionPerformed
 
     private void GenderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GenderActionPerformed

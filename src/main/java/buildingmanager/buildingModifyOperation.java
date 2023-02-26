@@ -52,6 +52,90 @@ public class buildingModifyOperation extends javax.swing.JFrame {
             Logger.getLogger(buildingModifyOperation.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
+    private void modifyOperation(){
+        int item = userTable.getSelectedRow();
+        DefaultTableModel model = (DefaultTableModel) userTable.getModel();
+
+        if (item >= 0) {
+            model.setValueAt(operationID.getText(), item, 0);
+            model.setValueAt(operationType.getSelectedItem(), item, 1);
+            model.setValueAt(operationTitle.getText(), item, 2);
+            model.setValueAt(operationDetails.getText(), item, 3);
+            model.setValueAt(fundAllocated.getText(), item, 4);
+            model.setValueAt(urgencyLevel.getSelectedItem(), item, 5);
+
+            String filePath = "src/textFiles/fundAllocation.txt";
+            File file = new File(filePath);
+            try {
+
+                FileWriter fw = new FileWriter(file);
+                BufferedWriter bw = new BufferedWriter(fw);
+                String colHeadings = "";
+                for (int i = 0; i < model.getColumnCount();i++){
+                    colHeadings = colHeadings + model.getColumnName(i) + ",";
+                }
+                bw.write(colHeadings + "\n");
+
+                for (int i = 0; i < userTable.getRowCount(); i++) {
+                    for (int j = 0; j < userTable.getColumnCount(); j++) {
+                        bw.write(userTable.getValueAt(i, j).toString() + ",");
+                    }
+                    bw.newLine();
+                }
+
+                bw.close();
+                fw.close();
+            } catch (IOException ex) {
+                Logger.getLogger(buildingModifyOperation.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+            JOptionPane.showMessageDialog(this, "Operation Planning Updated SUCCESSFULLY!");
+            bom.setVisible(true);
+            this.setVisible(false);
+        } else {
+            JOptionPane.showMessageDialog(rootPane, "Please choose operations from the table to be modified!");
+        }
+    }
+    
+    private void removeOperation(){
+        int item = userTable.getSelectedRow();
+        DefaultTableModel model = (DefaultTableModel) userTable.getModel();
+
+        if (item >= 0){
+            model.removeRow(item);
+            String filePath = "src/textFiles/fundAllocation.txt";
+            File file = new File(filePath);
+            try {
+
+                FileWriter fw = new FileWriter(file);
+                BufferedWriter bw = new BufferedWriter(fw);
+                String colHeadings = "";
+                for (int i = 0; i < model.getColumnCount();i++){
+                    colHeadings = colHeadings + model.getColumnName(i) + ",";
+                }
+                bw.write(colHeadings + "\n");
+
+                for (int i = 0; i < userTable.getRowCount(); i++) {
+                    for (int j = 0; j < userTable.getColumnCount(); j++) {
+                        bw.write(userTable.getValueAt(i, j).toString() + ",");
+                    }
+                    bw.newLine();
+                }
+
+                bw.close();
+                fw.close();
+            } catch (IOException ex) {
+                Logger.getLogger(buildingModifyBuilding.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+            JOptionPane.showMessageDialog(rootPane, "Operation Removed SUCCESSFULLY!");
+            bom.setVisible(true);
+            this.setVisible(false);
+        } else {
+            JOptionPane.showMessageDialog(rootPane, "Please select the fill to Delete!");
+        }
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -326,87 +410,11 @@ public class buildingModifyOperation extends javax.swing.JFrame {
     buildingOperationManagement bom = new buildingOperationManagement();
     
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        int item = userTable.getSelectedRow();
-        DefaultTableModel model = (DefaultTableModel) userTable.getModel();
-
-        if (item >= 0) {
-            model.setValueAt(operationID.getText(), item, 0);
-            model.setValueAt(operationType.getSelectedItem(), item, 1);
-            model.setValueAt(operationTitle.getText(), item, 2);
-            model.setValueAt(operationDetails.getText(), item, 3);
-            model.setValueAt(fundAllocated.getText(), item, 4);
-            model.setValueAt(urgencyLevel.getSelectedItem(), item, 5);
-
-            String filePath = "src/textFiles/fundAllocation.txt";
-            File file = new File(filePath);
-            try {
-
-                FileWriter fw = new FileWriter(file);
-                BufferedWriter bw = new BufferedWriter(fw);
-                String colHeadings = "";
-                for (int i = 0; i < model.getColumnCount();i++){
-                    colHeadings = colHeadings + model.getColumnName(i) + ",";
-                }
-                bw.write(colHeadings + "\n");
-
-                for (int i = 0; i < userTable.getRowCount(); i++) {
-                    for (int j = 0; j < userTable.getColumnCount(); j++) {
-                        bw.write(userTable.getValueAt(i, j).toString() + ",");
-                    }
-                    bw.newLine();
-                }
-
-                bw.close();
-                fw.close();
-            } catch (IOException ex) {
-                Logger.getLogger(buildingModifyOperation.class.getName()).log(Level.SEVERE, null, ex);
-            }
-
-            JOptionPane.showMessageDialog(this, "Operation Planning Updated SUCCESSFULLY!");
-            bom.setVisible(true);
-            this.setVisible(false);
-        } else {
-            JOptionPane.showMessageDialog(rootPane, "Please choose operations from the table to be modified!");
-        }
+        modifyOperation();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        int item = userTable.getSelectedRow();
-        DefaultTableModel model = (DefaultTableModel) userTable.getModel();
-
-        if (item >= 0){
-            model.removeRow(item);
-            String filePath = "src/textFiles/fundAllocation.txt";
-            File file = new File(filePath);
-            try {
-
-                FileWriter fw = new FileWriter(file);
-                BufferedWriter bw = new BufferedWriter(fw);
-                String colHeadings = "";
-                for (int i = 0; i < model.getColumnCount();i++){
-                    colHeadings = colHeadings + model.getColumnName(i) + ",";
-                }
-                bw.write(colHeadings + "\n");
-
-                for (int i = 0; i < userTable.getRowCount(); i++) {
-                    for (int j = 0; j < userTable.getColumnCount(); j++) {
-                        bw.write(userTable.getValueAt(i, j).toString() + ",");
-                    }
-                    bw.newLine();
-                }
-
-                bw.close();
-                fw.close();
-            } catch (IOException ex) {
-                Logger.getLogger(buildingModifyBuilding.class.getName()).log(Level.SEVERE, null, ex);
-            }
-
-            JOptionPane.showMessageDialog(rootPane, "Operation Removed SUCCESSFULLY!");
-            bom.setVisible(true);
-            this.setVisible(false);
-        } else {
-            JOptionPane.showMessageDialog(rootPane, "Please select the fill to Delete!");
-        }
+        removeOperation();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backActionPerformed

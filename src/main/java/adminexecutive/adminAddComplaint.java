@@ -57,6 +57,29 @@ public class adminAddComplaint extends javax.swing.JFrame {
             System.out.println("FileNotFound");
         }
     }
+    
+    private void addComplaint(){
+        compTitleFinal = compTitle.getText();
+        compDateFinal = ((JTextField) compDate.getDateEditor().getUiComponent()).getText();
+        compDetailsFinal = compDetails.getText();
+        suggestionFinal = suggestion.getText();
+
+        acs.setCompTitle(compTitleFinal);
+        acs.setCompDate(compDateFinal);
+        acs.setCompDetails(compDetailsFinal);
+        acs.setSuggestion(suggestionFinal);
+        acs.setStatus(status);
+        acs.setComplainant(complainant);
+
+        if (acd.add(acs) == true) {
+            JOptionPane.showMessageDialog(this, "Complaint added SUCCESSFULLY.");
+
+            acm.setVisible(true);
+            this.setVisible(false);
+        } else {
+            JOptionPane.showMessageDialog(this, "Please fill up ALL the information.");
+        }
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -227,26 +250,7 @@ public class adminAddComplaint extends javax.swing.JFrame {
 
 
     private void submitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitActionPerformed
-        compTitleFinal = compTitle.getText();
-        compDateFinal = ((JTextField) compDate.getDateEditor().getUiComponent()).getText();
-        compDetailsFinal = compDetails.getText();
-        suggestionFinal = suggestion.getText();
-
-        acs.setCompTitle(compTitleFinal);
-        acs.setCompDate(compDateFinal);
-        acs.setCompDetails(compDetailsFinal);
-        acs.setSuggestion(suggestionFinal);
-        acs.setStatus(status);
-        acs.setComplainant(complainant);
-
-        if (acd.add(acs) == true) {
-            JOptionPane.showMessageDialog(this, "Complaint added SUCCESSFULLY.");
-
-            acm.setVisible(true);
-            this.setVisible(false);
-        } else {
-            JOptionPane.showMessageDialog(this, "Please fill up ALL the information.");
-        }
+        addComplaint();
     }//GEN-LAST:event_submitActionPerformed
 
     private void backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backActionPerformed
