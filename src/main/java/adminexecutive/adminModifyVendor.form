@@ -161,8 +161,8 @@
                   <EmptySpace max="32767" attributes="0"/>
                   <Component id="jLabel9" min="-2" pref="142" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="propID" min="-2" pref="175" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="propID" min="-2" pref="58" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="129" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -201,10 +201,10 @@
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jLabel9" alignment="0" min="-2" pref="27" max="-2" attributes="0"/>
-                      <Component id="propID" alignment="0" min="-2" pref="25" max="-2" attributes="0"/>
+                      <Component id="jLabel9" min="-2" pref="27" max="-2" attributes="0"/>
+                      <Component id="propID" min="-2" pref="32" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="jButton2" alignment="0" min="-2" pref="62" max="-2" attributes="0"/>
                       <Group type="102" alignment="1" attributes="0">
@@ -338,9 +338,12 @@
             <Property name="text" type="java.lang.String" value="Property ID:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="propID">
-        </Component>
         <Component class="javax.swing.JLabel" name="userID">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="---"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="propID">
           <Properties>
             <Property name="text" type="java.lang.String" value="---"/>
           </Properties>

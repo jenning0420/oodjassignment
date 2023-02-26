@@ -1,5 +1,5 @@
 Role,Amount,
 Building Manager,1,
 Account Executive,4,
-Admin Execuctive,4,
 Building Executive,5,
+Admin Executive,4
