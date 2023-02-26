@@ -16,7 +16,6 @@ public class ApplyPassSng {
     private String unitNo;
     private String dateIn;
     private String duration;
-    private String hello;
 
     public int getPassID() {
         return passID;
