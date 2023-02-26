@@ -1,10 +1,2 @@
 PaymentID,UserID,UnitNo,PaymentType,Amount
-201,202,B0201,Services,20
-202,202,B0201,Utility,40
-203,202,B0201,Services,20
-204,202,B0201,Rental,2.0
-205,202,B0201,Utility,10
-206,202,B0201,Utility,10
-207,202,B0201,Rental,3
-208,202,B0201,Rental,3
-209,202,B0201,Rental,1
+1,202,B-10-2,Services,100

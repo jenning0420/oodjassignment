@@ -275,7 +275,7 @@ public class adminExecUnitManageModify extends javax.swing.JFrame {
         propid.setText(model.getValueAt(selectedInfo, 0).toString());
         modunitno.setText(model.getValueAt(selectedInfo, 1).toString());
         modproptype.setSelectedItem(model.getValueAt(selectedInfo, 2).toString());
-        modpropprice.setText(model.getValueAt(selectedInfo, 3).toString());
+        modpropprice.setText(model.getValueAt(selectedInfo,     3).toString());
 
     }//GEN-LAST:event_userTableMouseClicked
 
