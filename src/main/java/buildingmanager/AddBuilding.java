@@ -10,11 +10,12 @@ import javax.swing.JOptionPane;
  *
  * @author User
  */
-public class AddBuilding extends addAccount{
+public class AddBuilding extends addAccount {
 
-    public AddBuilding(){
+    public AddBuilding() {
         super("Add Building Executive User");
     }
+
     @Override
     protected void addUser() {
         Usernamefinal = Username.getText();
@@ -30,15 +31,15 @@ public class AddBuilding extends addAccount{
         aus.setTextFile("src/textFiles/buildingLogin.txt");
 
         if (aud.add(aus) == true) {
-            JOptionPane.showMessageDialog(this, "Building Executive account added SUCCESSFULLY.");
+            JOptionPane.showMessageDialog(this, "Building Executive account "
+                    + "added SUCCESSFULLY.");
 
             bum.setVisible(true);
             this.setVisible(false);
         } else {
-            JOptionPane.showMessageDialog(this, "Please fill up ALL the information.");
+            JOptionPane.showMessageDialog(this, "Please fill up "
+                    + "ALL the information.");
         }
     }
-    
-    
-    
+
 }

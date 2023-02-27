@@ -10,9 +10,9 @@ import javax.swing.JOptionPane;
  *
  * @author User
  */
-public class AddAdmin extends addAccount{
-    
-    public AddAdmin(){
+public class AddAdmin extends addAccount {
+
+    public AddAdmin() {
         super("Add Admin Executive User");
     }
 
@@ -31,13 +31,14 @@ public class AddAdmin extends addAccount{
         aus.setTextFile("src/textFiles/adminLogin.txt");
 
         if (aud.add(aus) == true) {
-            JOptionPane.showMessageDialog(this, "Admin Executive account added SUCCESSFULLY.");
+            JOptionPane.showMessageDialog(this, "Admin Executive "
+                    + "account added SUCCESSFULLY.");
 
             bum.setVisible(true);
             this.setVisible(false);
         } else {
-            JOptionPane.showMessageDialog(this, "Please fill up ALL the information.");
+            JOptionPane.showMessageDialog(this, "Please fill up "
+                    + "ALL the information.");
         }
     }
-    
 }
