@@ -24,8 +24,7 @@ public class ApplyPassSng {
     public void setPassID(int passID) {
         this.passID = passID;
     }
-
-    
+  
     public String getUserID() {
         return userID;
     }
@@ -73,6 +72,4 @@ public class ApplyPassSng {
     public void setDuration(String duration) {
         this.duration = duration;
     }
-    
-    
 }
