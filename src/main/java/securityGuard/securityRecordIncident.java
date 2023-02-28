@@ -15,7 +15,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JSpinner;
 import javax.swing.JTextField;
 import javax.swing.SpinnerDateModel;
-import sng.SecurityRecordIncidentSng;
+import sng.Incident;
 
 /**
  *
@@ -25,7 +25,7 @@ public class securityRecordIncident extends javax.swing.JFrame {
     String descriptionFinal;
     String dateInFinal;
     String timeInFinal;
-    SecurityRecordIncidentSng sris = new SecurityRecordIncidentSng();
+    Incident sris = new Incident();
     SecurityRecordIncidentDao srid = new SecurityRecordIncidentDao();
     securityIncidentManagement sim = new securityIncidentManagement();
     SimpleDateFormat formatter = new SimpleDateFormat("HH:mm");

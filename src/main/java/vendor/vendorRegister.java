@@ -7,7 +7,7 @@ package vendor;
 import dao.VendorRegisterDao;
 import javax.swing.JOptionPane;
 import resident.residentLogin;
-import sng.VendorRegisterSng;
+import sng.VendorRegistration;
 
 /**
  *
@@ -228,7 +228,7 @@ public class vendorRegister extends javax.swing.JFrame {
     String ContactNumberfinal;
     String Genderfinal;
     String Passwordfinal;
-    VendorRegisterSng vrs = new VendorRegisterSng();
+    VendorRegistration vrs = new VendorRegistration();
     VendorRegisterDao vrd = new VendorRegisterDao();
     vendorLogin vl = new vendorLogin();
 

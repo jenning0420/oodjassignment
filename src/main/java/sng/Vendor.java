@@ -4,20 +4,14 @@
  */
 package sng;
 
+import dao.ResidentLoginDao;
+
 /**
  *
  * @author User
  */
-public class EmployeeViewJobSng extends updateSng {
-
-    private String status;
-
-    public String getStatus() {
-        return status;
+public class Vendor {
+    public boolean login(ResidentLoginDao rld, Resident rls){
+        return rld.add(rls);
     }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
 }

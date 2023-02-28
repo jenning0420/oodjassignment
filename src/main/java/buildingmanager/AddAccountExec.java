@@ -5,17 +5,18 @@
 package buildingmanager;
 
 import javax.swing.JOptionPane;
+import sng.BuildingManager;
 
 /**
  *
  * @author User
  */
-public class AddAccountExec extends addAccount{
+public class AddAccountExec extends addAccount {
 
-    public AddAccountExec(){
+    public AddAccountExec() {
         super("Add Account Executive User");
     }
-    
+
     @Override
     protected void addUser() {
         Usernamefinal = Username.getText();
@@ -29,8 +30,9 @@ public class AddAccountExec extends addAccount{
         aus.setGender(Genderfinal);
         aus.setPassword(Passwordfinal);
         aus.setTextFile("src/textFiles/accountLogin.txt");
+        BuildingManager bm = new BuildingManager();
 
-        if (aud.add(aus) == true) {
+        if (bm.addAccountExec(aud, aus) == true) {
             JOptionPane.showMessageDialog(this, "Account Executive user added SUCCESSFULLY.");
 
             bum.setVisible(true);
@@ -39,5 +41,5 @@ public class AddAccountExec extends addAccount{
             JOptionPane.showMessageDialog(this, "Please fill up ALL the information.");
         }
     }
-    
+
 }

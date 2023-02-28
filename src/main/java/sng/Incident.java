@@ -4,11 +4,13 @@
  */
 package sng;
 
+import dao.SecurityRecordIncidentDao;
+
 /**
  *
  * @author User
  */
-public class SecurityRecordIncidentSng {
+public class Incident {
     private int incidentID;
     private String userID;
     private String description;
@@ -53,5 +55,9 @@ public class SecurityRecordIncidentSng {
 
     public void setTimeIn(String timeIn) {
         this.timeIn = timeIn;
+    }
+    
+    public boolean recordIncident(SecurityRecordIncidentDao srid, Incident sris) {
+        return srid.add(sris);
     }
 }

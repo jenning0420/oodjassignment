@@ -22,7 +22,7 @@ import javax.swing.JSpinner;
 import javax.swing.JTextField;
 import javax.swing.SpinnerDateModel;
 import javax.swing.table.DefaultTableModel;
-import sng.FacilityBookingManagementSng;
+import sng.FacilityBookingManagement;
 
 /**
  *
@@ -30,7 +30,7 @@ import sng.FacilityBookingManagementSng;
  */
 public class adminUptDelFaciBookMngm extends javax.swing.JFrame {
 
-    FacilityBookingManagementSng fbms = new FacilityBookingManagementSng();
+    FacilityBookingManagement fbms = new FacilityBookingManagement();
     /**
      * Creates new form adminUptDelFaciBookMngm
      */

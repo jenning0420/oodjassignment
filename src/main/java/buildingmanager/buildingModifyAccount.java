@@ -15,7 +15,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-
+import sng.BuildingManager;
 
 /**
  *
@@ -23,42 +23,22 @@ import javax.swing.table.DefaultTableModel;
  */
 public class buildingModifyAccount extends javax.swing.JFrame {
 
+    BuildingManager bm = new BuildingManager();
+    String filePath = "src/textFiles/accountLogin.txt";
+
     /**
      * Creates new form buildingModifyAccount
      */
     public buildingModifyAccount() {
         initComponents();
-        String filePath = "src/textFiles/accountLogin.txt";
-        File file = new File(filePath);
-        
+        bm.displayTable(userTable, filePath);
 
-        try {
-            FileReader fr = new FileReader(file);
-            BufferedReader br = new BufferedReader(fr);
-            String line = br.readLine();
-            String[] colHeadings = line.trim().split(",");
-
-            DefaultTableModel model = (DefaultTableModel) userTable.getModel();
-            model.setColumnIdentifiers(colHeadings);
-            Object[] lines = br.lines().toArray();
-
-            for (int i = 0; i < lines.length; i++) {
-                String[] row = lines[i].toString().split(",");
-                model.addRow(row);
-            }
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(buildingModifyAccount.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(buildingModifyAccount.class.getName()).log(Level.SEVERE, null, ex);
-        }
-            
-        
     }
-    
-    private void modifyAccount(){
+
+    private void modifyAccount() {
         int item = userTable.getSelectedRow();
         DefaultTableModel model = (DefaultTableModel) userTable.getModel();
-        
+
         if (item >= 0) {
             model.setValueAt(userID.getText(), item, 0);
             model.setValueAt(Username.getText(), item, 1);
@@ -66,21 +46,19 @@ public class buildingModifyAccount extends javax.swing.JFrame {
             model.setValueAt(ContactNumber.getText(), item, 3);
             model.setValueAt(Gender.getSelectedItem(), item, 4);
             model.setValueAt(Password.getText(), item, 5);
-            
-            
 
             String filePath = "src/textFiles/accountLogin.txt";
             File file = new File(filePath);
             try {
-                
+
                 FileWriter fw = new FileWriter(file);
                 BufferedWriter bw = new BufferedWriter(fw);
                 String colHeadings = "";
-                for (int i = 0; i < model.getColumnCount();i++){
+                for (int i = 0; i < model.getColumnCount(); i++) {
                     colHeadings = colHeadings + model.getColumnName(i) + ",";
                 }
                 bw.write(colHeadings + "\n");
-                
+
                 for (int i = 0; i < userTable.getRowCount(); i++) {
                     for (int j = 0; j < userTable.getColumnCount(); j++) {
                         bw.write(userTable.getValueAt(i, j).toString() + ",");
@@ -101,25 +79,25 @@ public class buildingModifyAccount extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(rootPane, "Please fill up ALL details!");
         }
     }
-    
-    private void removeAccount(){
+
+    private void removeAccount() {
         int item = userTable.getSelectedRow();
         DefaultTableModel model = (DefaultTableModel) userTable.getModel();
-        
-        if (item >= 0){
+
+        if (item >= 0) {
             model.removeRow(item);
             String filePath = "src/textFiles/accountLogin.txt";
             File file = new File(filePath);
             try {
-                
+
                 FileWriter fw = new FileWriter(file);
                 BufferedWriter bw = new BufferedWriter(fw);
                 String colHeadings = "";
-                for (int i = 0; i < model.getColumnCount();i++){
+                for (int i = 0; i < model.getColumnCount(); i++) {
                     colHeadings = colHeadings + model.getColumnName(i) + ",";
                 }
                 bw.write(colHeadings + "\n");
-                
+
                 for (int i = 0; i < userTable.getRowCount(); i++) {
                     for (int j = 0; j < userTable.getColumnCount(); j++) {
                         bw.write(userTable.getValueAt(i, j).toString() + ",");
@@ -395,7 +373,7 @@ public class buildingModifyAccount extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_NameActionPerformed
 
-buildingUserManagement bum = new buildingUserManagement();
+    buildingUserManagement bum = new buildingUserManagement();
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         modifyAccount();
@@ -415,7 +393,7 @@ buildingUserManagement bum = new buildingUserManagement();
         ContactNumber.setText(model.getValueAt(selectedInfo, 3).toString());
         Gender.setSelectedItem(model.getValueAt(selectedInfo, 4).toString());
         Password.setText(model.getValueAt(selectedInfo, 5).toString());
-        
+
     }//GEN-LAST:event_userTableMouseClicked
 
     private void GenderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GenderActionPerformed

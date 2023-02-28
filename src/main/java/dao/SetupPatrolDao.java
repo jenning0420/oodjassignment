@@ -11,16 +11,16 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
-import sng.SetupPatrolSng;
+import sng.Patrol;
 
 /**
  *
  * @author User
  */
-public class SetupPatrolDao implements ObjectDao<SetupPatrolSng> {
+public class SetupPatrolDao implements ObjectDao<Patrol> {
 
     @Override
-    public boolean add(SetupPatrolSng sps) {
+    public boolean add(Patrol sps) {
         try {
             if (!"".equals(sps.getUserID()) && !"".equals(sps.getPatrolVenue()) && !"".equals(sps.getPatrolDetails()) && !"".equals(sps.getPatrolDate()) && !"".equals(sps.getPatrolTime()) && !"".equals(sps.getPatrolStatus())) {
                 File f = new File("src/textFiles/securityPatrol.txt");

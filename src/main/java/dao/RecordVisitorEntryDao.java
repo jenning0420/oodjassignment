@@ -11,16 +11,16 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
-import sng.RecordVisitorEntrySng;
+import sng.VisitorEntry;
 
 /**
  *
  * @author User
  */
-public class RecordVisitorEntryDao implements ObjectDao<RecordVisitorEntrySng> {
+public class RecordVisitorEntryDao implements ObjectDao<VisitorEntry> {
 
     @Override
-    public boolean add(RecordVisitorEntrySng rves) {
+    public boolean add(VisitorEntry rves) {
         try {
             if (!"".equals(rves.getVisitorName()) && !"".equals(rves.getUnitNo()) && !"".equals(rves.getDateIn()) && !"".equals(rves.getTimeIn())) {
                 File f = new File("src/textFiles/visitorEntry.txt");

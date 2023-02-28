@@ -11,16 +11,16 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
-import sng.FacilityManagementSng;
+import sng.FacilityManagement;
 
 /**
  *
  * @author User
  */
-public class FacilityManagementDao implements ObjectDao<FacilityManagementSng> {
+public class FacilityManagementDao implements ObjectDao<FacilityManagement> {
 
     @Override
-    public boolean add(FacilityManagementSng fms) {
+    public boolean add(FacilityManagement fms) {
         try {
             if (!"".equals(fms.getFacility()) && !"".equals(fms.getEquipment()) && !"".equals(fms.getQuantity()) && !"".equals(fms.getCondition())) {
                 File f = new File("src/textFiles/facility.txt");

@@ -11,15 +11,15 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
-import sng.AddUserSng;
+import sng.StaffRegistration;
 
 /**
  *
  * @author User
  */
-public class AddUserDao implements ObjectDao<AddUserSng>{
+public class AddUserDao implements ObjectDao<StaffRegistration>{
     @Override
-    public boolean add(AddUserSng aus){
+    public boolean add(StaffRegistration aus){
         try {
             if (!"".equals(aus.getUsername()) && !"".equals(aus.getName()) && !"".equals(aus.getContactNumber()) && !"".equals(aus.getGender()) && !"".equals(aus.getPassword())) {
                 File f = new File(aus.getTextFile());

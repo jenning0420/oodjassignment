@@ -4,18 +4,25 @@
  */
 package sng;
 
+import dao.UserRegisterDao;
+
 /**
  *
  * @author User
  */
-public class ResidentLoginSng extends UserLoginSng{
-    private String propID;
+public class ResidentRegistration extends StaffRegistration{
 
-    public String getPropID() {
+    private int propID;
+
+    public int getPropID() {
         return propID;
     }
 
-    public void setPropID(String propID) {
+    public void setPropID(int propID) {
         this.propID = propID;
+    }
+
+    public boolean register(UserRegisterDao urd, ResidentRegistration urs) {
+        return urd.add(urs);
     }
 }

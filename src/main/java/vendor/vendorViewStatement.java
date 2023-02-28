@@ -16,7 +16,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableModel;
-import sng.residentUpdateComplaintSng;
+import sng.Modification;
 
 /**
  *
@@ -24,7 +24,7 @@ import sng.residentUpdateComplaintSng;
  */
 public class vendorViewStatement extends javax.swing.JFrame {
 
-    residentUpdateComplaintSng rucs = new residentUpdateComplaintSng();    
+    Modification rucs = new Modification();    
     
     /**
      * Creates new form vendorViewStatement

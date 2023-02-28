@@ -10,7 +10,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
-import sng.AddComplaintSng;
+import sng.Complaint;
 
 /**
  *
@@ -24,15 +24,16 @@ public class vendorLogComplaint extends javax.swing.JFrame {
     String suggestionFinal;
     String complainant = "Vendor";
     String status = "Pending";
-    AddComplaintSng acs = new AddComplaintSng();
+    Complaint acs = new Complaint();
     AddComplaintDao acd = new AddComplaintDao();
     vendorComplaintManagement vcm = new vendorComplaintManagement();
+
     /**
      * Creates new form vendorLogComplaint
      */
     public vendorLogComplaint() {
         initComponents();
-        
+
         try {
             FileReader fr = new FileReader("src/textFiles/activeUser.txt");
             try ( BufferedReader br = new BufferedReader(fr)) {
@@ -50,8 +51,8 @@ public class vendorLogComplaint extends javax.swing.JFrame {
             System.out.println("FileNotFound");
         }
     }
-    
-    private void logComplaint(){
+
+    private void logComplaint() {
         compTitleFinal = compTitle.getText();
         compDateFinal = ((JTextField) compDate.getDateEditor().getUiComponent()).getText();
         compDetailsFinal = compDetails.getText();
@@ -63,8 +64,9 @@ public class vendorLogComplaint extends javax.swing.JFrame {
         acs.setSuggestion(suggestionFinal);
         acs.setStatus(status);
         acs.setComplainant(complainant);
+        Complaint complaint = new Complaint();
 
-        if (acd.add(acs) == true) {
+        if (complaint.AddComplaint(acd, acs) == true) {
             JOptionPane.showMessageDialog(this, "Complaint logged SUCCESSFULLY.");
 
             vcm.setVisible(true);

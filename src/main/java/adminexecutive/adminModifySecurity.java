@@ -4,6 +4,7 @@
  */
 package adminexecutive;
 
+import dao.AdminExecutive;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -53,89 +54,45 @@ public class adminModifySecurity extends javax.swing.JFrame {
         }
     }
     
-    private void modifySecurity(){
-        int item = userTable.getSelectedRow();
-        DefaultTableModel model = (DefaultTableModel) userTable.getModel();
 
-        if (item >= 0) {
-            model.setValueAt(userID.getText(), item, 0);
-            model.setValueAt(Username.getText(), item, 1);
-            model.setValueAt(Name.getText(), item, 2);
-            model.setValueAt(ContactNumber.getText(), item, 3);
-            model.setValueAt(Gender.getSelectedItem(), item, 4);
-            model.setValueAt(Password.getText(), item, 5);
-            model.setValueAt(empType.getSelectedItem(), item, 6);
-
-            String filePath = "src/textFiles/securityLogin.txt";
-            File file = new File(filePath);
-            try {
-
-                FileWriter fw = new FileWriter(file);
-                BufferedWriter bw = new BufferedWriter(fw);
-                String colHeadings = "";
-                for (int i = 0; i < model.getColumnCount();i++){
-                    colHeadings = colHeadings + model.getColumnName(i) + ",";
-                }
-                bw.write(colHeadings + "\n");
-
-                for (int i = 0; i < userTable.getRowCount(); i++) {
-                    for (int j = 0; j < userTable.getColumnCount(); j++) {
-                        bw.write(userTable.getValueAt(i, j).toString() + ",");
-                    }
-                    bw.newLine();
-                }
-
-                bw.close();
-                fw.close();
-            } catch (IOException ex) {
-                Logger.getLogger(adminModifySecurity.class.getName()).log(Level.SEVERE, null, ex);
-            }
-
-            JOptionPane.showMessageDialog(this, "Security Guard Account Updated SUCCESSFULLY!");
-            ame.setVisible(true);
-            this.setVisible(false);
-        } else {
-            JOptionPane.showMessageDialog(rootPane, "Please fill up ALL details!");
-        }
-    }
     
     private void removeSecurity(){
-        int item = userTable.getSelectedRow();
-        DefaultTableModel model = (DefaultTableModel) userTable.getModel();
-
-        if (item >= 0){
-            model.removeRow(item);
-            String filePath = "src/textFiles/securityLogin.txt";
-            File file = new File(filePath);
-            try {
-
-                FileWriter fw = new FileWriter(file);
-                BufferedWriter bw = new BufferedWriter(fw);
-                String colHeadings = "";
-                for (int i = 0; i < model.getColumnCount();i++){
-                    colHeadings = colHeadings + model.getColumnName(i) + ",";
-                }
-                bw.write(colHeadings + "\n");
-
-                for (int i = 0; i < userTable.getRowCount(); i++) {
-                    for (int j = 0; j < userTable.getColumnCount(); j++) {
-                        bw.write(userTable.getValueAt(i, j).toString() + ",");
-                    }
-                    bw.newLine();
-                }
-
-                bw.close();
-                fw.close();
-            } catch (IOException ex) {
-                Logger.getLogger(adminModifyResident.class.getName()).log(Level.SEVERE, null, ex);
-            }
-
-            JOptionPane.showMessageDialog(rootPane, "Security Guard Account Removed SUCCESSFULLY!");
-            ame.setVisible(true);
-            this.setVisible(false);
-        } else {
-            JOptionPane.showMessageDialog(rootPane, "Please select the fill to Delete!");
-        }
+//        int item = userTable.getSelectedRow();
+//        DefaultTableModel model = (DefaultTableModel) userTable.getModel();
+//
+//        if (item >= 0){
+//            model.removeRow(item);
+//            String filePath = "src/textFiles/securityLogin.txt";
+//            File file = new File(filePath);
+//            try {
+//
+//                FileWriter fw = new FileWriter(file);
+//                BufferedWriter bw = new BufferedWriter(fw);
+//                String colHeadings = "";
+//                for (int i = 0; i < model.getColumnCount();i++){
+//                    colHeadings = colHeadings + model.getColumnName(i) + ",";
+//                }
+//                bw.write(colHeadings + "\n");
+//
+//                for (int i = 0; i < userTable.getRowCount(); i++) {
+//                    for (int j = 0; j < userTable.getColumnCount(); j++) {
+//                        bw.write(userTable.getValueAt(i, j).toString() + ",");
+//                    }
+//                    bw.newLine();
+//                }
+//
+//                bw.close();
+//                fw.close();
+//            } catch (IOException ex) {
+//                Logger.getLogger(adminModifyResident.class.getName()).log(Level.SEVERE, null, ex);
+//            }
+//
+//            JOptionPane.showMessageDialog(rootPane, "Security Guard Account Removed SUCCESSFULLY!");
+//            ame.setVisible(true);
+//            this.setVisible(false);
+//        } else {
+//            JOptionPane.showMessageDialog(rootPane, "Please select the fill to Delete!");
+//        }
     }
 
     /**
@@ -422,11 +379,13 @@ public class adminModifySecurity extends javax.swing.JFrame {
     }//GEN-LAST:event_NameActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        modifySecurity();
+        AdminExecutive ae = new AdminExecutive();
+        ae.modifySecurity(userID, Username, Name, ContactNumber, Gender, Password, empType, userTable, this);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        removeSecurity();
+        AdminExecutive ae = new AdminExecutive();
+        ae.removeSecurity(userTable, this);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void GenderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GenderActionPerformed

@@ -6,7 +6,8 @@ package vendor;
 
 import dao.ResidentLoginDao;
 import javax.swing.JOptionPane;
-import sng.ResidentLoginSng;
+import sng.Resident;
+import sng.Vendor;
 
 /**
  *
@@ -27,7 +28,9 @@ public class vendorLogin extends javax.swing.JFrame {
         rls.setUsername(Usernamefinal);
         rls.setPassword(passwordfinal);
         rls.setTextFile("src/textFiles/vendorLogin.txt");
-        if (rld.add(rls) == true) {
+        Vendor vendor = new Vendor();
+        
+        if (vendor.login(rld,rls) == true) {
             JOptionPane.showMessageDialog(this, "Log In SUCCESSFULLY! Welcome back our dearest Vendor!");
 
             vh.setVisible(true);
@@ -162,7 +165,7 @@ public class vendorLogin extends javax.swing.JFrame {
 
     String Usernamefinal;
     String passwordfinal;
-    ResidentLoginSng rls = new ResidentLoginSng();
+    Resident rls = new Resident();
     ResidentLoginDao rld = new ResidentLoginDao();
     vendorHome vh = new vendorHome();
 

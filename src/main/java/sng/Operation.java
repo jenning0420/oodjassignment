@@ -4,11 +4,13 @@
  */
 package sng;
 
+import dao.AddOperationDao;
+
 /**
  *
  * @author User
  */
-public class AddOperationSng {
+public class Operation {
     private int operationID;
     private String operationType;
     private String operationTitle;
@@ -64,5 +66,7 @@ public class AddOperationSng {
         this.urgencyLevel = urgencyLevel;
     }
     
-    
+    public boolean addOperation(AddOperationDao aod, Operation aos){
+        return aod.add(aos);
+    }
 }

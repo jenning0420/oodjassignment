@@ -4,6 +4,7 @@
  */
 package adminexecutive;
 
+import dao.AdminExecutive;
 import javax.swing.JOptionPane;
 
 /**
@@ -28,8 +29,9 @@ public class addVendor extends addUserRoleAcc{
         vrs.setGender(Genderfinal);
         vrs.setPassword(Passwordfinal);
         vrs.setTextFile("src/textFiles/vendorLogin.txt");
+        AdminExecutive ae = new AdminExecutive();
 
-        if (vrd.add(vrs) == true) {
+        if (ae.AddVendor(vrd, vrs) == true) {
             JOptionPane.showMessageDialog(this, "Vendor registered SUCCESSFULLY.");
 
             aum.setVisible(true);

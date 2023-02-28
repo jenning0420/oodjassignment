@@ -11,15 +11,15 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
-import sng.AssignJobSng;
+import sng.JobAssign;
 
 /**
  *
  * @author User
  */
-public class AssignJobDao implements ObjectDao<AssignJobSng>{
+public class AssignJobDao implements ObjectDao<JobAssign>{
         @Override
-        public boolean add(AssignJobSng ajs) {
+        public boolean add(JobAssign ajs) {
         try {
             if (!"".equals(ajs.getUserID()) && !"".equals(ajs.getJobTitle()) && !"".equals(ajs.getJobDetails()) && !"".equals(ajs.getJobDate()) && !"".equals(ajs.getJobTime()) && !"".equals(ajs.getJobDuration())) {
                 File f = new File("src/textFiles/jobAssigned.txt");

@@ -25,7 +25,7 @@ import javax.swing.JSpinner;
 import javax.swing.JTextField;
 import javax.swing.SpinnerDateModel;
 import javax.swing.table.DefaultTableModel;
-import sng.EmployeeViewJobSng;
+import sng.Employee;
 
 /**
  *
@@ -33,7 +33,7 @@ import sng.EmployeeViewJobSng;
  */
 public class employeeViewJob extends javax.swing.JFrame {
 
-    EmployeeViewJobSng evj = new EmployeeViewJobSng();
+    Employee evj = new Employee();
 
     /**
      * Creates new form employeeViewJob

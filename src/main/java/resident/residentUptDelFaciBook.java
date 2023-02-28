@@ -24,7 +24,7 @@ import javax.swing.JSpinner;
 import javax.swing.JTextField;
 import javax.swing.SpinnerDateModel;
 import javax.swing.table.DefaultTableModel;
-import sng.UpdateFacilityBookingSng;
+import sng.Modification;
 
 /**
  *
@@ -32,7 +32,7 @@ import sng.UpdateFacilityBookingSng;
  */
 public class residentUptDelFaciBook extends javax.swing.JFrame {
 
-    UpdateFacilityBookingSng ufbs = new UpdateFacilityBookingSng();
+    Modification ufbs = new Modification();
 
     /**
      * Creates new form residentUptDelFaciBook

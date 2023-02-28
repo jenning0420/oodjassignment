@@ -1,9 +1,13 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Interface.java to edit this template
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package dao;
+package sng;
 
+import dao.ApplyPassDao;
+import dao.FacilityBookingManagementDao;
+import dao.ObjectDao;
+import dao.ResidentLoginDao;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -11,18 +15,33 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
-import sng.FacilityBookingManagement;
 
 /**
  *
  * @author User
- */
-public class FacilityBookingManagementDao implements ObjectDao<FacilityBookingManagement>{
+*/
+
+public class Resident extends User implements ObjectDao<FacilityBookingManagement> {
+
+    private String propID;
+
+//    public ResidentLoginSng(String string, String Usernamefinal, String passwordfinal, String srctextFilesresidentLogintxt) {
+//        super(string, Usernamefinal, passwordfinal, srctextFilesresidentLogintxt);
+//    }
+
+    public String getPropID() {
+        return propID;
+    }
+
+    public void setPropID(String propID) {
+        this.propID = propID;
+    }
 
     @Override
-    public boolean add(FacilityBookingManagement fbms) {
+    public boolean add(FacilityBookingManagement fbmd) {
+
         try {
-            if (!"".equals(fbms.getUserID()) && !"".equals(fbms.getFacility()) && !"".equals(fbms.getDateIn()) && !"".equals(fbms.getDuration()) && !"".equals(fbms.getTime())) {
+            if (!"".equals(this.getUserId()) && !"".equals(fbmd.getFacility()) && !"".equals(fbmd.getDateIn()) && !"".equals(fbmd.getDuration()) && !"".equals(fbmd.getTime())) {
                 File f = new File("src/textFiles/facilityBooking.txt");
                 if (!f.exists()) {
                     f.createNewFile();
@@ -41,7 +60,7 @@ public class FacilityBookingManagementDao implements ObjectDao<FacilityBookingMa
                 FileWriter fw = new FileWriter(f, true);
                 BufferedWriter bw = new BufferedWriter(fw);
                 PrintWriter pw = new PrintWriter(bw);
-                pw.println(faciBookingID + "," + fbms.getUserID() + "," + fbms.getFacility() + "," + fbms.getDateIn() + "," + fbms.getDuration() + "," + fbms.getTime() + ",");
+                pw.println(faciBookingID + "," + this.getUserId() + "," + fbmd.getFacility() + "," + fbmd.getDateIn() + "," + fbmd.getDuration() + "," + fbmd.getTime() + ",");
                 pw.flush();
                 pw.close();
                 bw.close();
@@ -57,4 +76,24 @@ public class FacilityBookingManagementDao implements ObjectDao<FacilityBookingMa
         return false;
 
     }
+
+  
+
+
+    public boolean applyPass(ApplyPassDao apd, PassApplication aps) {
+        return apd.add(aps);
+    }
+
+    public Resident() {
+
+    }
+
+    public Resident(String userID) {
+        setUserId(userID);
+    }
+    
+    public boolean login(ResidentLoginDao rld, Resident rls){
+        return rld.add(rls);
+    }
+
 }

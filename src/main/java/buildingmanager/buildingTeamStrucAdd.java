@@ -12,25 +12,27 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
 
+
 /**
  *
  * @author Admin
  */
 public class buildingTeamStrucAdd extends javax.swing.JFrame {
-
     private final TeamStrucSystem teamstrucsystem;
     
     /**
      * Creates new form buildingTeamStrucAdd
      */
     public buildingTeamStrucAdd() {
+        
         initComponents();
         setTitle("Team Structure Main Page");
         add(new JLabel("JFrame set to center of the screen", SwingConstants.CENTER), BorderLayout.CENTER);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null); // this method display the JFrame to center position of a screen
         setVisible(false);        
-        this.teamstrucsystem = new TeamStrucSystem();        
+        this.teamstrucsystem = new TeamStrucSystem();     
+        System.out.println(this.teamstrucsystem);
     }
     
     private void addTeamStruc(){
@@ -38,13 +40,13 @@ public class buildingTeamStrucAdd extends javax.swing.JFrame {
         String TSAmount = Amount.getText();
 
         if(TSRole.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Please enter a valid Role");
+            JOptionPane.showMessageDialog(null, "Please enter a valid Role");
             return;
         }
 
         if(TSAmount.isEmpty() || !TSAmount.chars().allMatch( Character::isDigit) 
                 || Integer.parseInt(TSAmount) <=0) {                
-            JOptionPane.showMessageDialog(this, "Please enter a valid Amount");
+            JOptionPane.showMessageDialog(null, "Please enter a valid Amount");
             return;
         }
 
@@ -55,7 +57,7 @@ public class buildingTeamStrucAdd extends javax.swing.JFrame {
 
         Role.setSelectedItem("");
         Amount.setText("");
-        JOptionPane.showMessageDialog(this, "Item has been added");
+        JOptionPane.showMessageDialog(null, "Item has been added");
     }
 
     /**
@@ -155,6 +157,9 @@ public class buildingTeamStrucAdd extends javax.swing.JFrame {
     }//GEN-LAST:event_BackActionPerformed
 
     private void AddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddActionPerformed
+    
+//        teamStructure.addTeamStruc(Role, Amount);
+//    JOptionPane.showMessageDialog(this, "Item has been added");
         addTeamStruc();
     }//GEN-LAST:event_AddActionPerformed
 

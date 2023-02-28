@@ -19,7 +19,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 import resident.residentUpdateComplaint;
-import sng.residentUpdateComplaintSng;
+import sng.Modification;
 
 /**
  *
@@ -27,7 +27,7 @@ import sng.residentUpdateComplaintSng;
  */
 public class vendorUpdateComplaint extends javax.swing.JFrame {
 
-    residentUpdateComplaintSng rucs = new residentUpdateComplaintSng();
+    Modification rucs = new Modification();
 
     /**
      * Creates new form vendorUpdateComplaint

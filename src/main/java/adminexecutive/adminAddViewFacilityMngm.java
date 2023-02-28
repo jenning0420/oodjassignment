@@ -14,7 +14,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import sng.FacilityManagementSng;
+import sng.FacilityManagement;
 
 /**
  *
@@ -22,7 +22,7 @@ import sng.FacilityManagementSng;
  */
 public class adminAddViewFacilityMngm extends javax.swing.JFrame {
 
-    FacilityManagementSng fms = new FacilityManagementSng();
+    FacilityManagement fms = new FacilityManagement();
     FacilityManagementDao fmd = new FacilityManagementDao();
 
     /**
@@ -73,8 +73,9 @@ public class adminAddViewFacilityMngm extends javax.swing.JFrame {
         fms.setEquipment(equipmentFinal);
         fms.setQuantity(quantityFinal);
         fms.setCondition(conditionFinal);
+        FacilityManagement fm = new FacilityManagement();
 
-        if (fmd.add(fms) == true) {
+        if (fm.BookFacility(fmd, fms) == true) {
             JOptionPane.showMessageDialog(this, "Facility Record ADDED!");
             new adminExecFacilityHome().setVisible(true);
             this.setVisible(false);

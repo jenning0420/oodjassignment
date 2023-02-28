@@ -25,7 +25,7 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
-import sng.residentUpdateComplaintSng;
+import sng.Modification;
 
 /**
  *
@@ -33,7 +33,7 @@ import sng.residentUpdateComplaintSng;
  */
 public class residentPayment extends javax.swing.JFrame {
 
-    residentUpdateComplaintSng rucs = new residentUpdateComplaintSng();
+    Modification rucs = new Modification();
     
     /**
      * Creates new form residentPayment

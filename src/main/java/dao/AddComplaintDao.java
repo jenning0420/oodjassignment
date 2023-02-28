@@ -11,15 +11,15 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
-import sng.AddComplaintSng;
+import sng.Complaint;
 
 /**
  *
  * @author User
  */
-public class AddComplaintDao implements ObjectDao<AddComplaintSng>{
+public class AddComplaintDao implements ObjectDao<Complaint>{
     @Override
-    public boolean add(AddComplaintSng acs) {
+    public boolean add(Complaint acs) {
         try {
             if (!"".equals(acs.getCompTitle()) && !"".equals(acs.getCompDate()) && !"".equals(acs.getCompDetails()) && !"".equals(acs.getSuggestion())) {
                 File f = new File("src/textFiles/complaint.txt");

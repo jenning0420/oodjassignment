@@ -4,20 +4,15 @@
  */
 package sng;
 
+import dao.UserLoginDao;
+
 /**
  *
  * @author User
  */
-public class EmployeeRegisterSng extends AddUserSng{
-    private String empType;
-
-    public String getEmpType() {
-        return empType;
+public class SecurityGuard {
+    public boolean login(UserLoginDao uld, User uls) {
+        return uld.add(uls);
     }
 
-    public void setEmpType(String empType) {
-        this.empType = empType;
-    }
-
-    
 }

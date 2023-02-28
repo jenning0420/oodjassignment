@@ -4,11 +4,15 @@
  */
 package sng;
 
+import dao.GenerateInvoiceDao;
+import dao.GenerateReceiptDao;
+import dao.GenerateStatementDao;
+
 /**
  *
  * @author User
  */
-public class GenerateInvoiceSng {
+public class Invoice {
 
     private int invoiceID;
     private int receiptID;
@@ -122,6 +126,19 @@ public class GenerateInvoiceSng {
     }
     
     
+
+    
+    public boolean generateInvoice(GenerateInvoiceDao gid, Invoice gis){
+        return gid.add(gis);
+    }
+    
+    public boolean generateReceipt(GenerateReceiptDao gid, Invoice gis){
+        return gid.add(gis);
+    }
+    
+    public boolean generateStatement(GenerateStatementDao gid, Invoice gis){
+        return gid.add(gis);
+    }
     
 }
 

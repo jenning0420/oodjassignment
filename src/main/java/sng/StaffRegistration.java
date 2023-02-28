@@ -8,18 +8,20 @@ package sng;
  *
  * @author User
  */
-public class UserLoginSng {
-
-    private String userId;
+public class StaffRegistration {
+    private int userId;
     private String username;
+    private String name;
+    private String contactNumber;
+    private String gender;
     private String password;
     private String textFile;
-
-    public String getUserId() {
+    
+    public int getUserId() {
         return userId;
     }
 
-    public void setUserId(String userId) {
+    public void setUserId(int userId) {
         this.userId = userId;
     }
 
@@ -31,6 +33,30 @@ public class UserLoginSng {
         this.username = username;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getContactNumber() {
+        return contactNumber;
+    }
+
+    public void setContactNumber(String contactNumber) {
+        this.contactNumber = contactNumber;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
     public String getPassword() {
         return password;
     }
@@ -39,6 +65,7 @@ public class UserLoginSng {
         this.password = password;
     }
 
+
     public String getTextFile() {
         return textFile;
     }
@@ -46,4 +73,7 @@ public class UserLoginSng {
     public void setTextFile(String textFile) {
         this.textFile = textFile;
     }
+    
+    
+    
 }

@@ -11,15 +11,15 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
-import sng.GenerateInvoiceSng;
+import sng.Invoice;
 
 /**
  *
  * @author User
  */
-public class GenerateReceiptDao implements ObjectDao<GenerateInvoiceSng> {
+public class GenerateReceiptDao implements ObjectDao<Invoice> {
 
-    public boolean add(GenerateInvoiceSng gis) {
+    public boolean add(Invoice gis) {
         try {
             if (!"".equals(gis.getPaymentID()) && !"".equals(gis.getUserID()) && !"".equals(gis.getPaymentType()) && !"".equals(gis.getAmountPaid()) && !"".equals(gis.getPaidDate())) {
                 File f = new File("src/textFiles/receipt.txt");

@@ -13,7 +13,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
-import sng.GenerateInvoiceSng;
+import sng.Invoice;
 
 /**
  *
@@ -21,7 +21,7 @@ import sng.GenerateInvoiceSng;
  */
 public class accViewOutstandingFee extends javax.swing.JFrame {
 
-    GenerateInvoiceSng gis = new GenerateInvoiceSng();
+    Invoice gis = new Invoice();
 
     /**
      * Creates new form accViewOutstandingFee

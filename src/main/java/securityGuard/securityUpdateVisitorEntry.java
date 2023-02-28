@@ -26,7 +26,7 @@ import java.util.Calendar;
 import javax.swing.JSpinner;
 import javax.swing.SpinnerNumberModel;
 import resident.residentUpdateComplaint;
-import sng.UpdateVisitorEntrySng;
+import sng.Modification;
 
 /**
  *
@@ -34,7 +34,7 @@ import sng.UpdateVisitorEntrySng;
  */
 public class securityUpdateVisitorEntry extends javax.swing.JFrame {
 
-    UpdateVisitorEntrySng uves = new UpdateVisitorEntrySng();
+    Modification uves = new Modification();
 
     /**
      * Creates new form securityUpdateVisitorEntry

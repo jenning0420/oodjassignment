@@ -11,16 +11,16 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
-import sng.ApplyPassSng;
+import sng.PassApplication;
 
 /**
  *
  * @author User
  */
-public class ApplyPassDao implements ObjectDao<ApplyPassSng> {
+public class ApplyPassDao implements ObjectDao<PassApplication> {
 
     @Override
-    public boolean add(ApplyPassSng aps) {
+    public boolean add(PassApplication aps) {
         try {
             if (!"".equals(aps.getVisitorName()) && !"".equals(aps.getCarPlate()) && !"".equals(aps.getUnitNo()) && !"".equals(aps.getDateIn()) && !"".equals(aps.getDuration())) {
                 File f = new File("src/textFiles/visitorPass.txt");

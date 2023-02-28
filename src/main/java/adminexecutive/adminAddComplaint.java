@@ -14,7 +14,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
-import sng.AddComplaintSng;
+import sng.Complaint;
 
 /**
  *
@@ -28,7 +28,7 @@ public class adminAddComplaint extends javax.swing.JFrame {
     String suggestionFinal;
     String complainant = "Admin";
     String status = "Pending";
-    AddComplaintSng acs = new AddComplaintSng();
+    Complaint acs = new Complaint();
     AddComplaintDao acd = new AddComplaintDao();
     adminComplaintManagement acm = new adminComplaintManagement();
 
@@ -70,8 +70,9 @@ public class adminAddComplaint extends javax.swing.JFrame {
         acs.setSuggestion(suggestionFinal);
         acs.setStatus(status);
         acs.setComplainant(complainant);
+        Complaint complaint = new Complaint();
 
-        if (acd.add(acs) == true) {
+        if (complaint.AddComplaint(acd, acs) == true) {
             JOptionPane.showMessageDialog(this, "Complaint added SUCCESSFULLY.");
 
             acm.setVisible(true);

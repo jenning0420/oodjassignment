@@ -15,6 +15,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import sng.BuildingManager;
 
 /**
  *
@@ -22,38 +23,18 @@ import javax.swing.table.DefaultTableModel;
  */
 public class buildingModifyAdmin extends javax.swing.JFrame {
 
+    BuildingManager bm = new BuildingManager();
+    String filePath = "src/textFiles/adminLogin.txt";
+
     /**
      * Creates new form buildingModifyAdmin
      */
     public buildingModifyAdmin() {
         initComponents();
-        
-        String filePath = "src/textFiles/adminLogin.txt";
-        File file = new File(filePath);
-        
-
-        try {
-            FileReader fr = new FileReader(file);
-            BufferedReader br = new BufferedReader(fr);
-            String line = br.readLine();
-            String[] colHeadings = line.trim().split(",");
-
-            DefaultTableModel model = (DefaultTableModel) userTable.getModel();
-            model.setColumnIdentifiers(colHeadings);
-            Object[] lines = br.lines().toArray();
-
-            for (int i = 0; i < lines.length; i++) {
-                String[] row = lines[i].toString().split(",");
-                model.addRow(row);
-            }
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(buildingModifyAdmin.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(buildingModifyAdmin.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        bm.displayTable(userTable,filePath);
     }
-    
-    private void modifyAdmin(){
+
+    private void modifyAdmin() {
         int item = userTable.getSelectedRow();
         DefaultTableModel model = (DefaultTableModel) userTable.getModel();
 
@@ -72,7 +53,7 @@ public class buildingModifyAdmin extends javax.swing.JFrame {
                 FileWriter fw = new FileWriter(file);
                 BufferedWriter bw = new BufferedWriter(fw);
                 String colHeadings = "";
-                for (int i = 0; i < model.getColumnCount();i++){
+                for (int i = 0; i < model.getColumnCount(); i++) {
                     colHeadings = colHeadings + model.getColumnName(i) + ",";
                 }
                 bw.write(colHeadings + "\n");
@@ -97,12 +78,12 @@ public class buildingModifyAdmin extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(rootPane, "Please fill up ALL details!");
         }
     }
-    
-    private void removeAdmin(){
+
+    private void removeAdmin() {
         int item = userTable.getSelectedRow();
         DefaultTableModel model = (DefaultTableModel) userTable.getModel();
 
-        if (item >= 0){
+        if (item >= 0) {
             model.removeRow(item);
             String filePath = "src/textFiles/adminLogin.txt";
             File file = new File(filePath);
@@ -111,7 +92,7 @@ public class buildingModifyAdmin extends javax.swing.JFrame {
                 FileWriter fw = new FileWriter(file);
                 BufferedWriter bw = new BufferedWriter(fw);
                 String colHeadings = "";
-                for (int i = 0; i < model.getColumnCount();i++){
+                for (int i = 0; i < model.getColumnCount(); i++) {
                     colHeadings = colHeadings + model.getColumnName(i) + ",";
                 }
                 bw.write(colHeadings + "\n");
@@ -405,7 +386,7 @@ public class buildingModifyAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_NameActionPerformed
 
     buildingUserManagement bum = new buildingUserManagement();
-    
+
     private void updateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateActionPerformed
         modifyAdmin();
     }//GEN-LAST:event_updateActionPerformed

@@ -6,7 +6,7 @@ package buildingmanager;
 
 import dao.AddUserDao;
 import javax.swing.JOptionPane;
-import sng.AddUserSng;
+import sng.StaffRegistration;
 
 /**
  *
@@ -199,7 +199,7 @@ public abstract class addAccount extends javax.swing.JFrame {
     String ContactNumberfinal;
     String Genderfinal;
     String Passwordfinal;
-    AddUserSng aus = new AddUserSng();
+    StaffRegistration aus = new StaffRegistration();
     AddUserDao aud = new AddUserDao();
     buildingUserManagement bum = new buildingUserManagement();
 

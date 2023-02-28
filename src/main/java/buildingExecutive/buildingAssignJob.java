@@ -20,7 +20,7 @@ import javax.swing.JSpinner;
 import javax.swing.JTextField;
 import javax.swing.SpinnerDateModel;
 import javax.swing.table.DefaultTableModel;
-import sng.AssignJobSng;
+import sng.JobAssign;
 
 /**
  *
@@ -89,8 +89,9 @@ public class buildingAssignJob extends javax.swing.JFrame {
         ajs.setJobTime(jobTimeFinal);
         ajs.setJobDuration(jobDurationFinal);
         ajs.setStatus(status);
+        JobAssign ja = new JobAssign();
 
-        if (ajd.add(ajs) == true) {
+        if (ja.assignJob(ajd, ajs) == true) {
             JOptionPane.showMessageDialog(this, "Job Assigned SUCCESSFULLY.");
 
             beh.setVisible(true);
@@ -351,7 +352,7 @@ public class buildingAssignJob extends javax.swing.JFrame {
     String jobTimeFinal;
     String jobDurationFinal;
     String status = "Upcoming";
-    AssignJobSng ajs = new AssignJobSng();
+    JobAssign ajs = new JobAssign();
     AssignJobDao ajd = new AssignJobDao();
     buildingExecHome beh = new buildingExecHome();
     SimpleDateFormat formatter = new SimpleDateFormat("HH:mm");

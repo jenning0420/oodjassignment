@@ -11,16 +11,16 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
-import sng.UserRegisterSng;
+import sng.ResidentRegistration;
 
 /**
  *
  * @author User
  */
-public class UserRegisterDao implements ObjectDao<UserRegisterSng>{
+public class UserRegisterDao implements ObjectDao<ResidentRegistration>{
 
     @Override
-    public boolean add(UserRegisterSng urs) {
+    public boolean add(ResidentRegistration urs) {
         try {
             if (!"".equals(urs.getUsername()) && !"".equals(urs.getName()) && !"".equals(urs.getContactNumber()) && !"".equals(urs.getGender()) && !"".equals(urs.getPassword())) {
                 File f = new File(urs.getTextFile());

@@ -11,16 +11,16 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
-import sng.SecurityRecordIncidentSng;
+import sng.Incident;
 
 /**
  *
  * @author User
  */
-public class SecurityRecordIncidentDao implements ObjectDao<SecurityRecordIncidentSng> {
+public class SecurityRecordIncidentDao implements ObjectDao<Incident> {
 
     @Override
-    public boolean add(SecurityRecordIncidentSng sris) {
+    public boolean add(Incident sris) {
         try {
             if (!"".equals(sris.getDescription()) && !"".equals(sris.getDateIn()) && !"".equals(sris.getTimeIn())) {
                 File f = new File("src/textFiles/incident.txt");

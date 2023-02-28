@@ -4,6 +4,8 @@
  */
 package Propmanagement.function;
 
+import Propmanagement.system.ManageUnit;
+
 /**
  *
  * @author Admin
@@ -47,5 +49,7 @@ public class Unit {
         this.PPrice = PPrice;
     }
     
-    
+    public boolean AddUnit(ManageUnit mu, Unit uit) {
+        return mu.add(uit);
+    }
 }

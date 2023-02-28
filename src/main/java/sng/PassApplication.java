@@ -8,23 +8,23 @@ package sng;
  *
  * @author User
  */
-public class FacilityBookingManagementSng {
-
-    private int faciBookingID;
+public class PassApplication {
+    private int passID;
     private String userID;
-    private String facility;
+    private String visitorName;
+    private String carPlate;
+    private String unitNo;
     private String dateIn;
     private String duration;
-    private String time;
 
-    public int getFaciBookingID() {
-        return faciBookingID;
+    public int getPassID() {
+        return passID;
     }
 
-    public void setFaciBookingID(int faciBookingID) {
-        this.faciBookingID = faciBookingID;
+    public void setPassID(int passID) {
+        this.passID = passID;
     }
-
+  
     public String getUserID() {
         return userID;
     }
@@ -33,12 +33,28 @@ public class FacilityBookingManagementSng {
         this.userID = userID;
     }
 
-    public String getFacility() {
-        return facility;
+    public String getVisitorName() {
+        return visitorName;
     }
 
-    public void setFacility(String facility) {
-        this.facility = facility;
+    public void setVisitorName(String visitorName) {
+        this.visitorName = visitorName;
+    }
+
+    public String getCarPlate() {
+        return carPlate;
+    }
+
+    public void setCarPlate(String carPlate) {
+        this.carPlate = carPlate;
+    }
+
+    public String getUnitNo() {
+        return unitNo;
+    }
+
+    public void setUnitNo(String unitNo) {
+        this.unitNo = unitNo;
     }
 
     public String getDateIn() {
@@ -56,13 +72,4 @@ public class FacilityBookingManagementSng {
     public void setDuration(String duration) {
         this.duration = duration;
     }
-
-    public String getTime() {
-        return time;
-    }
-
-    public void setTime(String time) {
-        this.time = time;
-    }
-
 }

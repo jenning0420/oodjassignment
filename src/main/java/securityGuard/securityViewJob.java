@@ -19,7 +19,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import sng.EmployeeViewJobSng;
+import sng.Employee;
 
 /**
  *
@@ -27,7 +27,7 @@ import sng.EmployeeViewJobSng;
  */
 public class securityViewJob extends javax.swing.JFrame {
 
-    EmployeeViewJobSng evj = new EmployeeViewJobSng();
+    Employee evj = new Employee();
     
     /**
      * Creates new form securityViewJob

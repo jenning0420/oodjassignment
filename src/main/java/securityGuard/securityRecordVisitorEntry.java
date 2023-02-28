@@ -13,7 +13,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.SpinnerDateModel;
 import javax.swing.JSpinner;
-import sng.RecordVisitorEntrySng;
+import sng.VisitorEntry;
 import java.util.Calendar;
 import java.text.SimpleDateFormat;
 
@@ -27,7 +27,7 @@ public class securityRecordVisitorEntry extends javax.swing.JFrame {
     String dateInFinal;
     String timeInFinal;
     String unitNoFinal;
-    RecordVisitorEntrySng rves = new RecordVisitorEntrySng();
+    VisitorEntry rves = new VisitorEntry();
     RecordVisitorEntryDao rved = new RecordVisitorEntryDao();
     securityVisitorEntryManagement svem = new securityVisitorEntryManagement();
     SimpleDateFormat formatter = new SimpleDateFormat("HH:mm");
@@ -66,8 +66,9 @@ public class securityRecordVisitorEntry extends javax.swing.JFrame {
         rves.setDateIn(dateInFinal);
         rves.setUnitNo(unitNoFinal);
         rves.setTimeIn(timeInFinal);
+        VisitorEntry ve = new VisitorEntry();
 
-        if (rved.add(rves) == true) {
+        if (ve.recordVisitor(rved, rves) == true) {
             JOptionPane.showMessageDialog(this, "Visitor entry ADDED!");
 
             svem.setVisible(true);

@@ -4,11 +4,13 @@
  */
 package sng;
 
+import dao.AssignJobDao;
+
 /**
  *
  * @author User
  */
-public class AssignJobSng {
+public class JobAssign {
     private int jobID;
     private String userID;
     private String jobTitle;
@@ -82,5 +84,7 @@ public class AssignJobSng {
         this.status = status;
     }
     
-    
+    public boolean assignJob(AssignJobDao ajd, JobAssign ajs) {
+        return ajd.add(ajs);
+    }
 }

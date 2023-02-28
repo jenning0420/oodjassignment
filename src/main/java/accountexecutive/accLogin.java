@@ -6,7 +6,8 @@ package accountexecutive;
 
 import dao.UserLoginDao;
 import javax.swing.JOptionPane;
-import sng.UserLoginSng;
+import sng.AccountExecutive;
+import sng.User;
 
 /**
  *
@@ -27,7 +28,9 @@ public class accLogin extends javax.swing.JFrame {
         uls.setUsername(Usernamefinal);
         uls.setPassword(passwordfinal);
         uls.setTextFile("src/textFiles/accountLogin.txt");
-        if (uld.add(uls) == true) {
+        AccountExecutive ae = new AccountExecutive();
+        
+        if (ae.login(uld,uls) == true) {
             JOptionPane.showMessageDialog(this, "Log In SUCCESSFULLY! Welcome back Account Executive.");
 
             aeh.setVisible(true);
@@ -147,7 +150,7 @@ public class accLogin extends javax.swing.JFrame {
 
     String Usernamefinal;
     String passwordfinal;
-    UserLoginSng uls = new UserLoginSng();
+    User uls = new User();
     UserLoginDao uld = new UserLoginDao();
     accExecHome aeh = new accExecHome();
     

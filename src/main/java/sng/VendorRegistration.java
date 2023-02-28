@@ -8,8 +8,7 @@ package sng;
  *
  * @author User
  */
-public class UserRegisterSng extends AddUserSng{
-
+public class VendorRegistration extends StaffRegistration{
     private int propID;
 
     public int getPropID() {
@@ -19,6 +18,6 @@ public class UserRegisterSng extends AddUserSng{
     public void setPropID(int propID) {
         this.propID = propID;
     }
-
+    
     
 }

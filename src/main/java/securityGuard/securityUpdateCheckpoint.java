@@ -18,7 +18,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import sng.EmployeeViewJobSng;
+import sng.Employee;
 
 /**
  *
@@ -31,7 +31,7 @@ public class securityUpdateCheckpoint extends javax.swing.JFrame {
      */
     public securityUpdateCheckpoint() {
         
-        EmployeeViewJobSng evj = new EmployeeViewJobSng();
+        Employee evj = new Employee();
         
         initComponents();
         

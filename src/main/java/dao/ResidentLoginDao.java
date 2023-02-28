@@ -11,16 +11,16 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
-import sng.ResidentLoginSng;
+import sng.Resident;
 
 /**
  *
  * @author User
  */
-public class ResidentLoginDao implements ObjectDao<ResidentLoginSng> {
+public class ResidentLoginDao implements ObjectDao<Resident> {
 
     @Override
-    public boolean add(ResidentLoginSng rls) {
+    public boolean add(Resident rls) {
         try {
             File f = new File("src/textFiles/activeUser.txt");
             if (!f.exists()) {
@@ -39,6 +39,7 @@ public class ResidentLoginDao implements ObjectDao<ResidentLoginSng> {
                     rls.setPropID(splt[6]);
 
                     if (splt[1].equals(rls.getUsername()) && splt[5].equals(rls.getPassword())) {
+                        
                         pw.println(rls.getUserId() + "," + rls.getUsername() + "," + rls.getPropID());
                         pw.flush();
                         pw.close();

@@ -4,9 +4,10 @@
  */
 package adminexecutive;
 
+import dao.AdminExecutive;
 import dao.EmployeeRegisterDao;
 import javax.swing.JOptionPane;
-import sng.EmployeeRegisterSng;
+import sng.EmployeeRegistration;
 
 /**
  *
@@ -34,8 +35,9 @@ public class adminAddSecurity extends javax.swing.JFrame {
         ers.setPassword(Passwordfinal);
         ers.setEmpType(EmpTypefinal);
         ers.setTextFile("src/textFiles/securityLogin.txt");
+        AdminExecutive ae = new AdminExecutive();
 
-        if (erd.add(ers) == true) {
+        if (ae.AddSecurity(erd, ers) == true) {
             JOptionPane.showMessageDialog(this, "Security Guard registered SUCCESSFULLY.");
 
             ame.setVisible(true);
@@ -224,7 +226,7 @@ public class adminAddSecurity extends javax.swing.JFrame {
     String Genderfinal;
     String Passwordfinal;
     String EmpTypefinal = "Security Guard";
-    EmployeeRegisterSng ers = new EmployeeRegisterSng();
+    EmployeeRegistration ers = new EmployeeRegistration();
     EmployeeRegisterDao erd = new EmployeeRegisterDao();
     adminManageEmp ame = new adminManageEmp();
     

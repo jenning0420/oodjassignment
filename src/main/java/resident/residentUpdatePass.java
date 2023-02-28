@@ -18,7 +18,7 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
-import sng.residentUpdatePassSng;
+import sng.Modification;
 
 /**
  *
@@ -26,7 +26,7 @@ import sng.residentUpdatePassSng;
  */
 public class residentUpdatePass extends javax.swing.JFrame {
 
-    residentUpdatePassSng rups = new residentUpdatePassSng();
+    Modification rups = new Modification();
 
     /**
      * Creates new form residentUpdatePass

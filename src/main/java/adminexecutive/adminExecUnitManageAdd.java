@@ -73,8 +73,9 @@ public class adminExecUnitManageAdd extends javax.swing.JFrame {
         uit.setPUnitNo(newunitno);
         uit.setPType(newproptype);
         uit.setPPrice(newprice);
+        Unit unit = new Unit();
 
-        if (mu.add(uit) == true) {
+        if (unit.AddUnit(mu, uit) == true) {
             JOptionPane.showMessageDialog(this, "Unit GENERATED!");
 
             aeum.setVisible(true);
@@ -183,11 +184,11 @@ public class adminExecUnitManageAdd extends javax.swing.JFrame {
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel3.setText("Price (RM) :");
+        jLabel3.setText("Property Price:");
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel4.setText("Payment Type :");
+        jLabel4.setText("Property Type:");
 
         proptype.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Rental", "Utility", "Services", "Rental/Utility", "Rental/Services", "Utility/Services", "Rental/Utility/Services" }));
         proptype.addActionListener(new java.awt.event.ActionListener() {

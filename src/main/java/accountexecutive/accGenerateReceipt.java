@@ -15,7 +15,7 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
-import sng.GenerateInvoiceSng;
+import sng.Invoice;
 
 /**
  *
@@ -28,7 +28,7 @@ public class accGenerateReceipt extends javax.swing.JFrame {
     String paymentTypeFinal;
     String amountPaidFinal;
     String paidDateFinal;
-    GenerateInvoiceSng gis = new GenerateInvoiceSng();
+    Invoice gis = new Invoice();
     GenerateReceiptDao gid = new GenerateReceiptDao();
     accInvRcpStmManagement airsm = new accInvRcpStmManagement();
 
@@ -95,8 +95,9 @@ public class accGenerateReceipt extends javax.swing.JFrame {
         gis.setPaidDate(paidDateFinal);
         gis.setPaymentType(paymentTypeFinal);
         gis.setAmountPaid(amountPaidFinal);
+        Invoice invoice = new Invoice();
 
-        if (gid.add(gis) == true) {
+        if (invoice.generateReceipt(gid,gis) == true) {
             JOptionPane.showMessageDialog(this, "Receipt GENERATED!");
 
             airsm.setVisible(true);

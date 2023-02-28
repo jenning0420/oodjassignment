@@ -4,11 +4,14 @@
  */
 package sng;
 
+import dao.RecordVisitorEntryDao;
+
 /**
  *
  * @author User
  */
-public class RecordVisitorEntrySng {
+public class VisitorEntry {
+
     private int entryID;
     private String userID;
     private String visitorName;
@@ -23,7 +26,7 @@ public class RecordVisitorEntrySng {
     public void setEntryID(int entryID) {
         this.entryID = entryID;
     }
-    
+
     public String getUserID() {
         return userID;
     }
@@ -39,7 +42,7 @@ public class RecordVisitorEntrySng {
     public void setVisitorName(String visitorName) {
         this.visitorName = visitorName;
     }
-    
+
     public String getUnitNo() {
         return unitNo;
     }
@@ -63,5 +66,9 @@ public class RecordVisitorEntrySng {
     public void setTimeIn(String timeIn) {
         this.timeIn = timeIn;
     }
-    
+
+    public boolean recordVisitor(RecordVisitorEntryDao rved, VisitorEntry rves) {
+        return rved.add(rves);
+    }
+
 }

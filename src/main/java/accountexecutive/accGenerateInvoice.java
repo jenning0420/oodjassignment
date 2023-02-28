@@ -17,7 +17,7 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
-import sng.GenerateInvoiceSng;
+import sng.Invoice;
 
 /**
  *
@@ -25,7 +25,7 @@ import sng.GenerateInvoiceSng;
  */
 public class accGenerateInvoice extends javax.swing.JFrame {
 
-    GenerateInvoiceSng gis = new GenerateInvoiceSng();
+    Invoice gis = new Invoice();
     GenerateInvoiceDao gid = new GenerateInvoiceDao();
     accInvRcpStmManagement airsm = new accInvRcpStmManagement();
 
@@ -93,8 +93,9 @@ public class accGenerateInvoice extends javax.swing.JFrame {
         gis.setPaymentType(paymentTypeFinal);
         gis.setAmount(amountFinal);
         gis.setPaymentDue(paymentDueFinal);
+        Invoice invoice = new Invoice();
 
-        if (gid.add(gis) == true) {
+        if (invoice.generateInvoice(gid,gis) == true) {
             JOptionPane.showMessageDialog(this, "Invoice GENERATED!");
 
             airsm.setVisible(true);

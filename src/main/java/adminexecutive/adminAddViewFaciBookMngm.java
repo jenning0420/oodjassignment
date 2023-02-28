@@ -23,7 +23,7 @@ import javax.swing.JSpinner;
 import javax.swing.JTextField;
 import javax.swing.SpinnerDateModel;
 import javax.swing.table.DefaultTableModel;
-import sng.FacilityBookingManagementSng;
+import sng.FacilityBookingManagement;
 
 /**
  *
@@ -36,7 +36,7 @@ public class adminAddViewFaciBookMngm extends javax.swing.JFrame {
     String dateInFinal;
     String durationFinal;
     String timeFinal;
-    FacilityBookingManagementSng fbms = new FacilityBookingManagementSng();
+    FacilityBookingManagement fbms = new FacilityBookingManagement();
     FacilityBookingManagementDao fbmd = new FacilityBookingManagementDao();
 
     /**
@@ -150,8 +150,9 @@ public class adminAddViewFaciBookMngm extends javax.swing.JFrame {
         fbms.setDateIn(dateInFinal);
         fbms.setDuration(durationFinal);
         fbms.setTime(timeFinal);
+        FacilityBookingManagement fbm = new FacilityBookingManagement();
 
-        if (fbmd.add(fbms) == true) {
+        if (fbm.BookFacility(fbmd, fbms) == true) {
             JOptionPane.showMessageDialog(this, "Facility Booking Record ADDED!");
             new adminExecFacilityHome().setVisible(true);
             this.setVisible(false);

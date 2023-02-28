@@ -20,7 +20,7 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
-import sng.GenerateInvoiceSng;
+import sng.Invoice;
 
 /**
  *
@@ -30,7 +30,7 @@ public class accGenerateStatement extends javax.swing.JFrame {
 
     String id = "";
     private DefaultTableModel model123;
-    GenerateInvoiceSng gis = new GenerateInvoiceSng();
+    Invoice gis = new Invoice();
     GenerateStatementDao gid = new GenerateStatementDao();
     accInvRcpStmManagement airsm = new accInvRcpStmManagement();
 
@@ -207,8 +207,8 @@ public class accGenerateStatement extends javax.swing.JFrame {
         totAmtPaidFinal = totAmtPaid.getText();
         gis.setUserID(userIDFinal);
         gis.setTotAmtPaid(totAmtPaidFinal);
-        
-        if (gid.add(gis) == true) {
+        Invoice invoice = new Invoice();
+        if (invoice.generateStatement(gid,gis) == true) {
             JOptionPane.showMessageDialog(this, "Statement GENERATED successfully!");
 
             airsm.setVisible(true);

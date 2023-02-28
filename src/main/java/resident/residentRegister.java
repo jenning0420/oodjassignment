@@ -6,7 +6,7 @@ package resident;
 
 import dao.UserRegisterDao;
 import javax.swing.JOptionPane;
-import sng.UserRegisterSng;
+import sng.ResidentRegistration;
 
 /**
  *
@@ -33,8 +33,9 @@ public class residentRegister extends javax.swing.JFrame {
         urs.setGender(Genderfinal);
         urs.setPassword(Passwordfinal);
         urs.setTextFile("src/textFiles/residentLogin.txt");
+        ResidentRegistration rr = new ResidentRegistration();
 
-        if (urd.add(urs) == true) {
+        if (rr.register(urd, urs) == true) {
             JOptionPane.showMessageDialog(this, "Resident registered SUCCESSFULLY.");
 
             rl.setVisible(true);
@@ -222,7 +223,7 @@ public class residentRegister extends javax.swing.JFrame {
     String ContactNumberfinal;
     String Genderfinal;
     String Passwordfinal;
-    UserRegisterSng urs = new UserRegisterSng();
+    ResidentRegistration urs = new ResidentRegistration();
     UserRegisterDao urd = new UserRegisterDao();
     residentLogin rl = new residentLogin();
     

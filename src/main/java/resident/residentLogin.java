@@ -6,7 +6,7 @@ package resident;
 
 import dao.ResidentLoginDao;
 import javax.swing.JOptionPane;
-import sng.ResidentLoginSng;
+import sng.Resident;
 
 /**
  *
@@ -24,10 +24,12 @@ public class residentLogin extends javax.swing.JFrame {
     private void login(){
         Usernamefinal = txtUsername.getText();
         passwordfinal = txtPassword.getText();
+//        rls = new ResidentLoginSng("", Usernamefinal, passwordfinal, "src/textFiles/residentLogin.txt");
         rls.setUsername(Usernamefinal);
         rls.setPassword(passwordfinal);
         rls.setTextFile("src/textFiles/residentLogin.txt");
-        if (rld.add(rls) == true) {
+        Resident resident = new Resident();
+        if (resident.login(rld,rls) == true) {
             JOptionPane.showMessageDialog(this, "Log In SUCCESSFULLY! Welcome back our dearest Resident!");
 
             rh.setVisible(true);
@@ -163,7 +165,7 @@ public class residentLogin extends javax.swing.JFrame {
 
     String Usernamefinal;
     String passwordfinal;
-    ResidentLoginSng rls = new ResidentLoginSng();
+    Resident rls = new Resident();
     ResidentLoginDao rld = new ResidentLoginDao();
     residentHome rh = new residentHome();
     

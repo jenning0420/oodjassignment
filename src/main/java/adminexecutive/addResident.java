@@ -4,6 +4,7 @@
  */
 package adminexecutive;
 
+import dao.AdminExecutive;
 import javax.swing.JOptionPane;
 
 /**
@@ -29,8 +30,9 @@ public class addResident extends addUserRoleAcc {
         urs.setGender(Genderfinal);
         urs.setPassword(Passwordfinal);
         urs.setTextFile("src/textFiles/residentLogin.txt");
+        AdminExecutive ae = new AdminExecutive();
 
-        if (urd.add(urs) == true) {
+        if (ae.AddResident(urd, urs) == true) {
             JOptionPane.showMessageDialog(this, "Resident registered SUCCESSFULLY.");
 
             aum.setVisible(true);

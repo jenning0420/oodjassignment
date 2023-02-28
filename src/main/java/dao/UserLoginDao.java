@@ -11,16 +11,16 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
-import sng.UserLoginSng;
+import sng.User;
 
 /**
  *
  * @author User
  */
-public class UserLoginDao implements ObjectDao<UserLoginSng> {
+public class UserLoginDao implements ObjectDao<User> {
 
     @Override
-    public boolean add(UserLoginSng uls) {
+    public boolean add(User uls) {
         try {
             File f = new File("src/textFiles/activeUser.txt");
             if (!f.exists()) {

@@ -11,15 +11,15 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
-import sng.AddOperationSng;
+import sng.Operation;
 
 /**
  *
  * @author User
  */
-public class AddOperationDao implements ObjectDao<AddOperationSng>{
+public class AddOperationDao implements ObjectDao<Operation>{
     @Override
-    public boolean add(AddOperationSng aos) {
+    public boolean add(Operation aos) {
         try {
             if (!"".equals(aos.getOperationType()) && !"".equals(aos.getOperationTitle()) && !"".equals(aos.getOperationDetails()) && !"".equals(aos.getFundAllocated()) && !"".equals(aos.getUrgencyLevel())) {
                 File f = new File("src/textFiles/fundAllocation.txt");

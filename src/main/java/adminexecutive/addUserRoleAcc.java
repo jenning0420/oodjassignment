@@ -6,8 +6,8 @@ package adminexecutive;
 
 import dao.UserRegisterDao;
 import dao.VendorRegisterDao;
-import sng.UserRegisterSng;
-import sng.VendorRegisterSng;
+import sng.ResidentRegistration;
+import sng.VendorRegistration;
 
 /**
  *
@@ -195,9 +195,9 @@ public abstract class addUserRoleAcc extends javax.swing.JFrame {
     String ContactNumberfinal;
     String Genderfinal;
     String Passwordfinal;
-    UserRegisterSng urs = new UserRegisterSng();
+    ResidentRegistration urs = new ResidentRegistration();
     UserRegisterDao urd = new UserRegisterDao();
-    VendorRegisterSng vrs = new VendorRegisterSng();
+    VendorRegistration vrs = new VendorRegistration();
     VendorRegisterDao vrd = new VendorRegisterDao();
     adminUserManagement aum = new adminUserManagement();
 

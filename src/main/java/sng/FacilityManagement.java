@@ -4,11 +4,13 @@
  */
 package sng;
 
+import dao.FacilityManagementDao;
+
 /**
  *
  * @author User
  */
-public class FacilityManagementSng {
+public class FacilityManagement {
 
     private int facilityID;
     private String facility;
@@ -54,6 +56,10 @@ public class FacilityManagementSng {
 
     public void setCondition(String condition) {
         this.condition = condition;
+    }
+    
+    public boolean BookFacility(FacilityManagementDao fmd, FacilityManagement fms) {
+        return fmd.add(fms);
     }
 
 }

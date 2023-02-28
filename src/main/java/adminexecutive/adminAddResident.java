@@ -6,7 +6,7 @@ package adminexecutive;
 
 import dao.UserRegisterDao;
 import javax.swing.JOptionPane;
-import sng.UserRegisterSng;
+import sng.ResidentRegistration;
 
 /**
  *
@@ -223,7 +223,7 @@ public class adminAddResident extends javax.swing.JFrame {
     String ContactNumberfinal;
     String Genderfinal;
     String Passwordfinal;
-    UserRegisterSng urs = new UserRegisterSng();
+    ResidentRegistration urs = new ResidentRegistration();
     UserRegisterDao urd = new UserRegisterDao();
     adminUserManagement aum = new adminUserManagement();
     

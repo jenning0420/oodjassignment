@@ -4,11 +4,13 @@
  */
 package sng;
 
+import dao.SetupPatrolDao;
+
 /**
  *
  * @author User
  */
-public class SetupPatrolSng {
+public class Patrol {
     private int patrolID;
     private String userID;
     private String patrolVenue;
@@ -73,5 +75,7 @@ public class SetupPatrolSng {
         this.patrolStatus = patrolStatus;
     }
     
-    
+    public boolean setupPatrol(SetupPatrolDao spd, Patrol sps) {
+        return spd.add(sps);
+    }
 }

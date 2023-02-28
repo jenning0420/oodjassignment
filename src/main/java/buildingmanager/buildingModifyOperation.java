@@ -15,6 +15,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import sng.BuildingManager;
 
 /**
  *
@@ -22,35 +23,14 @@ import javax.swing.table.DefaultTableModel;
  */
 public class buildingModifyOperation extends javax.swing.JFrame {
 
+    BuildingManager bm = new BuildingManager();
+    String filePath = "src/textFiles/fundAllocation.txt";
     /**
      * Creates new form buildingModifyOperation
      */
     public buildingModifyOperation() {
         initComponents();
-        
-        String filePath = "src/textFiles/fundAllocation.txt";
-        File file = new File(filePath);
-        
-
-        try {
-            FileReader fr = new FileReader(file);
-            BufferedReader br = new BufferedReader(fr);
-            String line = br.readLine();
-            String[] colHeadings = line.trim().split(",");
-
-            DefaultTableModel model = (DefaultTableModel) userTable.getModel();
-            model.setColumnIdentifiers(colHeadings);
-            Object[] lines = br.lines().toArray();
-
-            for (int i = 0; i < lines.length; i++) {
-                String[] row = lines[i].toString().split(",");
-                model.addRow(row);
-            }
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(buildingModifyOperation.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(buildingModifyOperation.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        bm.displayTable(userTable,filePath);
     }
     
     private void modifyOperation(){

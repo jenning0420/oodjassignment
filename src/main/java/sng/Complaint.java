@@ -4,11 +4,13 @@
  */
 package sng;
 
+import dao.AddComplaintDao;
+
 /**
  *
  * @author User
  */
-public class AddComplaintSng {
+public class Complaint {
     private int compID;
     private String userID;
     private String compTitle;
@@ -82,5 +84,7 @@ public class AddComplaintSng {
         this.complainant = complainant;
     }
     
-    
+    public boolean AddComplaint(AddComplaintDao acd, Complaint acs) {
+        return acd.add(acs);
+    }
 }

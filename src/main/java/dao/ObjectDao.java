@@ -11,3 +11,4 @@ package dao;
 public interface ObjectDao<T>{
     public boolean add(T object);
 }
+

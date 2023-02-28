@@ -4,9 +4,10 @@
  */
 package adminexecutive;
 
+import dao.AdminExecutive;
 import dao.UserLoginDao;
 import javax.swing.JOptionPane;
-import sng.UserLoginSng;
+import sng.User;
 
 /**
  *
@@ -27,7 +28,8 @@ public class adminLogin extends javax.swing.JFrame {
         uls.setUsername(Usernamefinal);
         uls.setPassword(passwordfinal);
         uls.setTextFile("src/textFiles/adminLogin.txt");
-        if (uld.add(uls) == true) {
+        AdminExecutive ae = new AdminExecutive();
+        if (ae.login(uld,uls)== true) {
             JOptionPane.showMessageDialog(this, "Log In SUCCESSFULLY! Welcome back Admin Executive.");
 
             aemp.setVisible(true);
@@ -150,7 +152,7 @@ public class adminLogin extends javax.swing.JFrame {
 
     String Usernamefinal;
     String passwordfinal;
-    UserLoginSng uls = new UserLoginSng();
+    User uls = new User();
     UserLoginDao uld = new UserLoginDao();
     adminexecmainpage aemp = new adminexecmainpage();
     

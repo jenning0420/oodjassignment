@@ -8,7 +8,8 @@ package sng;
  *
  * @author User
  */
-public class UpdateIncidentSng {
+public class Modification {
+
     private String userID;
     private String userID1;
 
@@ -27,4 +28,5 @@ public class UpdateIncidentSng {
     public void setUserID1(String userID1) {
         this.userID1 = userID1;
     }
+
 }

@@ -15,7 +15,8 @@ import javax.swing.JOptionPane;
 import javax.swing.JSpinner;
 import javax.swing.JTextField;
 import javax.swing.SpinnerDateModel;
-import sng.ApplyPassSng;
+import sng.PassApplication;
+import sng.Resident;
 /**
  *
  * @author User
@@ -27,7 +28,7 @@ public class residentApplyPass extends javax.swing.JFrame {
     String unitNoFinal;
     String dateInFinal;
     String durationFinal;
-    ApplyPassSng aps = new ApplyPassSng();
+    PassApplication aps = new PassApplication();
     ApplyPassDao apd = new ApplyPassDao();
     residentPassManagement rpm = new residentPassManagement();
 
@@ -66,9 +67,10 @@ public class residentApplyPass extends javax.swing.JFrame {
         aps.setDateIn(dateInFinal);
         aps.setUnitNo(unitNoFinal);
         aps.setDuration(durationFinal);
+        Resident resident = new Resident();
 
 
-        if (apd.add(aps) == true) {
+        if (resident.applyPass(apd, aps) == true) {
             JOptionPane.showMessageDialog(this, "Visitor pass applied successfully!");
 
             rpm.setVisible(true);

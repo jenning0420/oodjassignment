@@ -11,16 +11,16 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
-import sng.GenerateInvoiceSng;
+import sng.Invoice;
 
 /**
  *
  * @author User
  */
-public class GenerateInvoiceDao implements ObjectDao<GenerateInvoiceSng> {
+public class GenerateInvoiceDao implements ObjectDao<Invoice> {
 
     @Override
-    public boolean add(GenerateInvoiceSng gis) {
+    public boolean add(Invoice gis) {
         try {
             if (!"".equals(gis.getUserID()) && !"".equals(gis.getUnitNo()) && !"".equals(gis.getPaymentType()) && !"".equals(gis.getAmount()) && !"".equals(gis.getPaymentDue())) {
                 File f = new File("src/textFiles/invoice.txt");

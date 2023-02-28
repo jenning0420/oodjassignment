@@ -20,7 +20,7 @@ import javax.swing.JSpinner;
 import javax.swing.JTextField;
 import javax.swing.SpinnerDateModel;
 import javax.swing.table.DefaultTableModel;
-import sng.SetupPatrolSng;
+import sng.Patrol;
 
 /**
  *
@@ -72,8 +72,9 @@ public class buildingSetupPatrol extends javax.swing.JFrame {
         sps.setPatrolDate(patrolDateFinal);
         sps.setPatrolTime(patrolTimeFinal);
         sps.setPatrolStatus(status);
+        Patrol patrol = new Patrol();
 
-        if (spd.add(sps) == true) {
+        if (patrol.setupPatrol(spd, sps) == true) {
             JOptionPane.showMessageDialog(this, "Patrol Schedule Set Up SUCCESSFULLY.");
 
             beh.setVisible(true);
@@ -302,7 +303,7 @@ public class buildingSetupPatrol extends javax.swing.JFrame {
     String patrolDateFinal;
     String patrolTimeFinal;
     String status = "Upcoming";
-    SetupPatrolSng sps = new SetupPatrolSng();
+    Patrol sps = new Patrol();
     SetupPatrolDao spd = new SetupPatrolDao();
     buildingExecHome beh = new buildingExecHome();
     SimpleDateFormat formatter = new SimpleDateFormat("HH:mm");

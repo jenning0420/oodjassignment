@@ -21,7 +21,8 @@ import javax.swing.JSpinner;
 import javax.swing.JTextField;
 import javax.swing.SpinnerDateModel;
 import javax.swing.table.DefaultTableModel;
-import sng.FacilityBookingManagementSng;
+import sng.FacilityBookingManagement;
+import sng.Resident;
 
 /**
  *
@@ -34,8 +35,9 @@ public class residentAddViewFaciBook extends javax.swing.JFrame {
     String dateInFinal;
     String durationFinal;
     String timeFinal;
-    FacilityBookingManagementSng fbms = new FacilityBookingManagementSng();
-    FacilityBookingManagementDao fbmd = new FacilityBookingManagementDao();
+    String activeUser;
+    FacilityBookingManagement fbms = new FacilityBookingManagement();
+//    FacilityBookingManagementDao fbmd = new FacilityBookingManagementDao();
 
     /**
      * Creates new form residentAddViewFaciBook
@@ -51,6 +53,7 @@ public class residentAddViewFaciBook extends javax.swing.JFrame {
 
                 while ((line = br.readLine()) != null) {
                     splt = line.split(",");
+//                    activeUser = splt[0];
                     fbms.setUserID(splt[0]);
                 }
             }
@@ -70,8 +73,10 @@ public class residentAddViewFaciBook extends javax.swing.JFrame {
         fbms.setDateIn(dateInFinal);
         fbms.setDuration(durationFinal);
         fbms.setTime(timeFinal);
+        Resident resident = new Resident(fbms.getUserID());
+//        resident.bookFacility(fbmd, fbms);
 
-        if (fbmd.add(fbms) == true) {
+        if ( resident.add(fbms) == true) {
             JOptionPane.showMessageDialog(this, "Facility Booking Record ADDED!");
 
             String filePath = "src/textFiles/facilityBooking.txt";

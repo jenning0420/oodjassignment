@@ -5,6 +5,7 @@
 package buildingmanager;
 
 import javax.swing.JOptionPane;
+import sng.BuildingManager;
 
 /**
  *
@@ -29,8 +30,9 @@ public class AddBuilding extends addAccount {
         aus.setGender(Genderfinal);
         aus.setPassword(Passwordfinal);
         aus.setTextFile("src/textFiles/buildingLogin.txt");
+        BuildingManager bm = new BuildingManager();
 
-        if (aud.add(aus) == true) {
+        if (bm.addBuilding(aud,aus) == true) {
             JOptionPane.showMessageDialog(this, "Building Executive account "
                     + "added SUCCESSFULLY.");
 

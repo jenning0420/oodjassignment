@@ -11,15 +11,15 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
-import sng.GenerateInvoiceSng;
+import sng.Invoice;
 
 /**
  *
  * @author User
  */
-public class GenerateStatementDao implements ObjectDao<GenerateInvoiceSng> {
+public class GenerateStatementDao implements ObjectDao<Invoice> {
 
-    public boolean add(GenerateInvoiceSng gis) {
+    public boolean add(Invoice gis) {
         try {
             if (!"".equals(gis.getUserID()) && !"".equals(gis.getTotAmtPaid())) {
                 File f = new File("src/textFiles/statement.txt");

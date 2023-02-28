@@ -8,16 +8,16 @@ package sng;
  *
  * @author User
  */
-public class VendorRegisterSng extends AddUserSng{
-    private int propID;
+public class EmployeeRegistration extends StaffRegistration{
+    private String empType;
 
-    public int getPropID() {
-        return propID;
+    public String getEmpType() {
+        return empType;
     }
 
-    public void setPropID(int propID) {
-        this.propID = propID;
+    public void setEmpType(String empType) {
+        this.empType = empType;
     }
-    
+
     
 }

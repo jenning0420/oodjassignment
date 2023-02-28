@@ -24,7 +24,7 @@ import javax.swing.JSpinner;
 import javax.swing.JTextField;
 import javax.swing.SpinnerDateModel;
 import javax.swing.table.DefaultTableModel;
-import sng.UpdateIncidentSng;
+import sng.Modification;
 
 /**
  *
@@ -33,7 +33,7 @@ import sng.UpdateIncidentSng;
 public class securityUpdateIncident extends javax.swing.JFrame {
     
     String timeInFinal;
-    UpdateIncidentSng uis = new UpdateIncidentSng();
+    Modification uis = new Modification();
     SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm");
     SimpleDateFormat formatter = new SimpleDateFormat("HH:mm");
 

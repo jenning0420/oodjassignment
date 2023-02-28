@@ -11,16 +11,16 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
-import sng.VendorRegisterSng;
+import sng.VendorRegistration;
 
 /**
  *
  * @author User
  */
-public class VendorRegisterDao implements ObjectDao<VendorRegisterSng>{
+public class VendorRegisterDao implements ObjectDao<VendorRegistration>{
 
     @Override
-    public boolean add(VendorRegisterSng vrs) {
+    public boolean add(VendorRegistration vrs) {
         try {
             if (!"".equals(vrs.getUsername()) && !"".equals(vrs.getName()) && !"".equals(vrs.getContactNumber()) && !"".equals(vrs.getGender()) && !"".equals(vrs.getPassword())) {
                 File f = new File(vrs.getTextFile());
