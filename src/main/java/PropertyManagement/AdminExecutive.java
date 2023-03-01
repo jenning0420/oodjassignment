@@ -2,12 +2,16 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package dao;
+package PropertyManagement;
 
 import adminexecutive.adminManageEmp;
 import adminexecutive.adminModifyEmployee;
 import adminexecutive.adminModifyResident;
 import adminexecutive.adminModifySecurity;
+import dao.EmployeeRegisterDao;
+import dao.UserLoginDao;
+import dao.UserRegisterDao;
+import dao.VendorRegisterDao;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
@@ -20,10 +24,10 @@ import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
-import sng.EmployeeRegistration;
-import sng.ResidentRegistration;
-import sng.User;
-import sng.VendorRegistration;
+import PropertyManagement.EmployeeRegistration;
+import PropertyManagement.ResidentRegistration;
+import PropertyManagement.User;
+import PropertyManagement.VendorRegistration;
 
 /**
  *

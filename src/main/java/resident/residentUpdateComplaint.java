@@ -20,7 +20,7 @@ import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 import file.FileService;
 import java.util.Arrays;
-import sng.Modification;
+import PropertyManagement.Modification;
 
 /**
  *

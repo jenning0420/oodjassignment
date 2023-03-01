@@ -26,7 +26,7 @@ import java.util.Calendar;
 import javax.swing.JSpinner;
 import javax.swing.SpinnerNumberModel;
 import resident.residentUpdateComplaint;
-import sng.Modification;
+import PropertyManagement.Modification;
 
 /**
  *

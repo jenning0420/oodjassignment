@@ -6,8 +6,8 @@ package employee;
 
 import dao.UserLoginDao;
 import javax.swing.JOptionPane;
-import sng.Employee;
-import sng.User;
+import PropertyManagement.Employee;
+import PropertyManagement.User;
 
 /**
  *

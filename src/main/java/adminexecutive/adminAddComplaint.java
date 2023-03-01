@@ -14,7 +14,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
-import sng.Complaint;
+import PropertyManagement.Complaint;
 
 /**
  *

@@ -6,8 +6,8 @@ package vendor;
 
 import dao.ResidentLoginDao;
 import javax.swing.JOptionPane;
-import sng.Resident;
-import sng.Vendor;
+import PropertyManagement.Resident;
+import PropertyManagement.Vendor;
 
 /**
  *

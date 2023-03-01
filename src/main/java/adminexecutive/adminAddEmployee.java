@@ -4,10 +4,10 @@
  */
 package adminexecutive;
 
-import dao.AdminExecutive;
+import PropertyManagement.AdminExecutive;
 import dao.EmployeeRegisterDao;
 import javax.swing.JOptionPane;
-import sng.EmployeeRegistration;
+import PropertyManagement.EmployeeRegistration;
 
 /**
  *

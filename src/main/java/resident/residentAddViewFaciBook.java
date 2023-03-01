@@ -21,8 +21,8 @@ import javax.swing.JSpinner;
 import javax.swing.JTextField;
 import javax.swing.SpinnerDateModel;
 import javax.swing.table.DefaultTableModel;
-import sng.FacilityBookingManagement;
-import sng.Resident;
+import PropertyManagement.FacilityBookingManagement;
+import PropertyManagement.Resident;
 
 /**
  *

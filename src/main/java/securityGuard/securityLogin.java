@@ -6,8 +6,8 @@ package securityGuard;
 
 import dao.UserLoginDao;
 import javax.swing.JOptionPane;
-import sng.SecurityGuard;
-import sng.User;
+import PropertyManagement.SecurityGuard;
+import PropertyManagement.User;
 import vendor.vendorHome;
 
 /**

@@ -2,29 +2,31 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package sng;
+package PropertyManagement;
+
+import dao.FacilityBookingManagementDao;
 
 /**
  *
  * @author User
  */
-public class PassApplication {
-    private int passID;
+public class FacilityBookingManagement {
+
+    private int faciBookingID;
     private String userID;
-    private String visitorName;
-    private String carPlate;
-    private String unitNo;
+    private String facility;
     private String dateIn;
     private String duration;
+    private String time;
 
-    public int getPassID() {
-        return passID;
+    public int getFaciBookingID() {
+        return faciBookingID;
     }
 
-    public void setPassID(int passID) {
-        this.passID = passID;
+    public void setFaciBookingID(int faciBookingID) {
+        this.faciBookingID = faciBookingID;
     }
-  
+
     public String getUserID() {
         return userID;
     }
@@ -33,28 +35,12 @@ public class PassApplication {
         this.userID = userID;
     }
 
-    public String getVisitorName() {
-        return visitorName;
+    public String getFacility() {
+        return facility;
     }
 
-    public void setVisitorName(String visitorName) {
-        this.visitorName = visitorName;
-    }
-
-    public String getCarPlate() {
-        return carPlate;
-    }
-
-    public void setCarPlate(String carPlate) {
-        this.carPlate = carPlate;
-    }
-
-    public String getUnitNo() {
-        return unitNo;
-    }
-
-    public void setUnitNo(String unitNo) {
-        this.unitNo = unitNo;
+    public void setFacility(String facility) {
+        this.facility = facility;
     }
 
     public String getDateIn() {
@@ -71,5 +57,17 @@ public class PassApplication {
 
     public void setDuration(String duration) {
         this.duration = duration;
+    }
+
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
+    }
+
+    public boolean BookFacility(FacilityBookingManagementDao fbmd, FacilityBookingManagement fbms) {
+        return fbmd.add(fbms);
     }
 }

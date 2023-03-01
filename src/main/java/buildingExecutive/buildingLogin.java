@@ -6,8 +6,8 @@ package buildingExecutive;
 
 import dao.UserLoginDao;
 import javax.swing.JOptionPane;
-import sng.BuildingExecutive;
-import sng.User;
+import PropertyManagement.BuildingExecutive;
+import PropertyManagement.User;
 
 /**
  *

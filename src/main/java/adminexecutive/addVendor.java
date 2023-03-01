@@ -4,7 +4,7 @@
  */
 package adminexecutive;
 
-import dao.AdminExecutive;
+import PropertyManagement.AdminExecutive;
 import javax.swing.JOptionPane;
 
 /**

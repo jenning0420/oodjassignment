@@ -6,8 +6,8 @@ package accountexecutive;
 
 import dao.UserLoginDao;
 import javax.swing.JOptionPane;
-import sng.AccountExecutive;
-import sng.User;
+import PropertyManagement.AccountExecutive;
+import PropertyManagement.User;
 
 /**
  *

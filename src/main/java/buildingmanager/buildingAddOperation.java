@@ -6,8 +6,8 @@ package buildingmanager;
 
 import dao.AddOperationDao;
 import javax.swing.JOptionPane;
-import sng.Operation;
-import sng.BuildingManager;
+import PropertyManagement.Operation;
+import PropertyManagement.BuildingManager;
 
 /**
  *
