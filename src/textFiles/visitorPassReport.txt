@@ -1,5 +1,4 @@
 passID,userID,Visitor Name,Car Plate,Unit No,Date In,Duration,
-1,christine,Christine,013746572,Female,christine,2001,
-2,jenning_jeremy,jenning,0123213212,Male,123,2002,
-3,8,awd,wda,wdad,26-02-2023,0,
-4,19,wda,wd,wd,12-02-2023,0,
+1,5,Tommy,AKU8173,C-10-08,03-03-2023,3,
+2,5,Simmy,VKL 2288,C-20-09,10-03-2023,5,
+3,6,Zahir,PYU 1534,B-28-04,10-03-2023,3,
