@@ -42,23 +42,6 @@ public class securityUpdateVisitorEntry extends javax.swing.JFrame {
     public securityUpdateVisitorEntry() {
         initComponents();
 
-        try {
-            FileReader fr1 = new FileReader("src/textFiles/activeUser.txt");
-            try ( BufferedReader br1 = new BufferedReader(fr1)) {
-                String line1 = null;
-                String[] splt1 = null;
-
-                while ((line1 = br1.readLine()) != null) {
-                    splt1 = line1.split(",");
-                    uves.setUserID1(splt1[0]);
-
-                }
-
-            }
-        } catch (IOException e) {
-            System.out.println("FileNotFound");
-        }
-
         String filePath = "src/textFiles/visitorEntry.txt";
         File file = new File(filePath);
 
@@ -74,13 +57,7 @@ public class securityUpdateVisitorEntry extends javax.swing.JFrame {
 
             for (int i = 0; i < lines.length; i++) {
                 String[] row = lines[i].toString().split(",");
-                uves.setUserID(row[1]);
-//                String number = ("17");
-//                System.out.println(rucs.getUserID().getClass());
-//                System.out.println(number.getClass());
-                if (uves.getUserID().equals(uves.getUserID1())) {
-                    model.addRow(row);
-                }
+                model.addRow(row);
 
             }
 
@@ -90,8 +67,8 @@ public class securityUpdateVisitorEntry extends javax.swing.JFrame {
             Logger.getLogger(residentUpdateComplaint.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
-    private void updateVisitorEntry(){
+
+    private void updateVisitorEntry() {
         int item = entryTable.getSelectedRow();
         DefaultTableModel model = (DefaultTableModel) entryTable.getModel();
 
@@ -239,7 +216,6 @@ public class securityUpdateVisitorEntry extends javax.swing.JFrame {
         });
 
         update.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        update.setForeground(java.awt.Color.black);
         update.setText("UPDATE");
         update.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -266,7 +242,6 @@ public class securityUpdateVisitorEntry extends javax.swing.JFrame {
         dateIn.setDateFormatString("dd-MM-yyyy");
 
         clear.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        clear.setForeground(java.awt.Color.black);
         clear.setText("CLEAR");
         clear.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -391,22 +366,19 @@ public class securityUpdateVisitorEntry extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 648, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(163, 163, 163)
+                        .addComponent(back, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(63, 63, 63)
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 806, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
-                        .addComponent(back, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addGap(18, 18, 18))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(22, 22, 22)
-                        .addComponent(back, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(back, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
