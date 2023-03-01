@@ -4,6 +4,9 @@
  */
 package PropertyManagement;
 
+import dao.UserRegisterDao;
+import dao.VendorRegisterDao;
+
 /**
  *
  * @author User
@@ -19,5 +22,7 @@ public class VendorRegistration extends StaffRegistration{
         this.propID = propID;
     }
     
-    
+    public boolean register(VendorRegisterDao vrd, VendorRegistration vrs) {
+        return vrd.add(vrs);
+    }
 }

@@ -34,8 +34,9 @@ public class vendorRegister extends javax.swing.JFrame {
         vrs.setGender(Genderfinal);
         vrs.setPassword(Passwordfinal);
         vrs.setTextFile("src/textFiles/vendorLogin.txt");
+        VendorRegistration vr = new VendorRegistration();
 
-        if (vrd.add(vrs) == true) {
+        if (vr.register(vrd, vrs) == true) {
             JOptionPane.showMessageDialog(this, "Vendor registered SUCCESSFULLY.");
 
             vl.setVisible(true);
