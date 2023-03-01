@@ -1,3 +1,2 @@
 Patrol ID,User ID,Patrol Venue,Patrol Details,Patrol Date,Patrol Time,Patrol Status,
 1,2,Lobby (Ground Floor),Check illegal car parked in condo,16-02-2023,12:00,Upcoming,
-
