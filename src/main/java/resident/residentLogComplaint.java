@@ -10,7 +10,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
-import sng.Complaint;
+import PropertyManagement.Complaint;
 
 /**
  *

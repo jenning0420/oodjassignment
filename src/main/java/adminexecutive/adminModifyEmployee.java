@@ -4,7 +4,7 @@
  */
 package adminexecutive;
 
-import dao.AdminExecutive;
+import PropertyManagement.AdminExecutive;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;

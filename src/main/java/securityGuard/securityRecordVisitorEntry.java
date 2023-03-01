@@ -13,7 +13,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.SpinnerDateModel;
 import javax.swing.JSpinner;
-import sng.VisitorEntry;
+import PropertyManagement.VisitorEntry;
 import java.util.Calendar;
 import java.text.SimpleDateFormat;
 

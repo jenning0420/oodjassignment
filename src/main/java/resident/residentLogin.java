@@ -6,7 +6,7 @@ package resident;
 
 import dao.ResidentLoginDao;
 import javax.swing.JOptionPane;
-import sng.Resident;
+import PropertyManagement.Resident;
 
 /**
  *

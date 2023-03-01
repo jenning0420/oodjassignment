@@ -19,7 +19,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 import resident.residentUpdateComplaint;
-import sng.Modification;
+import PropertyManagement.Modification;
 
 /**
  *

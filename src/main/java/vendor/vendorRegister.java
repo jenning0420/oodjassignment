@@ -7,7 +7,7 @@ package vendor;
 import dao.VendorRegisterDao;
 import javax.swing.JOptionPane;
 import resident.residentLogin;
-import sng.VendorRegistration;
+import PropertyManagement.VendorRegistration;
 
 /**
  *

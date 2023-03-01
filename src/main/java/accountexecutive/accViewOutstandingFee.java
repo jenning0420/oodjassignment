@@ -13,7 +13,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
-import sng.Invoice;
+import PropertyManagement.Invoice;
 
 /**
  *

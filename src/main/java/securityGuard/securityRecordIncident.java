@@ -15,7 +15,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JSpinner;
 import javax.swing.JTextField;
 import javax.swing.SpinnerDateModel;
-import sng.Incident;
+import PropertyManagement.Incident;
 
 /**
  *

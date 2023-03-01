@@ -15,8 +15,8 @@ import javax.swing.JOptionPane;
 import javax.swing.JSpinner;
 import javax.swing.JTextField;
 import javax.swing.SpinnerDateModel;
-import sng.PassApplication;
-import sng.Resident;
+import PropertyManagement.PassApplication;
+import PropertyManagement.Resident;
 /**
  *
  * @author User

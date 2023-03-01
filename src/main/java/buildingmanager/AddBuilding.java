@@ -5,7 +5,7 @@
 package buildingmanager;
 
 import javax.swing.JOptionPane;
-import sng.BuildingManager;
+import PropertyManagement.BuildingManager;
 
 /**
  *

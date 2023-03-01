@@ -2,22 +2,16 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package sng;
+package PropertyManagement;
+
+import dao.ResidentLoginDao;
 
 /**
  *
  * @author User
  */
-public class VendorRegistration extends StaffRegistration{
-    private int propID;
-
-    public int getPropID() {
-        return propID;
+public class Vendor {
+    public boolean login(ResidentLoginDao rld, Resident rls){
+        return rld.add(rls);
     }
-
-    public void setPropID(int propID) {
-        this.propID = propID;
-    }
-    
-    
 }

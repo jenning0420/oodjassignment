@@ -20,7 +20,7 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
-import sng.Invoice;
+import PropertyManagement.Invoice;
 
 /**
  *

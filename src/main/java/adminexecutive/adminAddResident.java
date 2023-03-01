@@ -6,7 +6,7 @@ package adminexecutive;
 
 import dao.UserRegisterDao;
 import javax.swing.JOptionPane;
-import sng.ResidentRegistration;
+import PropertyManagement.ResidentRegistration;
 
 /**
  *

@@ -6,8 +6,8 @@ package adminexecutive;
 
 import dao.UserRegisterDao;
 import dao.VendorRegisterDao;
-import sng.ResidentRegistration;
-import sng.VendorRegistration;
+import PropertyManagement.ResidentRegistration;
+import PropertyManagement.VendorRegistration;
 
 /**
  *

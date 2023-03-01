@@ -6,7 +6,7 @@ package buildingmanager;
 
 import dao.AddUserDao;
 import javax.swing.JOptionPane;
-import sng.StaffRegistration;
+import PropertyManagement.StaffRegistration;
 
 /**
  *
