@@ -51,7 +51,9 @@ public class AdminExecutive {
         return erd.add(ers);
     }
 
-    public void modifyEmployee(JLabel userID, JTextField Username, JTextField Name, JTextField ContactNumber, JComboBox Gender, JTextField Password, JComboBox empType, JTable userTable, adminModifyEmployee am) {
+    public void modifyEmployee(JLabel userID, JTextField Username, JTextField Name, 
+            JTextField ContactNumber, JComboBox Gender, JTextField Password, 
+            JComboBox empType, JTable userTable, adminModifyEmployee am) {
         adminManageEmp ame = new adminManageEmp();
         int item = userTable.getSelectedRow();
         DefaultTableModel model = (DefaultTableModel) userTable.getModel();

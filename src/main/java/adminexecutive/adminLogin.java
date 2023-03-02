@@ -30,12 +30,13 @@ public class adminLogin extends javax.swing.JFrame {
         uls.setTextFile("src/textFiles/adminLogin.txt");
         AdminExecutive ae = new AdminExecutive();
         if (ae.login(uld,uls)== true) {
-            JOptionPane.showMessageDialog(this, "Log In SUCCESSFULLY! Welcome back Admin Executive.");
-
+            JOptionPane.showMessageDialog(this,"Log In SUCCESSFULLY! "
+                    + "Welcome back Admin Executive.");
             aemp.setVisible(true);
             this.setVisible(false);
         } else {
-            JOptionPane.showMessageDialog(this, "INCORRECT Username OR Password. Please try again.");
+            JOptionPane.showMessageDialog(this,"INCORRECT Username OR Password."
+                    + " Please try again.");
             txtUsername.setText(null);
             txtPassword.setText(null);
         }
@@ -158,7 +159,6 @@ public class adminLogin extends javax.swing.JFrame {
     
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         login();
-        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backActionPerformed
