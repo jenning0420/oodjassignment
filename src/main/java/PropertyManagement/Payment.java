@@ -26,9 +26,9 @@ public class Payment {
         money = Double.parseDouble(finalamount.getText());
 
         if (money < Double.parseDouble(totalamount.getText())) {
-            JOptionPane.showMessageDialog(null, "Sorry, You Didn't Have Enough Money To Pay !!!");
+            JOptionPane.showMessageDialog(null, "Sorry, You Don't Have Enough Money To Pay !!!");
         } else if (money == 0) {
-            JOptionPane.showMessageDialog(null, "You Have Already Pay !!!");
+            JOptionPane.showMessageDialog(null, "You Have Already Paid !!!");
         } else if (money > Double.parseDouble(totalamount.getText())) {
             JOptionPane.showMessageDialog(null, "Please Pay The Correct Amount !!!");
         } else {

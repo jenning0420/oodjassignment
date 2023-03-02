@@ -85,7 +85,7 @@ public class buildingUpdateComplaint extends javax.swing.JFrame {
                 Logger.getLogger(buildingUpdateComplaint.class.getName()).log(Level.SEVERE, null, ex);
             }
 
-            JOptionPane.showMessageDialog(this, "Resident Account Updated SUCCESSFULLY!");
+            JOptionPane.showMessageDialog(this, "Complaint Updated SUCCESSFULLY!");
             beh.setVisible(true);
             this.setVisible(false);
         } else {
